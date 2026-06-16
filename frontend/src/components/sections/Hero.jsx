@@ -108,10 +108,10 @@ export const Hero = () => (
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="relative"
           >
-            <div className="absolute -right-3 -top-3 hidden rounded-xl border border-ak-ink/8 bg-ak-mist px-4 py-2 text-xs font-semibold text-ak-ink shadow-sm sm:block">
-              <span className="text-ak-orange">●</span> Pan-India Coverage
+            <div className="absolute -right-4 -top-4 z-20 hidden items-center gap-1.5 rounded-xl border border-ak-ink/8 bg-white px-4 py-2 text-xs font-semibold text-ak-ink shadow-md sm:flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-ak-orange" /> Pan-India Coverage
             </div>
-            <div className="rounded-[1.75rem] border border-ak-ink/8 bg-white/90 p-6 shadow-[0_30px_60px_-30px_rgba(28,42,57,0.35)] backdrop-blur-sm md:p-7">
+            <div className="relative z-10 rounded-[1.75rem] border border-ak-ink/8 bg-white/90 p-6 shadow-[0_30px_60px_-30px_rgba(28,42,57,0.35)] backdrop-blur-sm md:p-7">
               <div className="ak-kicker-bare mb-5 flex items-center justify-between">
                 {hero.cardLabel}
                 <span className="h-1.5 w-1.5 rounded-full bg-ak-orange" />

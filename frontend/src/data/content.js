@@ -240,9 +240,9 @@ export const footer = {
       links: [
         { label: "About Aksharaa", href: "#partner" },
         { label: "Governance Framework", href: "#framework" },
-        { label: "Industries", href: "#" },
-        { label: "Client Stories", href: "#" },
-        { label: "Blog", href: "#" },
+        { label: "Industries", href: "#workforce" },
+        { label: "Client Stories", href: "#partner" },
+        { label: "Blog", href: "#framework" },
       ],
     },
     {
@@ -255,8 +255,8 @@ export const footer = {
     },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "#footer" },
+    { label: "Terms of Service", href: "#footer" },
   ],
   copyright: "© 2026 Aksharaa Corporate Services. All rights reserved.",
 };

@@ -5,6 +5,7 @@ import { risk } from "../../data/content";
 
 export const RiskIntelligence = () => (
   <section
+    id="risk"
     data-testid="risk-section"
     className="relative overflow-hidden bg-ak-ink py-20 md:py-32"
   >

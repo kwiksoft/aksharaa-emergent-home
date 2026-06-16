@@ -6,6 +6,7 @@ import { lifecycle } from "../../data/content";
 
 export const ComplianceLifecycle = () => (
   <section
+    id="lifecycle"
     data-testid="lifecycle-section"
     className="relative overflow-hidden bg-ak-ink py-20 md:py-32"
   >

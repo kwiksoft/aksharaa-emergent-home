@@ -6,6 +6,7 @@ import { metrics } from "../../data/content";
 
 export const InstitutionalMetrics = () => (
   <section
+    id="metrics"
     data-testid="metrics-section"
     className="relative overflow-hidden bg-ak-navy py-20 md:py-28"
   >

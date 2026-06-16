@@ -5,7 +5,7 @@ import { Icon } from "../../lib/icons";
 import { engagement } from "../../data/content";
 
 export const EngagementModel = () => (
-  <section data-testid="engagement-section" className="bg-ak-mist/50 py-20 md:py-32">
+  <section id="engagement" data-testid="engagement-section" className="bg-ak-mist/50 py-20 md:py-32">
     <Container>
       <Reveal className="mx-auto max-w-2xl text-center">
         <div className="ak-kicker-bare mb-5">{engagement.kicker}</div>

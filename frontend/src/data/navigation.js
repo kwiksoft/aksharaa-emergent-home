@@ -9,8 +9,8 @@ export const navLinks = [
   { label: "About Us", href: "#partner" },
   { label: "Services", mega: "services" },
   { label: "Industries", mega: "industries" },
-  { label: "Client Stories", href: "#" },
-  { label: "Blog", href: "#" },
+  { label: "Client Stories", href: "#partner" },
+  { label: "Blog", href: "#framework" },
   { label: "Contact", href: "#footer" },
 ];
 

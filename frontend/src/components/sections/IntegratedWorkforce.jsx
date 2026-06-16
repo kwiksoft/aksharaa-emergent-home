@@ -4,7 +4,7 @@ import { Icon } from "../../lib/icons";
 import { workforce } from "../../data/content";
 
 export const IntegratedWorkforce = () => (
-  <section data-testid="workforce-section" className="bg-white py-20 md:py-32">
+  <section id="workforce" data-testid="workforce-section" className="bg-white py-20 md:py-32">
     <Container>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4">

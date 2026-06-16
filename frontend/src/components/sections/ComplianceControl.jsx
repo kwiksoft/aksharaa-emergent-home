@@ -6,7 +6,7 @@ import { control } from "../../data/content";
 const SPANS = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7"];
 
 export const ComplianceControl = () => (
-  <section data-testid="control-section" className="bg-white py-20 md:py-32">
+  <section id="control" data-testid="control-section" className="bg-white py-20 md:py-32">
     <Container>
       <Reveal className="max-w-3xl">
         <div className="ak-kicker mb-5">{control.kicker}</div>
