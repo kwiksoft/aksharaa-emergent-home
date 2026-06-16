@@ -1,0 +1,183 @@
+{
+  "theme": "LIGHT",
+  "archetype": "Archetype 4 (Swiss & High-Contrast - Corporate Premium Variant)",
+  "design_principles": [
+    "Asymmetry & Tension: Use broken grids, staggered cards, and generous whitespace. Avoid standard centered text blocks.",
+    "Editorial Typography: Oversized headlines using Sora with tight tracking (-0.02em to -0.04em) paired with structured, clean Inter body text.",
+    "Restrained Accent: Use Aksharaa Orange (#F28C28) only for critical CTAs, active states, progress indicators, and micro-interactions. Never as large background blocks.",
+    "Motion as Structure: Use motion to reveal hierarchy—staggered fades, growing connection lines in lifecycles, and subtle hover lift on cards.",
+    "No Generic Components: Customize all buttons and cards. Buttons are fully rounded (pill) with subtle shadow. Cards use specific border and hover lifts."
+  ],
+  "colors": {
+    "light": {
+      "background": "#FFFFFF",
+      "surface": "#F8F9FA",
+      "surface_alt": "#EFEFEF",
+      "text_primary": "#1C2A39",
+      "text_secondary": "#4A5568",
+      "border": "#E2E8F0"
+    },
+    "dark": {
+      "background": "#1C2A39",
+      "surface": "#2E3B4E",
+      "surface_alt": "#1A202C",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#A0AEC0",
+      "border": "#3A4A5A"
+    },
+    "accent": {
+      "primary": "#F28C28",
+      "hover": "#C66A18",
+      "subtle": "rgba(242, 140, 40, 0.1)"
+    }
+  },
+  "typography": {
+    "font_primary": "Sora, sans-serif",
+    "font_secondary": "Inter, sans-serif",
+    "scales": {
+      "h1": "text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight text-[#1C2A39] dark:text-white",
+      "h2": "text-4xl md:text-5xl font-semibold tracking-tight leading-tight text-[#1C2A39] dark:text-white",
+      "h3": "text-2xl md:text-3xl font-medium tracking-tight text-[#1C2A39] dark:text-white",
+      "h4": "text-xl font-medium text-[#1C2A39] dark:text-white",
+      "body_lg": "text-lg leading-relaxed text-[#4A5568] dark:text-[#A0AEC0]",
+      "body": "text-base leading-relaxed text-[#4A5568] dark:text-[#A0AEC0]",
+      "kicker": "text-xs md:text-sm uppercase tracking-[0.2em] font-semibold text-[#F28C28]"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-20 md:py-32",
+    "grid_gaps": "gap-8 md:gap-16",
+    "border_radius": {
+      "cards": "rounded-2xl",
+      "buttons": "rounded-full",
+      "chips": "rounded-lg"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#F28C28] hover:bg-[#C66A18] text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-[0_4px_14px_0_rgba(242,140,40,0.39)] hover:shadow-[0_6px_20px_rgba(242,140,40,0.23)] hover:-translate-y-0.5",
+      "secondary": "bg-transparent border border-[#1C2A39] text-[#1C2A39] hover:bg-[#1C2A39] hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300",
+      "dark_secondary": "bg-transparent border border-white/30 text-white hover:bg-white hover:text-[#1C2A39] px-8 py-4 rounded-full font-medium transition-all duration-300"
+    },
+    "cards": {
+      "light": "bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 rounded-2xl p-8 hover:-translate-y-1 relative overflow-hidden",
+      "dark": "bg-[#2E3B4E] border border-white/5 hover:bg-[#3A4A5A] transition-all duration-500 rounded-2xl p-8 hover:-translate-y-1 relative overflow-hidden"
+    },
+    "data_chip": "backdrop-blur-md bg-white/90 border border-white/20 shadow-lg rounded-xl p-4 flex items-center gap-4 text-[#1C2A39]"
+  },
+  "animations": {
+    "scroll_reveal": "initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}",
+    "stagger_children": "transition={{ staggerChildren: 0.15 }}",
+    "line_growth": "initial={{ width: 0, height: 0 }} whileInView={{ width: '100%', height: '100%' }} transition={{ duration: 1.2, ease: 'easeInOut' }}",
+    "counter": "Use framer-motion useMotionValue, useSpring, and useTransform to animate numbers from 0 to value on scroll reveal."
+  },
+  "sections": [
+    {
+      "id": "01_top_info_bar",
+      "theme": "light",
+      "layout": "Flexbox row, justified between items-center. Hidden on small mobile.",
+      "content": "Phone (+91 98402 76677), Email, Social links (LinkedIn, X, Facebook, Instagram). Thin strip, text-xs. Monochrome lucide-react icons with orange hover."
+    },
+    {
+      "id": "02_header",
+      "theme": "light_glass",
+      "layout": "Sticky z-50, backdrop-blur-xl bg-white/80, flex between items-center. Full mega menus dropping down as asymmetric bento panels.",
+      "content": "Logo left. Balanced nav links center. Compact CTA button right. Mobile gets fullscreen layered nav panel."
+    },
+    {
+      "id": "03_hero",
+      "theme": "light",
+      "layout": "Asymmetrical 12-col grid. Content spans 7 cols left. Snapshot card floats 4 cols right. Subtle radial/grid lines in absolute bg.",
+      "content": "Eyebrow 'Trusted by 500+ Businesses Across India', Oversized H1 stack 'Governance-Driven / Corporate / Compliance'. Subtext. 2 CTAs. Stat row. Right card 'Governance Domains'."
+    },
+    {
+      "id": "04_trust_strip",
+      "theme": "light",
+      "layout": "Full width marquee via react-fast-marquee or CSS animation.",
+      "content": "'Trusted by Leading Organisations' text. Logos (Alibaba, Blue Dart, Godrej, L&T, Mercedes-Benz) rendered cleanly in grayscale, opacity-40 hover:opacity-100."
+    },
+    {
+      "id": "05_governance_partner",
+      "theme": "light",
+      "layout": "Asymmetrical 2-col. Left: large high-end architectural building image. Floating '98% Client Retention' chip overlapping. Right: Text block with structured offset.",
+      "content": "H2 'A Governance-Structured Compliance Partner'. Quote callout ('Governance is not an add-on to compliance...'), paragraphs, 'About Aksharaa' button."
+    },
+    {
+      "id": "06_structured_compliance_lifecycle",
+      "theme": "dark",
+      "layout": "Horizontal rail layout (desktop), stacked (mobile). Connected nodes with growing progress line via framer-motion.",
+      "content": "Kicker 'Compliance Architecture'. 5 stages: 01 Register, 02 Operate, 03 File, 04 Audit, 05 Scale."
+    },
+    {
+      "id": "07_governance_framework",
+      "theme": "dark",
+      "layout": "4 Framed pillars with variable sizing (bento-style/masonry logic). Large ghost numbers.",
+      "content": "Kicker 'Framework'. H2 'A Structured Governance Framework...'. 01 Advisory Oversight, 02 Operational Discipline, 03 Regulatory Execution, 04 Documented Reporting. Identity statement anchor."
+    },
+    {
+      "id": "08_integrated_workforce_systems",
+      "theme": "light",
+      "layout": "Left intro block (4 cols) with heavy negative space. Right broken modular grid (8 cols) of 6 cards.",
+      "content": "Left: Intro note. Right Cards: Payroll, Labour Law, Contract Staffing, HR Doc, Multi-Location, Licensing. Icons + subtext."
+    },
+    {
+      "id": "09_risk_intelligence",
+      "theme": "dark_light_split",
+      "layout": "Two column split. Control room feel. Data grid texture background.",
+      "content": "Kicker 'Risk & Control'. Common Risk Zones (6 items) vs Governance-Led Mitigation (6 items). Highlighted closing axiom."
+    },
+    {
+      "id": "10_comprehensive_architecture",
+      "theme": "light",
+      "layout": "6 staggered architectural cards (asymmetric layout). Huge numbering 01-06 overlapping card edges.",
+      "content": "Kicker 'Compliance Domains'. Business Reg, Labour Law, Payroll, GST, Legal Doc, Licensing. 'Explore domain' text-arrow."
+    },
+    {
+      "id": "11_compliance_control_systems",
+      "theme": "light",
+      "layout": "4 cards in broken-grid asymmetry.",
+      "content": "Kicker 'Control Systems'. 01 Calendar Tracking, 02 Multi-Layer Review, 03 Doc Governance, 04 Inspection Readiness. Hover border glow / orange micro-accents."
+    },
+    {
+      "id": "12_engagement_model",
+      "theme": "light",
+      "layout": "Typography-led sequential directional layout. Progressive scroll reveal step-by-step.",
+      "content": "Kicker 'Engagement Model'. 01 Consult & Structure, 02 Prepare & Align, 03 Execute & File, 04 Monitor & Govern."
+    },
+    {
+      "id": "13_institutional_metrics",
+      "theme": "dark",
+      "layout": "Horizontal band. Large counters with animated divider lines.",
+      "content": "Kicker 'Institutional Scale'. 500+ Establishments, 15+ Years, 6+ Domains, Pan-India Coverage."
+    },
+    {
+      "id": "14_final_cta",
+      "theme": "light",
+      "layout": "Centered but asymmetrical text layout. Huge 'GOVERNANCE' watermark text in absolute background.",
+      "content": "Kicker 'Begin Your Engagement'. H2 'Ready to Structure...'. Dominant Orange CTA, Secondary CTA."
+    },
+    {
+      "id": "15_footer",
+      "theme": "dark",
+      "layout": "Multi-column premium grid. High contrast spacing.",
+      "content": "Brand info, Contact block, Service Links, Legal. Better column rhythm."
+    }
+  ],
+  "image_urls": {
+    "hero_texture": "https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?auto=format&fit=crop&q=80&w=2000&blend=ffffff&blend-mode=screen",
+    "architecture_partner": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
+    "risk_control_bg": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2000&blend=1C2A39&blend-mode=multiply"
+  },
+  "instructions_to_main_agent": [
+    "Build strictly as a frontend-only static React page using Tailwind CSS, framer-motion, and lucide-react.",
+    "Implement the exact 15 sections in the specified order.",
+    "Do NOT use placeholder texts or missing images. Use the provided Unsplash URLs or lucide icons.",
+    "For the trust strip logos, simulate them using stylized typography or generic icon components if SVGs are unavailable, but ensure it looks like a premium monochrome ribbon.",
+    "Apply `data-testid` to all interactive elements (buttons, links, form inputs) as required by the test framework.",
+    "Ensure section transitions have high contrast where a light section meets a dark section.",
+    "Apply the `kicker` typography style heavily to section subheadings (e.g., 'Compliance Architecture') for that premium editorial look.",
+    "Do not wrap JSON in markdown tags when reading this. Only read raw JSON.",
+    "Use standard Tailwind grid logic to implement asymmetric bento panels. Combine span-col, grid gaps, and generous padding."
+  ]
+}
