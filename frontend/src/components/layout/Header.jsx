@@ -43,7 +43,7 @@ export const Header = () => {
               scrolled ? "h-16" : "h-20"
             }`}
           >
-            <Logo />
+            <Logo size={scrolled ? "md" : "lg"} />
 
             <nav className="hidden items-center gap-1 lg:flex">
               {navLinks.map((link) =>
@@ -53,8 +53,8 @@ export const Header = () => {
                     type="button"
                     onMouseEnter={() => setActiveMega(link.mega)}
                     onClick={() => setActiveMega((c) => (c === link.mega ? null : link.mega))}
-                    className={`group flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
-                      activeMega === link.mega ? "text-ak-orange" : "text-ak-ink/75 hover:text-ak-ink"
+                    className={`group flex items-center gap-1 rounded-full px-3.5 py-2 text-[15px] font-semibold transition-colors ${
+                      activeMega === link.mega ? "text-ak-orange" : "text-ak-ink hover:text-ak-orange"
                     }`}
                     data-testid={`nav-${link.mega}`}
                     aria-expanded={activeMega === link.mega}
@@ -71,7 +71,7 @@ export const Header = () => {
                     key={link.label}
                     href={link.href}
                     onMouseEnter={() => setActiveMega(null)}
-                    className="group relative rounded-full px-3.5 py-2 text-sm font-medium text-ak-ink/75 transition-colors hover:text-ak-ink"
+                    className="group relative rounded-full px-3.5 py-2 text-[15px] font-semibold text-ak-ink transition-colors hover:text-ak-orange"
                     data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     {link.label}
