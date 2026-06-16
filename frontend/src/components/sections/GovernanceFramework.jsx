@@ -15,8 +15,11 @@ export const GovernanceFramework = () => (
     <Container className="relative">
       <Reveal className="max-w-4xl">
         <div className="ak-kicker mb-5">{framework.kicker}</div>
-        <h2 className="font-display text-3xl font-semibold leading-[1.06] tracking-tight text-white md:text-5xl lg:text-[52px]">
-          {framework.heading}
+        <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-white md:text-6xl">
+          A Structured Governance <span className="ak-outline-white">Framework</span>
+          <span className="mt-2 block text-xl font-bold text-white/40 md:text-2xl">
+            — Not Just Filing Services
+          </span>
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/55 md:text-lg">
           {framework.sub}
@@ -31,9 +34,7 @@ export const GovernanceFramework = () => (
                 {p.num}
               </span>
               <div className="relative">
-                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-ak-orange">
-                  {p.label}
-                </div>
+                <div className="ak-kicker-bare text-ak-orange">{p.label}</div>
                 <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight text-white">
                   {p.title}
                 </h3>

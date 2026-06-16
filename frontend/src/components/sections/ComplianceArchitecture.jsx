@@ -15,8 +15,8 @@ export const ComplianceArchitecture = () => (
     <Container>
       <Reveal className="max-w-3xl">
         <div className="ak-kicker mb-5">{architecture.kicker}</div>
-        <h2 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-ak-ink md:text-5xl">
-          {architecture.heading}
+        <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-ak-ink md:text-5xl">
+          Comprehensive Compliance &amp; Workforce <span className="ak-outline-ink">Architecture</span>
         </h2>
         <p className="mt-5 text-base leading-relaxed text-ak-ink/60 md:text-lg">
           {architecture.sub}
@@ -40,7 +40,8 @@ export const ComplianceArchitecture = () => (
               <span className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-ak-ink text-white transition-colors duration-300 group-hover:bg-ak-orange">
                 <Icon name={d.icon} className="h-5 w-5" strokeWidth={1.85} />
               </span>
-              <h3 className="relative mt-6 font-display text-xl font-semibold leading-snug tracking-tight text-ak-ink">
+              <span className="ak-mono-label relative mt-5 block text-ak-orange">Domain {d.num}</span>
+              <h3 className="relative mt-1.5 font-display text-xl font-semibold leading-snug tracking-tight text-ak-ink">
                 {d.title}
               </h3>
               <p className="relative mt-3 flex-1 text-sm leading-relaxed text-ak-ink/55">

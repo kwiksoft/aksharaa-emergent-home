@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { CheckCircle2, AlertTriangle } from "lucide-react";
 import { Container } from "../common/Container";
 import { Reveal, RevealGroup, RevealItem } from "../common/Reveal";
@@ -14,8 +15,8 @@ export const RiskIntelligence = () => (
     <Container className="relative">
       <Reveal className="max-w-3xl">
         <div className="ak-kicker mb-5">{risk.kicker}</div>
-        <h2 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-white md:text-5xl">
-          {risk.heading}
+        <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-white md:text-6xl">
+          Risk Intelligence &amp; Compliance <span className="ak-outline-white">Control</span>
         </h2>
         <p className="mt-5 text-base leading-relaxed text-white/55 md:text-lg">{risk.sub}</p>
       </Reveal>
@@ -23,13 +24,16 @@ export const RiskIntelligence = () => (
       <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6">
         <Reveal>
           <div className="h-full rounded-2xl border border-white/8 bg-white/[0.03] p-7 md:p-9">
-            <div className="mb-6 flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-white/50">
-                <AlertTriangle className="h-4 w-4" strokeWidth={2} />
-              </span>
-              <h3 className="font-display text-lg font-semibold tracking-tight text-white">
-                {risk.zones.head}
-              </h3>
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-white/50">
+                  <AlertTriangle className="h-4 w-4" strokeWidth={2} />
+                </span>
+                <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white">
+                  {risk.zones.head}
+                </h3>
+              </div>
+              <span className="ak-mono-label text-white/30">Exposure</span>
             </div>
             <RevealGroup className="space-y-px" stagger={0.07}>
               {risk.zones.items.map((it) => (
@@ -46,13 +50,16 @@ export const RiskIntelligence = () => (
 
         <Reveal delay={0.1}>
           <div className="h-full rounded-2xl border border-ak-orange/25 bg-ak-slate/40 p-7 shadow-[0_30px_70px_-40px_rgba(242,140,40,0.4)] md:p-9">
-            <div className="mb-6 flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ak-orange/15 text-ak-orange">
-                <CheckCircle2 className="h-4 w-4" strokeWidth={2.2} />
-              </span>
-              <h3 className="font-display text-lg font-semibold tracking-tight text-white">
-                {risk.mitigation.head}
-              </h3>
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ak-orange/15 text-ak-orange">
+                  <CheckCircle2 className="h-4 w-4" strokeWidth={2.2} />
+                </span>
+                <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white">
+                  {risk.mitigation.head}
+                </h3>
+              </div>
+              <span className="ak-mono-label text-ak-orange/60">Controlled</span>
             </div>
             <RevealGroup className="space-y-px" stagger={0.07}>
               {risk.mitigation.items.map((it) => (

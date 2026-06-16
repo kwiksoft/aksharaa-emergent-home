@@ -8,7 +8,7 @@ export const Footer = () => (
   <footer id="footer" data-testid="site-footer" className="bg-ak-navy">
     <Container className="pt-16 pb-8 md:pt-20">
       <div className="border-b border-white/8 pb-8 text-center">
-        <span className="text-[11px] font-semibold uppercase tracking-[0.32em] text-white/30">
+        <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/30">
           {company.tagline}
         </span>
       </div>
@@ -57,7 +57,7 @@ export const Footer = () => (
 
         {footer.columns.map((col) => (
           <div key={col.head}>
-            <h4 className="mb-4 border-b border-white/8 pb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/35">
+            <h4 className="mb-4 border-b border-white/8 pb-3 font-mono text-[11px] uppercase tracking-[0.16em] text-white/35">
               {col.head}
             </h4>
             <ul className="space-y-2.5">

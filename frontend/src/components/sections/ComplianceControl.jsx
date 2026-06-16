@@ -10,8 +10,8 @@ export const ComplianceControl = () => (
     <Container>
       <Reveal className="max-w-3xl">
         <div className="ak-kicker mb-5">{control.kicker}</div>
-        <h2 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-ak-ink md:text-5xl">
-          {control.heading}
+        <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-ak-ink md:text-5xl">
+          Compliance Control <span className="ak-outline-ink">Systems</span>
         </h2>
         <p className="mt-5 text-base leading-relaxed text-ak-ink/60 md:text-lg">{control.sub}</p>
       </Reveal>
@@ -29,7 +29,8 @@ export const ComplianceControl = () => (
                   {c.num}
                 </span>
               </div>
-              <h3 className="mt-6 font-display text-xl font-semibold leading-snug tracking-tight text-ak-ink">
+              <span className="ak-mono-label mt-6 block text-ak-orange">Module {c.num}</span>
+              <h3 className="mt-1.5 font-display text-xl font-semibold leading-snug tracking-tight text-ak-ink">
                 {c.title}
               </h3>
               <p className="mt-3 max-w-lg text-sm leading-relaxed text-ak-ink/55">{c.desc}</p>

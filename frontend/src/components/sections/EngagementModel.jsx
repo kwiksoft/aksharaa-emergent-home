@@ -32,7 +32,8 @@ export const EngagementModel = () => (
             <div className="mt-6 h-px w-full bg-ak-ink/10">
               <div className="h-px w-10 bg-ak-orange" />
             </div>
-            <h3 className="mt-5 font-display text-xl font-semibold tracking-tight text-ak-ink">
+            <span className="ak-mono-label mt-5 block text-ak-orange">Phase {step.num}</span>
+            <h3 className="mt-1.5 font-display text-xl font-semibold tracking-tight text-ak-ink">
               {step.title}
             </h3>
             <p className="mt-2.5 text-sm leading-relaxed text-ak-ink/55">{step.desc}</p>

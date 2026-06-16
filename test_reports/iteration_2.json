@@ -1,0 +1,43 @@
+{
+  "summary": "Iteration-2 frontend-only review of the redesigned Aksharaa landing page (KINETIQ/APEX measured-system language). Verified all 15 sections render in order with zero console / pageerror messages, all 26 required data-testid hooks resolve, mega menus open on hover, header CTA / hero CTA / partner CTA / final-CTA buttons all scroll correctly, hero stat counters reach 500+/15+/6+/Pan-India, sparkline SVGs draw in partner (2), workforce (12) and metrics (3) sections, architecture-card-01..06 all expose 'Explore domain', engagement section shows STRUCTURED. MONITORED. DELIVERED., lifecycle shows STAGE labels + outlined LIFECYCLE, risk shows outlined CONTROL + Exposure/Controlled mono tags, workforce console renders FILED/SCHEDULED/RENEWED/UNDER REVIEW pills + 99.2% + 128 + 15 days · PT-TN deadline chip, final CTA shows orange slanted button + bracket-corner secondary + 'No commitment · Structured consultation · Pan-India response' + GOVERNANCE watermark, footer carries Privacy/Terms. Desktop (1920) is clean with NO horizontal overflow. Mobile (390): hamburger -> mobile-nav-panel -> mobile-nav-close works, lifecycle stacks vertically with diamond nodes, every section's own width fits 390px BUT the document-level scrollWidth = 506px because of ONE overflowing inline element (see frontend_issues.ui_bugs).",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "TrustStrip section caption (Manufacturing · Logistics · Healthcare · Infrastructure)",
+        "issue": "On mobile (~390px) the mono caption span has class 'whitespace-nowrap' which forces a 482px-wide single line that overflows the viewport. This is the sole element responsible for document scrollWidth=506px at 390px viewport, causing horizontal scrolling of the whole page on mobile. Fix: drop 'whitespace-nowrap' on small screens (e.g. 'md:whitespace-nowrap'), or constrain the span with 'max-w-full break-words', or hide it on <md while keeping it on md+.",
+        "selector": "[data-testid=\"trust-strip\"] .ak-mono-label.whitespace-nowrap",
+        "file": "/app/frontend/src/components/sections/TrustStrip.jsx",
+        "line": 18,
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Hero - floating 'Pan-India Coverage' chip (carried over from iteration_1)",
+        "issues": [
+          "Already noted in iteration_1.json. Still worth a final visual sanity-check in current build."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Remove (or md:-scope) the 'whitespace-nowrap' class on the TrustStrip caption span at /app/frontend/src/components/sections/TrustStrip.jsx:18 to eliminate the 116px (506-390) document-level horizontal overflow on mobile (~390px)."
+  ],
+  "critical_code_review_comments": [
+    "Trust-strip marquee parent correctly uses 'overflow-hidden' (line 23) which is why the 3000px marquee row does NOT extend document width — good. The only offender is the static caption span next to the heading.",
+    "Framer-motion 'whileInView once:true' reveal pattern is used consistently across sections; counters / sparklines all trigger reliably when scrolled. Reveal/Counter/Sparkline are nicely reused and stay under the 700-line file budget across the codebase.",
+    "Section files have data-testid on the outer <section>, but most section <section> tags still lack a DOM `id` attribute (lifecycle, framework, workforce, risk, control, engagement, metrics, final-cta). Today header nav doesn't link to them via anchors, but adding ids will be needed before wiring menu links — same comment as iteration_1.",
+    "Mono labels in JSX use mixed-case source text ('Filed', 'Exposure', 'Stage 0X') that gets uppercased via CSS .ak-mono-label{text-transform:uppercase}. This is intentional and works, but be aware that any JS assertion via innerText/getByText must match the rendered (uppercase) form, not the source string."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "skipped", "frontend": "~95% (1 mobile overflow bug)" },
+  "test_credentials": "N/A - no auth, no backend",
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 2 of the KINETIQ/APEX redesign. All 26 data-testid hooks are wired correctly. Hero counters animate from 0 (wait ~2.5s before assertion). Sparklines/counters are driven by framer-motion whileInView once:true so you MUST scroll each section into view and wait ~800ms before sampling text or DOM state. Mono labels are uppercased by CSS — when asserting via inner_text/getByText use UPPERCASE form ('FILED', 'EXPOSURE', 'STAGE 01', etc.) or use case-insensitive regex. The only outstanding mobile bug is the TrustStrip caption span causing 116px horizontal document overflow at 390px (see ui_bugs[0]); every other section's own bounding box fits within 390px. Architecture cards are architecture-card-01..06, mega menus are mega-services/mega-industries (open on header hover), mobile testids are mobile-menu-open / mobile-nav-panel / mobile-nav-close. Final CTA primary/secondary are final-cta-primary / final-cta-secondary inside data-testid='final-cta-section'.",
+  "rca_of_the_issue": "Mobile horizontal-overflow RCA: at 390px viewport, document.documentElement.scrollWidth = 506. DOM scan shows only ONE textual element extends past the viewport's right edge: <span class='ak-mono-label whitespace-nowrap'> rendering 'Manufacturing · Logistics · Healthcare · Infrastructure' inside [data-testid='trust-strip']. The class chain forces a single non-wrapping line that is 482px wide, plus its 24px left offset = 506px right edge, exactly matching the measured scrollWidth. Reproduce: open / at viewport 390x844, run `document.documentElement.scrollWidth` -> 506; scroll horizontally -> page slides. Mitigation: change line 18 of TrustStrip.jsx from `className=\"ak-mono-label whitespace-nowrap\"` to `className=\"ak-mono-label md:whitespace-nowrap\"` (preserves single-line on md+, allows natural wrap on mobile). Alternative: wrap the span in `<div className=\"max-w-full overflow-hidden\">` or hide on <md with `hidden md:inline-block`."
+}
