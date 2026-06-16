@@ -32,6 +32,18 @@ Full premium redesign of the existing Aksharaa landing page (`aksharaa.appi.co.i
 - [x] Reused original client logos in auto-scrolling monochrome trust ribbon.
 - [x] Validated by testing agent (~98% frontend, zero console errors); hero chip stacking fix applied.
 
+## Design Language Iteration — KINETIQ/APEX "Measured System" (2026-06)
+Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 sections, recolored to charcoal+orange, governed by "motion encodes the data type":
+- [x] Type: added **IBM Plex Mono** (kickers/labels/data) alongside Inter + Sora.
+- [x] Global: monospace uppercase kickers; oversized uppercase statement headlines with **outlined (text-stroke) accent words** (`.ak-outline-orange/-ink/-white`).
+- [x] #2 Header slanted parallelogram CTA · #4 Trust "Phenomenon" treatment · #5 Partner animated **sparkline** retention card.
+- [x] #6 Lifecycle **diamond-node pathway** + diagonal split + ghost numbers + growing rail.
+- [x] #7 Framework outlined heading + mono pillar labels · #8 Workforce **"Compliance Console" mock** + feature list · #9 Risk telemetry split (Exposure/Controlled tags, drifting grid, diagonal edge).
+- [x] #10 Architecture `Domain 0X` mono labels · #11 Control `Module 0X` + top-line activation · #12 Engagement `Phase 0X` sequence.
+- [x] #13 Metrics **sparkline counter cards** + diagonal edge · #14 Final CTA now **dark** with outlined word, slanted primary + **bracket-corner** secondary + mono reassurance line · #15 Footer mono labels.
+- [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
+- [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
+
 ## Backlog (prioritized)
 - **P1 — CMS-Ready Backend Foundation:** FastAPI endpoints + MongoDB schema for section-wise editable content; wire frontend `data/*` to API with graceful fallback.
 - **P1 — Lead capture:** working "Free Consultation"/Contact form (FastAPI + MongoDB) + email notification.

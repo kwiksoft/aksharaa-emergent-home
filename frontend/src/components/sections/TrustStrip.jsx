@@ -15,7 +15,7 @@ export const TrustStrip = () => {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <span className="ak-mono-label whitespace-nowrap">{trust.caption}</span>
+            <span className="ak-mono-label md:whitespace-nowrap">{trust.caption}</span>
           </Reveal>
         </div>
       </Container>
