@@ -56,7 +56,9 @@ export const hero = {
 
 const CLIENT_BASE = "https://aksharaa.appi.co.in/assets/images/client";
 export const trust = {
+  kicker: "Client Trust",
   label: "Trusted by Leading Organisations",
+  caption: "Manufacturing · Logistics · Healthcare · Infrastructure",
   logos: [
     { name: "Alibaba.com", src: `${CLIENT_BASE}/alibaba.jpg` },
     { name: "Blue Dart", src: `${CLIENT_BASE}/bluedart.jpg` },

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "../common/Container";
 import { Reveal } from "../common/Reveal";
 import { Counter } from "../common/Counter";
+import { Sparkline } from "../common/Sparkline";
 import { partner } from "../../data/content";
 
 export const GovernancePartner = () => (
@@ -32,7 +33,8 @@ export const GovernancePartner = () => (
               <div className="mt-1 max-w-[8rem] text-xs font-medium leading-snug text-ak-ink/55">
                 {partner.accent.label}
               </div>
-              <div className="mt-3 h-1 w-12 rounded-full bg-ak-orange" />
+              <Sparkline data={[80, 83, 81, 88, 90, 93, 96, 98]} className="mt-3 h-9 w-full" />
+              <div className="ak-mono-label mt-2 text-ak-ink/40">8-yr retention trend</div>
             </motion.div>
           </div>
         </Reveal>

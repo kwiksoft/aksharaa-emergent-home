@@ -8,46 +8,57 @@ export const ComplianceLifecycle = () => (
   <section
     id="lifecycle"
     data-testid="lifecycle-section"
-    className="relative overflow-hidden bg-ak-ink py-20 md:py-32"
+    className="relative overflow-hidden bg-ak-ink pb-24 pt-28 md:pb-32 md:pt-40"
   >
+    {/* diagonal split edge from the light section above */}
+    <div
+      className="pointer-events-none absolute inset-x-0 top-0 z-0 h-14 bg-white md:h-20"
+      style={{ clipPath: "polygon(0 0, 100% 0, 100% 35%, 0 100%)" }}
+    />
     <div className="pointer-events-none absolute inset-0 ak-grid-dark" />
     <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-ak-orange/10 blur-3xl" />
 
     <Container className="relative">
       <Reveal className="max-w-3xl">
         <div className="ak-kicker mb-5">{lifecycle.kicker}</div>
-        <h2 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-white md:text-5xl">
-          {lifecycle.heading}
+        <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-white md:text-6xl">
+          The Structured Compliance <span className="ak-outline-white">Lifecycle</span>
         </h2>
         <p className="mt-5 text-base leading-relaxed text-white/55 md:text-lg">{lifecycle.sub}</p>
       </Reveal>
 
-      <div className="relative mt-16">
-        {/* desktop horizontal rail */}
-        <div className="absolute left-0 right-0 top-8 hidden h-px bg-white/10 lg:block" />
+      <div className="relative mt-20">
+        {/* desktop rail through the diamond centers */}
+        <div className="absolute left-0 right-0 top-7 hidden h-px bg-white/10 lg:block" />
         <motion.div
-          className="absolute left-0 top-8 hidden h-px bg-gradient-to-r from-ak-orange to-ak-orange/40 lg:block"
+          className="absolute left-0 top-7 hidden h-px bg-gradient-to-r from-ak-orange to-ak-orange/40 lg:block"
           initial={{ width: 0 }}
           whileInView={{ width: "100%" }}
           viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 1.6, ease: "easeInOut" }}
+          transition={{ duration: 1.8, ease: "easeInOut" }}
         />
         {/* mobile vertical rail */}
-        <div className="absolute bottom-4 left-8 top-4 w-px bg-white/10 lg:hidden" />
+        <div className="absolute bottom-6 left-7 top-2 w-px bg-white/10 lg:hidden" />
 
-        <RevealGroup className="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-6" stagger={0.16}>
+        <RevealGroup className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-6" stagger={0.18}>
           {lifecycle.steps.map((step) => (
-            <RevealItem key={step.num} className="relative flex gap-5 lg:block">
-              <div className="relative flex-shrink-0">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-ak-slate text-ak-orange shadow-lg">
-                  <Icon name={step.icon} className="h-6 w-6" strokeWidth={1.8} />
+            <RevealItem key={step.num} className="relative flex gap-6 lg:block">
+              <div className="relative z-10 flex-shrink-0">
+                <div className="flex h-14 w-14 rotate-45 items-center justify-center border border-ak-orange/60 bg-ak-slate shadow-[0_0_0_7px_#1c2a39]">
+                  <span className="-rotate-45 font-mono text-sm font-semibold text-ak-orange">
+                    {step.num}
+                  </span>
                 </div>
-                <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-ak-orange font-display text-[11px] font-bold text-white shadow-md">
+              </div>
+              <div className="relative lg:mt-9">
+                <span className="pointer-events-none absolute -top-4 right-0 hidden select-none font-display text-7xl font-extrabold leading-none text-white/[0.04] lg:block">
                   {step.num}
                 </span>
-              </div>
-              <div className="lg:mt-6">
-                <h3 className="font-display text-xl font-semibold tracking-tight text-white">
+                <div className="mb-2 flex items-center gap-2">
+                  <Icon name={step.icon} className="h-5 w-5 text-ak-orange" strokeWidth={1.8} />
+                  <span className="ak-mono-label text-white/40">Stage {step.num}</span>
+                </div>
+                <h3 className="font-display text-xl font-bold uppercase tracking-tight text-white">
                   {step.title}
                 </h3>
                 <p className="mt-2 max-w-[16rem] text-sm leading-relaxed text-white/50">

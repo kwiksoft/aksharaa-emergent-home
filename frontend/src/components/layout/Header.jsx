@@ -94,10 +94,12 @@ export const Header = () => {
                 href="#final-cta"
                 onMouseEnter={() => setActiveMega(null)}
                 data-testid="nav-cta"
-                className="hidden items-center gap-2 rounded-full bg-ak-ink px-5 py-2.5 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-ak-orange sm:inline-flex"
+                className="hidden -skew-x-12 items-center bg-ak-ink px-6 py-2.5 text-white transition-all hover:-translate-y-0.5 hover:bg-ak-orange sm:inline-flex"
               >
-                Free Consultation
-                <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
+                <span className="flex skew-x-12 items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em]">
+                  Free Consultation
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
+                </span>
               </a>
               <button
                 type="button"

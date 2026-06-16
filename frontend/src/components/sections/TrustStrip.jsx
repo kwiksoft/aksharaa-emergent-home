@@ -5,16 +5,22 @@ import { trust } from "../../data/content";
 export const TrustStrip = () => {
   const loop = [...trust.logos, ...trust.logos];
   return (
-    <section data-testid="trust-strip" className="border-y border-ak-ink/8 bg-ak-mist/60 py-12">
+    <section data-testid="trust-strip" className="border-y border-ak-ink/8 bg-ak-mist/60 py-14">
       <Container>
-        <Reveal>
-          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-ak-ink/40 md:text-left">
-            {trust.label}
-          </p>
-        </Reveal>
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <Reveal>
+            <div className="ak-kicker mb-3">{trust.kicker}</div>
+            <p className="max-w-xl font-display text-2xl font-semibold tracking-tight text-ak-ink md:text-3xl">
+              {trust.label}
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <span className="ak-mono-label whitespace-nowrap">{trust.caption}</span>
+          </Reveal>
+        </div>
       </Container>
 
-      <div className="relative mt-8 overflow-hidden">
+      <div className="relative mt-10 overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-ak-mist to-transparent md:w-32" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-ak-mist to-transparent md:w-32" />
         <div className="ak-marquee flex items-center gap-14 px-8">
