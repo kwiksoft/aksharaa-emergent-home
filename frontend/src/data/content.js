@@ -39,6 +39,11 @@ export const hero = {
     { value: 6, suffix: "+", label: "Compliance Domains" },
     { text: "Pan-India", label: "Multi-State Coverage" },
   ],
+  image:
+    "https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&q=80&w=1200",
+  imageAlt: "Modern corporate glass tower — institutional governance",
+  bgAbstract:
+    "https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?auto=format&fit=crop&q=80&w=2000",
   cardLabel: "Governance Domains",
   domains: [
     { icon: "shield", title: "Labour Law & HR Compliance", desc: "18 governed compliance services" },
