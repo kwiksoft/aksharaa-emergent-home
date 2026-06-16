@@ -46,11 +46,12 @@ export const Hero = () => (
 
           <motion.h1
             variants={item}
-            className="mt-7 font-display text-5xl font-bold leading-[1.04] tracking-tight md:text-6xl lg:text-7xl"
+            className="mt-6 font-display text-5xl font-extrabold uppercase leading-[0.95] tracking-tight text-ak-ink md:text-6xl lg:text-7xl"
           >
-            <span className="block text-ak-orange">{hero.headline[0]}</span>
-            <span className="block text-ak-ink">
-              {hero.headline[1]} {hero.headline[2]}
+            <span className="block">{hero.headline[0]}</span>
+            <span className="block">
+              {hero.headline[1]}{" "}
+              <span className="ak-outline-orange">{hero.headline[2]}</span>
             </span>
           </motion.h1>
 

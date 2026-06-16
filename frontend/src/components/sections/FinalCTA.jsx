@@ -28,10 +28,10 @@ export const FinalCTA = () => (
           <div className="ak-kicker mb-6">{finalCta.kicker}</div>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="font-display text-4xl font-bold leading-[1.04] tracking-tight text-ak-ink md:text-6xl lg:text-7xl">
+          <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-ak-ink md:text-6xl lg:text-7xl">
             {finalCta.headline[0]}
             <br />
-            <span className="text-ak-orange">{finalCta.headline[1]}</span>
+            <span className="ak-outline-orange">{finalCta.headline[1]}</span>
           </h2>
         </Reveal>
         <Reveal delay={0.12}>

@@ -48,15 +48,35 @@
 
 @layer components {
     .ak-kicker {
-        @apply inline-flex items-center gap-2.5 text-[11px] md:text-xs font-semibold uppercase tracking-[0.24em] text-ak-orange;
+        @apply inline-flex items-center gap-2.5 font-mono text-[11px] md:text-xs font-medium uppercase tracking-[0.2em] text-ak-orange;
     }
     .ak-kicker::before {
         content: "";
-        @apply inline-block h-px w-7 bg-ak-orange/60;
+        @apply inline-block h-px w-8 bg-ak-orange/60;
     }
     .ak-kicker-bare {
-        @apply inline-flex items-center text-[11px] md:text-xs font-semibold uppercase tracking-[0.24em] text-ak-orange;
+        @apply inline-flex items-center font-mono text-[11px] md:text-xs font-medium uppercase tracking-[0.2em] text-ak-orange;
     }
+    .ak-mono-label {
+        @apply font-mono text-[11px] uppercase tracking-[0.16em] text-ak-ink/45;
+    }
+}
+
+/* Outlined statement-headline words (KINETIQ-style stroke text) */
+.ak-outline-orange {
+    color: transparent;
+    -webkit-text-stroke: 2px #f28c28;
+    text-stroke: 2px #f28c28;
+}
+.ak-outline-ink {
+    color: transparent;
+    -webkit-text-stroke: 2px #1c2a39;
+    text-stroke: 2px #1c2a39;
+}
+.ak-outline-white {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.92);
+    text-stroke: 1.5px rgba(255, 255, 255, 0.92);
 }
 
 /* Marquee for trust strip */

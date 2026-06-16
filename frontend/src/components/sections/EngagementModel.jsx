@@ -9,7 +9,7 @@ export const EngagementModel = () => (
     <Container>
       <Reveal className="mx-auto max-w-2xl text-center">
         <div className="ak-kicker-bare mb-5">{engagement.kicker}</div>
-        <h2 className="font-display text-4xl font-bold leading-[1.02] tracking-tight text-ak-ink md:text-6xl">
+        <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-ak-ink md:text-6xl">
           {engagement.heading}
         </h2>
         <p className="mt-5 text-base text-ak-ink/60 md:text-lg">{engagement.sub}</p>
