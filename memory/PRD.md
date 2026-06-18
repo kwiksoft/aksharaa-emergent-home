@@ -44,6 +44,12 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Section 11 Redesign — "Control Hub" (2026-06)
+- [x] Rebuilt `ComplianceControl.jsx` from a static broken-grid into a **central circular hub-and-spoke** layout (user video reference, adapted to charcoal/slate/orange palette — NOT the source's purple/blue).
+- [x] Animated hub: pulsing expansion rings, rotating dashed orbit with data dots, charcoal core with conic-gradient **radar sweep**, "Compliance Control Core" label.
+- [x] Four control modules as floating glass cards at the corners, connected to the hub by SVG spoke lines (Framer Motion `pathLength` draw-in + animated orange flow-dash) terminating in glowing connection nodes.
+- [x] Responsive: hub-and-spoke on `lg+`, compact hub + stacked cards on mobile/tablet. Verified on desktop via screenshot; 0 JS console errors.
+
 ## Backlog (prioritized)
 - **P1 — CMS-Ready Backend Foundation:** FastAPI endpoints + MongoDB schema for section-wise editable content; wire frontend `data/*` to API with graceful fallback.
 - **P1 — Lead capture:** working "Free Consultation"/Contact form (FastAPI + MongoDB) + email notification.
