@@ -91,8 +91,10 @@ export const partner = {
   accent: { value: 98, suffix: "%", label: "Client Retention & Satisfaction" },
   cta: { label: "About Aksharaa", href: "#footer" },
   image:
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200",
-  imageAlt: "Aksharaa Corporate Services — institutional architecture",
+    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200",
+  imageAlt: "Aksharaa governance & compliance team in structured review",
+  badgeCaption: "Governance & Compliance Team",
+  trust: { value: 500, suffix: "+", label: "Establishments Served Pan-India" },
 };
 
 export const lifecycle = {

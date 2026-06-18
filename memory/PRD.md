@@ -44,6 +44,12 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Section 5 Redesign — "Governance Partner" video-driven motion (2026-06)
+- [x] Rebuilt `GovernancePartner.jsx` on a light/white background using the reference video's motion language: image **scale-reveal**, **staggered floating data chips** (fade + slide-up), **pulsing live badge**, and hover-lift on chips/CTA.
+- [x] Replaced building photo with a **compliance/governance team** image and **infused Aksharaa branding inside** it (glass logo badge top-left + "Aksharaa · Governance & Compliance Team" caption with legibility gradient).
+- [x] Added a floating **trust badge** (avatar stack + "500+ Establishments Served Pan-India" counter + pulsing dot) alongside the existing 98% retention sparkline chip; kept all original copy (heading, paragraphs, quote, 2 metrics, About CTA).
+- [x] Verified on desktop via screenshot; 0 JS console errors. New content fields: `partner.trust`, `partner.badgeCaption`.
+
 ## Section 11 Redesign — "Control Hub" (2026-06)
 - [x] Rebuilt `ComplianceControl.jsx` from a static broken-grid into a **central circular hub-and-spoke** layout (user video reference, adapted to charcoal/slate/orange palette — NOT the source's purple/blue).
 - [x] Animated hub: pulsing expansion rings, rotating dashed orbit with data dots, charcoal core with conic-gradient **radar sweep**, "Compliance Control Core" label.
