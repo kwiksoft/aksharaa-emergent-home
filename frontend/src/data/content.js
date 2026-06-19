@@ -133,8 +133,8 @@ export const workforce = {
   note:
     "Workforce governance and regulatory compliance must operate as one unified system — not as parallel processes managed by separate teams.",
   image:
-    "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=900",
-  imageAlt: "Aksharaa workforce & compliance professional",
+    "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=900",
+  imageAlt: "Aksharaa compliance & governance professional",
   areas: [
     { icon: "banknote", title: "Payroll Governance & Statutory Alignment", sub: "Integrated with PF/ESI/PT filings" },
     { icon: "shield", title: "Labour Law Compliance Across States", sub: "Multi-state framework, state-wise alignment" },

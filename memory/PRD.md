@@ -44,6 +44,11 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Section 8 — dark flow-field background + new center image (2026-06)
+- [x] Converted `IntegratedWorkforce.jsx` to a **dark theme** using the user's attached **black flow-field/contour-line background** (`/assets/workforce-bg.png`, object-cover @ 80% + dark gradient + crimson radial glow). Text now white/white-55.
+- [x] Swapped center arch image to a **compliance/governance professional** (`photo-1573497019940...`); crimson #960018 now used as **solid icon chips (white icons)**, arch ring/glow, glowing "SYSTEMS" heading word, and closing-statement border. Layout (3-left/center/3-right) and all copy preserved.
+- [x] Verified desktop; 0 JS console errors.
+
 ## Section 8 Reimagined — centered-image "Workforce" split + crimson accent (2026-06)
 - [x] Rebuilt `IntegratedWorkforce.jsx` per reference image: centered title+intro on top, then a **3-left / center-image / 3-right** feature layout. Left items face inward (right-aligned), right items left-aligned; each with a circular icon chip + title + sub.
 - [x] Introduced brand-new accent **#960018 (crimson)** for icon chips (hover-fill), the center **arch frame + ring + glow**, the crimson-outlined "SYSTEMS" heading word, and the closing-statement border.
