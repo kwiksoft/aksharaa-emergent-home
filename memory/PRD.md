@@ -44,6 +44,11 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Section 6 Reimagined — semi-dark "Lifecycle" node flow + world map (2026-06)
+- [x] Rebuilt `ComplianceLifecycle.jsx` per reference video: **horizontal flow of 5 circular nodes** (Register→Operate→File→Audit→Scale) each with icon + stage-number badge, connected by a growing orange rail with a **travelling data pulse**; staggered spring scale-in (left→right) + per-node pulse rings + hover lift.
+- [x] Section is now **semi-dark** (`bg-ak-slate`) with a **faint global business/world map** background (`/assets/world-map.svg`, white-continent Wikimedia SVG at ~7% opacity) + ambient gradient/glow; kept the diagonal split edge and all original copy.
+- [x] Responsive: horizontal flow on `lg+`, vertical node timeline on mobile. Verified desktop; 0 JS console errors.
+
 ## Section 5 Reimagined — symmetric 3-column "Partner" (2026-06)
 - [x] Rebuilt `GovernancePartner.jsx` into a balanced 3-column composition per the user's reference image: centered kicker+heading on top; **LEFT** = governance quote + "500+ Establishments Served Pan-India" (building icon) + About Aksharaa CTA; **CENTER** = branded compliance-team image (infused Aksharaa logo badge + caption, ambient orange glow, gentle float); **RIGHT** = three staggered stat cards (98% retention, 15+ years, 98% + 8-yr retention-trend sparkline).
 - [x] Light/white theme, hover-lift on cards/CTA, scroll-staggered entry. Verified desktop; 0 JS console errors.
