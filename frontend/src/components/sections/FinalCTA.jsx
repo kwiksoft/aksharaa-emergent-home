@@ -9,17 +9,17 @@ export const FinalCTA = () => (
   <section
     id="final-cta"
     data-testid="final-cta-section"
-    className="relative flex items-center overflow-hidden bg-ak-ink pb-28 pt-24 md:pb-36 md:pt-28"
+    className="relative flex items-center overflow-hidden bg-ak-mist pb-28 pt-24 md:pb-36 md:pt-28"
   >
     <motion.div
       aria-hidden
-      className="pointer-events-none absolute inset-x-0 bottom-0 select-none text-center font-display text-[26vw] font-extrabold uppercase leading-none text-white/[0.03] md:text-[20vw]"
+      className="pointer-events-none absolute inset-x-0 bottom-0 select-none text-center font-display text-[26vw] font-extrabold uppercase leading-none text-ak-ink/[0.04] md:text-[20vw]"
       animate={{ x: ["-2%", "2%", "-2%"] }}
       transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
     >
       {finalCta.watermark}
     </motion.div>
-    <div className="pointer-events-none absolute inset-0 ak-grid-dark opacity-50" />
+    <div className="pointer-events-none absolute inset-0 ak-grid-light opacity-60" />
     <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange/10 blur-3xl" />
 
     <Container className="relative">
@@ -28,14 +28,14 @@ export const FinalCTA = () => (
           <div className="ak-kicker-bare mb-6 justify-center">{finalCta.kicker}</div>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-white md:text-6xl lg:text-7xl">
+          <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight text-ak-ink md:text-6xl lg:text-7xl">
             {finalCta.headline[0]}
             <br />
             <span className="ak-outline-orange">{finalCta.headline[1]}</span>
           </h2>
         </Reveal>
         <Reveal delay={0.12}>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/55 md:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ak-ink/60 md:text-lg">
             {finalCta.sub}
           </p>
         </Reveal>
@@ -51,13 +51,13 @@ export const FinalCTA = () => (
                 <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
               </span>
             </a>
-            <BracketButton href={finalCta.ctas[1].href} data-testid="final-cta-secondary">
+            <BracketButton href={finalCta.ctas[1].href} tone="light" data-testid="final-cta-secondary">
               {finalCta.ctas[1].label}
             </BracketButton>
           </div>
         </Reveal>
         <Reveal delay={0.24}>
-          <div className="ak-mono-label mt-8 block text-white/35">
+          <div className="ak-mono-label mt-8 block text-ak-ink/40">
             No commitment · Structured consultation · Pan-India response
           </div>
         </Reveal>
