@@ -47,7 +47,7 @@ export const IntegratedWorkforce = () => {
         src="/assets/workforce-bg.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover opacity-60"
+        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover opacity-[0.12]"
         style={{ filter: "invert(1)" }}
         draggable="false"
       />
