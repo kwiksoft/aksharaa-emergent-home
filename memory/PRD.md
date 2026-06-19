@@ -44,6 +44,12 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Section 8 Reimagined — centered-image "Workforce" split + crimson accent (2026-06)
+- [x] Rebuilt `IntegratedWorkforce.jsx` per reference image: centered title+intro on top, then a **3-left / center-image / 3-right** feature layout. Left items face inward (right-aligned), right items left-aligned; each with a circular icon chip + title + sub.
+- [x] Introduced brand-new accent **#960018 (crimson)** for icon chips (hover-fill), the center **arch frame + ring + glow**, the crimson-outlined "SYSTEMS" heading word, and the closing-statement border.
+- [x] Center **arch image** (professional, rounded-top frame with gentle float + scale-reveal); professional lucide icons (banknote, shield, users, document, globe, lock). Light theme only. Added `workforce.image`/`imageAlt`.
+- [x] Responsive: image-first then stacked features on mobile; 3/center/3 on desktop. Verified desktop; 0 JS console errors.
+
 ## Section 6 Reimagined — semi-dark "Lifecycle" node flow + world map (2026-06)
 - [x] Rebuilt `ComplianceLifecycle.jsx` per reference video: **horizontal flow of 5 circular nodes** (Register→Operate→File→Audit→Scale) each with icon + stage-number badge, connected by a growing orange rail with a **travelling data pulse**; staggered spring scale-in (left→right) + per-node pulse rings + hover lift.
 - [x] Section is now **semi-dark** (`bg-ak-slate`) with a **faint global business/world map** background (`/assets/world-map.svg`, white-continent Wikimedia SVG at ~7% opacity) + ambient gradient/glow; kept the diagonal split edge and all original copy.
