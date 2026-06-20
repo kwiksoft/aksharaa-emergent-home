@@ -44,6 +44,11 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Section 11 Reimagined — step-by-step connected cards (2026-06)
+- [x] Replaced the hub layout in `ComplianceControl.jsx` with a **step-by-step connected-cards** concept (ref: Satvat Holistics): 4 equal-height white cards (STEP 01–04) connected by **dashed weaving over/under connectors** with arrowheads (Framer Motion draw-in).
+- [x] Background = **light sage-grey (#EAEDEC, light variation of #7e8987)** with a **peach halftone dot pattern (#F6C28B variation)** masked into a fading cluster on the right + soft glow.
+- [x] **Bold** solid heading; relevant pro icons in **#CB4154**, enlarged and **protruding semi-outside** each card's right edge. Mobile = vertical step flow with dashed arrows. Verified desktop; 0 console errors.
+
 ## Section 9 Reimagined — Risk hero + risk/mitigation explainer + marquee (2026-06)
 - [x] Rebuilt `RiskIntelligence.jsx` (dark) into three stacked blocks per the two reference images: (1) **Hero** — left status rail (Compliance Secured / Risk Assessed / Control Enabled), blended portrait with "AKSHARAA" tag, big "RISK INTELLIGENCE & COMPLIANCE CONTROL" headline, sub, 4 mini pillars (Identify Risk / Enable Control / Monitor Systems / Ensure Compliance) + Get in Touch.
 - [x] (2) **From Risk to Resilience** — "We Identify Risks. We Build Control." with **Common Risk Zones (red)** vs **Governance-Led Mitigation (green)** cards, a central rotating dashed **shield hub** with directional chevrons, per-item icons; then a 4-up **outcomes** row (Reduced Risk / Stronger Control / Audit Readiness / Business Continuity) and a **CTA bar**.
