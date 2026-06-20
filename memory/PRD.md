@@ -44,6 +44,12 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Section 9 Reimagined — Risk hero + risk/mitigation explainer + marquee (2026-06)
+- [x] Rebuilt `RiskIntelligence.jsx` (dark) into three stacked blocks per the two reference images: (1) **Hero** — left status rail (Compliance Secured / Risk Assessed / Control Enabled), blended portrait with "AKSHARAA" tag, big "RISK INTELLIGENCE & COMPLIANCE CONTROL" headline, sub, 4 mini pillars (Identify Risk / Enable Control / Monitor Systems / Ensure Compliance) + Get in Touch.
+- [x] (2) **From Risk to Resilience** — "We Identify Risks. We Build Control." with **Common Risk Zones (red)** vs **Governance-Led Mitigation (green)** cards, a central rotating dashed **shield hub** with directional chevrons, per-item icons; then a 4-up **outcomes** row (Reduced Risk / Stronger Control / Audit Readiness / Business Continuity) and a **CTA bar**.
+- [x] (3) **Running marquee** of the axiom "Risk does not arise from complexity. It arises from unmanaged systems." (left→right, orange diamond separators).
+- [x] Expanded `risk` content (badges, pillars, resilience, item icons, benefits, ctaBar); added `clock`/`target` icons. Verified hero/explainer/bottom via screenshots; 0 console errors.
+
 ## Section 8 — reverted to LIGHT (kept flow-field + new image) (2026-06)
 - [x] Per user, switched Section 8 back to **light theme**: flow-field background now rendered **inverted** (faint grey contour lines on white) + soft crimson glow; text restored to dark (`ak-ink`).
 - [x] Kept the new center compliance-professional image; crimson #960018 chips back to light treatment (tinted chip → fills on hover), crimson-outlined "SYSTEMS", light closing band. Layout + copy unchanged. Verified desktop; 0 console errors.
