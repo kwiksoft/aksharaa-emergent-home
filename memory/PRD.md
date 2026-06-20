@@ -44,6 +44,10 @@ Applied a reference-driven (KINETIQ + APEX//OS) design language across all 15 se
 - [x] Reusable: `Sparkline.jsx`, `BracketButton.jsx`.
 - [x] Validated (testing iteration_2): all 15 sections render, 0 console errors, all 26 testids resolve, motion fires; fixed mobile horizontal-overflow on Trust caption.
 
+## Hero (Section 3) — new background composition (2026-06)
+- [x] Swapped hero background to the user-provided full composition image (`/assets/hero-bg.png`): cream-toned classical building with the Aksharaa "A" pediment on the right, plus baked-in concentric circles, dot grid and peach blob.
+- [x] Removed the now-redundant decorative overlays (blur blob, dot pattern, concentric SVG) and the sepia filter; image now sits full-height bottom-right (`object-cover object-[right_bottom]`, 64% width) with a left cream gradient to blend into the headline/CTA area. Mobile uses the same image. Verified via screenshot; 0 console errors.
+
 ## Section 13 Reimagined — Institutional Metrics (dark, ref-matched) (2026-06)
 - [x] Rebuilt `InstitutionalMetrics.jsx` to match the reference: top split with kicker, two-line bold headline ("Institutional Scale." / "Disciplined" + outlined "Execution."), dash-dot accent, **Know More** orange pill; right side has a faint dotted world map + dotted halo + **oval play button** (orange triangle, pulse ring).
 - [x] Bottom **white metrics card** with 4 columns separated by dividers; each column has a **protruding oval icon badge** (orange line icons: landmark / user-check / clipboard-check / map), big count-up number (500+/15+/6+/Pan-India), orange underline, 2-line label; faint crosshatch texture.

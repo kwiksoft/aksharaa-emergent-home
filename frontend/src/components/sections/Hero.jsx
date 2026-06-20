@@ -54,33 +54,14 @@ const StatBar = ({ className = "" }) => (
 
 export const Hero = () => (
   <section id="hero" data-testid="hero-section" className="relative overflow-hidden bg-[#FBF4EA] lg:min-h-[860px]">
-    {/* warm ambient design */}
-    <div className="pointer-events-none absolute -right-20 -top-40 h-[46rem] w-[46rem] rounded-full bg-[#F6C28B]/40 blur-[2px]" />
-    <div
-      className="pointer-events-none absolute right-1/4 top-28 hidden h-72 w-72 lg:block"
-      style={{
-        backgroundImage: "radial-gradient(rgba(242,140,40,0.4) 1.5px, transparent 1.6px)",
-        backgroundSize: "18px 18px",
-        WebkitMaskImage: "radial-gradient(circle at center, black, transparent 70%)",
-        maskImage: "radial-gradient(circle at center, black, transparent 70%)",
-      }}
-    />
-    <svg className="pointer-events-none absolute left-[30%] top-1/4 hidden h-[40rem] w-[40rem] opacity-[0.5] lg:block" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-      {[150, 195, 240].map((r) => (
-        <circle key={r} cx="200" cy="200" r={r} stroke="#F28C28" strokeOpacity="0.1" strokeWidth="1" />
-      ))}
-    </svg>
-
-    {/* ── desktop full-bleed building ── */}
-    <div className="absolute bottom-0 right-0 hidden h-[92%] w-[55%] lg:block">
+    {/* ── desktop full-bleed building (full composition image) ── */}
+    <div className="absolute bottom-0 right-0 hidden h-full w-[64%] lg:block">
       <img
         src={hero.image}
         alt={hero.imageAlt}
-        className="h-full w-full object-cover object-[left_bottom]"
-        style={{ filter: "sepia(0.5) saturate(1.7) hue-rotate(-12deg) brightness(1.07) contrast(1.02)" }}
+        className="h-full w-full object-cover object-[right_bottom]"
       />
-      <div className="absolute inset-y-0 left-0 w-2/5" style={{ background: `linear-gradient(to right, ${CREAM}, ${CREAM}99 35%, transparent)` }} />
-      <div className="absolute inset-x-0 top-0 h-1/3" style={{ background: `linear-gradient(to bottom, ${CREAM}, transparent)` }} />
+      <div className="absolute inset-y-0 left-0 w-2/5" style={{ background: `linear-gradient(to right, ${CREAM}, ${CREAM}cc 30%, transparent)` }} />
     </div>
 
     {/* ── desktop far-right domain cards ── */}
@@ -141,8 +122,7 @@ export const Hero = () => (
           <img
             src={hero.image}
             alt={hero.imageAlt}
-            className="aspect-[5/4] w-full object-cover object-[center_bottom]"
-            style={{ filter: "sepia(0.5) saturate(1.7) hue-rotate(-12deg) brightness(1.07)" }}
+            className="aspect-[5/4] w-full object-cover object-[right_bottom]"
           />
         </div>
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">

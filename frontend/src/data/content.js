@@ -39,7 +39,7 @@ export const hero = {
     { value: 6, suffix: "+", icon: "scale", label: "Core Compliance Domains" },
     { text: "Pan-India", icon: "map", label: "Multi-State Operational Coverage" },
   ],
-  image: "/assets/hero-building.jpg",
+  image: "/assets/hero-bg.png",
   imageAlt: "Classical institutional columns — governance & compliance",
   domains: [
     { icon: "shield", title: "Labour Law & HR Compliance", desc: "18 services governed" },
