@@ -11,7 +11,7 @@ import {
   CalendarClock, Layers, FolderCheck, ScanSearch,
   Compass, ClipboardList, Send, Radar,
   Factory, HardHat, Truck, ShoppingBag, Cpu, HeartPulse,
-  Clock, Target,
+  Clock, Target, Landmark, UserCheck, Map,
 } from "lucide-react";
 
 export const icons = {
@@ -26,6 +26,7 @@ export const icons = {
   compass: Compass, clipboardList: ClipboardList, send: Send, radar: Radar,
   factory: Factory, hardHat: HardHat, truck: Truck, shoppingBag: ShoppingBag, cpu: Cpu, heart: HeartPulse,
   clock: Clock, target: Target,
+  landmark: Landmark, userCheck: UserCheck, map: Map,
 };
 
 export const Icon = ({ name, ...props }) => {

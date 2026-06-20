@@ -250,11 +250,12 @@ export const engagement = {
 export const metrics = {
   kicker: "Institutional Scale",
   heading: "Institutional Scale. Disciplined Execution.",
+  cta: { label: "Know More", href: "#footer" },
   items: [
-    { value: 500, suffix: "+", label: "Establishments Served Across India" },
-    { value: 15, suffix: "+", label: "Years of Regulatory & Workforce Expertise" },
-    { value: 6, suffix: "+", label: "Core Compliance Domains" },
-    { text: "Pan-India", label: "Multi-State Operational Coverage" },
+    { value: 500, suffix: "+", icon: "landmark", label: "Establishments Served Across India" },
+    { value: 15, suffix: "+", icon: "userCheck", label: "Years of Regulatory & Workforce Expertise" },
+    { value: 6, suffix: "+", icon: "clipboardCheck", label: "Core Compliance Domains" },
+    { text: "Pan-India", icon: "map", label: "Multi-State Operational Coverage" },
   ],
 };
 
