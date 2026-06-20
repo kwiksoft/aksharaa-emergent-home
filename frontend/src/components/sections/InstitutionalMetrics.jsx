@@ -19,6 +19,11 @@ export const InstitutionalMetrics = () => (
     />
     <div className="pointer-events-none absolute inset-0 ak-grid-dark opacity-50" />
     <div className="pointer-events-none absolute right-10 top-10 h-72 w-72 rounded-full bg-ak-orange/10 blur-[120px]" />
+    {/* dual-colour cut: white lower half behind the card */}
+    <div
+      className="pointer-events-none absolute inset-x-0 bottom-0 top-[59%] z-0 bg-white"
+      style={{ clipPath: "polygon(0 22px, 100% 0, 100% 100%, 0 100%)" }}
+    />
 
     <Container className="relative">
       {/* ── top: headline + play ── */}
@@ -90,8 +95,8 @@ export const InstitutionalMetrics = () => (
                 i !== 0 ? "lg:border-l lg:border-ak-ink/10" : ""
               }`}
             >
-              <span className="-mt-16 mb-5 flex h-[4.75rem] w-[3.75rem] items-center justify-center rounded-[50%] bg-white text-ak-orange shadow-[0_18px_36px_-12px_rgba(0,0,0,0.3)] ring-1 ring-ak-ink/5">
-                <Icon name={m.icon} className="h-7 w-7" strokeWidth={1.6} />
+              <span className="-mt-16 mb-5 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white text-ak-orange shadow-[0_18px_36px_-12px_rgba(0,0,0,0.3)] ring-1 ring-ak-ink/5">
+                <Icon name={m.icon} className="h-8 w-8" strokeWidth={1.6} />
               </span>
               <div
                 className={`font-display font-bold tracking-tight text-ak-ink ${
