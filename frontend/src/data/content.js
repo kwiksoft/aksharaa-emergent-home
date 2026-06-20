@@ -30,27 +30,23 @@ export const hero = {
   sub:
     "Structured workforce systems, disciplined regulatory execution, and enterprise-grade compliance frameworks for growing businesses and established organisations across India.",
   ctas: [
-    { label: "Start Your Compliance", variant: "primary", href: "#final-cta" },
+    { label: "Explore Our Solutions", variant: "primary", href: "#lifecycle" },
     { label: "Speak to a Governance Advisor", variant: "secondary", href: "#footer" },
   ],
   stats: [
-    { value: 500, suffix: "+", label: "Establishments Served" },
-    { value: 15, suffix: "+", label: "Years Expertise" },
-    { value: 6, suffix: "+", label: "Compliance Domains" },
-    { text: "Pan-India", label: "Multi-State Coverage" },
+    { value: 500, suffix: "+", icon: "landmark", label: "Establishments Served" },
+    { value: 15, suffix: "+", icon: "userCheck", label: "Years of Regulatory & Workforce Expertise" },
+    { value: 6, suffix: "+", icon: "scale", label: "Core Compliance Domains" },
+    { text: "Pan-India", icon: "map", label: "Multi-State Operational Coverage" },
   ],
-  image:
-    "https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&q=80&w=1200",
-  imageAlt: "Modern corporate glass tower — institutional governance",
-  bgAbstract:
-    "https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?auto=format&fit=crop&q=80&w=2000",
-  cardLabel: "Governance Domains",
+  image: "/assets/hero-building.jpg",
+  imageAlt: "Classical institutional columns — governance & compliance",
   domains: [
-    { icon: "shield", title: "Labour Law & HR Compliance", desc: "18 governed compliance services" },
-    { icon: "wallet", title: "Payroll & Workforce Governance", desc: "Structured payroll, statutory alignment" },
-    { icon: "fileText", title: "Registrations & Licensing", desc: "26 statutory registrations managed" },
-    { icon: "users", title: "Staffing & Manpower", desc: "Compliance-backed workforce deployment" },
+    { icon: "shield", title: "Labour Law & HR Compliance", desc: "18 services governed" },
+    { icon: "users", title: "Payroll & Workforce Governance", desc: "Structured alignment" },
+    { icon: "fileText", title: "Registrations & Licensing", desc: "26 statutory managed" },
     { icon: "scale", title: "Legal Documentation", desc: "Employment, corporate & real estate" },
+    { icon: "userCheck", title: "Staffing & Manpower", desc: "Compliance-backed deployment" },
   ],
 };
 
