@@ -21,7 +21,7 @@ export const RegistrationsFocus = () => (
       </Reveal>
 
       <RevealGroup
-        className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+        className="mt-14 grid grid-cols-1 items-start gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
         stagger={0.08}
       >
         {focusRegistry.items.map((d, i) => (

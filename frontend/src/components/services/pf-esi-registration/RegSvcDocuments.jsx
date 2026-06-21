@@ -16,7 +16,7 @@ export const RegSvcDocuments = () => (
         <p className="mt-5 text-base leading-relaxed text-ak-ink/60">{documents.sub}</p>
       </Reveal>
 
-      <RevealGroup className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6" stagger={0.12}>
+      <RevealGroup className="mt-12 grid grid-cols-1 items-start gap-5 md:grid-cols-3 md:gap-6" stagger={0.12}>
         {documents.groups.map((g, i) => (
           <RevealItem key={g.title} className={COL_OFFSET[i % 3]}>
             <div className="rounded-2xl border border-ak-ink/[0.07] bg-ak-mist/30 p-6">

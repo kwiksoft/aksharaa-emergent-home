@@ -5,6 +5,22 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
+  /**
+   * Safelist: classes referenced via dynamic array lookup (e.g.
+   * COL_OFFSET[i % 3]) are invisible to Tailwind's JIT content scanner,
+   * which only matches literal class-name strings in source. Every
+   * dynamically-applied offset/stagger class used anywhere in the
+   * codebase must be listed here explicitly or it gets purged from the
+   * production build silently (no error - the layout just renders flat).
+   * This bug affected ComplianceArchitecture.jsx (home), RegistrationsFocus.jsx
+   * and RegSvcDocuments.jsx identically - fixed centrally here rather than
+   * per-component so future category/service pages using the same
+   * staggered-offset pattern don't reintroduce it.
+   */
+  safelist: [
+    "md:mt-0", "md:mt-2", "md:mt-4", "md:mt-6", "md:mt-8", "md:mt-10", "md:mt-12",
+    "lg:mt-0", "lg:mt-2", "lg:mt-4", "lg:mt-6", "lg:mt-8", "lg:mt-10", "lg:mt-12", "lg:mt-16", "lg:mt-20", "lg:mt-24",
+  ],
   theme: {
     extend: {
       fontFamily: {

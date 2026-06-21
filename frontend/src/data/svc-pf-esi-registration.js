@@ -44,9 +44,9 @@ export const hero = {
       { state: "pending", title: "Certificate & First Contribution Setup", desc: "Registration certificates delivered, first month ECR and challan guided" },
     ],
   },
-  // Photography slot — environmental, documentary, Indian-office context
-  image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=900",
-  imageAlt: "HR professional reviewing PF & ESI registration documents",
+  // Photography slot — documentary, specifically registration/paperwork focused
+  image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
+  imageAlt: "Compliance officer reviewing PF and ESI registration paperwork",
 };
 
 export const overview = {
@@ -212,9 +212,9 @@ export const penalties = {
       ],
     },
   ],
-  // Photography slot — documentary, inspection/risk-context
-  image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=700",
-  imageAlt: "Compliance inspection and document review",
+  // Photography slot — documentary, inspection/risk-context, distinct from hero image
+  image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=700",
+  imageAlt: "Signing official compliance documentation",
 };
 
 export const faqs = {
