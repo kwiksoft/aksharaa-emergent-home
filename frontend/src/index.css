@@ -57,8 +57,17 @@
     .ak-kicker-bare {
         @apply inline-flex items-center font-mono text-[11px] md:text-xs font-medium uppercase tracking-[0.2em] text-ak-orange;
     }
+    .ak-kicker--light {
+        @apply text-ak-orange/85;
+    }
+    .ak-kicker--light::before {
+        @apply bg-ak-orange/50;
+    }
     .ak-mono-label {
         @apply font-mono text-[11px] uppercase tracking-[0.16em] text-ak-ink/45;
+    }
+    .ak-mono-label--light {
+        @apply font-mono text-[11px] uppercase tracking-[0.16em] text-white/55;
     }
 }
 
