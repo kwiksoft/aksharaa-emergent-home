@@ -1,0 +1,61 @@
+PF & ESI REGISTRATION — SERVICE PAGE SECTION REFERENCE
+URL: /registrations-licensing/pf-esi-registration
+File: frontend/src/pages/PfEsiRegistration.jsx
+Role: TEMPLATE — section structure/patterns here propagate to the other
+25 services under Registrations & Licensing once locked.
+
+Here's the full section list, top to bottom, exactly as they appear on the page:
+
+| # | Section | testid | Theme | Current motion/treatment |
+|---|---------|--------|-------|---------------------------|
+| 1 | **Hero** — headline overlapping bleeding photo, animated "Registration Scope" tracker card (done/active/pending checklist) floating right, stat row beneath photo | `reg-svc-hero-section` | Light (cream) | Staggered fade-up on load; tracker steps animate in sequence with delay |
+| 2 | **Overview** — "What is PF & ESI Registration", asymmetric 60/40 split, dark PF tile + light ESI tile, offset side card with alert callout | `reg-svc-overview-section` | Light | Scroll-reveal fade-up, side column delayed |
+| 3 | **Applicability** — PF vs ESI side-by-side comparison cards, connected at center border (not tabs) | `reg-svc-applicability-section` | Light (mist grey) | Scroll-reveal, staggered left-then-right |
+| 4 | **Documents** — 3-column checklist cards (Establishment / Employer / Employee docs), staggered vertical offset | `reg-svc-documents-section` | Light | Scroll-reveal, staggered columns (offset fix applied) |
+| 5 | **Process** — 6-step vertical connected timeline with icon nodes | `reg-svc-process-section` | **Dark** (navy/ink) | Scroll-reveal, sequential top-to-bottom stagger |
+| 6 | **Penalties** — PF/ESI penalty cards + integrated photo, asymmetric narrow/wide split | `reg-svc-penalties-section` | Light (mist grey) | Scroll-reveal, photo + cards staggered separately |
+| 7 | **FAQs** — accordion, single-open pattern | `reg-svc-faqs-section` | Light | Scroll-reveal on load; height-animate on expand/collapse |
+| 8 | **Related Services** — 3-card grid linking to adjacent services | `reg-svc-related-section` | Light (mist grey) | Scroll-reveal, staggered |
+| 9 | **Final CTA** — compact dark band, heading + 2 CTAs | `reg-svc-cta-section` | **Dark** (navy) | Scroll-reveal, single fade-up |
+
+---
+
+HOW TO GIVE FEEDBACK PER SECTION
+
+1. Reference the section by number or testid (e.g. "Section 4" or
+   "reg-svc-documents-section").
+2. Describe the change in words, AND/OR share a screenshot of the current
+   state with a markup/note on what's wrong, AND/OR share 3-4 still frames
+   from a reference video (start / mid-motion / end) plus one word for the
+   motion feel (e.g. "snappy", "slow and floaty", "bouncy") if the change
+   is about animation/timing rather than layout.
+3. Specify whether the change is:
+   a. Visual/design only (colour, spacing, sizing, image)
+   b. Content/copy
+   c. Motion/animation (entrance, hover, scroll behaviour)
+   d. Structural (add/remove/reorder elements within the section)
+
+Once a section is locked, mark it DONE below so we don't revisit unless
+something new comes up.
+
+---
+
+SECTION STATUS (update as we go)
+
+| # | Section | Status |
+|---|---------|--------|
+| 1 | Hero | Pending review |
+| 2 | Overview | Pending review |
+| 3 | Applicability | Pending review |
+| 4 | Documents | Pending review |
+| 5 | Process | Pending review |
+| 6 | Penalties | Pending review |
+| 7 | FAQs | Pending review |
+| 8 | Related Services | Pending review |
+| 9 | Final CTA | Pending review |
+
+---
+
+Tell me where to start — section number, what kind of change, and any
+screenshots/frames/description you have. I'll make the change, rebuild,
+push, and you review before moving to the next section.
