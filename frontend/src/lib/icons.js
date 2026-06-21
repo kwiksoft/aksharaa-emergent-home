@@ -13,6 +13,7 @@ import {
   Factory, HardHat, Truck, ShoppingBag, Cpu, HeartPulse,
   Clock, Target, Landmark, UserCheck, Map,
   FilePlus2, FileX2, RefreshCw, Edit3,
+  AlertTriangle, Calculator,
 } from "lucide-react";
 
 export const icons = {
@@ -29,6 +30,7 @@ export const icons = {
   clock: Clock, target: Target,
   landmark: Landmark, userCheck: UserCheck, map: Map,
   filePlus: FilePlus2, fileX: FileX2, refreshCw: RefreshCw, edit3: Edit3,
+  alertTriangle: AlertTriangle, calculator: Calculator,
 };
 
 export const Icon = ({ name, ...props }) => {
