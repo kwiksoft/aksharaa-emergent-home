@@ -27,7 +27,7 @@ export const RegistrationsFocus = () => (
         {focusRegistry.items.map((d, i) => (
           <RevealItem key={d.num} className={COL_OFFSET[i % 3]}>
             <a
-              href="#category-cta"
+              href={d.href}
               data-testid={`registry-focus-card-${d.num}`}
               className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ak-ink/8 bg-white p-7 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-ak-orange/30 hover:shadow-2xl"
             >

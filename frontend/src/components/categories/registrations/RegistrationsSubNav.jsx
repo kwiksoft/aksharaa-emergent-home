@@ -8,16 +8,24 @@ import { subNav } from "../../../data/registrations";
 const EASE = [0.22, 1, 0.36, 1];
 
 /**
- * The 26-item density problem, solved as a two-tab registry ledger
- * rather than a 26-card grid. Each sub-domain group is a single
- * accordion-like "ledger sheet" with numbered line-items — the visual
- * metaphor of an actual statutory register, not a generic services grid.
- * This pattern is the template every other category's services-list
- * section should borrow (scales from 2 items to 26 without redesign).
+ * The 26-item density problem, v2 — collapsed-by-default accordion.
+ *
+ * Replaces the earlier always-visible tabbed ledger (which, while
+ * functional, made the category page read as a deep explainer rather
+ * than a lean menu — every one of 16 or 10 items was always on screen
+ * the moment a tab was selected). This version keeps both groups
+ * collapsed until the visitor chooses to expand one, which:
+ *   - keeps the page visually lean by default (the category page's
+ *     actual job — list and link, not explain)
+ *   - still surfaces the full, real list (nothing hidden permanently)
+ *   - scales cleanly: a 2-service category doesn't need this component
+ *     at all (small categories use a direct list instead)
+ *
+ * Single-open behaviour: opening one group closes the other, keeping
+ * the page from getting tall if both happened to be expanded at once.
  */
 export const RegistrationsSubNav = () => {
-  const [active, setActive] = useState(subNav.groups[0].id);
-  const activeGroup = subNav.groups.find((g) => g.id === active);
+  const [openId, setOpenId] = useState(null);
 
   return (
     <section
@@ -34,92 +42,88 @@ export const RegistrationsSubNav = () => {
           <p className="mt-5 text-base leading-relaxed text-ak-ink/60 md:text-lg">{subNav.sub}</p>
         </Reveal>
 
-        {/* tab selector — ledger spine tabs */}
-        <Reveal delay={0.1} className="mt-12 flex gap-3 border-b border-ak-ink/10">
+        <Reveal delay={0.1} className="mt-12 divide-y divide-ak-ink/[0.07] overflow-hidden rounded-2xl border border-ak-ink/[0.07]">
           {subNav.groups.map((g) => {
-            const isActive = g.id === active;
+            const isOpen = openId === g.id;
             return (
-              <button
-                key={g.id}
-                onClick={() => setActive(g.id)}
-                data-testid={`registry-tab-${g.id}`}
-                className={`group relative flex items-center gap-3 pb-4 pr-2 pt-1 text-left transition-colors ${
-                  isActive ? "text-ak-ink" : "text-ak-ink/40 hover:text-ak-ink/70"
-                }`}
-              >
-                <span
-                  className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg transition-colors ${
-                    isActive ? "bg-ak-ink text-white" : "bg-ak-ink/5 text-ak-ink/40"
-                  }`}
+              <div key={g.id} className="bg-white">
+                <button
+                  onClick={() => setOpenId(isOpen ? null : g.id)}
+                  data-testid={`registry-accordion-toggle-${g.id}`}
+                  className="flex w-full items-center justify-between gap-4 px-6 py-6 text-left transition-colors hover:bg-ak-mist/20 md:px-8"
                 >
-                  <Icon name={g.icon} className="h-4 w-4" strokeWidth={1.9} />
-                </span>
-                <span className="min-w-0">
-                  <span className="block font-display text-sm font-bold leading-tight md:text-base">{g.title}</span>
-                  <span className="block text-[11px] font-medium text-ak-ink/40">{g.count} registrations</span>
-                </span>
-                {isActive && (
-                  <motion.span
-                    layoutId="registry-tab-underline"
-                    className="absolute -bottom-px left-0 right-0 h-[2.5px] bg-ak-orange"
-                    transition={{ duration: 0.35, ease: EASE }}
-                  />
-                )}
-              </button>
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl transition-colors ${
+                        isOpen ? "bg-ak-orange text-white" : "bg-ak-ink text-white"
+                      }`}
+                    >
+                      <Icon name={g.icon} className="h-5 w-5" strokeWidth={1.85} />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-ak-ink md:text-xl">{g.title}</h3>
+                      <p className="mt-0.5 text-[12.5px] text-ak-ink/45">{g.desc}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-shrink-0 items-center gap-4">
+                    <span className="ak-mono-label hidden sm:inline-block">{g.count} services</span>
+                    <span
+                      className={`flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300 ${
+                        isOpen ? "rotate-180 border-ak-orange bg-ak-orange/10 text-ak-orange" : "border-ak-ink/15 text-ak-ink/40"
+                      }`}
+                    >
+                      <Icon name="chevronDown" className="h-4 w-4" strokeWidth={2.4} />
+                    </span>
+                  </div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: EASE }}
+                      className="overflow-hidden"
+                    >
+                      <div className="grid grid-cols-1 divide-y divide-ak-ink/[0.05] bg-ak-mist/20 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+                        {[0, 1].map((col) => (
+                          <div key={col} className="divide-y divide-ak-ink/[0.05]">
+                            {g.items
+                              .filter((_, idx) => idx % 2 === col)
+                              .map((item, idx) => {
+                                const num = idx * 2 + col + 1;
+                                return (
+                                  <a
+                                    key={item.label}
+                                    href={item.href}
+                                    data-testid={`registry-item-${g.id}-${num}`}
+                                    className="group flex items-center gap-3.5 px-6 py-3.5 transition-colors hover:bg-white md:px-8"
+                                  >
+                                    <span className="font-display w-6 flex-shrink-0 text-xs font-bold text-ak-ink/25 transition-colors group-hover:text-ak-orange">
+                                      {String(num).padStart(2, "0")}
+                                    </span>
+                                    <span className="flex-1 text-[13px] font-medium leading-snug text-ak-ink/70 transition-colors group-hover:text-ak-ink">
+                                      {item.label}
+                                    </span>
+                                    <Icon
+                                      name="arrowUpRight"
+                                      className="h-3.5 w-3.5 flex-shrink-0 text-ak-ink/15 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ak-orange"
+                                      strokeWidth={2.2}
+                                    />
+                                  </a>
+                                );
+                              })}
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             );
           })}
         </Reveal>
-
-        {/* ledger sheet */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: EASE }}
-            className="mt-2 overflow-hidden rounded-2xl border border-ak-ink/[0.07]"
-          >
-            <div className="flex flex-col gap-4 bg-ak-mist/60 p-6 md:flex-row md:items-center md:justify-between md:p-8">
-              <p className="max-w-xl text-sm leading-relaxed text-ak-ink/55">{activeGroup.desc}</p>
-              <span className="ak-mono-label inline-flex w-fit items-center gap-2 rounded-full border border-ak-ink/10 bg-white px-4 py-2 text-ak-orange">
-                Sub-Domain {activeGroup.num} · {activeGroup.count} Registrations
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 divide-y divide-ak-ink/[0.06] bg-white sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-              {[0, 1].map((col) => (
-                <div key={col} className="divide-y divide-ak-ink/[0.06]">
-                  {activeGroup.items
-                    .filter((_, idx) => idx % 2 === col)
-                    .map((label, idx) => {
-                      const num = idx * 2 + col + 1;
-                      return (
-                        <a
-                          key={label}
-                          href="#category-cta"
-                          data-testid={`registry-item-${activeGroup.id}-${num}`}
-                          className="group flex items-center gap-4 px-6 py-4 transition-colors hover:bg-ak-orange/[0.04] md:px-8"
-                        >
-                          <span className="font-display w-7 flex-shrink-0 text-xs font-bold text-ak-ink/25 transition-colors group-hover:text-ak-orange">
-                            {String(num).padStart(2, "0")}
-                          </span>
-                          <span className="flex-1 text-sm font-medium leading-snug text-ak-ink/75 transition-colors group-hover:text-ak-ink">
-                            {label}
-                          </span>
-                          <Icon
-                            name="arrowUpRight"
-                            className="h-4 w-4 flex-shrink-0 text-ak-ink/20 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ak-orange"
-                            strokeWidth={2.2}
-                          />
-                        </a>
-                      );
-                    })}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
       </Container>
     </section>
   );
