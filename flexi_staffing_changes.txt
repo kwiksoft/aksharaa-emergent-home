@@ -1,0 +1,54 @@
+FLEXI STAFFING — SERVICE PAGE SECTION REFERENCE
+URL: /staffing-manpower/flexi-staffing
+File: frontend/src/pages/FlexiStaffing.jsx
+Role: TEMPLATE — section structure/patterns here propagate to the other
+9 services under Staffing & Manpower once locked.
+
+Here's the full section list, top to bottom, exactly as they appear on the page:
+
+| # | Section | testid | Theme | Current motion/treatment |
+|---|---------|--------|-------|---------------------------|
+| 1 | **Hero** — headline + stat row, full-bleed people photo right with "What Aksharaa Handles" feature card overlaying its bottom edge | `flexi-hero-section` | Light | Staggered fade-up on load; photo slide-in; overlay card items animate sequentially |
+| 2 | **Overview** — "What is Flexi Staffing" description + "When Businesses Use Flexi Staffing" info card | `flexi-overview-section` | Light (mist grey) | Scroll-reveal fade-up, side card delayed |
+| 3 | **Who Needs This** — 6-card bento (Manufacturing / Logistics / Retail / Healthcare / IT / Construction), alternating offset | `flexi-who-section` | Light | Scroll-reveal, staggered with alternating offset |
+| 4 | **The Aksharaa Difference** — 6-item numbered grid (Compliance-First, Verified Workforce, Pan-India, etc.) | `flexi-difference-section` | **Dark** (navy) | Scroll-reveal, staggered grid |
+| 5 | **Scope** — 6-card grid "What We Manage" | `flexi-scope-section` | Light (mist grey) | Scroll-reveal, staggered grid |
+| 6 | **Process** — 5-step horizontal flow with connecting line, orange circular icons | `flexi-process-section` | Light | Scroll-reveal, sequential left-to-right |
+| 7 | **Compliance Layer** — checklist + "Compliance Coverage at a Glance" stat card | `flexi-compliance-section` | **Dark** (ink) | Scroll-reveal, list + card staggered separately |
+| 8 | **Industries** — 8-tile icon grid | `flexi-industries-section` | Light | Scroll-reveal, staggered tiles |
+| 9 | **FAQs** — accordion, single-open pattern | `flexi-faqs-section` | Light (mist grey) | Scroll-reveal on load; height-animate on expand/collapse |
+| 10 | **Related Services** — 3-card grid | `flexi-related-section` | Light | Scroll-reveal, staggered |
+| 11 | **Final CTA** — orange-filled band (distinct from other templates' dark CTA), heading + 2 CTAs | `flexi-cta-section` | **Orange fill** | Scroll-reveal, single fade-up |
+
+---
+
+HOW TO GIVE FEEDBACK PER SECTION
+
+1. Reference the section by number or testid (e.g. "Section 1" or
+   "flexi-hero-section").
+2. Describe the change in words, AND/OR share a screenshot of the current
+   state with a markup/note on what's wrong, AND/OR share a reference URL
+   + screenshot of the specific section you want studied.
+3. Specify whether the change is:
+   a. Visual/design only (colour, spacing, sizing, image)
+   b. Content/copy
+   c. Motion/animation (entrance, hover, scroll behaviour)
+   d. Structural (add/remove/reorder elements within the section)
+
+---
+
+SECTION STATUS (update as we go)
+
+| # | Section | Status |
+|---|---------|--------|
+| 1 | Hero | Pending review |
+| 2 | Overview | Pending review |
+| 3 | Who Needs This | Pending review |
+| 4 | The Aksharaa Difference | Pending review |
+| 5 | Scope | Pending review |
+| 6 | Process | Pending review |
+| 7 | Compliance Layer | Pending review |
+| 8 | Industries | Pending review |
+| 9 | FAQs | Pending review |
+| 10 | Related Services | Pending review |
+| 11 | Final CTA | Pending review |

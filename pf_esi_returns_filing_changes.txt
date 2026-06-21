@@ -1,0 +1,49 @@
+PF & ESI RETURNS FILING — SERVICE PAGE SECTION REFERENCE
+URL: /compliance-filings-taxation/pf-esi-returns-filing
+File: frontend/src/pages/PfEsiReturnsFiling.jsx
+Role: TEMPLATE — section structure/patterns here propagate to the other
+1 remaining service under Compliance, Filings & Taxation (smallest
+category — only 2 services total) once locked.
+
+Here's the full section list, top to bottom, exactly as they appear on the page:
+
+| # | Section | testid | Theme | Current motion/treatment |
+|---|---------|--------|-------|---------------------------|
+| 1 | **Hero** — orange left accent bar, spacious headline, "Upcoming Filing Deadlines" clock card right with urgency-tinted top row | `returns-hero-section` | Light (most spacious template) | Staggered fade-up on load; deadline rows animate sequentially |
+| 2 | **What We File** — 2 filing-stream cards (PF / ESI) each with dark header + detail rows | `returns-what-section` | Light (mist grey) | Scroll-reveal, staggered stream cards |
+| 3 | **Filing Calendar** — unique month-grid (Every Month / April / May / November), active month highlighted orange | `returns-calendar-section` | Light | Scroll-reveal, staggered month tiles |
+| 4 | **Scope** — numbered vertical-line process (4 steps) + dark "Filing Guarantee" card + "Contribution Rates" table | `returns-scope-section` | Light (mist grey) | Scroll-reveal, connected line + staggered steps |
+| 5 | **Penalties** — 2-column PF/ESI penalty blocks + embedded mid-section CTA strip | `returns-penalties-section` | **Dark** (slate) | Scroll-reveal, staggered blocks |
+| 6 | **FAQs** — centered accordion | `returns-faqs-section` | Light | Scroll-reveal on load; height-animate on expand/collapse |
+| 7 | **Related Services** — 3-card grid | `returns-related-section` | Light (mist grey) | Scroll-reveal, staggered |
+| 8 | **Final CTA** — compact dark band, heading + 2 CTAs | `returns-cta-section` | **Dark** (ink) | Scroll-reveal, single fade-up |
+
+---
+
+HOW TO GIVE FEEDBACK PER SECTION
+
+1. Reference the section by number or testid (e.g. "Section 3" or
+   "returns-calendar-section").
+2. Describe the change in words, AND/OR share a screenshot of the current
+   state with a markup/note on what's wrong, AND/OR share a reference URL
+   + screenshot of the specific section you want studied.
+3. Specify whether the change is:
+   a. Visual/design only (colour, spacing, sizing, image)
+   b. Content/copy
+   c. Motion/animation (entrance, hover, scroll behaviour)
+   d. Structural (add/remove/reorder elements within the section)
+
+---
+
+SECTION STATUS (update as we go)
+
+| # | Section | Status |
+|---|---------|--------|
+| 1 | Hero | Pending review |
+| 2 | What We File | Pending review |
+| 3 | Filing Calendar | Pending review |
+| 4 | Scope | Pending review |
+| 5 | Penalties | Pending review |
+| 6 | FAQs | Pending review |
+| 7 | Related Services | Pending review |
+| 8 | Final CTA | Pending review |

@@ -1,0 +1,56 @@
+AKSHARAA WEBSITE — SECTION REFERENCE FILES INDEX
+This file lists every section-reference .txt file available in this repo,
+what page each one covers, and its current review status.
+
+Use these files exactly like index_changes.txt was used for the home
+environment in Emergent — point to a section by number/testid when asking
+for a change, so there's no ambiguity about which part of the page is
+being discussed.
+
+---
+
+| Reference File | Page | URL | Status |
+|---|---|---|---|
+| index_changes.txt | Home | / | Reference (pre-existing from Emergent build) |
+| pf_esi_registration_changes.txt | PF & ESI Registration (Registrations & Licensing template) | /registrations-licensing/pf-esi-registration | IN PROGRESS — section review starting |
+| pf_compliance_changes.txt | PF Compliance (Labour Law & HR template) | /labour-law-compliance/pf-compliance | Pending review |
+| payroll_processing_changes.txt | Payroll Processing (Payroll & HR Ops template) | /payroll-hr-operations/payroll-processing | Pending review |
+| flexi_staffing_changes.txt | Flexi Staffing (Staffing & Manpower template) | /staffing-manpower/flexi-staffing | Pending review |
+| pf_esi_returns_filing_changes.txt | PF & ESI Returns Filing (Filings & Taxation template) | /compliance-filings-taxation/pf-esi-returns-filing | Pending review |
+| employment_agreements_changes.txt | Employment Agreements (Legal & Documentation template) | /legal-documentation/employment-agreements | Pending review |
+
+---
+
+RECOMMENDED REVIEW ORDER
+
+1. PF & ESI Registration — already in progress, finish this one first
+   since it's the most-tested pattern (tabbed ledger, registry hero) and
+   any fixes here may reveal issues common to other templates
+2. PF Compliance — second largest category (18 services), dark/statutory
+   identity, most structurally different from Registrations
+3. Employment Agreements — also 18 services, different again
+   (editorial/parchment), worth locking early given category size
+4. Payroll Processing — 9 services, dashboard-card pattern
+5. Flexi Staffing — 10 services, the most photography-dependent template
+6. PF & ESI Returns Filing — only 1 more service inherits this template,
+   lowest priority by volume, though still worth getting right since it's
+   the most calm/spacious template and a good contrast reference
+
+Once all 6 are locked, the patterns established in each become the basis
+for building out the remaining ~85 individual service pages across all
+six categories — each inheriting its category's now-approved template.
+
+---
+
+CATEGORY LANDING PAGES — separate scope
+
+Per the locked plan, category landing pages (e.g. /registrations-licensing
+itself, /labour-law-compliance itself) are a DIFFERENT page type from
+these service-page templates — they are lean pages whose job is to list
+and link to all services in that category, not to explain any one service
+in depth. Category landing pages get their own section-reference files
+once that work begins (after the 6 service templates above are locked).
+
+The Registrations & Licensing category page already has a working build
+(registrations_licensing_changes.txt — to be created once its redesign
+per this principle is underway).

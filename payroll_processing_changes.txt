@@ -1,0 +1,52 @@
+PAYROLL PROCESSING — SERVICE PAGE SECTION REFERENCE
+URL: /payroll-hr-operations/payroll-processing
+File: frontend/src/pages/PayrollProcessing.jsx
+Role: TEMPLATE — section structure/patterns here propagate to the other
+8 services under Payroll & HR Operations once locked.
+
+Here's the full section list, top to bottom, exactly as they appear on the page:
+
+| # | Section | testid | Theme | Current motion/treatment |
+|---|---------|--------|-------|---------------------------|
+| 1 | **Hero** — headline + chips, Mac-window styled "live payslip dashboard" card with animating payslip rows, "LIVE" pulsing badge, stat strip below | `payroll-hero-section` | Light | Staggered fade-up on load; dashboard rotates in; payslip rows animate sequentially |
+| 2 | **Overview** — "Payroll Processing Services" description + highlight box, right "Full Payroll Scope" deliverables card with cross-links | `payroll-overview-section` | Light (mist grey) | Scroll-reveal fade-up, side card delayed |
+| 3 | **Who Needs This** — 3 persona cards (Growing Businesses / Multi-Location / Manufacturing & Logistics), middle card offset down | `payroll-who-section` | Light | Scroll-reveal, staggered with offset |
+| 4 | **Obligations** — 6-item numbered legal requirements list + dark "Consequences of Non-Compliance" panel | `payroll-obligations-section` | **Dark** (ink) | Scroll-reveal, sequential list stagger |
+| 5 | **Scope** — 6-card bento grid "What Aksharaa Manages" with ghost numbers | `payroll-scope-section` | Light | Scroll-reveal, staggered grid |
+| 6 | **Process** — horizontal day-based timeline (Day 1-3 → Day 16-18), scrollable on mobile | `payroll-process-section` | Light (mist grey) | Scroll-reveal, sequential left-to-right |
+| 7 | **Documents** — 2-column checklist grid | `payroll-documents-section` | Light | Scroll-reveal, staggered items |
+| 8 | **FAQs** — accordion, single-open pattern | `payroll-faqs-section` | Light (mist grey) | Scroll-reveal on load; height-animate on expand/collapse |
+| 9 | **Related Services** — 3-card grid | `payroll-related-section` | Light | Scroll-reveal, staggered |
+| 10 | **Final CTA** — compact dark band, heading + 2 CTAs | `payroll-cta-section` | **Dark** (ink) | Scroll-reveal, single fade-up |
+
+---
+
+HOW TO GIVE FEEDBACK PER SECTION
+
+1. Reference the section by number or testid (e.g. "Section 1" or
+   "payroll-hero-section").
+2. Describe the change in words, AND/OR share a screenshot of the current
+   state with a markup/note on what's wrong, AND/OR share a reference URL
+   + screenshot of the specific section you want studied.
+3. Specify whether the change is:
+   a. Visual/design only (colour, spacing, sizing, image)
+   b. Content/copy
+   c. Motion/animation (entrance, hover, scroll behaviour)
+   d. Structural (add/remove/reorder elements within the section)
+
+---
+
+SECTION STATUS (update as we go)
+
+| # | Section | Status |
+|---|---------|--------|
+| 1 | Hero | Pending review |
+| 2 | Overview | Pending review |
+| 3 | Who Needs This | Pending review |
+| 4 | Obligations | Pending review |
+| 5 | Scope | Pending review |
+| 6 | Process | Pending review |
+| 7 | Documents | Pending review |
+| 8 | FAQs | Pending review |
+| 9 | Related Services | Pending review |
+| 10 | Final CTA | Pending review |

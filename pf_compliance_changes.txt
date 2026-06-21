@@ -1,0 +1,52 @@
+PF COMPLIANCE — SERVICE PAGE SECTION REFERENCE
+URL: /labour-law-compliance/pf-compliance
+File: frontend/src/pages/PfCompliance.jsx
+Role: TEMPLATE — section structure/patterns here propagate to the other
+17 services under Labour Law & HR Compliance once locked.
+
+Here's the full section list, top to bottom, exactly as they appear on the page:
+
+| # | Section | testid | Theme | Current motion/treatment |
+|---|---------|--------|-------|---------------------------|
+| 1 | **Hero** — grid+dot texture backdrop, headline + photo bottom-left, "Track Record" stat card floating right with law-citation footer | `pfcomp-hero-section` | **Dark** (charcoal/ink) | Staggered fade-up on load; photo scale-in |
+| 2 | **Overview** — "What is PF Compliance", asymmetric wide/narrow split, dark "Quick Reference at a Glance" card with cross-links | `pfcomp-overview-section` | Light | Scroll-reveal fade-up, side card delayed |
+| 3 | **Applicability** — PF vs ESI threshold comparison cards, centered intro | `pfcomp-applicability-section` | Light (mist grey) | Scroll-reveal, staggered card pair |
+| 4 | **Obligations** — 7-item numbered legal requirements list + dark penalty panel with severity gauge | `pfcomp-obligations-section` | Light | Scroll-reveal, sequential list stagger |
+| 5 | **Scope** — 6-card bento "What Aksharaa Manages" | `pfcomp-scope-section` | Light (mist grey) | Scroll-reveal, staggered grid |
+| 6 | **Process** — 5-step list + circular monthly-cycle diagram (Data→ECR→Challan→Register→Report) | `pfcomp-process-section` | Light | Scroll-reveal, sequential steps |
+| 7 | **Documents** — checklist grid + simplified ECR document mockup card | `pfcomp-documents-section` | Light (mist grey) | Scroll-reveal, staggered checklist items |
+| 8 | **FAQs** — numbered accordion, 2-column grid | `pfcomp-faqs-section` | Light | Scroll-reveal on load; height-animate on expand/collapse |
+| 9 | **Related Services** — 3-card grid | `pfcomp-related-section` | Light (mist grey) | Scroll-reveal, staggered |
+| 10 | **Final CTA** — compact dark band, heading + 2 CTAs | `pfcomp-cta-section` | **Dark** (ink) | Scroll-reveal, single fade-up |
+
+---
+
+HOW TO GIVE FEEDBACK PER SECTION
+
+1. Reference the section by number or testid (e.g. "Section 4" or
+   "pfcomp-obligations-section").
+2. Describe the change in words, AND/OR share a screenshot of the current
+   state with a markup/note on what's wrong, AND/OR share a reference URL
+   + screenshot of the specific section you want studied.
+3. Specify whether the change is:
+   a. Visual/design only (colour, spacing, sizing, image)
+   b. Content/copy
+   c. Motion/animation (entrance, hover, scroll behaviour)
+   d. Structural (add/remove/reorder elements within the section)
+
+---
+
+SECTION STATUS (update as we go)
+
+| # | Section | Status |
+|---|---------|--------|
+| 1 | Hero | Pending review |
+| 2 | Overview | Pending review |
+| 3 | Applicability | Pending review |
+| 4 | Obligations | Pending review |
+| 5 | Scope | Pending review |
+| 6 | Process | Pending review |
+| 7 | Documents | Pending review |
+| 8 | FAQs | Pending review |
+| 9 | Related Services | Pending review |
+| 10 | Final CTA | Pending review |
