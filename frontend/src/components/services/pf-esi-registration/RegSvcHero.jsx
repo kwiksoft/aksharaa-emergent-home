@@ -125,9 +125,9 @@ export const RegSvcHero = () => (
       >
         <div
           data-testid="reg-svc-tracker-card"
-          className="rounded-3xl border border-ak-ink/[0.07] bg-white p-6 shadow-[0_30px_70px_-30px_rgba(28,42,57,0.25)] md:p-8"
+          className="rounded-3xl border border-ak-ink/[0.07] bg-white p-5 shadow-[0_30px_70px_-30px_rgba(28,42,57,0.25)] md:p-6"
         >
-          <div className="flex items-start gap-3 border-b border-ak-ink/[0.07] pb-5">
+          <div className="flex items-start gap-3 border-b border-ak-ink/[0.07] pb-4">
             <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-ak-ink text-white">
               <Icon name="checkCircle" className="h-5 w-5" strokeWidth={1.9} />
             </span>
@@ -141,13 +141,13 @@ export const RegSvcHero = () => (
               on top of a dashed connector line that runs continuously behind
               every circle (not just the gaps), numbered, active step elevated
               as a featured card — per the latest reference image */}
-          <div className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between lg:gap-2">
+          <div className="relative mt-5 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between lg:gap-2">
             {/* dashed connector line — desktop only, z-0 so it passes behind
-                every circle (the white ring layer below covers the segment
-                directly under each icon, exactly like the reference) */}
+                every circle. top value = exact vertical center of the 64px
+                (h-16) icon avatar below, so dashes bisect each circle cleanly */}
             <div
               aria-hidden
-              className="absolute left-0 right-0 top-8 z-0 hidden border-t-2 border-dashed border-ak-ink/15 lg:block"
+              className="absolute left-0 right-0 top-[32px] z-0 hidden border-t-2 border-dashed border-ak-ink/15 lg:block"
             />
 
             {hero.tracker.steps.map((s, i) => {
@@ -162,7 +162,7 @@ export const RegSvcHero = () => (
                   transition={{ duration: 0.5, delay: 0.55 + i * 0.08, ease: EASE }}
                   className={`relative z-10 flex flex-col items-center text-center lg:flex-1 ${
                     isActive
-                      ? "rounded-2xl bg-gradient-to-b from-ak-orange/[0.06] to-transparent px-3 pb-5 pt-0 ring-1 ring-ak-orange/15"
+                      ? "rounded-2xl bg-gradient-to-b from-ak-orange/[0.06] to-transparent px-3 pb-3 pt-0 ring-1 ring-ak-orange/15"
                       : "px-2"
                   }`}
                 >
@@ -237,7 +237,7 @@ export const RegSvcHero = () => (
             })}
           </div>
 
-          <div className="ak-mono-label mt-6 inline-flex items-center gap-1.5 rounded-full bg-ak-orange/10 px-3.5 py-1.5 text-ak-orange">
+          <div className="ak-mono-label mt-4 inline-flex items-center gap-1.5 rounded-full bg-ak-orange/10 px-3.5 py-1.5 text-ak-orange">
             <Icon name="clock" className="h-3 w-3" strokeWidth={2.2} />
             {hero.tracker.badge}
           </div>
