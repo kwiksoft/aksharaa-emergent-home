@@ -37,11 +37,11 @@ export const hero = {
     sub: "What Aksharaa handles end-to-end",
     badge: "Typically 7–10 working days",
     steps: [
-      { state: "done", title: "Document Collection & Verification", desc: "All employer and establishment documents compiled and verified" },
-      { state: "done", title: "PF Registration (EPFO Portal)", desc: "Employer registration on EPFO unified portal, establishment code issued" },
-      { state: "done", title: "ESI Registration (ESIC Portal)", desc: "Employer code obtained, sub-code for each branch location" },
-      { state: "active", title: "Employee UAN & IP Number Generation", desc: "Universal Account Numbers and Insurance Person numbers for all employees" },
-      { state: "pending", title: "Certificate & First Contribution Setup", desc: "Registration certificates delivered, first month ECR and challan guided" },
+      { state: "done", icon: "folderCheck", title: "Document Collection & Verification", desc: "All employer and establishment documents compiled and verified" },
+      { state: "done", icon: "building", title: "PF Registration (EPFO Portal)", desc: "Employer registration on EPFO unified portal, establishment code issued" },
+      { state: "done", icon: "shield", title: "ESI Registration (ESIC Portal)", desc: "Employer code obtained, sub-code for each branch location" },
+      { state: "active", icon: "userCheck", title: "Employee UAN & IP Number Generation", desc: "Universal Account Numbers and Insurance Person numbers for all employees" },
+      { state: "pending", icon: "badge", title: "Certificate & First Contribution Setup", desc: "Registration certificates delivered, first month ECR and challan guided" },
     ],
   },
   // Photography slot — documentary, specifically registration/paperwork focused

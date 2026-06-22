@@ -12,12 +12,6 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
 };
 
-const stateStyles = {
-  done: { dot: "bg-ak-orange", text: "text-ak-ink/40 line-through" },
-  active: { dot: "bg-ak-orange ring-4 ring-ak-orange/20", text: "text-ak-ink" },
-  pending: { dot: "bg-ak-ink/10", text: "text-ak-ink/35" },
-};
-
 /**
  * PF & ESI Registration hero — TEMPLATE PATTERN for all Registrations services.
  *
@@ -143,22 +137,80 @@ export const RegSvcHero = () => (
             </div>
           </div>
 
-          {/* steps laid out in a responsive grid now that the card is full-width */}
-          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {/* steps row — circular icon avatars on a dashed connector, numbered,
+              active step elevated as a featured card (Image-2 style), while
+              done/active/pending states and copy are unchanged from before */}
+          <div className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between lg:gap-2">
+            {/* dashed connector line, desktop only, sits behind the circles */}
+            <div
+              aria-hidden
+              className="absolute left-0 right-0 top-7 hidden border-t-2 border-dashed border-ak-ink/15 lg:block"
+            />
+
             {hero.tracker.steps.map((s, i) => {
-              const st = stateStyles[s.state];
+              const isDone = s.state === "done";
+              const isActive = s.state === "active";
+              const isPending = s.state === "pending";
               return (
                 <motion.div
                   key={s.title}
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.55 + i * 0.08, ease: EASE }}
-                  className="flex items-start gap-3"
+                  className={`relative z-10 flex flex-col items-center text-center lg:flex-1 ${
+                    isActive
+                      ? "rounded-2xl bg-gradient-to-b from-ak-orange/[0.06] to-transparent px-3 pb-5 pt-3 ring-1 ring-ak-orange/15"
+                      : "px-2"
+                  }`}
                 >
-                  <span className={`mt-1.5 h-2.5 w-2.5 flex-shrink-0 rounded-full ${st.dot}`} />
-                  <div className="min-w-0">
-                    <div className={`text-[13px] font-semibold leading-tight ${st.text}`}>{s.title}</div>
-                    <div className="mt-0.5 text-[11px] leading-snug text-ak-ink/40">{s.desc}</div>
+                  {/* star ribbon, active step only */}
+                  {isActive && (
+                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-md bg-ak-orange text-white shadow-md">
+                      <Icon name="badge" className="h-3.5 w-3.5" strokeWidth={2.2} />
+                    </span>
+                  )}
+
+                  {/* circular icon avatar */}
+                  <span
+                    className={`flex h-14 w-14 items-center justify-center rounded-full ${
+                      isActive
+                        ? "bg-ak-orange text-white shadow-[0_10px_24px_-6px_rgba(242,140,40,0.55)] ring-4 ring-ak-orange/15"
+                        : isDone
+                        ? "bg-ak-orange/10 text-ak-orange"
+                        : "bg-ak-ink/[0.05] text-ak-ink/30"
+                    }`}
+                  >
+                    <Icon name={s.icon} className="h-6 w-6" strokeWidth={1.8} />
+                  </span>
+
+                  {/* small state dot beneath circle, matching connector line height */}
+                  <span
+                    className={`mt-2 h-2 w-2 rounded-full ${
+                      isActive ? "bg-ak-orange" : isDone ? "bg-ak-orange/70" : "bg-ak-ink/15"
+                    }`}
+                  />
+
+                  {/* number */}
+                  <div
+                    className={`mt-2 font-display text-sm font-extrabold ${
+                      isPending ? "text-ak-ink/25" : "text-ak-orange"
+                    }`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+
+                  {/* title */}
+                  <div
+                    className={`mt-1 text-[13px] font-semibold leading-tight ${
+                      isPending ? "text-ak-ink/35" : isDone ? "text-ak-ink/40 line-through" : "text-ak-ink"
+                    }`}
+                  >
+                    {s.title}
+                  </div>
+
+                  {/* description */}
+                  <div className={`mt-1 text-[11px] leading-snug ${isPending ? "text-ak-ink/30" : "text-ak-ink/40"}`}>
+                    {s.desc}
                   </div>
                 </motion.div>
               );
