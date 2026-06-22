@@ -137,14 +137,17 @@ export const RegSvcHero = () => (
             </div>
           </div>
 
-          {/* steps row — circular icon avatars on a dashed connector, numbered,
-              active step elevated as a featured card (Image-2 style), while
-              done/active/pending states and copy are unchanged from before */}
+          {/* steps row — circular icon avatars with a double-ring halo, sitting
+              on top of a dashed connector line that runs continuously behind
+              every circle (not just the gaps), numbered, active step elevated
+              as a featured card — per the latest reference image */}
           <div className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between lg:gap-2">
-            {/* dashed connector line, desktop only, sits behind the circles */}
+            {/* dashed connector line — desktop only, z-0 so it passes behind
+                every circle (the white ring layer below covers the segment
+                directly under each icon, exactly like the reference) */}
             <div
               aria-hidden
-              className="absolute left-0 right-0 top-7 hidden border-t-2 border-dashed border-ak-ink/15 lg:block"
+              className="absolute left-0 right-0 top-8 z-0 hidden border-t-2 border-dashed border-ak-ink/15 lg:block"
             />
 
             {hero.tracker.steps.map((s, i) => {
@@ -159,7 +162,7 @@ export const RegSvcHero = () => (
                   transition={{ duration: 0.5, delay: 0.55 + i * 0.08, ease: EASE }}
                   className={`relative z-10 flex flex-col items-center text-center lg:flex-1 ${
                     isActive
-                      ? "rounded-2xl bg-gradient-to-b from-ak-orange/[0.06] to-transparent px-3 pb-5 pt-3 ring-1 ring-ak-orange/15"
+                      ? "rounded-2xl bg-gradient-to-b from-ak-orange/[0.06] to-transparent px-3 pb-5 pt-0 ring-1 ring-ak-orange/15"
                       : "px-2"
                   }`}
                 >
@@ -170,17 +173,26 @@ export const RegSvcHero = () => (
                     </span>
                   )}
 
-                  {/* circular icon avatar */}
+                  {/* double-ring icon avatar: soft outer halo -> white ring
+                      layer -> inner icon circle, matching the reference */}
                   <span
-                    className={`flex h-14 w-14 items-center justify-center rounded-full ${
-                      isActive
-                        ? "bg-ak-orange text-white shadow-[0_10px_24px_-6px_rgba(242,140,40,0.55)] ring-4 ring-ak-orange/15"
-                        : isDone
-                        ? "bg-ak-orange/10 text-ak-orange"
-                        : "bg-ak-ink/[0.05] text-ak-ink/30"
+                    className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full ${
+                      isPending ? "bg-ak-ink/[0.04]" : "bg-ak-orange/[0.08]"
                     }`}
                   >
-                    <Icon name={s.icon} className="h-6 w-6" strokeWidth={1.8} />
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
+                      <span
+                        className={`flex h-9 w-9 items-center justify-center rounded-full ${
+                          isActive
+                            ? "bg-ak-orange text-white shadow-[0_10px_24px_-6px_rgba(242,140,40,0.55)] ring-4 ring-ak-orange/15"
+                            : isDone
+                            ? "bg-ak-orange/10 text-ak-orange"
+                            : "bg-ak-ink/[0.05] text-ak-ink/30"
+                        }`}
+                      >
+                        <Icon name={s.icon} className="h-5 w-5" strokeWidth={1.8} />
+                      </span>
+                    </span>
                   </span>
 
                   {/* small state dot beneath circle, matching connector line height */}
