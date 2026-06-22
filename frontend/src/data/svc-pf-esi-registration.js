@@ -173,18 +173,20 @@ export const process = {
   steps: [
     { num: "01", icon: "fileText", title: "Initial Consultation", desc: "We understand your establishment type, employee count, industry, and locations to determine exact registration requirements and applicable acts." },
     { num: "02", icon: "fileSignature", title: "Document Collection", desc: "We share a tailored document checklist. You submit documents digitally — our team verifies completeness and accuracy before proceeding." },
-    { num: "03", icon: "wallet", title: "Portal Application Filing", desc: "Aksharaa files the PF registration on EPFO's unified portal and ESI registration on the ESIC portal using your DSC. All details verified before submission." },
+    { num: "03", icon: "folderCheck", title: "Portal Application Filing", desc: "Aksharaa files the PF registration on EPFO's unified portal and ESI registration on the ESIC portal using your DSC. All details verified before submission." },
     { num: "04", icon: "refreshCw", title: "Code Issuance & Follow-up", desc: "We track the application status and follow up with the concerned offices until PF establishment code and ESI employer code are issued." },
     { num: "05", icon: "userCheck", title: "Employee UAN & IP Number Generation", desc: "Once codes are issued, we generate Universal Account Numbers for all PF-eligible employees and Insurance Person numbers for ESI-eligible employees." },
-    { num: "06", icon: "checkCircle", title: "Certificate Delivery & First Contribution Setup", desc: "Registration certificates shared with you. We guide you through the first month's ECR filing and challan payment to ensure a smooth compliance start.", final: true },
+    { num: "06", icon: "badge", title: "Certificate Delivery & First Contribution Setup", desc: "Registration certificates shared with you. We guide you through the first month's ECR filing and challan payment to ensure a smooth compliance start.", final: true },
   ],
-  // bottom stat strip — derived from existing real content (hero.tracker.badge,
-  // hero.stats, applicability/penalties sections) rather than invented copy
+  // bottom benefit strip — copy matches the reference image exactly;
+  // first item keeps the real "7–10 working days" timeline figure used
+  // throughout the page, the other three are the reference's stated
+  // service guarantees (compliance, transparency, support model)
   strip: [
-    { icon: "clock", label: "Typical Timeline", value: "7–10 Working Days" },
-    { icon: "shield", label: "Establishments Registered", value: "450+" },
-    { icon: "calendar", label: "Years Filing Experience", value: "15+" },
-    { icon: "userCheck", label: "Support Model", value: "End-to-End" },
+    { icon: "calendar", label: "7–10 Working Days", value: "Typically" },
+    { icon: "shield", label: "Compliance Assured", value: "100%" },
+    { icon: "clock", label: "Transparent Process", value: "Timely &" },
+    { icon: "userCheck", label: "Expert Support", value: "End-to-End" },
   ],
 };
 
