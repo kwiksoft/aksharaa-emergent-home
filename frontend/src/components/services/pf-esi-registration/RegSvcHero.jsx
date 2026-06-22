@@ -199,17 +199,25 @@ export const RegSvcHero = () => (
                     {String(i + 1).padStart(2, "0")}
                   </div>
 
-                  {/* title */}
+                  {/* title — no strikethrough on done steps; reads normally
+                      across done/active states, only pending is dimmed */}
                   <div
                     className={`mt-1 text-[13px] font-semibold leading-tight ${
-                      isPending ? "text-ak-ink/35" : isDone ? "text-ak-ink/40 line-through" : "text-ak-ink"
+                      isPending ? "text-ak-ink/35" : "text-ak-ink"
                     }`}
                   >
                     {s.title}
                   </div>
 
+                  {/* short underline accent beneath title, per reference */}
+                  <span
+                    className={`mt-1.5 h-[2px] w-6 rounded-full ${
+                      isPending ? "bg-ak-ink/15" : "bg-ak-orange"
+                    }`}
+                  />
+
                   {/* description */}
-                  <div className={`mt-1 text-[11px] leading-snug ${isPending ? "text-ak-ink/30" : "text-ak-ink/40"}`}>
+                  <div className={`mt-1.5 text-[11px] leading-snug ${isPending ? "text-ak-ink/30" : "text-ak-ink/40"}`}>
                     {s.desc}
                   </div>
                 </motion.div>
