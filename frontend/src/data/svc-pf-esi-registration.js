@@ -178,6 +178,14 @@ export const process = {
     { num: "05", icon: "userCheck", title: "Employee UAN & IP Number Generation", desc: "Once codes are issued, we generate Universal Account Numbers for all PF-eligible employees and Insurance Person numbers for ESI-eligible employees." },
     { num: "06", icon: "checkCircle", title: "Certificate Delivery & First Contribution Setup", desc: "Registration certificates shared with you. We guide you through the first month's ECR filing and challan payment to ensure a smooth compliance start.", final: true },
   ],
+  // bottom stat strip — derived from existing real content (hero.tracker.badge,
+  // hero.stats, applicability/penalties sections) rather than invented copy
+  strip: [
+    { icon: "clock", label: "Typical Timeline", value: "7–10 Working Days" },
+    { icon: "shield", label: "Establishments Registered", value: "450+" },
+    { icon: "calendar", label: "Years Filing Experience", value: "15+" },
+    { icon: "userCheck", label: "Support Model", value: "End-to-End" },
+  ],
 };
 
 export const penalties = {
