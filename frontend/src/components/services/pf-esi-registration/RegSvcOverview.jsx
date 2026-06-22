@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { overview } from "../../../data/svc-pf-esi-registration";
 
 export const RegSvcOverview = () => (
-  <section id="svc-overview" data-testid="reg-svc-overview-section" className="bg-white py-20 md:py-28">
+  <section id="svc-overview" data-testid="reg-svc-overview-section" className="bg-white py-14 md:py-20">
     <Container>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
         {/* MAIN — wider column */}

@@ -4,7 +4,7 @@ import { AkButton } from "../../common/AkButton";
 import { penalties } from "../../../data/svc-pf-esi-registration";
 
 export const RegSvcPenalties = () => (
-  <section id="svc-penalties" data-testid="reg-svc-penalties-section" className="bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-penalties" data-testid="reg-svc-penalties-section" className="bg-ak-mist/40 py-14 md:py-20">
     <Container>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
         {/* LEFT — text + photo, asymmetric narrower column */}

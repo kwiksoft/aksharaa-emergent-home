@@ -73,7 +73,7 @@ const CalendarIllustration = () => (
 );
 
 export const RegSvcApplicability = () => (
-  <section id="svc-applicability" data-testid="reg-svc-applicability-section" className="relative overflow-hidden bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-applicability" data-testid="reg-svc-applicability-section" className="relative overflow-hidden bg-ak-mist/40 py-14 md:py-20">
     <Container className="relative">
       <CalendarIllustration />
 

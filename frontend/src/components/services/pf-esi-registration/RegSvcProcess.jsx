@@ -98,7 +98,7 @@ const OrbitNode = ({ s, i, pos, delay }) => (
 );
 
 export const RegSvcProcess = () => (
-  <section id="svc-process" data-testid="reg-svc-process-section" className="relative overflow-hidden bg-zinc-100 py-20 md:py-28">
+  <section id="svc-process" data-testid="reg-svc-process-section" className="relative overflow-hidden bg-zinc-100 py-14 md:py-20">
     <div
       aria-hidden
       className="pointer-events-none absolute bottom-0 left-0 h-56 w-56 opacity-[0.08]"

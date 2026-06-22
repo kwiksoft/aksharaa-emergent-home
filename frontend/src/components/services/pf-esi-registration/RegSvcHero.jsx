@@ -29,7 +29,7 @@ export const RegSvcHero = () => (
   <section
     id="svc-hero"
     data-testid="reg-svc-hero-section"
-    className="relative overflow-hidden bg-[#FBF4EA] pt-8 pb-16 md:pt-12 md:pb-20"
+    className="relative overflow-hidden bg-[#FBF4EA] pt-6 pb-10 md:pt-8 md:pb-14"
   >
     <Container className="relative z-10">
       <motion.div initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}>

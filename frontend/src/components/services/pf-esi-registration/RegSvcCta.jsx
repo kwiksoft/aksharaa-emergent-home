@@ -5,7 +5,7 @@ import { Icon } from "../../../lib/icons";
 import { serviceCta } from "../../../data/svc-pf-esi-registration";
 
 export const RegSvcCta = () => (
-  <section id="service-cta" data-testid="reg-svc-cta-section" className="bg-ak-navy py-16 md:py-20">
+  <section id="service-cta" data-testid="reg-svc-cta-section" className="bg-ak-navy py-12 md:py-16">
     <Container>
       <Reveal className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <div className="max-w-xl">

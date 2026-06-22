@@ -6,7 +6,7 @@ import { documents } from "../../../data/svc-pf-esi-registration";
 const COL_OFFSET = ["md:mt-0", "md:mt-8", "md:mt-2"];
 
 export const RegSvcDocuments = () => (
-  <section id="svc-documents" data-testid="reg-svc-documents-section" className="bg-white py-20 md:py-28">
+  <section id="svc-documents" data-testid="reg-svc-documents-section" className="bg-white py-14 md:py-20">
     <Container>
       <Reveal className="max-w-2xl">
         <div className="ak-kicker mb-5">{documents.kicker}</div>

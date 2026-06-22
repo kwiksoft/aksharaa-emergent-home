@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { related } from "../../../data/svc-pf-esi-registration";
 
 export const RegSvcRelated = () => (
-  <section id="svc-related" data-testid="reg-svc-related-section" className="bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-related" data-testid="reg-svc-related-section" className="bg-ak-mist/40 py-14 md:py-20">
     <Container>
       <Reveal className="max-w-2xl">
         <div className="ak-kicker mb-5">{related.kicker}</div>
