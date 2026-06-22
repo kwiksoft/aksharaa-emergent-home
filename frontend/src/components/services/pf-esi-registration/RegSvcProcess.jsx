@@ -20,7 +20,7 @@ const EASE = [0.22, 1, 0.36, 1];
  * read correctly); collapses to a simple vertical stacked list on
  * mobile/tablet where a circle layout can't work.
  */
-const RADIUS = 290; // px, distance from center to each node
+const RADIUS = 420; // px, distance from center to each node — increased from 290 to clear the center card and prevent petal text overlap
 const NODE_COUNT = 6;
 
 // angle for node i: start at top (-90deg) and go clockwise
@@ -94,7 +94,7 @@ const OrbitNode = ({ s, i, pos, delay }) => {
         top: `calc(50% + ${pos.y}px)`,
         transform: "translate(-50%, -50%)",
       }}
-      className="z-10 flex w-[170px] flex-col items-center text-center"
+      className="z-10 flex w-[200px] flex-col items-center text-center"
     >
       <span
         className={`flex h-[68px] w-[68px] flex-shrink-0 items-center justify-center rounded-full border-2 ${
@@ -120,9 +120,9 @@ export const RegSvcProcess = () => (
 
     <Container className="relative">
       {/* DESKTOP — circular orbit layout */}
-      <div className="relative mx-auto hidden h-[860px] w-[860px] max-w-full lg:block">
+      <div className="relative mx-auto hidden h-[1180px] w-[1180px] max-w-full lg:block">
         {/* connecting arcs (SVG, centered) */}
-        <svg viewBox="-340 -340 680 680" className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 overflow-visible">
+        <svg viewBox="-470 -470 940 940" className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 overflow-visible">
           {Array.from({ length: NODE_COUNT }).map((_, i) => (
             <ArcSegment key={i} i={i} isOrange={i % 2 === 0} delay={i * 0.12} />
           ))}
@@ -134,13 +134,13 @@ export const RegSvcProcess = () => (
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: EASE }}
-          className="absolute left-1/2 top-1/2 z-20 w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-ak-ink/[0.08] bg-white/80 p-8 text-center shadow-[0_20px_60px_-20px_rgba(28,42,57,0.15)] backdrop-blur-sm"
+          className="absolute left-1/2 top-1/2 z-20 w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-ak-ink/[0.08] bg-white/90 p-7 text-center shadow-[0_20px_60px_-20px_rgba(28,42,57,0.15)] backdrop-blur-sm"
         >
-          <div className="ak-kicker mx-auto mb-4 justify-center">{process.kicker}</div>
-          <h2 className="font-display text-2xl font-extrabold leading-[1.08] tracking-tight text-ak-ink">
+          <div className="ak-kicker mx-auto mb-3 justify-center">{process.kicker}</div>
+          <h2 className="font-display text-xl font-extrabold leading-[1.1] tracking-tight text-ak-ink">
             Aksharaa&apos;s <span className="text-ak-orange">Registration Process</span>
           </h2>
-          <p className="mt-4 text-[13px] leading-relaxed text-ak-ink/55">
+          <p className="mt-3 text-[12.5px] leading-relaxed text-ak-ink/55">
             {process.sub.split("typically")[0]}
             typically <span className="font-semibold text-ak-orange">{process.sub.split("typically")[1]}</span>
           </p>
