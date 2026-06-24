@@ -13,7 +13,7 @@ import {
   Factory, HardHat, Truck, ShoppingBag, Cpu, HeartPulse,
   Clock, Target, Landmark, UserCheck, Map,
   FilePlus2, FileX2, RefreshCw, Edit3,
-  AlertTriangle, Calculator,
+  AlertTriangle, Calculator, Percent, IndianRupee, UserPlus,
 } from "lucide-react";
 
 export const icons = {
@@ -31,6 +31,7 @@ export const icons = {
   landmark: Landmark, userCheck: UserCheck, map: Map,
   filePlus: FilePlus2, fileX: FileX2, refreshCw: RefreshCw, edit3: Edit3,
   alertTriangle: AlertTriangle, calculator: Calculator,
+  percent: Percent, rupee: IndianRupee, userPlus: UserPlus,
 };
 
 export const Icon = ({ name, ...props }) => {
