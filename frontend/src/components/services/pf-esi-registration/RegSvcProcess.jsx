@@ -82,8 +82,8 @@ const ProcessCard = ({ s, x, y, delay }) => (
     whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay, ease: EASE }}
-    style={{ position: "absolute", left: x, top: y, width: CARD_W, minHeight: CARD_H }}
-    className="relative z-10 overflow-visible rounded-2xl bg-white p-5 shadow-[0_20px_50px_-25px_rgba(28,42,57,0.18)]"
+    style={{ position: "absolute", left: x, top: y, width: CARD_W, height: CARD_H }}
+    className="relative z-10 overflow-hidden rounded-2xl bg-white p-5 shadow-[0_20px_50px_-25px_rgba(28,42,57,0.18)]"
   >
     <span className="absolute left-0 top-0 h-1.5 w-14 rounded-br-full bg-ak-orange" />
     <div className="flex items-start gap-3">
@@ -104,11 +104,20 @@ const ProcessCard = ({ s, x, y, delay }) => (
       </span>
       <div className="pt-0.5">
         <div className="font-display text-lg font-extrabold text-ak-orange">{s.num}</div>
-        <h3 className="mt-0.5 font-display text-[14px] font-bold leading-snug text-ak-ink">{s.title}</h3>
+        {/* fixed 2-line slot regardless of actual title length, so every
+            card's header occupies the same height -- this is the real fix
+            for the apparent off-center hub: longer titles (e.g. card 04's
+            "Code Issuance & Follow-up", card 06's full title) were wrapping
+            to 2 lines and pushing those specific cards taller than their
+            1-line counterparts, breaking the symmetry the radial math
+            depends on */}
+        <h3 className="mt-0.5 line-clamp-2 min-h-[36px] font-display text-[14px] font-bold leading-snug text-ak-ink">
+          {s.title}
+        </h3>
       </div>
     </div>
     <div className="mt-2 h-px w-8 bg-ak-orange/50" />
-    <p className="mt-2 text-[11.5px] leading-snug text-ak-ink/55">{s.desc}</p>
+    <p className="mt-2 line-clamp-3 text-[11.5px] leading-snug text-ak-ink/55">{s.desc}</p>
   </motion.div>
 );
 
@@ -151,7 +160,7 @@ const Spoke = ({ i, delay }) => {
         transform: `rotate(${deg}deg)`,
         transformOrigin: "0 0",
       }}
-      className="z-0 border-t-2 border-dashed border-ak-orange/40"
+      className="z-0 border-t-2 border-dotted border-ak-orange/40"
     />
   );
 };
@@ -178,7 +187,7 @@ const RowArrow = ({ i1, i2, direction, delay }) => {
       style={{ position: "absolute", left: midX, top: midY, width: w, height: 24 }}
       className="z-30 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
     >
-      <span className="h-px flex-1 border-t-2 border-dashed border-ak-orange/50" />
+      <span className="h-px flex-1 border-t-2 border-dotted border-ak-orange/50" />
       <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-2 border-ak-orange/50 bg-white text-ak-orange">
         <Icon
           name={direction === "right" ? "arrowRight" : "arrowUpRight"}
@@ -186,7 +195,7 @@ const RowArrow = ({ i1, i2, direction, delay }) => {
           strokeWidth={2.4}
         />
       </span>
-      <span className="h-px flex-1 border-t-2 border-dashed border-ak-orange/50" />
+      <span className="h-px flex-1 border-t-2 border-dotted border-ak-orange/50" />
     </motion.div>
   );
 };
@@ -204,7 +213,7 @@ const CenterHub = () => (
       width: HUB_SIZE,
       height: HUB_SIZE,
     }}
-    className="z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-dashed border-ak-orange bg-white p-1.5 shadow-[0_20px_50px_-18px_rgba(28,42,57,0.3)]"
+    className="z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-dotted border-ak-orange bg-white p-1.5 shadow-[0_20px_50px_-18px_rgba(28,42,57,0.3)]"
   >
     <img src="/assets/aksharaa-logo.png" alt="" className="h-full w-full select-none object-contain" draggable="false" />
   </motion.div>
