@@ -30,43 +30,43 @@ const PenaltyCard = ({ c }) => {
   const isOrange = c.theme === "orange";
   return (
     <RevealItem className="overflow-hidden rounded-2xl border border-ak-ink/[0.07] bg-white shadow-[0_20px_50px_-25px_rgba(28,42,57,0.15)]">
-      {/* orange/navy top accent bar, matching the reference's coloured edge per card */}
-      <span className={`block h-1.5 w-20 rounded-br-full ${isOrange ? "bg-ak-orange2" : "bg-ak-navy"}`} />
+      {/* orange/blue top accent bar, matching the reference's coloured edge per card */}
+      <span className={`block h-1.5 w-20 rounded-br-full ${isOrange ? "bg-ak-orange2" : "bg-ak-blue2"}`} />
 
       {/* light header row -- icon badge, tag chip, title + underline */}
-      <div className="flex items-center gap-3 px-5 pb-3 pt-4">
+      <div className="flex items-center gap-3 px-5 pb-2.5 pt-4">
         <span
           className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full ${
-            isOrange ? "bg-ak-orange2/10 text-ak-orange2" : "bg-ak-navy/10 text-ak-navy"
+            isOrange ? "bg-ak-orange2/10 text-ak-orange2" : "bg-ak-blue2/10 text-ak-blue2"
           }`}
         >
           <Icon name={c.icon} className="h-[22px] w-[22px]" strokeWidth={1.8} />
         </span>
         <span
           className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md font-display text-[11px] font-extrabold text-white ${
-            isOrange ? "bg-ak-orange2" : "bg-ak-navy"
+            isOrange ? "bg-ak-orange2" : "bg-ak-blue2"
           }`}
         >
           {c.tag}
         </span>
         <div>
           <h3 className="font-display text-[15px] font-bold leading-tight text-ak-ink">{c.title}</h3>
-          <div className={`mt-1 h-[2px] w-8 rounded-full ${isOrange ? "bg-ak-orange2" : "bg-ak-navy"}`} />
+          <div className={`mt-1 h-[2px] w-8 rounded-full ${isOrange ? "bg-ak-orange2" : "bg-ak-blue2"}`} />
         </div>
       </div>
 
       <ul className="divide-y divide-ak-ink/[0.06]">
         {c.rows.map((r) => (
-          <li key={r.label} className="flex items-center gap-3 px-5 py-2.5">
+          <li key={r.label} className="flex items-center gap-3 px-5 py-2">
             <span
               className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full ${
-                isOrange ? "bg-ak-orange2/10 text-ak-orange2" : "bg-ak-navy/10 text-ak-navy"
+                isOrange ? "bg-ak-orange2/10 text-ak-orange2" : "bg-ak-blue2/10 text-ak-blue2"
               }`}
             >
               <Icon name={r.icon} className="h-4 w-4" strokeWidth={1.9} />
             </span>
             <span className="flex-1 text-[13px] leading-snug text-ak-ink/65">{r.label}</span>
-            <span className={`flex-shrink-0 font-display text-sm font-bold ${isOrange ? "text-ak-orange2" : "text-ak-navy"}`}>
+            <span className={`flex-shrink-0 font-display text-sm font-bold ${isOrange ? "text-ak-orange2" : "text-ak-blue2"}`}>
               {r.value}
             </span>
           </li>
@@ -80,7 +80,7 @@ export const RegSvcPenalties = () => (
   <section id="svc-penalties" data-testid="reg-svc-penalties-section" className="bg-ak-mist/40 py-14 md:py-20">
     <Container>
       {/* TOP ROW -- heading/text left, photo right, per reference */}
-      <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10">
+      <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
         <div>
           <Reveal>
             <div className="ak-kicker mb-5 inline-flex items-center gap-1.5">
@@ -119,7 +119,7 @@ export const RegSvcPenalties = () => (
             </span>
           </div>
 
-          <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(28,42,57,0.2)] lg:aspect-auto lg:h-full">
+          <div className="aspect-[8/5] w-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(28,42,57,0.2)] lg:aspect-auto lg:h-full">
             <img src={penalties.image} alt={penalties.imageAlt} className="h-full w-full object-cover" />
           </div>
         </Reveal>

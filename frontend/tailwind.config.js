@@ -45,6 +45,11 @@ module.exports = {
           // already confirmed by the client and changing it globally
           // would shift colours they haven't asked to revisit.
           orange2: '#FF6B05',
+          // sampled from the ESI card's solid tag-chip pixels in the
+          // same reference image (averaged to #082C6F) -- a genuine
+          // navy-BLUE, distinct from the much darker/charcoal ak.navy
+          // already used elsewhere on the page.
+          blue2: '#0C2F73',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
