@@ -249,14 +249,27 @@ const CenterHub = () => (
       </span>
     ))}
 
-    {/* inner white circle with the logo, centered within the ring */}
+    {/* inner white circle with the logo, centered within the ring.
+        Positioned via explicit left/top math (not the usual
+        left-1/2+translate-x/y-1/2 trick) because Framer Motion's animated
+        `scale` transform on this same element was conflicting with
+        Tailwind's translate-based centering -- both write to the CSS
+        transform property, and the animation was clobbering the static
+        centering offset once it took over post-mount, causing the
+        visible drift. */}
     <motion.div
       initial={{ opacity: 0, scale: 0.85 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
-      style={{ width: HUB_SIZE, height: HUB_SIZE }}
-      className="absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-2 shadow-[0_20px_50px_-18px_rgba(28,42,57,0.3)]"
+      style={{
+        position: "absolute",
+        left: (RING_SIZE - HUB_SIZE) / 2,
+        top: (RING_SIZE - HUB_SIZE) / 2,
+        width: HUB_SIZE,
+        height: HUB_SIZE,
+      }}
+      className="z-10 flex items-center justify-center rounded-full bg-white p-2 shadow-[0_20px_50px_-18px_rgba(28,42,57,0.3)]"
     >
       <img src="/assets/aksharaa-logo.png" alt="" className="h-full w-full select-none object-contain" draggable="false" />
     </motion.div>
