@@ -45,6 +45,7 @@ const EASE = [0.22, 1, 0.36, 1];
 const CARD_W = 300;
 const CARD_H = 200;
 const HUB_SIZE = 112;
+const RING_SIZE = HUB_SIZE + 24; // outer dotted ring, larger than the white circle so the 4 arrowheads have room to sit on its boundary
 
 // measured center-offsets from the hub, in degrees+radius converted to
 // (x, y) -- see header comment for the source angle/radius pairs. Y
@@ -147,9 +148,10 @@ const Spoke = ({ i, delay }) => {
   const angle = Math.atan2(offset.y, offset.x);
   const dist = Math.hypot(offset.x, offset.y);
 
-  // start at the hub's edge (HUB_SIZE/2 out from center along this angle),
-  // end exactly at the card's near edge via true rectangle intersection
-  const startR = HUB_SIZE / 2;
+  // start at the ring's edge (RING_SIZE/2 out from center along this
+  // angle, right where the arrowhead sits), end exactly at the card's
+  // near edge via true rectangle intersection
+  const startR = RING_SIZE / 2;
   const endR = dist - rectEdgeDistance(angle, CARD_W / 2, CARD_H / 2);
 
   const x1 = hubCenter.x + Math.cos(angle) * startR;
@@ -216,22 +218,49 @@ const RowArrow = ({ i1, i2, direction, delay }) => {
 };
 
 const CenterHub = () => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.85 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, ease: EASE }}
-    style={{
-      position: "absolute",
-      left: hubCenter.x,
-      top: hubCenter.y,
-      width: HUB_SIZE,
-      height: HUB_SIZE,
-    }}
-    className="z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-dotted border-ak-orange bg-white p-1.5 shadow-[0_20px_50px_-18px_rgba(28,42,57,0.3)]"
+  <div
+    style={{ position: "absolute", left: hubCenter.x, top: hubCenter.y, width: RING_SIZE, height: RING_SIZE }}
+    className="z-20 -translate-x-1/2 -translate-y-1/2"
   >
-    <img src="/assets/aksharaa-logo.png" alt="" className="h-full w-full select-none object-contain" draggable="false" />
-  </motion.div>
+    {/* outer dotted ring -- separate layer from the white circle, sized
+        to leave room for the 4 arrowheads to sit on its boundary */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: EASE }}
+      className="absolute inset-0 rounded-full border-[3px] border-dotted border-ak-orange"
+    />
+
+    {/* 4 arrowheads sitting exactly on the ring's cardinal points,
+        pointing outward -- the detail the reference has that a plain
+        spoke line doesn't capture */}
+    {[
+      { pos: "left-1/2 top-0 -translate-x-1/2 -translate-y-1/2", rot: "-rotate-90" },
+      { pos: "left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2", rot: "rotate-90" },
+      { pos: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2", rot: "rotate-180" },
+      { pos: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2", rot: "" },
+    ].map(({ pos, rot }, idx) => (
+      <span
+        key={idx}
+        className={`absolute ${pos} flex h-4 w-4 items-center justify-center rounded-full bg-white text-ak-orange ${rot}`}
+      >
+        <Icon name="arrowRight" className="h-3 w-3" strokeWidth={3} />
+      </span>
+    ))}
+
+    {/* inner white circle with the logo, centered within the ring */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+      style={{ width: HUB_SIZE, height: HUB_SIZE }}
+      className="absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-2 shadow-[0_20px_50px_-18px_rgba(28,42,57,0.3)]"
+    >
+      <img src="/assets/aksharaa-logo.png" alt="" className="h-full w-full select-none object-contain" draggable="false" />
+    </motion.div>
+  </div>
 );
 
 export const RegSvcProcess = () => (
