@@ -21,25 +21,36 @@ export const hero = {
   ],
   chips: ["Salary computation", "PF · ESI · PT · TDS", "Payslip generation", "Multi-state coverage", "Zero-error guarantee"],
   dashboard: {
-    title: "AKSHARAA PAYROLL PORTAL",
-    month: "February 2026 Payroll",
-    status: "Filed",
-    stats: [
-      { value: "47", label: "Employees processed" },
-      { value: "15th", label: "Filed on deadline" },
-      { value: "₹0", label: "Penalties this year" },
+    title: "Aksharaa Payroll Dashboard",
+    monthLabel: "February 2026",
+    statTiles: [
+      { icon: "users", value: "500+", label: "Establishments served" },
+      { icon: "target", value: "0", label: "Penalty incidents" },
+      { icon: "building", value: "15+", label: "Years payroll expertise" },
+      { icon: "headset", value: "Pan-India", label: "Multi-state coverage" },
     ],
-    payslipLabel: "Sample Payslip Computation",
-    rows: [
-      { label: "Basic + DA", value: "₹ 28,000" },
-      { label: "HRA + Allowances", value: "₹ 14,500" },
-      { label: "PF Deduction (12%)", value: "− ₹ 1,800", deduction: true },
-      { label: "ESI (0.75%)", value: "− ₹ 319", deduction: true },
-      { label: "Professional Tax", value: "− ₹ 200", deduction: true },
-    ],
-    netLabel: "Net Take-Home",
-    netValue: "₹ 40,181",
-    footer: "Generated & filed by Aksharaa · 14 Feb 2026",
+    chart: {
+      title: "Payroll Summary",
+      months: ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"],
+      // illustrative trend only — establishments onboarded across the cycle, not client-specific payroll figures
+      values: [320, 365, 350, 410, 470, 500],
+    },
+    compliance: {
+      title: "Statutory Compliance",
+      items: [
+        { label: "PF Compliance", status: "On Track" },
+        { label: "ESI Compliance", status: "On Track" },
+        { label: "TDS Compliance", status: "On Track" },
+        { label: "PT Compliance", status: "On Track" },
+      ],
+    },
+    footer: {
+      nextPayrollLabel: "Next Payroll Date",
+      nextPayrollValue: "28 Feb 2026",
+      upcomingFilingLabel: "Upcoming Filing",
+      upcomingFilingValue: "PF Return · Mar 2026",
+      cta: { label: "View Calendar", href: "/compliance-calendar" },
+    },
   },
   stats: [
     { value: 500, suffix: "+", label: "Establishments served" },

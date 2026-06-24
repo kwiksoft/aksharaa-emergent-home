@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts";
 import { Container } from "../../common/Container";
 import { AkButton } from "../../common/AkButton";
 import { Icon } from "../../../lib/icons";
@@ -7,10 +8,10 @@ import { hero } from "../../../data/svc-payroll-processing";
 const EASE = [0.22, 1, 0.36, 1];
 
 /**
- * Payroll Processing hero — "live payslip dashboard" motif, distinct from
- * Registrations' tracker card and PF Compliance's dark/statutory hero.
- * Mac-window styled card with a real computed payslip breakdown that
- * builds line-by-line, "LIVE" badge pulsing.
+ * Payroll Processing hero — multi-panel "Aksharaa Payroll Dashboard" motif,
+ * distinct from Registrations' tracker card and PF Compliance's dark/statutory
+ * hero. Stat tiles + trend chart + statutory compliance status + footer strip,
+ * rebuilt per client reference (real content preserved, layout follows reference).
  */
 export const PayrollHero = () => (
   <section id="svc-hero" data-testid="payroll-hero-section" className="relative overflow-hidden bg-white pt-10 pb-0">
@@ -18,7 +19,7 @@ export const PayrollHero = () => (
       ₹
     </span>
     <Container className="relative z-10">
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-8">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
         <div>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE }} className="ak-kicker mb-5">
             {hero.eyebrow}
@@ -64,64 +65,125 @@ export const PayrollHero = () => (
           </motion.div>
         </div>
 
-        {/* RIGHT — Mac-window payroll dashboard */}
+        {/* RIGHT — Aksharaa Payroll Dashboard (multi-panel) */}
         <motion.div
-          initial={{ opacity: 0, x: 36, rotate: 2 }}
-          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          initial={{ opacity: 0, x: 36 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
         >
-          <div data-testid="payroll-dashboard-card" className="overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white shadow-[0_40px_80px_-30px_rgba(28,42,57,0.35)]">
-            <div className="flex items-center justify-between bg-ak-ink px-4 py-3">
-              <div className="flex items-center gap-2.5">
-                <div className="flex gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-wide text-white/45">{hero.dashboard.title}</span>
+          <div
+            data-testid="payroll-dashboard-card"
+            className="overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white shadow-[0_40px_80px_-30px_rgba(28,42,57,0.35)]"
+          >
+            {/* header bar */}
+            <div className="flex items-center justify-between bg-ak-ink px-5 py-4">
+              <span className="text-sm font-bold text-white">{hero.dashboard.title}</span>
+              <div className="flex gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
               </div>
-              <span className="flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[9px] font-bold text-emerald-400">
-                <motion.span animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.6, repeat: Infinity }} className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                LIVE
-              </span>
             </div>
 
             <div className="p-5">
-              <div className="flex items-center justify-between">
-                <span className="text-[13px] font-bold text-ak-ink">{hero.dashboard.month}</span>
-                <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold text-emerald-600">{hero.dashboard.status}</span>
+              {/* month selector pill */}
+              <div className="flex items-center justify-end">
+                <span className="flex items-center gap-1.5 rounded-full border border-ak-ink/10 px-3 py-1.5 text-[11px] font-semibold text-ak-ink/70">
+                  <Icon name="calendar" className="h-3.5 w-3.5 text-ak-ink/50" strokeWidth={2} />
+                  {hero.dashboard.monthLabel}
+                </span>
               </div>
 
-              <div className="mt-4 grid grid-cols-3 gap-3 border-b border-ak-ink/[0.07] pb-4">
-                {hero.dashboard.stats.map((s) => (
-                  <div key={s.label}>
-                    <div className="font-display text-lg font-extrabold text-ak-ink">{s.value}</div>
-                    <div className="mt-0.5 text-[9px] leading-tight text-ak-ink/40">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="ak-mono-label mt-4 mb-2">{hero.dashboard.payslipLabel}</div>
-              <div className="space-y-1.5">
-                {hero.dashboard.rows.map((r, i) => (
+              {/* stat tiles */}
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {hero.dashboard.statTiles.map((t, i) => (
                   <motion.div
-                    key={r.label}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                    className="flex items-center justify-between text-[12px]"
+                    key={t.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.5 + i * 0.06 }}
+                    className="rounded-xl border border-ak-ink/[0.07] bg-ak-mist/60 p-3"
                   >
-                    <span className="text-ak-ink/55">{r.label}</span>
-                    <span className={r.deduction ? "font-medium text-red-500" : "font-medium text-ak-ink/75"}>{r.value}</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-ak-orange/10">
+                      <Icon name={t.icon} className="h-3.5 w-3.5 text-ak-orange" strokeWidth={2.2} />
+                    </span>
+                    <div className="mt-2 font-display text-base font-extrabold text-ak-ink">{t.value}</div>
+                    <div className="mt-0.5 text-[10px] leading-tight text-ak-ink/45">{t.label}</div>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="mt-3 flex items-center justify-between rounded-lg bg-ak-ink px-3 py-2.5">
-                <span className="text-[11px] font-bold text-white/70">{hero.dashboard.netLabel}</span>
-                <span className="font-display text-sm font-extrabold text-ak-orange">{hero.dashboard.netValue}</span>
+              {/* chart + compliance panel */}
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-[1.3fr_1fr]">
+                <div className="rounded-xl border border-ak-ink/[0.07] p-4">
+                  <div className="text-[11px] font-bold text-ak-ink/70">{hero.dashboard.chart.title}</div>
+                  <div className="mt-2 h-[120px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart
+                        data={hero.dashboard.chart.months.map((m, i) => ({
+                          month: m,
+                          value: hero.dashboard.chart.values[i],
+                        }))}
+                        margin={{ top: 4, right: 8, left: 0, bottom: 0 }}
+                      >
+                        <defs>
+                          <linearGradient id="payrollAreaFill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#F28C28" stopOpacity={0.35} />
+                            <stop offset="100%" stopColor="#F28C28" stopOpacity={0.02} />
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid vertical={false} stroke="#1C2A39" strokeOpacity={0.06} />
+                        <XAxis dataKey="month" tick={{ fontSize: 10, fill: "#1C2A3970" }} axisLine={false} tickLine={false} />
+                        <YAxis tick={{ fontSize: 10, fill: "#1C2A3970" }} axisLine={false} tickLine={false} width={40} />
+                        <Tooltip
+                          contentStyle={{ fontSize: 11, borderRadius: 8, border: "1px solid #1C2A3915" }}
+                          labelStyle={{ fontWeight: 600 }}
+                        />
+                        <Area type="monotone" dataKey="value" stroke="#F28C28" strokeWidth={2} fill="url(#payrollAreaFill)" dot={{ r: 2.5, fill: "#F28C28", strokeWidth: 0 }} />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-ak-ink/[0.07] p-4">
+                  <div className="text-[11px] font-bold text-ak-ink/70">{hero.dashboard.compliance.title}</div>
+                  <div className="mt-3 space-y-2.5">
+                    {hero.dashboard.compliance.items.map((c) => (
+                      <div key={c.label} className="flex items-center justify-between">
+                        <span className="text-[11px] text-ak-ink/60">{c.label}</span>
+                        <span className="text-[10px] font-bold text-emerald-600">{c.status}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="mt-2 text-center text-[10px] text-ak-ink/35">{hero.dashboard.footer}</div>
+
+              {/* footer strip */}
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-ak-ink/[0.07] bg-ak-mist/60 px-4 py-3">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <Icon name="calendar" className="h-4 w-4 text-ak-ink/40" strokeWidth={2} />
+                    <div>
+                      <div className="text-[9px] uppercase tracking-wide text-ak-ink/40">{hero.dashboard.footer.nextPayrollLabel}</div>
+                      <div className="text-[11px] font-bold text-ak-ink">{hero.dashboard.footer.nextPayrollValue}</div>
+                    </div>
+                  </div>
+                  <div className="hidden items-center gap-2 sm:flex">
+                    <Icon name="fileText" className="h-4 w-4 text-ak-ink/40" strokeWidth={2} />
+                    <div>
+                      <div className="text-[9px] uppercase tracking-wide text-ak-ink/40">{hero.dashboard.footer.upcomingFilingLabel}</div>
+                      <div className="text-[11px] font-bold text-ak-ink">{hero.dashboard.footer.upcomingFilingValue}</div>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href={hero.dashboard.footer.cta.href}
+                  className="flex items-center gap-1.5 rounded-full border border-ak-orange/30 px-3 py-1.5 text-[11px] font-bold text-ak-orange transition-colors hover:bg-ak-orange hover:text-white"
+                >
+                  <Icon name="calendar" className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  {hero.dashboard.footer.cta.label}
+                </a>
+              </div>
             </div>
           </div>
         </motion.div>
