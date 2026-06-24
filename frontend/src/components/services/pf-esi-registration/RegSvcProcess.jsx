@@ -39,9 +39,9 @@ const EASE = [0.22, 1, 0.36, 1];
  */
 const CARD_W = 380;
 const CARD_H = 200;
-const COL_GAP = 130;
-const ROW_GAP = 70;
-const HUB_SIZE = 110;
+const COL_GAP = 68;
+const ROW_GAP = 20;
+const HUB_SIZE = 107;
 
 const CANVAS_W = CARD_W * 2 + COL_GAP;
 const CANVAS_H = CARD_H * 3 + ROW_GAP * 2;
@@ -121,8 +121,11 @@ const CenterHub = () => {
   const card04Left = colX(1);
   const hubLeft = hubCenter.x - HUB_SIZE / 2;
   const hubRight = hubCenter.x + HUB_SIZE / 2;
-  const leftLen = hubLeft - card03Right;
-  const rightLen = card04Left - hubRight;
+  // hub is intentionally larger than COL_GAP per the reference -- it overlaps
+  // the inner edges of cards 03/04 rather than floating in a clear gap with
+  // visible side spokes. Clamp to 0 rather than render a negative width.
+  const leftLen = Math.max(0, hubLeft - card03Right);
+  const rightLen = Math.max(0, card04Left - hubRight);
 
   return (
     <div
