@@ -40,7 +40,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Pending review |
+| 1 | Hero | Rebuilt as multi-panel dashboard (stat tiles + trend chart + compliance status + footer strip) per client reference, commit 168d2bb. Awaiting re-confirmation. |
 | 2 | Overview | Pending review |
 | 3 | Who Needs This | Pending review |
 | 4 | Obligations | Pending review |
