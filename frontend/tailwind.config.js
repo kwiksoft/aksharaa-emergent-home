@@ -37,6 +37,14 @@ module.exports = {
           mist: '#F8F9FA',
           orange: '#F28C28',
           'orange-dark': '#C66A18',
+          // sampled directly from the Penalties-section reference image
+          // (multiple solid-fill points averaged to #FE6F06, rounded to
+          // this clean hex) -- a more saturated/redder orange than the
+          // original ak.orange. Kept as a separate token rather than
+          // overwriting ak.orange, since that's used across sections
+          // already confirmed by the client and changing it globally
+          // would shift colours they haven't asked to revisit.
+          orange2: '#FF6B05',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
