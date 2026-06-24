@@ -83,9 +83,11 @@ export const RegSvcPenalties = () => (
       <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-10">
         <div>
           <Reveal>
-            <div className="ak-kicker mb-5 inline-flex items-center gap-1.5">
-              <Icon name="alertTriangle" className="h-3.5 w-3.5" strokeWidth={2.2} />
-              {penalties.kicker}
+            <div className="mb-5 inline-flex items-center gap-2.5">
+              <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-ak-orange2/10 text-ak-orange2">
+                <Icon name="alertTriangle" className="h-3.5 w-3.5" strokeWidth={2.2} />
+              </span>
+              <span className="ak-mono-label text-ak-orange2">{penalties.kicker}</span>
             </div>
             <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">
               Consequences of <span className="text-ak-orange2">Not</span> Registering
@@ -99,27 +101,30 @@ export const RegSvcPenalties = () => (
           </Reveal>
         </div>
 
-        {/* photo, with the reference's decorative dot trail + floating
-            shield-icon badge sitting beside it. h-full makes it match the
-            left column's natural height (grid is items-stretch) on
-            desktop; mobile falls back to a sane fixed aspect ratio since
-            the columns stack and there's no shared height to match. */}
+        {/* photo, with the reference's decorative circle/dot trail + a
+            floating shield badge sitting in the gap between text and
+            photo (not overlapping the photo itself), and only the left
+            corners rounded to match the reference's bleed-to-the-edge
+            treatment on the right */}
         <Reveal delay={0.2} className="relative mx-auto flex w-full max-w-lg lg:max-w-none">
-          {/* dot trail -- a few scattered dots between the text column and the photo */}
-          <span aria-hidden className="absolute -left-10 top-6 hidden h-2 w-2 rounded-full bg-ak-ink/20 lg:block" />
-          <span aria-hidden className="absolute -left-16 top-24 hidden h-1.5 w-1.5 rounded-full bg-ak-orange2/40 lg:block" />
+          {/* large faint circle outline + a couple of small dots, sitting
+              in the gap between the text column and the photo */}
+          <span aria-hidden className="absolute -left-16 top-1/2 hidden h-44 w-44 -translate-y-1/2 rounded-full border border-ak-ink/10 lg:block" />
+          <span aria-hidden className="absolute -left-6 top-10 hidden h-2 w-2 rounded-full bg-ak-ink/20 lg:block" />
+          <span aria-hidden className="absolute -left-12 top-1/2 hidden h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-ak-orange2/40 lg:block" />
 
-          {/* floating circular shield badge, overlapping the photo's bottom-left */}
+          {/* floating circular shield badge, vertically centered in the
+              gap between the text column and the photo */}
           <div
             aria-hidden
-            className="absolute -bottom-6 -left-6 z-10 hidden h-20 w-20 items-center justify-center rounded-full bg-ak-orange2/10 lg:flex"
+            className="absolute -left-9 top-1/2 z-10 hidden h-20 w-20 -translate-y-1/2 items-center justify-center rounded-full bg-ak-orange2/10 lg:flex"
           >
             <span className="flex h-14 w-14 items-center justify-center rounded-full bg-ak-orange2 text-white shadow-[0_10px_24px_-6px_rgba(255,107,5,0.5)]">
               <Icon name="shield" className="h-6 w-6" strokeWidth={1.8} />
             </span>
           </div>
 
-          <div className="aspect-[8/5] w-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(28,42,57,0.2)] lg:aspect-auto lg:h-full">
+          <div className="aspect-[8/5] w-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(28,42,57,0.2)] lg:aspect-auto lg:h-full lg:rounded-l-2xl lg:rounded-r-none">
             <img src={penalties.image} alt={penalties.imageAlt} className="h-full w-full object-cover" />
           </div>
         </Reveal>
