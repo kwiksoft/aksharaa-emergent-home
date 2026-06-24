@@ -49,12 +49,12 @@ const HUB_SIZE = 89;
 // measured center-offsets from the hub, in degrees+radius converted to
 // (x, y) -- see header comment for the source angle/radius pairs
 const OFFSETS = {
-  0: { x: -172, y: -150 }, // card 01
-  1: { x: 172, y: -150 },  // card 02
+  0: { x: -172, y: -194 }, // card 01
+  1: { x: 172, y: -194 },  // card 02
   2: { x: -275, y: 0 },    // card 03
   3: { x: 275, y: 0 },     // card 04
-  4: { x: -182, y: 158 },  // card 05
-  5: { x: 182, y: 158 },   // card 06
+  4: { x: -182, y: 194 },  // card 05
+  5: { x: 182, y: 194 },   // card 06
 };
 
 // canvas bounds derived from the offsets + card size, with margin so no
@@ -148,6 +148,41 @@ const Spoke = ({ i, delay }) => {
   );
 };
 
+/** Small dashed connector-with-arrow between two specific cards (used for
+ *  the 01<->02 and 05<->06 pairs) -- independent of the hub spokes, this
+ *  is purely a decorative link between adjacent same-row cards, matching
+ *  the reference's chevron-arrow detail that the radial rebuild had
+ *  dropped entirely. */
+const RowArrow = ({ i1, i2, direction, delay }) => {
+  const o1 = OFFSETS[i1];
+  const o2 = OFFSETS[i2];
+  const midX = hubCenter.x + (o1.x + o2.x) / 2;
+  const midY = hubCenter.y + (o1.y + o2.y) / 2;
+  const gap = Math.abs(o2.x - o1.x) - CARD_W; // visible horizontal gap between the two cards
+  const w = Math.max(gap, 32);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay, ease: EASE }}
+      style={{ position: "absolute", left: midX, top: midY, width: w, height: 24 }}
+      className="z-30 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+    >
+      <span className="h-px flex-1 border-t-2 border-dashed border-ak-orange/50" />
+      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-2 border-ak-orange/50 bg-white text-ak-orange">
+        <Icon
+          name={direction === "right" ? "arrowRight" : "arrowUpRight"}
+          className={`h-3 w-3 ${direction === "left" ? "rotate-180" : ""}`}
+          strokeWidth={2.4}
+        />
+      </span>
+      <span className="h-px flex-1 border-t-2 border-dashed border-ak-orange/50" />
+    </motion.div>
+  );
+};
+
 const CenterHub = () => (
   <motion.div
     initial={{ opacity: 0, scale: 0.85 }}
@@ -161,24 +196,24 @@ const CenterHub = () => (
       width: HUB_SIZE,
       height: HUB_SIZE,
     }}
-    className="z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-dashed border-ak-orange/40 bg-white p-2.5 shadow-[0_20px_50px_-18px_rgba(28,42,57,0.2)]"
+    className="z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-dashed border-ak-orange/70 bg-white p-2.5 shadow-[0_0_0_10px_rgba(242,140,40,0.08),0_20px_50px_-18px_rgba(28,42,57,0.25)]"
   >
     <img src="/assets/aksharaa-logo.png" alt="" className="h-full w-full select-none object-contain" draggable="false" />
   </motion.div>
 );
 
 export const RegSvcProcess = () => (
-  <section id="svc-process" data-testid="reg-svc-process-section" className="relative overflow-hidden bg-zinc-100 py-14 md:py-20">
-    <div
-      aria-hidden
-      className="pointer-events-none absolute bottom-0 left-0 h-56 w-56 opacity-[0.08]"
-      style={{ backgroundImage: "radial-gradient(circle, #F28C28 1.4px, transparent 1.8px)", backgroundSize: "14px 14px" }}
-    />
-    <div
-      aria-hidden
-      className="pointer-events-none absolute right-0 top-0 h-56 w-56 opacity-[0.08]"
-      style={{ backgroundImage: "radial-gradient(circle, #F28C28 1.4px, transparent 1.8px)", backgroundSize: "14px 14px" }}
-    />
+  <section
+    id="svc-process"
+    data-testid="reg-svc-process-section"
+    className="relative overflow-hidden bg-zinc-100 py-14 md:py-20"
+    style={{
+      backgroundImage: "url(/assets/sections/process-bg.png)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
 
     <Container className="relative">
       {/* Section intro */}
@@ -202,6 +237,9 @@ export const RegSvcProcess = () => (
         {[0, 1, 2, 3, 4, 5].map((i) => (
           <Spoke key={`spoke-${i}`} i={i} delay={0.3 + i * 0.04} />
         ))}
+
+        <RowArrow i1={0} i2={1} direction="right" delay={0.5} />
+        <RowArrow i1={4} i2={5} direction="left" delay={0.6} />
 
         {[0, 1, 2, 3, 4, 5].map((i) => {
           const { x, y } = cardPos(i);
