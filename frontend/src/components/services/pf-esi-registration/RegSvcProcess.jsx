@@ -42,19 +42,22 @@ const EASE = [0.22, 1, 0.36, 1];
  * the same card style -- the radial geometry doesn't translate below
  * 2-column widths.
  */
-const CARD_W = 292;
-const CARD_H = 164;
+const CARD_W = 300;
+const CARD_H = 200;
 const HUB_SIZE = 112;
 
 // measured center-offsets from the hub, in degrees+radius converted to
-// (x, y) -- see header comment for the source angle/radius pairs
+// (x, y) -- see header comment for the source angle/radius pairs. Y
+// values recomputed to maintain a consistent 61px gap between rows now
+// that CARD_H increased (200, up from 164) to fit full description text
+// without truncation -- see commit history for the line-clamp removal.
 const OFFSETS = {
-  0: { x: -172, y: -225 }, // card 01
-  1: { x: 172, y: -225 },  // card 02
+  0: { x: -172, y: -261 }, // card 01
+  1: { x: 172, y: -261 },  // card 02
   2: { x: -275, y: 0 },    // card 03
   3: { x: 275, y: 0 },     // card 04
-  4: { x: -182, y: 225 },  // card 05
-  5: { x: 182, y: 225 },   // card 06
+  4: { x: -182, y: 261 },  // card 05
+  5: { x: 182, y: 261 },   // card 06
 };
 
 // canvas bounds derived from the offsets + card size, with margin so no
@@ -117,9 +120,24 @@ const ProcessCard = ({ s, x, y, delay }) => (
       </div>
     </div>
     <div className="mt-2 h-px w-8 bg-ak-orange/50" />
-    <p className="mt-2 line-clamp-3 text-[11.5px] leading-snug text-ak-ink/55">{s.desc}</p>
+    <p className="mt-2 text-[11.5px] leading-snug text-ak-ink/55">{s.desc}</p>
   </motion.div>
 );
+
+/** Exact distance from the origin, along a ray at the given angle, to
+ *  where it exits an axis-aligned rectangle of half-width hw and
+ *  half-height hh centered at the origin. Replaces an earlier flat
+ *  approximation (min(CARD_W,CARD_H)/2.6) that produced inconsistent
+ *  results across angles -- diagonal cards and horizontal cards have
+ *  genuinely different true edge distances, not a fixed fraction of the
+ *  card's smaller dimension. */
+const rectEdgeDistance = (angleRad, hw, hh) => {
+  const cos = Math.cos(angleRad);
+  const sin = Math.sin(angleRad);
+  const tx = Math.abs(cos) > 1e-6 ? hw / Math.abs(cos) : Infinity;
+  const ty = Math.abs(sin) > 1e-6 ? hh / Math.abs(sin) : Infinity;
+  return Math.min(tx, ty);
+};
 
 /** Straight dashed spoke from the hub's edge to a specific card's inner
  *  edge, computed individually per card from its measured angle/radius
@@ -130,12 +148,9 @@ const Spoke = ({ i, delay }) => {
   const dist = Math.hypot(offset.x, offset.y);
 
   // start at the hub's edge (HUB_SIZE/2 out from center along this angle),
-  // end at the card's near edge (approximate as the offset distance minus
-  // half the card's "radius" along this angle -- using a simple inset so
-  // the spoke visually touches the card without overlapping its rounded
-  // corner awkwardly)
+  // end exactly at the card's near edge via true rectangle intersection
   const startR = HUB_SIZE / 2;
-  const endR = dist - Math.min(CARD_W, CARD_H) / 2.6;
+  const endR = dist - rectEdgeDistance(angle, CARD_W / 2, CARD_H / 2);
 
   const x1 = hubCenter.x + Math.cos(angle) * startR;
   const y1 = hubCenter.y + Math.sin(angle) * startR;
