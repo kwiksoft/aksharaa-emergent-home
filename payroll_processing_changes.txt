@@ -46,7 +46,7 @@ SECTION STATUS (update as we go)
 | 4 | Obligations | Pending review |
 | 5 | Scope | Pending review |
 | 6 | Process | Pending review |
-| 7 | Documents | Pending review |
+| 7 | Documents | Rebuilt as numbered icon-card grid + security intro card + help banner, per client reference. Commit d40e720. Awaiting confirmation. |
 | 8 | FAQs | Pending review |
 | 9 | Related Services | Pending review |
 | 10 | Final CTA | Pending review |
