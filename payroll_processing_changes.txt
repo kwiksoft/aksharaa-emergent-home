@@ -42,7 +42,7 @@ SECTION STATUS (update as we go)
 |---|---------|--------|
 | 1 | Hero | Rebuilt as multi-panel dashboard (stat tiles + trend chart + compliance status + footer strip) per client reference, commit 168d2bb. Awaiting re-confirmation. |
 | 2 | Overview | Pending review |
-| 3 | Who Needs This | Pending review |
+| 3 | Who Needs This | Rebuilt as numbered/connector persona cards (featured middle card, checklists, callouts) + new bottom banner, per client reference. Manufacturing icon is a substitute (factory icon), flagged as known gap. Commit e2ff105. Awaiting confirmation. |
 | 4 | Obligations | Pending review |
 | 5 | Scope | Pending review |
 | 6 | Process | Pending review |
