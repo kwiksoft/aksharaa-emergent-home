@@ -166,7 +166,7 @@ export const PayrollHero = () => (
               initial={{ opacity: 0, x: 160 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute -bottom-3 right-0 z-20 hidden w-[60%] sm:block lg:right-0 lg:w-[62%] xl:right-0 xl:w-[64%]"
+              className="pointer-events-none absolute -bottom-14 right-0 z-20 hidden w-[55%] sm:block lg:right-0 lg:w-[57%] xl:right-0 xl:w-[58%]"
             >
               <img src={hero.person.src} alt={hero.person.alt} className="h-auto w-full drop-shadow-[0_30px_40px_rgba(28,42,57,0.25)]" />
             </motion.div>
