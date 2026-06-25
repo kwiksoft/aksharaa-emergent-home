@@ -91,13 +91,46 @@ export const overview = {
 
 export const who = {
   kicker: "Who Needs This",
-  heading: "Who Should Outsource Payroll?",
+  heading: ["Who Should Outsource", "Payroll?"],
   sub: "Payroll outsourcing works best when the cost of errors and compliance gaps exceeds the cost of the service — which for most businesses it already does.",
   personas: [
-    { icon: "building", tag: "SMEs & Startups", title: "Growing Businesses", desc: "No dedicated HR function yet. Headcount rising. Compliance complexity growing faster than your team can handle.", points: ["10–100 employees, single location", "Founder or admin currently handling payroll", "Scaling fast without adding headcount"] },
-    { icon: "map", tag: "Multi-State Operations", title: "Multi-Location Companies", desc: "Operations across Tamil Nadu, Maharashtra, Karnataka — each with different PT slabs, Shops Act rules, and compliance calendars.", points: ["100–500+ employees, 2+ states", "Different PT rates across branches", "Need consolidated reporting centrally"] },
-    { icon: "factory", tag: "Contract-Heavy Industries", title: "Manufacturing & Logistics", desc: "High contract worker ratio requiring separate payroll tracks, CLRA compliance, and regular EPFO/ESIC inspection readiness.", points: ["Significant contract workforce", "CLRA-governed establishment", "Regular EPFO/ESIC inspections"] },
+    {
+      num: "01",
+      icon: "rocket",
+      title: "Growing Businesses",
+      range: "10 – 100 Employees",
+      points: ["Founder or admin handling payroll", "No dedicated HR or payroll team", "Rapid employee growth", "Compliance becoming difficult"],
+      callout: { icon: "checkCircle", text: "Focus on growth, we'll handle payroll." },
+    },
+    {
+      num: "02",
+      icon: "building",
+      title: "Multi-State Operations",
+      range: "100 – 500+ Employees",
+      points: ["Operations across multiple states", "Different PT regulations & tax rules", "Multiple branches & cost centers", "Need consolidated payroll reporting"],
+      callout: { icon: "globe", text: "One payroll process. All states covered." },
+      featured: true,
+    },
+    {
+      num: "03",
+      icon: "factory",
+      title: "Manufacturing & Contract Workforce",
+      range: "50 – 1000+ Employees",
+      points: ["High contract worker ratio", "CLRA, EPFO & ESIC compliance", "Complex payroll components", "Frequent audits & inspections"],
+      callout: { icon: "shield", text: "Stay compliant. Avoid penalties." },
+    },
   ],
+  banner: {
+    icon: "users",
+    heading: "Not sure if you need this?",
+    sub: "Our payroll experts will assess your needs and guide you.",
+    benefits: [
+      { icon: "shield", text: "Reduce Compliance Risks" },
+      { icon: "clock", text: "Save Time & Resources" },
+      { icon: "trendingUp", text: "Improve Accuracy & Visibility" },
+    ],
+    cta: { label: "Talk to Payroll Expert", href: "tel:+919840276677" },
+  },
 };
 
 export const obligations = {
