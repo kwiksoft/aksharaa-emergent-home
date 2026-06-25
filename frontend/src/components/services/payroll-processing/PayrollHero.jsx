@@ -159,42 +159,16 @@ export const PayrollHero = () => (
               </div>
             </motion.div>
 
-            {/* person photo — large, slides in on its own; bottom edge
-                extends down over the marquee strip; ~30% of her width
-                overlaps the card, the rest extends past its right edge */}
+            {/* person photo — large, slides in on its own; sized and
+                positioned so her head isn't clipped at the section's top
+                and her feet land exactly at the marquee's top edge */}
             <motion.div
               initial={{ opacity: 0, x: 160 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute -bottom-16 -right-6 z-20 hidden w-[58%] sm:block lg:-right-16 lg:w-[62%] xl:-right-24 xl:w-[66%]"
+              className="pointer-events-none absolute bottom-0 -right-4 z-20 hidden w-[42%] sm:block lg:-right-10 lg:w-[44%] xl:-right-14 xl:w-[46%]"
             >
               <img src={hero.person.src} alt={hero.person.alt} className="h-auto w-full drop-shadow-[0_30px_40px_rgba(28,42,57,0.25)]" />
-            </motion.div>
-
-            {/* floating callout bubbles */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.55 }}
-              className="absolute -top-4 right-6 z-30 hidden items-center gap-2 rounded-full bg-white px-4 py-2 shadow-[0_12px_30px_-8px_rgba(28,42,57,0.25)] sm:flex lg:right-2"
-            >
-              <span className="h-2 w-2 flex-shrink-0 rounded-full bg-ak-orange" />
-              <span className="whitespace-nowrap text-[11px] font-bold text-ak-ink">{hero.person.bubbles[0].text}</span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="absolute -bottom-8 right-2 z-30 hidden items-center gap-2.5 rounded-2xl bg-white px-4 py-3 shadow-[0_16px_36px_-10px_rgba(28,42,57,0.3)] sm:flex lg:-right-2"
-            >
-              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-ak-orange/10">
-                <Icon name={hero.person.bubbles[1].icon} className="h-4 w-4 text-ak-orange" strokeWidth={2.2} />
-              </span>
-              <div className="leading-tight">
-                <div className="whitespace-nowrap text-[11px] font-bold text-ak-ink">{hero.person.bubbles[1].text}</div>
-                <div className="whitespace-nowrap text-[11px] font-bold text-ak-ink">{hero.person.bubbles[1].text2}</div>
-              </div>
             </motion.div>
           </div>
         </div>
