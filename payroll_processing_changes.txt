@@ -49,4 +49,4 @@ SECTION STATUS (update as we go)
 | 7 | Documents | Rebuilt as numbered icon-card grid + security intro card + help banner, per client reference. Commit d40e720. Awaiting confirmation. |
 | 8 | FAQs | Pending review |
 | 9 | Related Services | Pending review |
-| 10 | Final CTA | Pending review |
+| 10 | Final CTA | Rebuilt to match PF & ESI Registration's reg-svc-cta-section (same cta-bg.png asset, white inverse button, phone badge) + staggered entrance, button glow, phone-badge hover-pulse. Commit f0b6782. Awaiting confirmation. |
