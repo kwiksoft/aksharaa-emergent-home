@@ -64,6 +64,16 @@ module.exports = {
           // new coral-red accent, used for headline emphasis, the primary
           // CTA fill, and the hero illustration's line-art stroke colour.
           coral: '#EB5061',
+          // Flexi Staffing "Who Needs This" section stat band. Sampled
+          // directly from the reference image (averaged across 7 clean
+          // points along the band, ignoring icon-circle pixels), rounded
+          // to this clean hex. Deliberately a separate token from
+          // ak.burgundy (#800020, Payroll Processing hero marquee) — that
+          // one was a client-specified colour choice for a different page;
+          // this one is a distinct, darker, more muted maroon read
+          // directly off this reference, and the two pages aren't meant
+          // to share an identical accent.
+          burgundy2: '#56353A',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
