@@ -48,7 +48,7 @@ SECTION STATUS (update as we go)
 | 5 | Scope | Pending review |
 | 6 | Process | Pending review |
 | 7 | Compliance Layer | Pending review |
-| 8 | Industries | Pending review |
+| 8 | Industries | Rebuilt per reference (commit a516c3f) — pill badge replaces kicker (heading/sub fields swap roles), gradient background + sunburst, cards rebuilt as dashed-border pill shapes with red\u2192blue gradient icon badges. Also fixed 2 mismatched icons (Food & Hospitality, Startups & SMEs) found while rebuilding. Awaiting final user confirmation. |
 | 9 | FAQs | Pending review |
 | 10 | Related Services | Pending review |
 | 11 | Final CTA | Pending review |
