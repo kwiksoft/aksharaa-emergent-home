@@ -40,7 +40,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Fourth revision: removed chip pills (fed into marquee instead) and stat strip; enlarged photo with fast slide-in; added decorative blob/dot-grid background; dashboard shrunk further. Commit 647ceee. Approved by user on sizing. |
+| 1 | Hero | Fifth revision: independent entrance animations for text/card/photo (no longer shared), card sized down (all stat tiles/chart/compliance fully visible), photo enlarged with ~30% card overlap, bottom edge tuned to meet marquee's top boundary exactly. Commit dfc6fb8. Approved by user. |
 | 2 | Overview | Pending review |
 | 3 | Who Needs This | Rebuilt as numbered/connector persona cards (featured middle card, checklists, callouts) + new bottom banner, per client reference. Manufacturing icon is a substitute (factory icon), flagged as known gap. Commit e2ff105. Awaiting confirmation. |
 | 4 | Obligations | Rebuilt as two-tone split (light numbered connector-spine list / dark consequences panel with inline-highlighted figures) + new 'Stay Compliant' CTA card, per client reference. Commit 17e6660. Awaiting confirmation. |
