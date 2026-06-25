@@ -50,12 +50,8 @@ export const hero = {
       cta: { label: "View Calendar", href: "/compliance-calendar" },
     },
   },
-  // person photo + floating callout bubbles, placed alongside the (now
-  // trimmed-down) dashboard card per client reference. Photo is a free-
-  // licence Pexels placeholder (Edmond Dantès, pexels.com/photo/4347368) —
-  // client to swap for a paid/licensed stock photo later.
   person: {
-    src: "/assets/sections/payroll-hero-person.jpg",
+    src: "/assets/sections/payroll-hero-person.png",
     alt: "Payroll specialist reviewing statutory filings on a laptop",
     bubbles: [
       { position: "top", icon: null, text: "Multi-state coverage" },
