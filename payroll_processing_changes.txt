@@ -40,7 +40,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Rebuilt as multi-panel dashboard (stat tiles + trend chart + compliance status + footer strip) per client reference, commit 168d2bb. Awaiting re-confirmation. |
+| 1 | Hero | Second revision: dashboard trimmed (stat row + chart only), added placeholder photo (Pexels, free licence \u2014 to be swapped for paid stock photo), floating callout bubbles, and burgundy (#800020) marquee strip scrolling right-to-left. Commit 2c76a6c. Awaiting re-confirmation. |
 | 2 | Overview | Pending review |
 | 3 | Who Needs This | Rebuilt as numbered/connector persona cards (featured middle card, checklists, callouts) + new bottom banner, per client reference. Manufacturing icon is a substitute (factory icon), flagged as known gap. Commit e2ff105. Awaiting confirmation. |
 | 4 | Obligations | Pending review |
