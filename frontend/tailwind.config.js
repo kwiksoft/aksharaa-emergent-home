@@ -50,6 +50,13 @@ module.exports = {
           // navy-BLUE, distinct from the much darker/charcoal ak.navy
           // already used elsewhere on the page.
           blue2: '#0C2F73',
+          // Payroll Processing hero marquee strip. Client asked specifically
+          // for #800020 (a deep maroon/burgundy) in place of a generic bright
+          // blue, as a colour that "adapts Aksharaa" rather than a literal
+          // reference-image colour swap. Kept as its own token since it's
+          // a new addition to the page's palette, not a reuse of an
+          // existing dark tone (ak.ink/ak.navy).
+          burgundy: '#800020',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

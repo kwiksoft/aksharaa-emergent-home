@@ -19,14 +19,14 @@ export const hero = {
     { label: "Get Payroll Support", variant: "primary", href: "#service-cta" },
     { label: "How It Works", variant: "secondary", href: "#svc-process" },
   ],
-  chips: ["Salary computation", "PF · ESI · PT · TDS", "Payslip generation", "Multi-state coverage", "Zero-error guarantee"],
+  chips: ["Salary computation", "PF · ESI · PT · TDS", "Payslip generation", "Multi-state coverage", "Zero-error guarantee", "Flexible structure"],
   dashboard: {
     title: "Aksharaa Payroll Dashboard",
     monthLabel: "February 2026",
     statTiles: [
       { icon: "users", value: "500+", label: "Establishments served" },
       { icon: "target", value: "0", label: "Penalty incidents" },
-      { icon: "building", value: "15+", label: "Years payroll expertise" },
+      { icon: "building", value: "15+", label: "Years expertise" },
       { icon: "headset", value: "Pan-India", label: "Multi-state coverage" },
     ],
     chart: {
@@ -40,8 +40,6 @@ export const hero = {
       items: [
         { label: "PF Compliance", status: "On Track" },
         { label: "ESI Compliance", status: "On Track" },
-        { label: "TDS Compliance", status: "On Track" },
-        { label: "PT Compliance", status: "On Track" },
       ],
     },
     footer: {
@@ -51,6 +49,25 @@ export const hero = {
       upcomingFilingValue: "PF Return · Mar 2026",
       cta: { label: "View Calendar", href: "/compliance-calendar" },
     },
+  },
+  // person photo + floating callout bubbles, placed alongside the (now
+  // trimmed-down) dashboard card per client reference. Photo is a free-
+  // licence Pexels placeholder (Edmond Dantès, pexels.com/photo/4347368) —
+  // client to swap for a paid/licensed stock photo later.
+  person: {
+    src: "/assets/sections/payroll-hero-person.jpg",
+    alt: "Payroll specialist reviewing statutory filings on a laptop",
+    bubbles: [
+      { position: "top", icon: null, text: "Multi-state coverage" },
+      { position: "bottom-right", icon: "fileText", text: "Salary computation", text2: "Payslip generation" },
+    ],
+  },
+  // bottom marquee strip — scrolls right-to-left via the existing .ak-marquee
+  // utility (translateX 0 → -50%). Colour is the client-specified #800020
+  // burgundy (ak.burgundy), not the bright blue from the reference image.
+  marquee: {
+    label: "Service Focus:",
+    items: ["Salary Processing", "Compliance", "Pan-India", "Payslip Generation", "Zero-Error"],
   },
   stats: [
     { value: 500, suffix: "+", label: "Establishments served" },
