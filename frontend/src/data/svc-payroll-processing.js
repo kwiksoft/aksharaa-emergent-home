@@ -301,6 +301,7 @@ export const related = {
 };
 
 export const serviceCta = {
+  kicker: "Get Started Today",
   heading: "Ready to Outsource Payroll?",
   sub: "Get a free payroll assessment — we review your current process, identify compliance gaps, and deliver a clear scope and quote within 24 hours.",
   ctas: [
