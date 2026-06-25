@@ -57,6 +57,13 @@ module.exports = {
           // a new addition to the page's palette, not a reuse of an
           // existing dark tone (ak.ink/ak.navy).
           burgundy: '#800020',
+          // Flexi Staffing hero reference image. Sampled directly from the
+          // "Zero Compliance" headline text and the filled CTA button pixels
+          // (both converged independently on ~#EB5061), rounded to this
+          // clean hex. Distinct from ak.orange/orange2 — this is the page's
+          // new coral-red accent, used for headline emphasis, the primary
+          // CTA fill, and the hero illustration's line-art stroke colour.
+          coral: '#EB5061',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

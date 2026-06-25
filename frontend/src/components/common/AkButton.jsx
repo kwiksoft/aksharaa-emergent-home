@@ -12,6 +12,12 @@ const variants = {
     "border border-white/25 text-white hover:bg-white hover:text-ak-ink",
   darkSecondary:
     "border border-white/20 text-white hover:bg-white hover:text-ak-ink",
+  // Flexi Staffing hero only — sampled from reference image's filled CTA.
+  // Separate variant rather than changing `primary`, since primary's
+  // ak-orange fill is used as the standard CTA colour across every other
+  // template page and is already client-approved there.
+  coral:
+    "bg-ak-coral text-white shadow-[0_8px_24px_-6px_rgba(235,80,97,0.5)] hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-8px_rgba(235,80,97,0.55)] hover:brightness-110",
 };
 
 export const AkButton = ({
