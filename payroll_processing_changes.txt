@@ -40,7 +40,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Sixth revision: removed floating bubbles entirely; photo resized (42-46%) and repositioned to bottom-0 so head isn't clipped and feet land exactly at marquee's top edge; card overlap reduced to minimal. Commit 349b91c. Approved by user. |
+| 1 | Hero | Seventh revision: card shrunk further (representational only); photo enlarged and right-aligned to overlap stat tiles row (~20%+); added real spacing between CTA buttons and marquee; photo offset compensated so feet still meet marquee's top edge. Commit d6a25df. Approved by user. |
 | 2 | Overview | Pending review |
 | 3 | Who Needs This | Rebuilt as numbered/connector persona cards (featured middle card, checklists, callouts) + new bottom banner, per client reference. Manufacturing icon is a substitute (factory icon), flagged as known gap. Commit e2ff105. Awaiting confirmation. |
 | 4 | Obligations | Rebuilt as two-tone split (light numbered connector-spine list / dark consequences panel with inline-highlighted figures) + new 'Stay Compliant' CTA card, per client reference. Commit 17e6660. Awaiting confirmation. |
