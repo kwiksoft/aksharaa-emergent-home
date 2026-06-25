@@ -155,17 +155,26 @@ export const process = {
 export const documents = {
   kicker: "To Get Started",
   heading: "Documents Required",
-  sub: "Share these at onboarding. Our team guides you through setup and will be ready for your very next payroll cycle.",
+  sub: "Share these at onboarding. Our team guides you through setup and will be ready for your next payroll cycle.",
+  intro: {
+    heading: "We keep it simple and secure.",
+    sub: "Your documents are protected with bank-grade security and used only for payroll processing.",
+  },
   items: [
-    "Employee master data — name, designation, salary structure, bank details",
-    "Monthly attendance data or access to your attendance system",
-    "Leave balance records as on the onboarding date",
-    "New joiner and exit details with effective dates",
-    "Investment declaration forms for TDS computation (if in scope)",
-    "Previous month payroll data for takeover continuity",
-    "Salary structure / CTC breakup format used by your organisation",
-    "PF / ESI registration details and current challan status",
+    { icon: "user", title: "Employee Master Data", desc: "Name, designation, salary structure, bank details, date of joining." },
+    { icon: "calendar", title: "Monthly Attendance Data", desc: "Attendance data or access to your attendance system." },
+    { icon: "clipboardList", title: "Leave Balance Records", desc: "Leave balance records as on the onboarding date." },
+    { icon: "userPlus", title: "New Joiner & Exit Details", desc: "New joiner and exit details with effective dates." },
+    { icon: "trendingUp", title: "Investment Declarations", desc: "Investment declaration forms for TDS computation (if in scope)." },
+    { icon: "history", title: "Previous Month Payroll Data", desc: "Previous month payroll data for takeover continuity." },
+    { icon: "rupee", title: "Salary Structure / CTC Breakup", desc: "Salary structure / CTC breakup format used by your organisation." },
+    { icon: "idCard", title: "PF / ESI Registration Details", desc: "PF / ESI registration details and current challan status." },
   ],
+  helpBanner: {
+    heading: "Need help?",
+    sub: "Don't worry if you're missing something. We'll guide you on what's needed.",
+    cta: { label: "Talk to Our Payroll Expert", href: "tel:+919840276677" },
+  },
 };
 
 export const faqs = {
