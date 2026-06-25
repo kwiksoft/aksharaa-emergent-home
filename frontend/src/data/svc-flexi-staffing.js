@@ -148,8 +148,8 @@ export const industries = {
     { icon: "heart", name: "Healthcare & Pharma" },
     { icon: "cpu", name: "IT / ITES & BPO" },
     { icon: "hardHat", name: "Construction & Infrastructure" },
-    { icon: "building", name: "Food & Hospitality" },
-    { icon: "shield", name: "Startups & SMEs" },
+    { icon: "conciergeBell", name: "Food & Hospitality" },
+    { icon: "rocket", name: "Startups & SMEs" },
   ],
 };
 

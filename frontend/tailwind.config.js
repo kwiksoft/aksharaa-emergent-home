@@ -73,6 +73,12 @@ module.exports = {
           // this one is a distinct, darker, more muted maroon read
           // directly off this reference, and the two pages aren't meant
           // to share an identical accent.
+          // Flexi Staffing "Industries" section icon badges. Sampled from
+          // the reference's circular gradient badges (red corner ~#DF3A3E,
+          // blue corner ~#3959BC). Used only as inline gradient stops
+          // (not referenced as standalone Tailwind classes), so no new
+          // ak.* token needed — documented here for traceability since
+          // the values live in the component file, not this config.
           burgundy2: '#56353A',
         },
         background: 'hsl(var(--background))',
