@@ -41,7 +41,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Pending review |
+| 1 | Hero | Rebuilt per client reference image (commit 5f800f2) — cream/blush bg + sunburst, 3-colour headline split, line-art badge + clipboard/shield illustration replacing photo+card. Stat row and eyebrow dropped (absent from reference). Awaiting final user confirmation. |
 | 2 | Overview | Pending review |
 | 3 | Who Needs This | Pending review |
 | 4 | The Aksharaa Difference | Pending review |
