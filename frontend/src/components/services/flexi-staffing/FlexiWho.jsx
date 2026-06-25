@@ -46,8 +46,8 @@ export const FlexiWho = () => (
         {who.cards.map((c) => (
           <RevealItem key={c.title}>
             <div className="rounded-2xl border border-ak-ink/[0.07] bg-white p-6 shadow-[0_2px_12px_-4px_rgba(28,42,57,0.06)] transition-shadow hover:shadow-lg">
-              <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-ak-orange/15 text-ak-orange">
-                <Icon name={c.icon} className="h-7 w-7" strokeWidth={1.7} />
+              <span className="flex h-16 w-16 items-center justify-center rounded-xl bg-ak-orange/15 text-ak-orange">
+                <Icon name={c.icon} className="h-8 w-8" strokeWidth={1.6} />
               </span>
               <h3 className="mt-5 font-display text-base font-bold text-ak-ink">{c.title}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-ak-ink/55">{c.desc}</p>
@@ -68,14 +68,14 @@ export const FlexiWho = () => (
         <div className="relative grid grid-cols-2 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-white/10">
           {hero.stats.map((s, i) => (
             <div key={s.label} className="flex items-center gap-3 px-2 sm:px-5">
-              <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+              <span className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
                 {statIcons[i] ? (
-                  <Icon name={statIcons[i]} className="h-5 w-5" strokeWidth={1.8} />
+                  <Icon name={statIcons[i]} className="h-6 w-6" strokeWidth={1.8} />
                 ) : (
                   <img
                     src="/assets/sections/flexi-india-icon.png"
                     alt=""
-                    className="h-5 w-5 object-contain brightness-0 invert"
+                    className="h-6 w-6 object-contain brightness-0 invert"
                   />
                 )}
               </span>
