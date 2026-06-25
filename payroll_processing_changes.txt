@@ -40,7 +40,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Eighth revision: photo widened to reach toward Feb chart label without covering header/window-dots; bottom offset closed so she sits flush on marquee top edge with no gap. Commit 315ca61. Approved by user. |
+| 1 | Hero | Ninth revision: measured exact gap via Playwright bounding boxes (56px) instead of eyeballing, closed precisely with calculated -bottom-14 offset + width reduced to 55-58%. Verified: photo bottom edge = marquee top edge exactly, no gap/overlap. Commit b3c4494. Approved by user. |
 | 2 | Overview | Pending review |
 | 3 | Who Needs This | Rebuilt as numbered/connector persona cards (featured middle card, checklists, callouts) + new bottom banner, per client reference. Manufacturing icon is a substitute (factory icon), flagged as known gap. Commit e2ff105. Awaiting confirmation. |
 | 4 | Obligations | Rebuilt as two-tone split (light numbered connector-spine list / dark consequences panel with inline-highlighted figures) + new 'Stay Compliant' CTA card, per client reference. Commit 17e6660. Awaiting confirmation. |
