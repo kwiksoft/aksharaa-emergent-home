@@ -44,7 +44,7 @@ SECTION STATUS (update as we go)
 | 2 | Overview | Pending review |
 | 3 | Who Needs This | Rebuilt as numbered/connector persona cards (featured middle card, checklists, callouts) + new bottom banner, per client reference. Manufacturing icon is a substitute (factory icon), flagged as known gap. Commit e2ff105. Awaiting confirmation. |
 | 4 | Obligations | Rebuilt as two-tone split (light numbered connector-spine list / dark consequences panel with inline-highlighted figures) + new 'Stay Compliant' CTA card, per client reference. Commit 17e6660. Awaiting confirmation. |
-| 5 | Scope | Pending review |
+| 5 | Scope | Rebuilt with semi-opacity background photo (dark section) + hover-fill cards adapted from client video reference (icon fades, orange fill, 'Step X of 6' reveal). Commit 77dce8e. Awaiting confirmation. |
 | 6 | Process | Rebuilt as numbered circular timeline (day-range pills, dashed connectors, day-chips) + new bottom benefits banner, per client reference. Commit f705246. Awaiting confirmation. |
 | 7 | Documents | Rebuilt as numbered icon-card grid + security intro card + help banner, per client reference. Commit d40e720. Awaiting confirmation. |
 | 8 | FAQs | Pending review |
