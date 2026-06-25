@@ -42,7 +42,7 @@ SECTION STATUS (update as we go)
 | # | Section | Status |
 |---|---------|--------|
 | 1 | Hero | Rebuilt per client reference (commits 5f800f2, 760d30d) — client background asset wired in (flexi-hero-bg.jpg), badge in circular card, watermark rebuilt to match reference exactly (monochrome, ~#F4925A, 16% opacity). Awaiting final user confirmation. |
-| 2 | Overview | Pending review |
+| 2 | Overview | Team photo added under info card bullet list, rounded corners + card polish (commit 7c71a01). Awaiting final user confirmation. |
 | 3 | Who Needs This | Pending review |
 | 4 | The Aksharaa Difference | Pending review |
 | 5 | Scope | Pending review |
