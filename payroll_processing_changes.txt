@@ -50,3 +50,7 @@ SECTION STATUS (update as we go)
 | 8 | FAQs | Pending review |
 | 9 | Related Services | Pending review |
 | 10 | Final CTA | Rebuilt to match PF & ESI Registration's reg-svc-cta-section (same cta-bg.png asset, white inverse button, phone badge) + staggered entrance, button glow, phone-badge hover-pulse. Commit f0b6782. Awaiting confirmation. |
+
+CROSS-CUTTING: Vertical padding reduced (py-20/md:py-28 -> py-14/md:py-20)
+across all sections except Hero and Final CTA. Commit c9c3335. Applies on
+top of whatever each section's individual status above says.
