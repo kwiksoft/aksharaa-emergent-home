@@ -81,7 +81,7 @@ export const PayrollHero = () => (
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
               data-testid="payroll-dashboard-card"
-              className="relative z-10 mx-auto max-w-[360px] overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white shadow-[0_40px_80px_-30px_rgba(28,42,57,0.35)] lg:mx-0 lg:max-w-[400px]"
+              className="relative z-10 mx-auto max-w-[320px] overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white shadow-[0_40px_80px_-30px_rgba(28,42,57,0.35)] lg:mx-0 lg:max-w-[340px]"
             >
               <div className="flex items-center justify-between bg-ak-ink px-4 py-3">
                 <span className="text-[13px] font-bold text-white">{hero.dashboard.title}</span>
@@ -166,7 +166,7 @@ export const PayrollHero = () => (
               initial={{ opacity: 0, x: 160 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute bottom-0 -right-4 z-20 hidden w-[42%] sm:block lg:-right-10 lg:w-[44%] xl:-right-14 xl:w-[46%]"
+              className="pointer-events-none absolute -bottom-10 right-0 z-20 hidden w-[50%] sm:block lg:right-0 lg:w-[52%] xl:right-0 xl:w-[54%]"
             >
               <img src={hero.person.src} alt={hero.person.alt} className="h-auto w-full drop-shadow-[0_30px_40px_rgba(28,42,57,0.25)]" />
             </motion.div>
@@ -176,8 +176,12 @@ export const PayrollHero = () => (
 
     </Container>
 
-    {/* bottom marquee strip — scrolls right-to-left, ak.burgundy (#800020) per client spec */}
-    <div className="relative overflow-hidden bg-ak-burgundy py-3">
+    {/* bottom marquee strip — scrolls right-to-left, ak.burgundy (#800020) per client spec.
+        mt-10/14 creates breathing room between the CTA buttons and the
+        marquee (was sitting too close); the photo's bottom-0 anchor
+        inside the section above still lands her right at this strip's
+        top edge since the section's own bottom padding grew to match. */}
+    <div className="relative mt-10 overflow-hidden bg-ak-burgundy py-3 sm:mt-14">
       <div className="ak-marquee flex items-center gap-10 whitespace-nowrap">
         {[...Array(2)].map((_, loopIdx) => (
           <div key={loopIdx} className="flex flex-shrink-0 items-center gap-10">
