@@ -16,7 +16,7 @@ export const FlexiOverview = () => (
             {overview.paragraphs.map((p) => <p key={p}>{p}</p>)}
           </Reveal>
         </div>
-        <Reveal delay={0.15} className="rounded-2xl bg-white p-7">
+        <Reveal delay={0.15} className="overflow-hidden rounded-2xl border border-ak-ink/[0.06] bg-white p-7 shadow-[0_18px_40px_-20px_rgba(28,42,57,0.12)]">
           <div className="font-display text-sm font-bold text-ak-ink">{overview.infoCard.title}</div>
           <ul className="mt-4 space-y-3">
             {overview.infoCard.items.map((it) => (
@@ -26,6 +26,13 @@ export const FlexiOverview = () => (
               </li>
             ))}
           </ul>
+          <div className="mt-6 overflow-hidden rounded-xl">
+            <img
+              src="/assets/sections/flexi-overview-team.jpg"
+              alt="Aksharaa team reviewing a flexi staffing deployment plan together"
+              className="h-44 w-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+          </div>
         </Reveal>
       </div>
     </Container>
