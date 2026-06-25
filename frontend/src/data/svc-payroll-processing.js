@@ -215,6 +215,10 @@ export const scope = {
   kicker: "Our Scope of Work",
   heading: "What Aksharaa Manages",
   sub: "End-to-end payroll outsourcing — from data collection and computation to filing, payslips, and monthly MIS reporting.",
+  // semi-opacity background photo behind the section, per client request.
+  // Free-licence Pexels placeholder (Jakub Zerdzicki,
+  // pexels.com/photo/trading-desk-with-financial-charts-and-technology-31650949/)
+  bgImage: "/assets/sections/payroll-scope-bg.jpg",
   cards: [
     { num: "01", icon: "clipboardList", title: "Data Collection & Cutoff", desc: "Receive monthly attendance, leave, joiners, exits, and salary revision data by your agreed cutoff." },
     { num: "02", icon: "calculator", title: "Gross & Net Salary Computation", desc: "Full computation including all allowances, variable pay, arrears, and full & final settlement." },
