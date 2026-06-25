@@ -63,7 +63,7 @@ export const hero = {
   // burgundy (ak.burgundy), not the bright blue from the reference image.
   marquee: {
     label: "Service Focus:",
-    items: ["Salary Processing", "Compliance", "Pan-India", "Payslip Generation", "Zero-Error"],
+    items: ["Salary computation", "PF · ESI · PT · TDS", "Payslip generation", "Multi-state coverage", "Zero-error guarantee", "Flexible structure"],
   },
   stats: [
     { value: 500, suffix: "+", label: "Establishments served" },
