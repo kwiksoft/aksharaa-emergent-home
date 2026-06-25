@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { scope } from "../../../data/svc-payroll-processing";
 
 export const PayrollScope = () => (
-  <section id="svc-scope" data-testid="payroll-scope-section" className="relative overflow-hidden bg-ak-ink py-20 md:py-28">
+  <section id="svc-scope" data-testid="payroll-scope-section" className="relative overflow-hidden bg-ak-ink py-14 md:py-20">
     {/* semi-opacity background photo */}
     <div
       className="absolute inset-0 opacity-[0.22]"

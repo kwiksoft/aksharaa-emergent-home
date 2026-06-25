@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { related } from "../../../data/svc-payroll-processing";
 
 export const PayrollRelated = () => (
-  <section id="svc-related" data-testid="payroll-related-section" className="bg-white py-20 md:py-28">
+  <section id="svc-related" data-testid="payroll-related-section" className="bg-white py-14 md:py-20">
     <Container>
       <Reveal className="mb-10 max-w-2xl">
         <div className="ak-kicker mb-5">{related.kicker}</div>

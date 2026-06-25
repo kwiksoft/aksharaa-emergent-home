@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { obligations } from "../../../data/svc-payroll-processing";
 
 export const PayrollObligations = () => (
-  <section id="svc-obligations" data-testid="payroll-obligations-section" className="bg-white py-20 md:py-28">
+  <section id="svc-obligations" data-testid="payroll-obligations-section" className="bg-white py-14 md:py-20">
     <Container>
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
         {/* LEFT — light, numbered connector-spine list */}

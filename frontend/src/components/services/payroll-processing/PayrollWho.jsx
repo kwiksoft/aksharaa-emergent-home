@@ -54,7 +54,7 @@ const PersonaCard = ({ p }) => (
 );
 
 export const PayrollWho = () => (
-  <section id="svc-who" data-testid="payroll-who-section" className="bg-white py-20 md:py-28">
+  <section id="svc-who" data-testid="payroll-who-section" className="bg-white py-14 md:py-20">
     <Container>
       <Reveal className="mx-auto max-w-2xl text-center">
         <div className="ak-kicker mx-auto mb-5 justify-center">{who.kicker}</div>

@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { documents } from "../../../data/svc-payroll-processing";
 
 export const PayrollDocuments = () => (
-  <section id="svc-documents" data-testid="payroll-documents-section" className="bg-white py-20 md:py-28">
+  <section id="svc-documents" data-testid="payroll-documents-section" className="bg-white py-14 md:py-20">
     <Container>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <Reveal>

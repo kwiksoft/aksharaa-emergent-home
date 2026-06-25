@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { process } from "../../../data/svc-payroll-processing";
 
 export const PayrollProcess = () => (
-  <section id="svc-process" data-testid="payroll-process-section" className="bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-process" data-testid="payroll-process-section" className="bg-ak-mist/40 py-14 md:py-20">
     <Container>
       <Reveal className="mx-auto max-w-2xl text-center">
         <div className="ak-kicker mx-auto mb-5 justify-center">{process.kicker}</div>

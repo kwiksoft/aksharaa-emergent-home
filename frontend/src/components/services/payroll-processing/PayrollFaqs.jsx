@@ -10,7 +10,7 @@ const EASE = [0.22, 1, 0.36, 1];
 export const PayrollFaqs = () => {
   const [openIdx, setOpenIdx] = useState(0);
   return (
-    <section id="svc-faqs" data-testid="payroll-faqs-section" className="bg-ak-mist/40 py-20 md:py-28">
+    <section id="svc-faqs" data-testid="payroll-faqs-section" className="bg-ak-mist/40 py-14 md:py-20">
       <Container>
         <Reveal className="max-w-2xl">
           <div className="ak-kicker mb-5">{faqs.kicker}</div>
