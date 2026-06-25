@@ -227,15 +227,21 @@ export const scope = {
 
 export const process = {
   kicker: "How We Work",
-  heading: "The Monthly Payroll Cycle",
+  heading: ["The", "Monthly Payroll", "Cycle"],
   sub: "A disciplined 6-step process — from data receipt to MIS delivery — executed by the same dedicated team, every month, before the 15th.",
   steps: [
-    { day: "Day 1–3", icon: "clipboardList", title: "Data Collection", desc: "Receive attendance, leave & input data from your team", active: true },
-    { day: "Day 4–6", icon: "calculator", title: "Computation", desc: "Gross, net, all statutory deductions calculated per employee" },
-    { day: "Day 7–8", icon: "checkCircle", title: "Client Review", desc: "Draft payroll shared with you for approval before processing" },
-    { day: "Day 9–11", icon: "fileText", title: "Payslips", desc: "Individual PDF payslips generated & distributed securely" },
-    { day: "By 15th", icon: "shield", title: "Statutory Filing", desc: "PF, ESI, PT deposited & returns filed before the deadline" },
-    { day: "Day 16–18", icon: "trendingUp", title: "MIS Report", desc: "Monthly payroll summary delivered to your HR/Finance team" },
+    { num: "01", day: "Day 1 – 2", icon: "folderUp", title: "Data Collection", desc: "Receive attendance, leaves & input data from your team." },
+    { num: "02", day: "Day 4 – 6", icon: "calculator", title: "Computation", desc: "Gross, net & statutory deductions calculated per employee." },
+    { num: "03", day: "Day 7 – 8", icon: "eye", title: "Client Review", desc: "Draft payroll shared with you for approval before processing." },
+    { num: "04", day: "Day 9 – 11", icon: "fileText", title: "Payslips", desc: "Individual PDF payslips generated & distributed securely." },
+    { num: "05", day: "By 15th", icon: "shield", title: "Statutory Filing", desc: "PF, ESI, PT deposited & returns filed before the deadline." },
+    { num: "06", day: "Day 16 – 18", icon: "trendingUp", title: "MIS Report", desc: "Monthly payroll summary delivered to your HR/Finance team." },
+  ],
+  banner: [
+    { icon: "shield", title: "Always On-Time", desc: "Payroll processed before the 15th, every month." },
+    { icon: "usersRound", title: "Same Dedicated Team", desc: "Consistency, accountability and zero hand-offs." },
+    { icon: "lock", title: "Secure & Confidential", desc: "Bank-grade security for all payroll data." },
+    { icon: "award", title: "100% Compliance Focus", desc: "Every action aligned with PF, ESI, PT & TDS regulations." },
   ],
 };
 
