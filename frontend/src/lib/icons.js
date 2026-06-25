@@ -14,7 +14,7 @@ import {
   Clock, Target, Landmark, UserCheck, Map,
   FilePlus2, FileX2, RefreshCw, Edit3,
   AlertTriangle, Calculator, Percent, IndianRupee, UserPlus,
-  Download, Headset, User, History, IdCard, Rocket,
+  Download, Headset, User, History, IdCard, Rocket, Gavel,
 } from "lucide-react";
 
 export const icons = {
@@ -34,7 +34,7 @@ export const icons = {
   alertTriangle: AlertTriangle, calculator: Calculator,
   percent: Percent, rupee: IndianRupee, userPlus: UserPlus,
   download: Download, headset: Headset,
-  user: User, history: History, idCard: IdCard, rocket: Rocket,
+  user: User, history: History, idCard: IdCard, rocket: Rocket, gavel: Gavel,
 };
 
 export const Icon = ({ name, ...props }) => {

@@ -147,26 +147,67 @@ export const who = {
 };
 
 export const obligations = {
-  kicker: "Legal Obligations",
-  heading: "What the Law Requires",
+  kicker: "Legal Obligation",
+  heading: ["What the", "Law", "Requires"],
   sub: "Non-compliance with payroll obligations is not just an administrative lapse — it carries financial penalties, criminal risk, and employee trust damage.",
   items: [
-    { num: "1", title: "Monthly Salary Computation & Disbursement", desc: "Compute gross and net salary for every employee and disburse within the statutory timeline under the Payment of Wages Act" },
-    { num: "2", title: "Correct Statutory Deductions", desc: "PF (12%), ESI (0.75%), Professional Tax (state-wise slab), and TDS must be accurately deducted from each eligible employee" },
-    { num: "3", title: "Timely Deposit of All Deductions", desc: "PF by 15th, ESI by 15th, PT as per state cycle — employer contributions must be deposited alongside employee deductions" },
-    { num: "4", title: "Payslip Generation & Distribution", desc: "Every employee must receive a payslip — physical or digital — detailing gross, all deductions, and net take-home" },
-    { num: "5", title: "Salary Register Maintenance", desc: "Maintain Form IV (Payment of Wages Act) in prescribed format — mandatory under Shops Act and Factories Act" },
-    { num: "6", title: "Annual Form 16 & TDS Returns", desc: "Issue Form 16 to all TDS-deducted employees annually and file quarterly TDS returns (Form 24Q)" },
+    { num: "1", icon: "calculator", title: "Monthly Salary Computation & Disbursement", desc: "Compute gross and net salary for every employee and disburse within the statutory timelines under the Payment of Wages Act." },
+    { num: "2", icon: "fileText", title: "Correct Statutory Deductions", desc: "PF, ESI, PT (state-wise), LWF (if applicable), and TDS must be accurately deducted from each eligible employee." },
+    { num: "3", icon: "shield", title: "Timely Deposit of All Deductions", desc: "PF, ESI, TDS, PT, LWF, and Bonus (where applicable) contributions must be deposited within due dates." },
+    { num: "4", icon: "fileText", title: "Payslip Generation & Distribution", desc: "Every employee must receive a payslip — physical or digital — detailing gross, all deductions, and net take-home." },
+    { num: "5", icon: "users", title: "Salary Register Maintenance", desc: "Maintain Form XVI (Register of Wages Act) in prescribed format — mandatory under Shops & Establishments Act." },
+    { num: "6", icon: "rupee", title: "Annual Form 16 & TDS Returns", desc: "Issue Form 16 to all TDS-deducted employees annually and file quarterly TDS returns (Form 24Q)." },
   ],
   consequences: {
     label: "What Happens Without Compliance",
     title: "Consequences of Non-Compliance",
     items: [
-      { icon: "alertTriangle", title: "PF/ESI Interest & Damages", desc: "Delayed PF: 12% p.a. interest (Sec 7Q) + damages 5%–25% under Sec 14B. ESI delays attract identical rates." },
-      { icon: "scale", title: "TDS Default — Prosecution Risk", desc: "Failure to deposit TDS attracts 1.5% per month interest. Wilful default leads to prosecution under Section 276B." },
-      { icon: "fileText", title: "Shops Act / Factories Act Violation", desc: "Non-maintenance of salary register violates state Shops Act. Fine up to ₹10,000 per violation in Tamil Nadu." },
-      { icon: "users", title: "Employee Trust & Attrition", desc: "Payslip errors or late salaries damage employee confidence — leading to complaints and increased attrition." },
+      {
+        icon: "alertTriangle",
+        title: "PF/ESI Interest & Damages",
+        // segments render inline; highlight:true gets the orange/amber accent treatment
+        segments: [
+          { text: "Delays attract " },
+          { text: "12%", highlight: true },
+          { text: " PF interest, " },
+          { text: "25%", highlight: true },
+          { text: " ESI damages + " },
+          { text: "1%–2%", highlight: true },
+          { text: " interest from the due date." },
+        ],
+      },
+      {
+        icon: "rupee",
+        title: "TDS Default — Prosecution Risk",
+        segments: [
+          { text: "Failure to deposit TDS attracts " },
+          { text: "1.5%", highlight: true },
+          { text: " per month interest. Willful default can lead to prosecution under Section 276B." },
+        ],
+      },
+      {
+        icon: "gavel",
+        title: "Shop & Act / Factories Act Violation",
+        segments: [
+          { text: "Non-maintenance of salary registers, returns, or delays attract fines up to " },
+          { text: "₹10,000", highlight: true },
+          { text: " per violation." },
+        ],
+      },
+      {
+        icon: "user",
+        title: "Employee Trust & Attrition",
+        segments: [
+          { text: "Payroll errors or late salaries damage employee confidence — leading to complaints and increased attrition." },
+        ],
+      },
     ],
+  },
+  cta: {
+    icon: "shield",
+    heading: "Stay Compliant. Stay Protected.",
+    sub: "Aksharaa ensures your payroll is accurate, compliant, and always on time — every single month.",
+    button: { label: "Talk to Payroll Expert", href: "tel:+919840276677" },
   },
 };
 
