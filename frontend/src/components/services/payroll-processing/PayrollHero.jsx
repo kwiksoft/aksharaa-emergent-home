@@ -14,7 +14,7 @@ const EASE = [0.22, 1, 0.36, 1];
  * rebuilt per client reference (real content preserved, layout follows reference).
  */
 export const PayrollHero = () => (
-  <section id="svc-hero" data-testid="payroll-hero-section" className="relative overflow-hidden bg-white pt-10 pb-0">
+  <section id="svc-hero" data-testid="payroll-hero-section" className="relative bg-white pt-10 pb-0">
     {/* decorative ambient shapes — soft peach blob + dot grid, per reference */}
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute -right-24 top-10 h-[420px] w-[420px] rounded-full bg-ak-orange/[0.07] blur-2xl" />
@@ -26,9 +26,11 @@ export const PayrollHero = () => (
         }}
       />
     </div>
-    <span className="pointer-events-none absolute -right-10 top-0 select-none font-display text-[14rem] font-extrabold text-ak-ink/[0.025]">
-      ₹
-    </span>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <span className="absolute -right-10 top-0 select-none font-display text-[14rem] font-extrabold text-ak-ink/[0.025]">
+        ₹
+      </span>
+    </div>
     <Container className="relative z-10">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-8">
         <div>
@@ -68,18 +70,18 @@ export const PayrollHero = () => (
           </motion.div>
         </div>
 
-        {/* RIGHT — small representative dashboard + large person photo */}
-        <motion.div
-          initial={{ opacity: 0, x: 36 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
-          className="relative mb-8 sm:mb-0"
-        >
+        {/* RIGHT — small representative dashboard + large person photo.
+            Card and photo each have their own independent entrance
+            animation (previously yoked to one shared parent wrapper). */}
+        <div className="relative mb-8 sm:mb-0">
           <div className="relative">
-            {/* dashboard card — small, representative only */}
-            <div
+            {/* dashboard card — small, representative only; slides in on its own */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
               data-testid="payroll-dashboard-card"
-              className="relative z-10 mx-auto max-w-[460px] overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white shadow-[0_40px_80px_-30px_rgba(28,42,57,0.35)] lg:mx-0 lg:max-w-none"
+              className="relative z-10 mx-auto max-w-[360px] overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white shadow-[0_40px_80px_-30px_rgba(28,42,57,0.35)] lg:mx-0 lg:max-w-[400px]"
             >
               <div className="flex items-center justify-between bg-ak-ink px-4 py-3">
                 <span className="text-[13px] font-bold text-white">{hero.dashboard.title}</span>
@@ -155,14 +157,16 @@ export const PayrollHero = () => (
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* person photo — large, slides in fast from the right ("jiffy") */}
+            {/* person photo — large, slides in on its own; bottom edge
+                extends down over the marquee strip; ~30% of her width
+                overlaps the card, the rest extends past its right edge */}
             <motion.div
-              initial={{ opacity: 0, x: 140 }}
+              initial={{ opacity: 0, x: 160 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.45, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute -bottom-10 -right-4 z-20 hidden w-[46%] sm:block lg:-right-10 lg:w-[50%] xl:-right-14 xl:w-[52%]"
+              transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className="pointer-events-none absolute -bottom-16 -right-6 z-20 hidden w-[58%] sm:block lg:-right-16 lg:w-[62%] xl:-right-24 xl:w-[66%]"
             >
               <img src={hero.person.src} alt={hero.person.alt} className="h-auto w-full drop-shadow-[0_30px_40px_rgba(28,42,57,0.25)]" />
             </motion.div>
@@ -193,12 +197,10 @@ export const PayrollHero = () => (
               </div>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
     </Container>
-
-    <div className="mt-10 sm:mt-16" />
 
     {/* bottom marquee strip — scrolls right-to-left, ak.burgundy (#800020) per client spec */}
     <div className="relative overflow-hidden bg-ak-burgundy py-3">
