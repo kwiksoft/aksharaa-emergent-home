@@ -80,6 +80,17 @@ module.exports = {
           // ak.* token needed — documented here for traceability since
           // the values live in the component file, not this config.
           burgundy2: '#56353A',
+          // Flexi Staffing "Process" section, direct client colour spec
+          // for the step buttons: crimson for the capsule/button fill,
+          // sand for the icon-circle fill, sage for hover/interaction
+          // states. Same #7E8987 already used as a literal hex on the
+          // Section 4 background gradient (that one predates this
+          // token and hasn't been retrofitted to reference it, to avoid
+          // an unrelated diff on a section currently on hold) — named
+          // properly here since this section reuses it three times.
+          crimson: '#CB4154',
+          sand: '#F6C28B',
+          sage: '#7E8987',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
