@@ -10,20 +10,22 @@ import { difference } from "../../../data/svc-flexi-staffing";
  * background image", "cards aesthetically improved with good movement").
  * No reference image for this one — built from the brief.
  *
- * Background: flexi-difference-bg.jpg (Pexels, Line Knipst, free-to-use
- * licence, confirmed before download — same pattern as other placeholder
- * section photography in this repo), a night-time lit office tower.
- * Section base colour set to #7E8987 initially (client-specified
- * sage-grey), then darkened to #4E5654 (same hue family, lower
- * lightness) after direct feedback that the visual was "messy" with
- * the building windows creating clutter through the text — paired
- * with lowering the image opacity back down (40% -> 18%, having
- * raised it from 16% -> 40% in the previous round per a different
- * piece of feedback). The contrast-compensation values added when the
- * background was lighter (text-white/70, bg-black/[0.12] cards) are
- * left as-is rather than reverted — they read fine against the new
- * darker base too, and reverting them now would just be more churn
- * for no visible benefit.
+ * Background: started as a photo (flexi-difference-bg.jpg, a night
+ * office tower) at varying opacity across two rounds of feedback —
+ * raised for visibility, then lowered again for being cluttered.
+ * Removed entirely in this round per direct feedback that it wasn't
+ * visible enough to read as intentional and was still "spoiling" the
+ * visual at low opacity. Replaced with an inline SVG abstract line
+ * pattern (sparse diagonal lines top-right, soft concentric arcs
+ * bottom-left, a small connected-node cluster) in light grey/white at
+ * very low opacity (5-7%, fillOpacity 12% for the node dots) — a
+ * deliberate subtle design rather than a photo trying to be subtle.
+ * No image file/asset needed for this approach; flexi-difference-bg.jpg
+ * is now unused but left in public/assets/sections in case a future
+ * round wants it back.
+ *
+ * Section base colour remains #4E5654 (darkened from the client's
+ * original #7E8987 sage-grey per the previous round's feedback).
  *
  * Cards: previously a flat bordered box with just a number + title +
  * desc. Added: a per-item icon (new `icon` field on difference.items
@@ -40,12 +42,40 @@ export const FlexiDifference = () => (
     data-testid="flexi-difference-section"
     className="relative overflow-hidden bg-[#4E5654] py-20 md:py-28"
   >
-    <img
-      src="/assets/sections/flexi-difference-bg.jpg"
-      alt=""
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.18]"
-    />
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#4E5654]/80 via-[#4E5654]/88 to-[#4E5654]" />
+    <svg
+      className="pointer-events-none absolute inset-0 h-full w-full"
+      viewBox="0 0 1440 800"
+      preserveAspectRatio="xMidYMid slice"
+      fill="none"
+    >
+      <g stroke="#FFFFFF" strokeOpacity="0.07" strokeWidth="1.2">
+        {/* sparse diagonal line field, top-right */}
+        {Array.from({ length: 14 }).map((_, i) => {
+          const x = 900 + i * 60;
+          return <line key={`d1-${i}`} x1={x} y1="-100" x2={x - 380} y2="900" />;
+        })}
+      </g>
+      <g stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="1">
+        {/* large soft concentric arcs, bottom-left */}
+        {[120, 220, 320, 420].map((r) => (
+          <circle key={r} cx="60" cy="560" r={r} />
+        ))}
+      </g>
+      <g stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="1">
+        {/* a few scattered nodes connected by thin lines, right side */}
+        <line x1="1180" y1="120" x2="1340" y2="260" />
+        <line x1="1340" y1="260" x2="1260" y2="420" />
+        <line x1="1260" y1="420" x2="1400" y2="520" />
+        <line x1="1180" y1="120" x2="1080" y2="260" />
+      </g>
+      <g fill="#FFFFFF" fillOpacity="0.12">
+        <circle cx="1180" cy="120" r="3" />
+        <circle cx="1340" cy="260" r="3" />
+        <circle cx="1260" cy="420" r="3" />
+        <circle cx="1400" cy="520" r="3" />
+        <circle cx="1080" cy="260" r="3" />
+      </g>
+    </svg>
 
     <Container className="relative">
       <Reveal className="max-w-2xl">
