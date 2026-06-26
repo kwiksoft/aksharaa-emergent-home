@@ -190,6 +190,7 @@ export const related = {
 };
 
 export const serviceCta = {
+  kicker: "Get Started Today",
   heading: "Build Your Flexible Workforce Today",
   sub: "Tell us your headcount requirement, role profiles, and location — Aksharaa will put together a compliant flexi staffing plan within 24 hours.",
   ctas: [
