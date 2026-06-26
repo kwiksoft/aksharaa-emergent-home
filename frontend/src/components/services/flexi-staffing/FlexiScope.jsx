@@ -4,57 +4,62 @@ import { Icon } from "../../../lib/icons";
 import { scope } from "../../../data/svc-flexi-staffing";
 
 /**
- * Flexi Staffing "Scope" section ("What We Manage") — rebuilt per client
- * reference image (Section 5, first review round). Content fields
- * (heading/sub/6 cards) were already an exact match for the reference —
- * no data changes, visual rebuild only.
+ * Flexi Staffing "Scope" section ("What We Manage") — full rebuild,
+ * second attempt. The first attempt (commit 6e2b828) was reported by
+ * the client as "totally collapsive" on review. Root cause, found by
+ * re-checking the actual column-start/span math rather than trusting
+ * the earlier screenshots: row 2's two cards
+ * (lg:col-start-5/span-5 = columns 5-9, lg:col-start-8/span-5 =
+ * columns 8-12) genuinely overlapped on columns 8-9 on a 12-col grid.
+ * The earlier screenshots happened not to surface this clearly enough
+ * before sign-off — a real miss, not a client misunderstanding.
  *
- * Visual departures from the original:
- * - Funnel/diamond layout: 3 pairs of cards on a single flat 12-column
- *   grid (lg+), each pair given an explicit col-start/col-span/row-start
- *   placement so it narrows and drops down relative to the pair above,
- *   converging toward the centre sparkle — matches the reference's
- *   staggered card arrangement exactly. This needed explicit per-card
- *   grid placement rather than row-wrapper nesting; an earlier attempt
- *   using `display: contents` wrapper divs per row collapsed all 6
- *   cards into a single flat sequence instead of true row pairs once
- *   actually screenshotted, so it was discarded for direct placement.
- *   Collapses to a clean 2-col / 1-col grid below lg, since the
- *   converging-funnel effect has no room to read correctly on a
- *   narrow viewport.
- * - Icon badges switched from ak-ink/ak-orange to two new reference-
- *   sampled tokens: ak-scopeNavy (badge fill) + ak-scopeAmber (icon
- *   stroke) — see tailwind.config.js for PIL sampling provenance.
- * - Centre decorative element: a faint 4-point sparkle/star shape,
- *   sampled from the reference at near-background contrast (~5%
- *   opacity equivalent) — kept deliberately subtle, not a focal object.
- * - Bottom-right corner: soft overlapping ring/circle motif reusing the
- *   same pastel orbit-ring style already established elsewhere on the
- *   page's decorative corners.
- * - Icon size bug fixed: was h-4.5/w-4.5 (non-existent Tailwind class,
- *   same recurring gotcha flagged elsewhere in this codebase) -> h-5/w-5.
+ * Client also supplied a second image (a plain numbered-box diagram,
+ * boxes 1-6) specifically to clarify the INTENDED shape: a symmetric
+ * valley/checkmark, not a one-directional funnel. Re-measuring the
+ * actual reference image's card y-positions confirms this precisely:
+ * outer pair (Sourcing & Screening / MIS Reporting) sit at the same
+ * height; middle pair (Background Verification / Statutory Filings)
+ * sit together, lower; inner pair (Onboarding / Monthly Payroll) sit
+ * together, lowest. Mirrored left-right around the centre sparkle,
+ * not narrowing in one direction. This rebuild places each row's two
+ * cards as a true symmetric pair — same column width, mirrored
+ * start position, generous gap between them — and the column maths
+ * for all three rows has been explicitly re-verified to leave a clear
+ * non-overlapping gap, not just assumed correct from the visual
+ * pattern of the numbers.
+ *
+ * New this round: background decoration. Client asked for the
+ * reference image's low-opacity design elements to be added — a pale
+ * chevron/arrow motif in the bottom-left (colour ~#E6E6F0 on the
+ * ~#FBFBFD mist background, both extremely close to white, sampled
+ * directly from the reference), alongside the corner ring motif kept
+ * from the previous round.
  */
 
-/**
- * Per-card placement on a single flat 12-column grid (lg+ only). Each pair
- * narrows and drops down relative to the last, producing the reference's
- * funnel/diamond shape converging toward the centre sparkle. Card-to-row
- * mapping matches the reference image exactly: row 2 is Background
- * Verification + Statutory Filings (data indices 1, 4 — NOT 2,3 as a
- * naive sequential read would suggest), row 3 is Onboarding + Monthly
- * Payroll (indices 2, 3). Column spans widened from an earlier pass that
- * clipped card copy ("ESI card issuance...", "Statutory Filings & Re...")
- * once actually screenshotted at this breakpoint.
- */
+// 12-column grid (lg+). Each row is a genuinely symmetric pair: same
+// column span, mirrored start position, with an explicit gap verified
+// to leave no overlap. Centre gap widens row-by-row to match the
+// reference's valley shape (outer pair widest apart, inner pair
+// closest together near the centre sparkle).
 const PLACEMENT = [
-  "lg:col-start-1 lg:col-span-5 lg:row-start-1",   // 0 Sourcing & Screening — outer left
-  "lg:col-start-5 lg:col-span-5 lg:row-start-2",   // 1 Background Verification — mid-left inset
-  "lg:col-start-4 lg:col-span-4 lg:row-start-3",   // 2 Onboarding & Documentation — inner left
-  "lg:col-start-8 lg:col-span-4 lg:row-start-3",   // 3 Monthly Payroll Processing — inner right
-  "lg:col-start-8 lg:col-span-5 lg:row-start-2",   // 4 Statutory Filings & Returns — mid-right inset
-  "lg:col-start-8 lg:col-span-5 lg:row-start-1",   // 5 MIS Reporting — outer right
+  "lg:col-start-1 lg:col-span-5 lg:row-start-1",    // 0 Sourcing & Screening — cols 1-5
+  "lg:col-start-8 lg:col-span-5 lg:row-start-1",    // 5 MIS Reporting — cols 8-12 (gap: cols 6-7)
+  "lg:col-start-2 lg:col-span-4 lg:row-start-2",    // 1 Background Verification — cols 2-5
+  "lg:col-start-7 lg:col-span-4 lg:row-start-2",    // 4 Statutory Filings & Returns — cols 7-10 (gap: col 6)
+  "lg:col-start-3 lg:col-span-3 lg:row-start-3",    // 2 Onboarding & Documentation — cols 3-5
+  "lg:col-start-7 lg:col-span-3 lg:row-start-3",    // 3 Monthly Payroll Processing — cols 7-9 (gap: col 6)
 ];
-const ROW_HEIGHTS = "lg:grid-rows-[auto_auto_auto]";
+// PLACEMENT is indexed by data index, but written in visual pair order
+// above for readability — re-map to data order below.
+const PLACEMENT_BY_DATA_INDEX = [
+  PLACEMENT[0], // 0 Sourcing & Screening
+  PLACEMENT[2], // 1 Background Verification
+  PLACEMENT[4], // 2 Onboarding & Documentation
+  PLACEMENT[5], // 3 Monthly Payroll Processing
+  PLACEMENT[3], // 4 Statutory Filings & Returns
+  PLACEMENT[1], // 5 MIS Reporting
+];
 
 export const FlexiScope = () => (
   <section
@@ -62,7 +67,18 @@ export const FlexiScope = () => (
     data-testid="flexi-scope-section"
     className="relative overflow-hidden bg-ak-mist/40 py-20 md:py-28"
   >
-    {/* Centre sparkle — faint 4-point star, near-background contrast per reference */}
+    {/* Bottom-left chevron/arrow decoration, sampled from the reference at near-white opacity */}
+    <svg
+      className="pointer-events-none absolute bottom-0 left-0 h-48 w-96 opacity-60"
+      viewBox="0 0 400 200"
+      fill="none"
+    >
+      <path d="M0 40 L70 90 L0 140" stroke="#E6E6F0" strokeWidth="10" />
+      <path d="M90 60 L180 110 L90 180" stroke="#E6E6F0" strokeWidth="10" />
+      <path d="M200 90 L290 130 L210 200" stroke="#E6E6F0" strokeWidth="10" />
+    </svg>
+
+    {/* Centre sparkle — faint 4-point star */}
     <svg
       className="pointer-events-none absolute left-1/2 top-[60%] hidden h-40 w-40 -translate-x-1/2 -translate-y-1/2 opacity-[0.12] lg:block"
       viewBox="0 0 100 100"
@@ -74,7 +90,7 @@ export const FlexiScope = () => (
       />
     </svg>
 
-    {/* Bottom-right decorative rings, matching the site's established orbit motif */}
+    {/* Bottom-right decorative rings */}
     <svg
       className="pointer-events-none absolute -bottom-10 -right-10 h-56 w-56 opacity-50"
       viewBox="0 0 200 200"
@@ -94,11 +110,11 @@ export const FlexiScope = () => (
       </Reveal>
 
       <RevealGroup
-        className={`relative mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-x-6 lg:gap-y-6 ${ROW_HEIGHTS}`}
+        className="relative mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-x-6 lg:gap-y-6"
         stagger={0.1}
       >
         {scope.cards.map((c, i) => (
-          <RevealItem key={c.title} className={PLACEMENT[i]}>
+          <RevealItem key={c.title} className={PLACEMENT_BY_DATA_INDEX[i]}>
             <div className="h-full rounded-2xl border border-ak-ink/[0.07] bg-white p-6 shadow-[0_4px_20px_-8px_rgba(28,42,57,0.08)] transition-shadow hover:shadow-lg">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-ak-scopeNavy text-ak-scopeAmber">
                 <Icon name={c.icon} className="h-5 w-5" strokeWidth={1.85} />
