@@ -78,12 +78,12 @@ export const difference = {
   heading: "The Aksharaa Difference in Flexi Staffing",
   sub: "Most staffing agencies deploy workers. Aksharaa deploys workers and manages the entire compliance ecosystem — so your business carries zero statutory risk.",
   items: [
-    { num: "01", title: "Compliance-First Staffing", desc: "Every worker is enrolled in PF and ESI from Day 1. No exceptions. CLRA registrations and contractor licenses are maintained in good standing." },
-    { num: "02", title: "Verified Workforce", desc: "All flexi staff undergo identity verification, address verification, and credential checks before deployment." },
-    { num: "03", title: "Pan-India Deployment", desc: "Whether you need staff in Chennai, Mumbai, Delhi NCR, or a Tier-2 industrial hub — Aksharaa supports multi-location deployment." },
-    { num: "04", title: "Transparent Monthly Reporting", desc: "Monthly MIS reports covering deployed headcount, attendance, statutory payment confirmations, and renewal calendars." },
-    { num: "05", title: "Flexible Engagement Models", desc: "Short-term project staffing, long-term flexi contracts, or surge-and-scale models structured to match your business rhythm." },
-    { num: "06", title: "Dedicated Account Management", desc: "A named account manager handles your staffing requirements, compliance calendar, and escalations." },
+    { num: "01", icon: "shield", title: "Compliance-First Staffing", desc: "Every worker is enrolled in PF and ESI from Day 1. No exceptions. CLRA registrations and contractor licenses are maintained in good standing." },
+    { num: "02", icon: "checkCircle", title: "Verified Workforce", desc: "All flexi staff undergo identity verification, address verification, and credential checks before deployment." },
+    { num: "03", icon: "mapPin", title: "Pan-India Deployment", desc: "Whether you need staff in Chennai, Mumbai, Delhi NCR, or a Tier-2 industrial hub — Aksharaa supports multi-location deployment." },
+    { num: "04", icon: "fileText", title: "Transparent Monthly Reporting", desc: "Monthly MIS reports covering deployed headcount, attendance, statutory payment confirmations, and renewal calendars." },
+    { num: "05", icon: "shuffle", title: "Flexible Engagement Models", desc: "Short-term project staffing, long-term flexi contracts, or surge-and-scale models structured to match your business rhythm." },
+    { num: "06", icon: "headset", title: "Dedicated Account Management", desc: "A named account manager handles your staffing requirements, compliance calendar, and escalations." },
   ],
 };
 
