@@ -5,112 +5,101 @@ import { Icon } from "../../../lib/icons";
 import { difference } from "../../../data/svc-flexi-staffing";
 
 /**
- * Flexi Staffing "The Aksharaa Difference" section — aesthetic + motion
- * upgrade per direct instruction ("semi dark color + semi-opacity
- * background image", "cards aesthetically improved with good movement").
- * No reference image for this one — built from the brief.
+ * Flexi Staffing "The Aksharaa Difference" section — direct feedback
+ * round changing the section from dark to light.
  *
- * Background: started as a photo (flexi-difference-bg.jpg, a night
- * office tower) at varying opacity across two rounds of feedback —
- * raised for visibility, then lowered again for being cluttered.
- * Removed entirely in this round per direct feedback that it wasn't
- * visible enough to read as intentional and was still "spoiling" the
- * visual at low opacity. Replaced with an inline SVG abstract line
- * pattern (sparse diagonal lines top-right, soft concentric arcs
- * bottom-left, a small connected-node cluster) in light grey/white at
- * very low opacity (5-7%, fillOpacity 12% for the node dots) — a
- * deliberate subtle design rather than a photo trying to be subtle.
- * No image file/asset needed for this approach; flexi-difference-bg.jpg
- * is now unused but left in public/assets/sections in case a future
- * round wants it back.
+ * Prior rounds: dark sage-grey background (#7E8987 -> #4E5654), first a
+ * stock night-office photo (opacity tuned up then down, never landed),
+ * then an inline SVG abstract line pattern (white-on-dark, worked, but
+ * was a holding pattern rather than the final answer for this section).
  *
- * Section base colour remains #4E5654 (darkened from the client's
- * original #7E8987 sage-grey per the previous round's feedback).
+ * This round: full reversal to a light section per direct instruction.
+ * Base colour #EEF4ED (a very light mint-tinted off-white — client-
+ * specified). Background image swapped to a client-supplied team
+ * meeting photo (flexi-difference-bg.jpg — overwrites the now-unused
+ * night-office photo at the same path rather than leaving an orphaned
+ * asset), shown at 30% opacity with an additional light tint overlay
+ * on top (genuinely semi-opacity per direct instruction — an initial
+ * attempt at 50% still read as a normal, fully-clear photo since a
+ * bright, high-contrast image against a near-white page doesn't fade
+ * the way a dark photo against a dark background did in the earlier
+ * rounds; lowered further and added the tint layer to actually achieve
+ * the faded look) as a right-side panel rather than
+ * full-bleed behind the text column, so it reads as a deliberate photo
+ * placement rather than a faint, hard-to-parse wash behind body copy —
+ * the full-bleed-photo-behind-text approach is what caused the
+ * visibility/clutter back-and-forth in the dark version.
  *
- * Cards: previously a flat bordered box with just a number + title +
- * desc. Added: a per-item icon (new `icon` field on difference.items
- * in data/svc-flexi-staffing.js — 'shuffle' added to lib/icons.js,
- * wasn't previously registered), a gradient-ring number badge, a left
- * accent bar that grows on hover, and a hover lift + glow + border
- * brighten driven by framer-motion whileHover (layered on top of the
- * existing RevealItem scroll-stagger, not replacing it — cards still
- * fade/slide in on scroll, then respond to hover once visible).
+ * Because the base flipped from dark to light, every white-on-dark
+ * assumption in this component had to flip too — this is a full
+ * rebuild of the colour treatment, not a patch on top of the dark
+ * version: heading/body text white -> ak-ink, kicker light variant ->
+ * default, abstract SVG pattern removed (white-on-white would be
+ * invisible; a light section doesn't need it now that a real photo is
+ * back), and cards switched from black-tinted overlays to white cards
+ * with a soft border + shadow (the light-section card pattern used
+ * elsewhere on this page, e.g. FlexiWho's card grid).
+ *
+ * Card content/motion logic (icon badge, number, accent bar, hover
+ * lift+glow) is unchanged from prior rounds — only the colour values
+ * needed to flip.
  */
 export const FlexiDifference = () => (
   <section
     id="svc-difference"
     data-testid="flexi-difference-section"
-    className="relative overflow-hidden bg-[#4E5654] py-20 md:py-28"
+    className="relative overflow-hidden bg-[#EEF4ED] py-20 md:py-28"
   >
-    <svg
-      className="pointer-events-none absolute inset-0 h-full w-full"
-      viewBox="0 0 1440 800"
-      preserveAspectRatio="xMidYMid slice"
-      fill="none"
-    >
-      <g stroke="#FFFFFF" strokeOpacity="0.07" strokeWidth="1.2">
-        {/* sparse diagonal line field, top-right */}
-        {Array.from({ length: 14 }).map((_, i) => {
-          const x = 900 + i * 60;
-          return <line key={`d1-${i}`} x1={x} y1="-100" x2={x - 380} y2="900" />;
-        })}
-      </g>
-      <g stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="1">
-        {/* large soft concentric arcs, bottom-left */}
-        {[120, 220, 320, 420].map((r) => (
-          <circle key={r} cx="60" cy="560" r={r} />
-        ))}
-      </g>
-      <g stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="1">
-        {/* a few scattered nodes connected by thin lines, right side */}
-        <line x1="1180" y1="120" x2="1340" y2="260" />
-        <line x1="1340" y1="260" x2="1260" y2="420" />
-        <line x1="1260" y1="420" x2="1400" y2="520" />
-        <line x1="1180" y1="120" x2="1080" y2="260" />
-      </g>
-      <g fill="#FFFFFF" fillOpacity="0.12">
-        <circle cx="1180" cy="120" r="3" />
-        <circle cx="1340" cy="260" r="3" />
-        <circle cx="1260" cy="420" r="3" />
-        <circle cx="1400" cy="520" r="3" />
-        <circle cx="1080" cy="260" r="3" />
-      </g>
-    </svg>
-
     <Container className="relative">
-      <Reveal className="max-w-2xl">
-        <div className="ak-kicker ak-kicker--light mb-5">{difference.kicker}</div>
-        <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-white md:text-4xl">{difference.heading}</h2>
-        <p className="mt-5 text-base leading-relaxed text-white/70">{difference.sub}</p>
-      </Reveal>
+      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1.3fr_0.9fr]">
+        <div>
+          <Reveal className="max-w-xl">
+            <div className="ak-kicker mb-5">{difference.kicker}</div>
+            <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">{difference.heading}</h2>
+            <p className="mt-5 text-base leading-relaxed text-ak-ink/60">{difference.sub}</p>
+          </Reveal>
 
-      <RevealGroup className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
-        {difference.items.map((d) => (
-          <RevealItem key={d.num}>
-            <motion.div
-              whileHover={{ y: -6 }}
-              transition={{ type: "spring", stiffness: 300, damping: 22 }}
-              className="group relative overflow-hidden rounded-2xl border border-black/[0.12] bg-black/[0.12] p-6 transition-colors duration-300 hover:border-ak-orange/35 hover:bg-black/[0.16]"
-            >
-              {/* left accent bar, grows on hover */}
-              <span className="absolute left-0 top-0 h-full w-[3px] bg-ak-orange/0 transition-all duration-300 group-hover:w-1 group-hover:bg-ak-orange" />
+          <RevealGroup className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2" stagger={0.1}>
+            {difference.items.map((d) => (
+              <RevealItem key={d.num}>
+                <motion.div
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                  className="group relative overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white p-6 shadow-[0_2px_14px_-6px_rgba(28,42,57,0.08)] transition-shadow duration-300 hover:border-ak-orange/30 hover:shadow-[0_10px_28px_-10px_rgba(28,42,57,0.16)]"
+                >
+                  {/* left accent bar, grows on hover */}
+                  <span className="absolute left-0 top-0 h-full w-[3px] bg-ak-orange/0 transition-all duration-300 group-hover:w-1 group-hover:bg-ak-orange" />
 
-              {/* soft glow on hover */}
-              <span className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-ak-orange/0 blur-2xl transition-colors duration-500 group-hover:bg-ak-orange/10" />
+                  {/* soft glow on hover */}
+                  <span className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-ak-orange/0 blur-2xl transition-colors duration-500 group-hover:bg-ak-orange/10" />
 
-              <div className="relative flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-ak-orange/25 to-ak-orange/5 text-ak-orange ring-1 ring-ak-orange/20 transition-transform duration-300 group-hover:scale-110">
-                  <Icon name={d.icon} className="h-5 w-5" strokeWidth={1.8} />
-                </span>
-                <span className="font-display text-2xl font-extrabold text-white/15 transition-colors duration-300 group-hover:text-ak-orange/40">{d.num}</span>
-              </div>
+                  <div className="relative flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-ak-orange/20 to-ak-orange/5 text-ak-orange ring-1 ring-ak-orange/20 transition-transform duration-300 group-hover:scale-110">
+                      <Icon name={d.icon} className="h-5 w-5" strokeWidth={1.8} />
+                    </span>
+                    <span className="font-display text-2xl font-extrabold text-ak-ink/10 transition-colors duration-300 group-hover:text-ak-orange/35">{d.num}</span>
+                  </div>
 
-              <h3 className="relative mt-4 font-display text-base font-bold text-white">{d.title}</h3>
-              <p className="relative mt-2 text-[13px] leading-relaxed text-white/70">{d.desc}</p>
-            </motion.div>
-          </RevealItem>
-        ))}
-      </RevealGroup>
+                  <h3 className="relative mt-4 font-display text-base font-bold text-ak-ink">{d.title}</h3>
+                  <p className="relative mt-2 text-[13px] leading-relaxed text-ak-ink/55">{d.desc}</p>
+                </motion.div>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+
+        {/* RIGHT — client-supplied team photo, semi-opacity per direct instruction */}
+        <Reveal delay={0.15} className="sticky top-24 hidden lg:block">
+          <div className="relative overflow-hidden rounded-3xl bg-[#EEF4ED]">
+            <img
+              src="/assets/sections/flexi-difference-bg.jpg"
+              alt="The Aksharaa team reviewing a client engagement together"
+              className="h-[520px] w-full object-cover opacity-30"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[#EEF4ED]/20" />
+          </div>
+        </Reveal>
+      </div>
     </Container>
   </section>
 );
