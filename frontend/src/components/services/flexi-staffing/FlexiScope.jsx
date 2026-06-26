@@ -4,61 +4,63 @@ import { Icon } from "../../../lib/icons";
 import { scope } from "../../../data/svc-flexi-staffing";
 
 /**
- * Flexi Staffing "Scope" section ("What We Manage") — full rebuild,
- * second attempt. The first attempt (commit 6e2b828) was reported by
- * the client as "totally collapsive" on review. Root cause, found by
- * re-checking the actual column-start/span math rather than trusting
- * the earlier screenshots: row 2's two cards
- * (lg:col-start-5/span-5 = columns 5-9, lg:col-start-8/span-5 =
- * columns 8-12) genuinely overlapped on columns 8-9 on a 12-col grid.
- * The earlier screenshots happened not to surface this clearly enough
- * before sign-off — a real miss, not a client misunderstanding.
+ * Flexi Staffing "Scope" section ("What We Manage") — third rebuild.
  *
- * Client also supplied a second image (a plain numbered-box diagram,
- * boxes 1-6) specifically to clarify the INTENDED shape: a symmetric
- * valley/checkmark, not a one-directional funnel. Re-measuring the
- * actual reference image's card y-positions confirms this precisely:
- * outer pair (Sourcing & Screening / MIS Reporting) sit at the same
- * height; middle pair (Background Verification / Statutory Filings)
- * sit together, lower; inner pair (Onboarding / Monthly Payroll) sit
- * together, lowest. Mirrored left-right around the centre sparkle,
- * not narrowing in one direction. This rebuild places each row's two
- * cards as a true symmetric pair — same column width, mirrored
- * start position, generous gap between them — and the column maths
- * for all three rows has been explicitly re-verified to leave a clear
- * non-overlapping gap, not just assumed correct from the visual
- * pattern of the numbers.
+ * The second attempt (commit c6a4d8f) fixed the column-overlap bug but
+ * introduced a different real problem, caught by the client comparing
+ * screenshots side by side: cards were NOT equal width. That version
+ * used a DIFFERENT col-span per row (row 1: span-5, row 2: span-4, row
+ * 3: span-3 on a 12-col grid) to create the narrowing effect — which
+ * narrows the row's footprint by shrinking the cards themselves, not by
+ * moving equal-sized cards closer together. The reference image's
+ * cards are genuinely the same size throughout; only their horizontal
+ * position shifts row to row.
  *
- * New this round: background decoration. Client asked for the
- * reference image's low-opacity design elements to be added — a pale
- * chevron/arrow motif in the bottom-left (colour ~#E6E6F0 on the
- * ~#FBFBFD mist background, both extremely close to white, sampled
- * directly from the reference), alongside the corner ring motif kept
- * from the previous round.
+ * This rebuild uses a 24-column grid with a SINGLE fixed span (9
+ * columns) for every one of the 6 cards — equal width is now
+ * structural/guaranteed, not something to eyeball from a screenshot.
+ * Only the col-start shifts per row, narrowing the gap between each
+ * row's pair while both cards keep the exact same width:
+ *   row 1: cols 1-9 and 16-24  -> gap 6 columns (widest, outer pair)
+ *   row 2: cols 2-10 and 15-23 -> gap 4 columns
+ *   row 3: cols 3-11 and 14-22 -> gap 2 columns (narrowest, inner pair)
+ * Verified by direct arithmetic before building (not just visual
+ * inspection) that every row's gap is positive and every card's span
+ * is identical — see the shift constant below.
+ *
+ * Heading centring: because each row's pair is symmetric around the
+ * grid's own centre (24 columns, so centre falls at column 12.5 for
+ * every row), centring the heading block to the full container width
+ * places it centred in row 1's gap automatically — no separate
+ * positioning needed for that to line up correctly.
  */
-
-// 12-column grid (lg+). Each row is a genuinely symmetric pair: same
-// column span, mirrored start position, with an explicit gap verified
-// to leave no overlap. Centre gap widens row-by-row to match the
-// reference's valley shape (outer pair widest apart, inner pair
-// closest together near the centre sparkle).
-const PLACEMENT = [
-  "lg:col-start-1 lg:col-span-5 lg:row-start-1",    // 0 Sourcing & Screening — cols 1-5
-  "lg:col-start-8 lg:col-span-5 lg:row-start-1",    // 5 MIS Reporting — cols 8-12 (gap: cols 6-7)
-  "lg:col-start-2 lg:col-span-4 lg:row-start-2",    // 1 Background Verification — cols 2-5
-  "lg:col-start-7 lg:col-span-4 lg:row-start-2",    // 4 Statutory Filings & Returns — cols 7-10 (gap: col 6)
-  "lg:col-start-3 lg:col-span-3 lg:row-start-3",    // 2 Onboarding & Documentation — cols 3-5
-  "lg:col-start-7 lg:col-span-3 lg:row-start-3",    // 3 Monthly Payroll Processing — cols 7-9 (gap: col 6)
-];
-// PLACEMENT is indexed by data index, but written in visual pair order
-// above for readability — re-map to data order below.
+/**
+ * IMPORTANT: every class below is written as a literal string, not built
+ * via template interpolation. Tailwind's JIT compiler statically scans
+ * source files for class names it can see directly — it cannot execute
+ * `` `lg:col-start-${start}` `` to discover which classes a runtime
+ * variable will produce, so a dynamically-built version of this array
+ * would silently generate no CSS at all for any of these positions.
+ * Caught before shipping by checking the project's tailwind.config.js
+ * content-scanning setup (plain JIT, no safelist) rather than assuming
+ * string interpolation would work.
+ *
+ * Second thing caught the same way (verified against the actual
+ * compiled CSS output, not assumed): col-start-14/15/16 don't exist
+ * even as literal strings, because Tailwind's default scale for
+ * col-start only goes up to 13. Those three are written using
+ * arbitrary-value bracket shorthand instead (`col-[14/23]` = CSS
+ * `grid-column:14/23`, equivalent to col-start-14 + col-span-9), which
+ * the JIT generates for any value. Confirmed present in the built CSS
+ * by direct substring search before trusting it.
+ */
 const PLACEMENT_BY_DATA_INDEX = [
-  PLACEMENT[0], // 0 Sourcing & Screening
-  PLACEMENT[2], // 1 Background Verification
-  PLACEMENT[4], // 2 Onboarding & Documentation
-  PLACEMENT[5], // 3 Monthly Payroll Processing
-  PLACEMENT[3], // 4 Statutory Filings & Returns
-  PLACEMENT[1], // 5 MIS Reporting
+  "lg:col-start-1 lg:col-span-9 lg:row-start-1",       // 0 Sourcing & Screening — row 1 left, cols 1-9
+  "lg:col-start-2 lg:col-span-9 lg:row-start-2",       // 1 Background Verification — row 2 left, cols 2-10
+  "lg:col-start-3 lg:col-span-9 lg:row-start-3",       // 2 Onboarding & Documentation — row 3 left, cols 3-11
+  "lg:col-[14/23] lg:row-start-3",                     // 3 Monthly Payroll Processing — row 3 right, cols 14-22
+  "lg:col-[15/24] lg:row-start-2",                     // 4 Statutory Filings & Returns — row 2 right, cols 15-23
+  "lg:col-[16/25] lg:row-start-1",                     // 5 MIS Reporting — row 1 right, cols 16-24
 ];
 
 export const FlexiScope = () => (
@@ -110,7 +112,7 @@ export const FlexiScope = () => (
       </Reveal>
 
       <RevealGroup
-        className="relative mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-x-6 lg:gap-y-6"
+        className="relative mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-[repeat(24,minmax(0,1fr))] lg:gap-x-5 lg:gap-y-6"
         stagger={0.1}
       >
         {scope.cards.map((c, i) => (
