@@ -41,7 +41,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Rebuilt per client reference (commits 5f800f2, 760d30d) — client background asset wired in (flexi-hero-bg.jpg), badge in circular card, watermark rebuilt to match reference exactly (monochrome, ~#F4925A, 16% opacity). Awaiting final user confirmation. |
+| 1 | Hero | Rebuilt per client reference (commits 5f800f2, 760d30d) — client background asset wired in (flexi-hero-bg.jpg), badge in circular card, watermark rebuilt to match reference exactly (monochrome, ~#F4925A, opacity now 7%). Floating orbit element added (commit e355b6f) — two concentric rings, gradient hexagon logo + wordmark with drop shadow + pulsing halo, sized up per feedback. Awaiting final user confirmation. |
 | 2 | Overview | Team photo added under info card bullet list, rounded corners + card polish (commit 7c71a01). Awaiting final user confirmation. |
 | 3 | Who Needs This | Rebuilt per reference (commit efdca55) — slider-bar motif replaces kicker, centred heading, enlarged icon badges, burgundy stat band added below grid (reuses hero.stats). India icon: client-supplied PNG asset, recoloured white via CSS filter. Awaiting final user confirmation. |
 | 4 | The Aksharaa Difference | Corrected misread of prior feedback (commit 3ccece4) \u2014 gradient background (light sage \u2192 dark sage, direction inspired by the reference photo's own light-to-dark tonal range, not its content), photo at full clarity/opacity, 6 cards reverted to dark glass treatment with hover motion intact. Awaiting final user confirmation. |
