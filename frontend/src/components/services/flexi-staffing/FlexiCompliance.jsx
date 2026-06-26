@@ -24,17 +24,21 @@ import { compliance } from "../../../data/svc-flexi-staffing";
  *   to a new sampled blue token (ak-complianceCheck) matching the
  *   reference's circular blue check-badges exactly, plus a soft glow
  *   ring to match the reference's lit appearance.
- * - Coverage card: per DIRECT INSTRUCTION, given a solid gold fill
- *   (#ECCE8E, user-specified, not sampled from the reference — the
- *   reference itself uses a dark glass card) instead of the original's
- *   white/[0.04] translucent panel. Because this flips the card to a
- *   light background, all card-internal text recoloured to dark
- *   (ak-ink / ak-ink/70) for contrast — heading, subtitle, row labels,
- *   and dividers all switched from white-on-dark to dark-on-gold.
- *   Value-text colours (green for positive outcomes, amber for
- *   deadline-type values) were re-tuned for contrast against gold rather
- *   than reusing the reference's dark-background green/orange, which
- *   read too washed-out once tested against #ECCE8E.
+ * - Coverage card: per DIRECT INSTRUCTION, given a solid pale cream fill
+ *   (ak-complianceCardFill, originally #ECCE8E gold then swapped to
+ *   #FEF5DC per a follow-up instruction — both user-specified, neither
+ *   sampled from the reference, which itself uses a dark glass card)
+ *   instead of the original's white/[0.04] translucent panel. Because
+ *   this flips the card to a light background, all card-internal text
+ *   recoloured to dark (ak-ink / ak-ink/70) for contrast — heading,
+ *   subtitle, row labels, and dividers all switched from white-on-dark
+ *   to dark-on-light. Value-text colours (green for positive outcomes,
+ *   amber for deadline-type values) were re-tuned for contrast against
+ *   the card fill rather than reusing the reference's dark-background
+ *   green/orange, which read too washed-out once tested against the
+ *   original #ECCE8E — both tokens were re-checked against #FEF5DC too
+ *   and clear AA with room to spare, so no further change was needed
+ *   when the fill colour itself changed.
  * - Each of the 5 coverage rows now has its own icon badge with a
  *   distinct colour (blue/indigo/teal/purple/rose), sampled from the
  *   reference's 5 differently-coloured row icons — the original had no

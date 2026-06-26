@@ -130,8 +130,13 @@ module.exports = {
           complianceDeadline: '#7A3D06', // "By 15th" / "Half-Yearly" / "Feb 15th" value text (deadline-type)
           complianceStatIcon: '#103792', // bottom stat-band circular icon backgrounds (all 5, same blue)
           // User-specified, not sampled: fill for the "Compliance Coverage
-          // at a Glance" card itself, per direct instruction.
-          complianceCardFill: '#ECCE8E',
+          // at a Glance" card itself, per direct instruction. Originally
+          // #ECCE8E (a warmer gold), swapped to this lighter pale cream per
+          // a follow-up instruction. Re-checked contrast for all card text
+          // tokens against the new value — ak.ink (13.4:1), complianceGreen
+          // (7.0:1), complianceDeadline (7.7:1) — all comfortably clear AA,
+          // so no text-colour changes were needed alongside this swap.
+          complianceCardFill: '#FEF5DC',
           // Per-row icon badge fill + accent pairs (badge = muted square
           // background, accent = the brighter icon glyph colour on top).
           complianceRow1Badge: '#0E2E7D', // PF & ESI Enrolment — blue
