@@ -39,7 +39,7 @@ SECTION STATUS (update as we go)
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Pending review |
+| 1 | Hero | Full rebuild per client reference image (commit e9a5f06) — client-supplied model photo (background-removed via rembg after discovering the JPEG export had a baked-in checkerboard pattern, not real transparency), soft peach circle behind the head (breathing pulse), rotating compliance badge seal, orbiting dashed-ellipse swoosh, twinkling bottom-left dot grid, subtle idle motion on the deadline card. Headline shrunk to fit a true 2-line wrap per direct instruction (with tracking/line-height compensation to preserve visual weight). Found and fixed a real Framer Motion / Tailwind transform-collision bug affecting 3 elements (animate() silently drops sibling translate utility classes) — confirmed via computed-transform-matrix inspection, fixed with a static-wrapper + inner-motion-element split, re-verified by bounding-box measurement. Added a mobile/tablet-specific instance of the full visual (extracted into a parameterised ModelVisual component) after the first round shipped desktop-only and left mobile text-only — corrected since mobile is the dominant/growing traffic pattern. Verified at 1440px/768px/390px. Awaiting final user confirmation. |
 | 2 | What We File | Pending review |
 | 3 | Filing Calendar | Pending review |
 | 4 | Scope | Pending review |
