@@ -15,25 +15,19 @@ export const meta = {
 export const hero = {
   eyebrow: "Compliance, Filings & Taxation",
   headline: ["PF & ESI Returns Filing —", "Never Miss a Deadline"],
-  sub: "Monthly ECR filings, ESI challans, half-yearly returns, and annual submissions — each with strict statutory deadlines that carry interest and penalties on every day of delay. Aksharaa files on time, every time, with zero follow-up required from you.",
   ctas: [
     { label: "Start Filing With Us", variant: "primary", href: "#service-cta" },
     { label: "All Filing Services", variant: "secondary", href: "/compliance-filings-taxation" },
   ],
-  stats: [
-    { value: 450, suffix: "+", label: "Establishments Served" },
-    { value: 0, suffix: "", label: "Late Filings on Record" },
-    { value: 15, suffix: "+", label: "Years Filing Experience" },
-  ],
   deadlineCard: {
-    title: "Upcoming Filing Deadlines",
+    title: "Upcoming",
+    titleAccent: "Filing Deadlines",
     rows: [
-      { day: "15", month: "Every Month", name: "PF Monthly ECR Filing", desc: "Electronic Challan cum Return — contributions for previous month", tag: "PF", urgent: true },
-      { day: "15", month: "Every Month", name: "ESI Monthly Challan", desc: "Employer + employee ESI contribution challan payment", tag: "ESI", soon: true },
-      { day: "11", month: "Nov / May", name: "ESI Half-Yearly Return", desc: "Form 5 — employee details and contribution summary", tag: "ESI" },
-      { day: "25", month: "April", name: "PF Annual Return", desc: "Form 3A / 6A — annual member contribution statement", tag: "PF" },
+      { day: "15", month: "Every Month", name: "PF Monthly ECR Filing", tag: "PF", urgent: true },
+      { day: "15", month: "Every Month", name: "ESI Monthly Challan", tag: "ESI", soon: true },
+      { day: "11", month: "Nov / May", name: "ESI Half-Yearly Return", tag: "ESI" },
+      { day: "25", month: "April", name: "PF Annual Return", tag: "PF" },
     ],
-    footer: "Aksharaa files all of the above on your behalf",
   },
 };
 
