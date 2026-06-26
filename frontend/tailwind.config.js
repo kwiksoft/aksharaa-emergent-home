@@ -159,6 +159,14 @@ module.exports = {
           // this is its own reference-sampled value for this section's
           // specific photo-overlay treatment.
           differenceOverlay: '#1E52AA',
+          // PF & ESI Returns Filing hero, client reference image — the soft
+          // peach/orange circle sitting behind the model cutout. Sampled
+          // via PIL histogram from a clean patch of the circle, away from
+          // the photo and badge — clean fill pixels converged on #FEAF7B.
+          // Distinct from ak.orange (#F28C28) and ak.orange2 (#FF6B05):
+          // both noticeably more saturated/darker — this is deliberately
+          // a soft background tint, not a UI accent colour.
+          returnsCirclePeach: '#FEAF7B',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
