@@ -44,7 +44,7 @@ SECTION STATUS (update as we go)
 | 1 | Hero | Rebuilt per client reference (commits 5f800f2, 760d30d) — client background asset wired in (flexi-hero-bg.jpg), badge in circular card, watermark rebuilt to match reference exactly (monochrome, ~#F4925A, 16% opacity). Awaiting final user confirmation. |
 | 2 | Overview | Team photo added under info card bullet list, rounded corners + card polish (commit 7c71a01). Awaiting final user confirmation. |
 | 3 | Who Needs This | Rebuilt per reference (commit efdca55) — slider-bar motif replaces kicker, centred heading, enlarged icon badges, burgundy stat band added below grid (reuses hero.stats). India icon: client-supplied PNG asset, recoloured white via CSS filter. Awaiting final user confirmation. |
-| 4 | The Aksharaa Difference | Semi-dark bg image (night office tower, 16% opacity over navy gradient) + card redesign (commit 657cc86) \u2014 icon badges added per item, accent bar + glow + spring-lift hover motion, layered on top of existing scroll-stagger. No reference image, built from direct brief. Awaiting final user confirmation. |
+| 4 | The Aksharaa Difference | Background colour set to #7E8987, image opacity raised to 40% for visibility, text/card contrast compensated accordingly (commit 3650872). Card redesign with icon badges + hover motion from prior round still in place. Awaiting final user confirmation. |
 | 5 | Scope | Pending review |
 | 6 | Process | Pending review |
 | 7 | Compliance Layer | Pending review |
