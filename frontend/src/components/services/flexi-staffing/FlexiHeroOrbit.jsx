@@ -15,10 +15,12 @@ const EASE = [0.22, 1, 0.36, 1];
  *   fainter ring with smaller, more frequent tick-dots — matches the
  *   reference's two-ring structure exactly (confirmed via a zoomed
  *   crop of the reference, not assumed).
- * - Centre hexagon rebuilt with a real drop shadow and a two-tone
- *   gradient "A" mark (darker crimson-orange left stroke, lighter
- *   orange right stroke) plus the AKSHARAA wordmark beneath it, rather
- *   than a flat single-colour letter in a plain hexagon.
+ * - Centre hexagon rebuilt with a real drop shadow; now uses the
+ *   official logo asset (public/assets/aksharaa-logo.png — the same
+ *   file the site header uses via Logo.jsx) rather than a hand-built
+ *   SVG approximation of the "A" mark. The hand-built version was a
+ *   placeholder for the mockup/comparison stage; swapped to the real
+ *   logo once the orbit placement itself was confirmed.
  * - A soft pulsing ring around the hexagon that expands and fades
  *   ("subtly disappearing") on a slow loop, for the breathing-halo
  *   effect requested.
@@ -80,9 +82,9 @@ export const FlexiHeroOrbit = ({ className = "" }) => {
         transition={{ duration: 2.6, repeat: Infinity, ease: "easeOut" }}
       />
 
-      {/* centre hexagon — logo mark + wordmark, real depth */}
+      {/* centre hexagon — official logo lockup, real depth */}
       <div
-        className="absolute flex flex-col items-center justify-center gap-1 bg-white"
+        className="absolute flex items-center justify-center bg-white p-4"
         style={{
           width: size * 0.46,
           height: size * 0.46,
@@ -92,16 +94,12 @@ export const FlexiHeroOrbit = ({ className = "" }) => {
           filter: "drop-shadow(0 14px 28px rgba(203,65,84,0.18))",
         }}
       >
-        <svg viewBox="0 0 60 60" className="h-12 w-12">
-          <defs>
-            <linearGradient id="orbitLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#CB4154" />
-              <stop offset="100%" stopColor="#F28C28" />
-            </linearGradient>
-          </defs>
-          <path d="M30 8 L46 50 H38 L34.5 40 H25.5 L22 50 H14 Z M30 22 L26.5 32 H33.5 Z" fill="url(#orbitLogoGrad)" />
-        </svg>
-        <span className="text-[10px] font-extrabold tracking-wide text-ak-orange">AKSHARAA</span>
+        <img
+          src="/assets/aksharaa-logo.png"
+          alt="Aksharaa Corporate Services"
+          className="h-auto w-[78%] object-contain"
+          draggable="false"
+        />
       </div>
 
       {/* orbiting icon circles, counter-rotated to stay upright */}
