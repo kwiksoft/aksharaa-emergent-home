@@ -52,3 +52,22 @@ SECTION STATUS (update as we go)
 | 9 | FAQs | Pending review |
 | 10 | Related Services | Pending review |
 | 11 | Final CTA | Rebuilt to match Payroll Processing's CTA per direct instruction (commit a93b432) — replaced flat ak-orange-fill/single-fade-up with the shared cta-bg.png background image, staggered 4-stage entrance (kicker/heading/sub/actions), white pill button with breathing glow, pulsing phone-icon badge. Added kicker field to serviceCta data (didn't exist before). Content unchanged. Verified at 1440px (direct side-by-side vs Payroll's own CTA) and 390px mobile. Awaiting final user confirmation. |
+
+---
+
+CROSS-CUTTING CHANGE — SECTION PADDING (commit 6e8e8fe)
+
+Top/bottom padding reduced by 50% on all 9 mid-page sections (Overview,
+Who, Difference, Scope, Process, Compliance, Industries, Faqs, Related)
+per direct instruction — py-20 md:py-28 -> py-10 md:py-14 on every one
+(confirmed via grep that all 9 used the identical original pattern
+before editing, so one uniform replacement applied cleanly). Hero and
+Final CTA explicitly excluded, confirmed unchanged by direct computed-
+style measurement (Hero: 12px/0px, Cta: 64px/64px, both identical to
+before). Desktop padding now 56px top+bottom per section (was 112px),
+mobile 40px (was 80px) — verified by measuring getComputedStyle, not
+just trusting the class names. Reviewed a full-page screenshot in 5
+chunks to confirm no section reads cramped against its neighbours at
+the new spacing. This is a page-wide template change, so it will
+propagate as the baseline once other Staffing & Manpower service
+pages are built from this template.
