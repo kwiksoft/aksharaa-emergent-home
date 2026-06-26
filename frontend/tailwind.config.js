@@ -149,6 +149,16 @@ module.exports = {
           complianceRow4Accent: '#8979F5',
           complianceRow5Badge: '#3E1F42', // Penalty Risk to Client — magenta/rose
           complianceRow5Accent: '#B1446F',
+          // Flexi Staffing "Difference" section (Section 4), Techno-template
+          // reference image ("Why Choose Us"). Sampled from a clean patch
+          // of the section's blue overlay with minimal photo content
+          // showing through (top-right area, away from the people in the
+          // photo) — tight cluster converged on #1E52AA, rounded to this
+          // value. Distinct from ak.blue2 (#0C2F73, darker/more navy) and
+          // ak.complianceCheck (#0F54B5, different provenance/section) —
+          // this is its own reference-sampled value for this section's
+          // specific photo-overlay treatment.
+          differenceOverlay: '#1E52AA',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
