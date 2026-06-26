@@ -106,6 +106,44 @@ module.exports = {
           // (#FF6B05): brighter/more amber than either, and used only for
           // this section's icon glyphs against the navy badge fill.
           scopeAmber: '#F59433',
+          // Flexi Staffing "Compliance Layer" section, client reference image.
+          // Full palette below sampled via PIL from the reference's dark
+          // navy section, glassmorphic coverage card, and 5 distinctly
+          // coloured icon-badge rows. Kept as a self-contained group since
+          // this section introduces more new colours at once than any
+          // section so far — grouped together here for scannability rather
+          // than interleaved with unrelated tokens.
+          complianceBg: '#001745', // section background, sampled from a clean corner away from text
+          complianceOrange: '#F17602', // "Responsibility" heading accent word
+          complianceCheck: '#0F54B5', // checklist checkmark circle fill
+          complianceCardBorder: '#286DD4', // glassmorphic coverage card's bright blue edge highlight
+          // Originally sampled at #86D65C / #E0993E directly from the
+          // reference image, both tuned for a dark background. Once the
+          // coverage card was switched to a solid gold fill (#ECCE8E, see
+          // below) per direct instruction, both failed contrast badly —
+          // #86D65C measured 1.17:1 against the gold, #E0993E measured
+          // 1.57:1, both far under the WCAG AA 4.5:1 minimum for text.
+          // Replaced with deeper shades in the same colour family that
+          // clear AA comfortably (5.0:1 / 5.5:1) while still reading as
+          // "green = good" / "amber = deadline" against the gold.
+          complianceGreen: '#15602E', // "Day 1 Coverage" / "Zero" value text (positive outcomes)
+          complianceDeadline: '#7A3D06', // "By 15th" / "Half-Yearly" / "Feb 15th" value text (deadline-type)
+          complianceStatIcon: '#103792', // bottom stat-band circular icon backgrounds (all 5, same blue)
+          // User-specified, not sampled: fill for the "Compliance Coverage
+          // at a Glance" card itself, per direct instruction.
+          complianceCardFill: '#ECCE8E',
+          // Per-row icon badge fill + accent pairs (badge = muted square
+          // background, accent = the brighter icon glyph colour on top).
+          complianceRow1Badge: '#0E2E7D', // PF & ESI Enrolment — blue
+          complianceRow1Accent: '#3B6FE0',
+          complianceRow2Badge: '#1E286F', // Monthly PF Deposit Deadline — indigo
+          complianceRow2Accent: '#7B7FFD',
+          complianceRow3Badge: '#0C345B', // ESI Returns — teal
+          complianceRow3Accent: '#32AFC3',
+          complianceRow4Badge: '#1B235E', // CLRA Annual Returns — purple
+          complianceRow4Accent: '#8979F5',
+          complianceRow5Badge: '#3E1F42', // Penalty Risk to Client — magenta/rose
+          complianceRow5Accent: '#B1446F',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

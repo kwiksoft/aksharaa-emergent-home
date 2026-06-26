@@ -15,7 +15,7 @@ import {
   FilePlus2, FileX2, RefreshCw, Edit3,
   AlertTriangle, Calculator, Percent, IndianRupee, UserPlus,
   Download, Headset, User, History, IdCard, Rocket, Gavel,
-  Eye, FolderUp, UsersRound, Award, ConciergeBell, Shuffle,
+  Eye, FolderUp, UsersRound, Award, ConciergeBell, Shuffle, AlertCircle,
 } from "lucide-react";
 
 export const icons = {
@@ -37,6 +37,7 @@ export const icons = {
   download: Download, headset: Headset,
   user: User, history: History, idCard: IdCard, rocket: Rocket, gavel: Gavel,
   eye: Eye, folderUp: FolderUp, usersRound: UsersRound, award: Award, conciergeBell: ConciergeBell, shuffle: Shuffle,
+  alertCircle: AlertCircle,
 };
 
 export const Icon = ({ name, ...props }) => {

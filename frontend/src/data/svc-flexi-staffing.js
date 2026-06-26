@@ -128,13 +128,24 @@ export const compliance = {
   coverage: {
     title: "Compliance Coverage at a Glance",
     stats: [
-      { label: "PF & ESI Enrolment", value: "Day 1 Coverage" },
-      { label: "Monthly PF Deposit Deadline", value: "By 15th" },
-      { label: "ESI Returns", value: "Half-Yearly" },
-      { label: "CLRA Annual Returns", value: "Feb 15th" },
-      { label: "Penalty Risk to Client", value: "Zero" },
+      { icon: "users", label: "PF & ESI Enrolment", value: "Day 1 Coverage", tone: "positive" },
+      { icon: "calendar", label: "Monthly PF Deposit Deadline", value: "By 15th", tone: "deadline" },
+      { icon: "fileText", label: "ESI Returns", value: "Half-Yearly", tone: "deadline" },
+      { icon: "shield", label: "CLRA Annual Returns", value: "Feb 15th", tone: "deadline" },
+      { icon: "alertCircle", label: "Penalty Risk to Client", value: "Zero", tone: "positive" },
     ],
   },
+  // Bottom stat band — new content, not previously in this data file.
+  // Distinct from hero.stats (450+ Establishments / 15+ Years / Pan-India /
+  // 100% Compliance): different numbers, specific to this section's own
+  // reference image, so kept separate rather than reusing hero.stats.
+  bottomStats: [
+    { icon: "shield", value: "100%", label: "Compliance Assurance" },
+    { icon: "users", value: "50K+", label: "Workers Deployed" },
+    { icon: "building", value: "25+", label: "Industries Served" },
+    { icon: "clock", value: "On-Time", label: "Statutory Filings" },
+    { icon: "award", value: "10+ Years", label: "of Trust & Reliability" },
+  ],
 };
 
 export const industries = {
