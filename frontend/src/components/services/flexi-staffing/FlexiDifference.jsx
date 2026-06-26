@@ -13,22 +13,17 @@ import { difference } from "../../../data/svc-flexi-staffing";
  * Background: flexi-difference-bg.jpg (Pexels, Line Knipst, free-to-use
  * licence, confirmed before download — same pattern as other placeholder
  * section photography in this repo), a night-time lit office tower.
- * Section base colour set to #7E8987 (client-specified, a muted
- * sage-grey — replaces the original bg-ak-navy) with the image rendered
- * at 40% opacity (was 16%, raised per direct feedback that it wasn't
- * visible) under a matching-tone gradient overlay (was navy, now the
- * same #7E8987 at varying alpha) so the overlay doesn't fight the new
- * base colour or wash the image out again.
- *
- * Both changes reduce contrast against the original near-black
- * background, so two compensating adjustments were made (not
- * explicitly requested, but the original values read poorly against
- * the lighter colour and weren't a deliberate part of the brief):
- * body/description text bumped text-white/45 -> text-white/70, and
- * card fill switched from a white-tinted overlay (bg-white/[0.03],
- * border-white/[0.08] — relied on contrast against near-black) to a
- * black-tinted one (bg-black/[0.12], border-black/[0.12]) so cards
- * still read as distinct surfaces against the lighter base.
+ * Section base colour set to #7E8987 initially (client-specified
+ * sage-grey), then darkened to #4E5654 (same hue family, lower
+ * lightness) after direct feedback that the visual was "messy" with
+ * the building windows creating clutter through the text — paired
+ * with lowering the image opacity back down (40% -> 18%, having
+ * raised it from 16% -> 40% in the previous round per a different
+ * piece of feedback). The contrast-compensation values added when the
+ * background was lighter (text-white/70, bg-black/[0.12] cards) are
+ * left as-is rather than reverted — they read fine against the new
+ * darker base too, and reverting them now would just be more churn
+ * for no visible benefit.
  *
  * Cards: previously a flat bordered box with just a number + title +
  * desc. Added: a per-item icon (new `icon` field on difference.items
@@ -43,14 +38,14 @@ export const FlexiDifference = () => (
   <section
     id="svc-difference"
     data-testid="flexi-difference-section"
-    className="relative overflow-hidden bg-[#7E8987] py-20 md:py-28"
+    className="relative overflow-hidden bg-[#4E5654] py-20 md:py-28"
   >
     <img
       src="/assets/sections/flexi-difference-bg.jpg"
       alt=""
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
+      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.18]"
     />
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#7E8987]/60 via-[#7E8987]/75 to-[#7E8987]/95" />
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#4E5654]/80 via-[#4E5654]/88 to-[#4E5654]" />
 
     <Container className="relative">
       <Reveal className="max-w-2xl">
