@@ -37,7 +37,7 @@ export const FlexiIndustries = () => (
   <section
     id="svc-industries"
     data-testid="flexi-industries-section"
-    className="relative overflow-hidden bg-gradient-to-br from-[#FBEAEA] via-[#EEEDFF] to-[#FBEAEA] py-20 md:py-28"
+    className="relative overflow-hidden bg-gradient-to-br from-[#FBEAEA] via-[#EEEDFF] to-[#FBEAEA] py-10 md:py-14"
   >
     <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-40" viewBox="0 0 1600 900" preserveAspectRatio="none">
       <g stroke="#8E8CC7" strokeOpacity="0.15" strokeWidth="1.5">

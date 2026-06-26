@@ -42,7 +42,7 @@ export const FlexiDifference = () => (
   <section
     id="svc-difference"
     data-testid="flexi-difference-section"
-    className="relative overflow-hidden bg-ak-ink py-20 md:py-28"
+    className="relative overflow-hidden bg-ak-ink py-10 md:py-14"
   >
     {/* Full-bleed photo background — the same asset previously used as a sticky side panel */}
     <div className="absolute inset-0">

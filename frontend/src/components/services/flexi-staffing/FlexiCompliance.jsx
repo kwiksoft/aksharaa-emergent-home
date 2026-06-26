@@ -51,7 +51,7 @@ export const FlexiCompliance = () => (
   <section
     id="svc-compliance"
     data-testid="flexi-compliance-section"
-    className="relative overflow-hidden bg-ak-complianceBg py-20 md:py-28"
+    className="relative overflow-hidden bg-ak-complianceBg py-10 md:py-14"
   >
     <Container className="relative">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">

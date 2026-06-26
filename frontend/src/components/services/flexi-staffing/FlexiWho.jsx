@@ -32,7 +32,7 @@ import { who, hero } from "../../../data/svc-flexi-staffing";
 const statIcons = ["building", "award", null, "shield"];
 
 export const FlexiWho = () => (
-  <section id="svc-who" data-testid="flexi-who-section" className="bg-white py-20 md:py-28">
+  <section id="svc-who" data-testid="flexi-who-section" className="bg-white py-10 md:py-14">
     <Container>
       <Reveal className="mx-auto max-w-2xl text-center">
         <div className="relative mx-auto mb-6 h-px w-40 bg-gradient-to-r from-transparent via-ak-orange/40 to-transparent">

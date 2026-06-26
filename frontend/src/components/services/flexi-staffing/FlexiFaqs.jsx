@@ -10,7 +10,7 @@ const EASE = [0.22, 1, 0.36, 1];
 export const FlexiFaqs = () => {
   const [openIdx, setOpenIdx] = useState(0);
   return (
-    <section id="svc-faqs" data-testid="flexi-faqs-section" className="bg-ak-mist/40 py-20 md:py-28">
+    <section id="svc-faqs" data-testid="flexi-faqs-section" className="bg-ak-mist/40 py-10 md:py-14">
       <Container>
         <Reveal className="max-w-2xl">
           <div className="ak-kicker mb-5">{faqs.kicker}</div>

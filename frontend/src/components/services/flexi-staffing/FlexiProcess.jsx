@@ -33,7 +33,7 @@ const corner_tints = ["bg-ak-crimson/10", "bg-ak-sand/25", "bg-ak-sage/25"];
  * pulse gently to reinforce the top-to-bottom flow.
  */
 export const FlexiProcess = () => (
-  <section id="svc-process" data-testid="flexi-process-section" className="bg-ak-mist py-20 md:py-28">
+  <section id="svc-process" data-testid="flexi-process-section" className="bg-ak-mist py-10 md:py-14">
     <Container>
       <Reveal className="max-w-2xl">
         <div className="ak-kicker mb-5">{process.kicker}</div>

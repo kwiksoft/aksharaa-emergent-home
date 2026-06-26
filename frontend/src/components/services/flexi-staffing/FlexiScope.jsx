@@ -58,7 +58,7 @@ export const FlexiScope = () => (
   <section
     id="svc-scope"
     data-testid="flexi-scope-section"
-    className="relative overflow-hidden bg-ak-mist/40 py-20 md:py-28"
+    className="relative overflow-hidden bg-ak-mist/40 py-10 md:py-14"
   >
     {/* Abstract line motif — long diagonal lines at varying angle/opacity, plus a faint ring cluster */}
     <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1440 1400" preserveAspectRatio="none" fill="none">
