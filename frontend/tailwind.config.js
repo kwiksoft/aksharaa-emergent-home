@@ -91,6 +91,21 @@ module.exports = {
           crimson: '#CB4154',
           sand: '#F6C28B',
           sage: '#7E8987',
+          // Flexi Staffing "Scope" section (What We Manage), client reference
+          // image. Sampled via PIL histogram from two separate icon badges
+          // (Sourcing & Screening, MIS Reporting) — clean fill pixels
+          // converged on #111C30/#131B2E, rounded to this value. Deliberately
+          // a separate token from ak.navy (#111C27): close but not identical,
+          // and this one is reference-sampled specifically for this section's
+          // icon badges rather than reused from the site-wide dark palette.
+          scopeNavy: '#121C30',
+          // Same reference image, sampled from the orange/amber line-icon
+          // strokes on two badges (magnifying-glass handle, chart bars) —
+          // clean core pixels converged on #F59237/#F79226, rounded to this
+          // value. Distinct from ak.orange (#F28C28) and ak.orange2
+          // (#FF6B05): brighter/more amber than either, and used only for
+          // this section's icon glyphs against the navy badge fill.
+          scopeAmber: '#F59433',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
