@@ -125,27 +125,45 @@ export const scope = {
 
 export const penalties = {
   kicker: "Why Timeliness Matters",
-  heading: "Cost of Late or Missing Filings",
+  headingLine1: "Cost of Late or",
+  headingLine2: "Missing Filings",
   sub: "Every day of delay on PF and ESI filings attracts statutory interest. Beyond interest, EPFO and ESIC officers can initiate damage proceedings and prosecution.",
+  illustration: {
+    clockLine1: "Don't",
+    clockLine2: "Delay",
+    badges: [
+      { icon: "percent", label: "Interest" },
+      { icon: "gavel", label: "Penalty" },
+    ],
+    documents: [
+      { label: "PF Return" },
+      { label: "ESI Return" },
+    ],
+  },
   blocks: [
     {
       label: "PF Late Payments",
+      theme: "pf",
+      icon: "usersRound",
       items: [
-        { rate: "12%", desc: "Interest per annum on delayed PF contributions under Section 7Q" },
-        { rate: "5–25%", desc: "Damages on unpaid contributions under Section 14B — escalating with delay duration" },
-        { rate: "3 years", desc: "Maximum imprisonment for wilful default under Section 14 of EPF Act" },
+        { icon: "percent", rate: "12%", desc: "Interest per annum on delayed PF contributions under Section 7Q" },
+        { icon: "trendingUp", rate: "5–25%", desc: "Damages on unpaid contributions under Section 14B — escalating with delay duration" },
+        { icon: "lockKeyhole", rate: "3 years", desc: "Maximum imprisonment for wilful default under Section 14 of EPF Act" },
       ],
     },
     {
       label: "ESI Late Payments",
+      theme: "esi",
+      icon: "usersRound",
       items: [
-        { rate: "12%", desc: "Simple interest per annum on delayed ESI contributions under Section 39(5)" },
-        { rate: "₹5K–25K", desc: "Penalty under Section 85(a) for failure to pay contributions or file returns" },
-        { rate: "2 years", desc: "Maximum imprisonment for repeat default under Section 85(b) of ESI Act" },
+        { icon: "percent", rate: "12%", desc: "Simple interest per annum on delayed ESI contributions under Section 39(5)" },
+        { icon: "rupee", rate: "₹5K–25K", desc: "Penalty under Section 85(a) for failure to pay contributions or file returns" },
+        { icon: "lockKeyhole", rate: "2 years", desc: "Maximum imprisonment for repeat default under Section 85(b) of ESI Act" },
       ],
     },
   ],
   ctaText: "Already behind on filings? Aksharaa helps you regularise arrears and get back on track — minimising penalty exposure.",
+  ctaTitle: "Already behind on filings?",
   cta: { label: "Talk to Us Now", href: "#service-cta" },
 };
 

@@ -194,6 +194,15 @@ module.exports = {
           returnsScopeNavy: '#02213F', // Filing Guarantee card bg + 100% Satisfaction badge bg (same dark navy, confirmed by separate sample sets converging within 2 units per channel)
           returnsScopeBlueCard: '#EAF2FD', // "Trusted Experts" card background
           returnsScopeBlue: '#0B5DDD', // "Learn More" button fill
+          // PF & ESI Returns Filing "Penalties" section (Section 5), client
+          // reference image. The dark section background, PF badge circle,
+          // ESI badge circle, and row icon-chip colours all converged
+          // within normal sampling variance of existing tokens
+          // (returnsScopeNavy, returnsEsiHeader, returnsPfChip/Icon,
+          // returnsEsiChip/Icon) and reuse those rather than adding near-
+          // duplicates. Only the penalty cards' light background is
+          // genuinely distinct — a neutral light grey, not pure white.
+          returnsPenaltyCard: '#F0F0F0',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
