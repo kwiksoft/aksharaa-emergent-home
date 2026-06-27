@@ -41,14 +41,27 @@ export const AkButton = ({
   variant = "primary",
   href = "#",
   withArrow = false,
+  largeArrowChip = false,
   className = "",
   ...props
 }) => (
   <a href={href} className={`${base} ${variants[variant] || variants.primary} ${className}`} {...props}>
     {children}
     {withArrow && (
-      <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white">
-        <ArrowRight className={`h-3.5 w-3.5 ${arrowChipIconColor[variant] || arrowChipIconColor.primary}`} strokeWidth={2.6} />
+      // largeArrowChip: opt-in override for a single button (Penalties
+      // CTA strip's "Talk To Us Now") per explicit client request — the
+      // circle should be "almost the size of the orange button," not
+      // the standard small h-7/w-7 chip used everywhere else. Default
+      // false so all 24+ other withArrow usages site-wide are completely
+      // unaffected; this is the opposite scope decision from the earlier
+      // global arrow-circle change, made deliberately per this request
+      // being explicitly about one button, not a site-wide style.
+      <span
+        className={`flex flex-shrink-0 items-center justify-center rounded-full bg-white ${
+          largeArrowChip ? "h-12 w-12" : "h-7 w-7"
+        }`}
+      >
+        <ArrowRight className={`${largeArrowChip ? "h-5 w-5" : "h-3.5 w-3.5"} ${arrowChipIconColor[variant] || arrowChipIconColor.primary}`} strokeWidth={2.6} />
       </span>
     )}
   </a>

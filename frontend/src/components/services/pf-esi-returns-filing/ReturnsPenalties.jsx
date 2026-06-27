@@ -41,15 +41,19 @@ const EASE = [0.22, 1, 0.36, 1];
  * (distinct from pure white).
  */
 
-const FloatingBadge = ({ icon, label, delay }) => (
+const FloatingBadge = ({ icon, label, delay, rotate }) => (
   <motion.div
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 16, rotate }}
+    whileInView={{ opacity: 1, y: 0, rotate }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay, ease: EASE }}
     // Border bumped from white/10 to white/25 per client correction —
     // reference shows a clearly visible thin outline around each badge,
     // not the near-invisible 10%-opacity hairline this had before.
+    // Slight rotation ("twist") added per client request — each badge
+    // tilts a different direction, echoing the fanned/tilted look of
+    // the document cards in the clock illustration rather than sitting
+    // perfectly flat.
     className="flex w-24 flex-col items-start gap-2 rounded-2xl border border-white/25 bg-white/[0.04] p-4"
   >
     <Icon name={icon} className="h-6 w-6 text-ak-orange2" strokeWidth={1.8} />
@@ -69,10 +73,10 @@ const PenaltyIllustration = () => (
   // image's actual 1.5:1 aspect ratio. A flex row with auto height removes
   // the fixed-box constraint entirely rather than re-guessing a taller
   // fixed value.
-  <div className="mx-auto hidden w-full max-w-3xl items-center justify-center gap-5 lg:flex">
+  <div className="mx-auto hidden w-full max-w-3xl items-center justify-center gap-2 lg:flex">
     <div className="flex flex-shrink-0 flex-col gap-4">
-      <FloatingBadge icon={penalties.illustration.badges[0].icon} label={penalties.illustration.badges[0].label} delay={0.1} />
-      <FloatingBadge icon={penalties.illustration.badges[1].icon} label={penalties.illustration.badges[1].label} delay={0.2} />
+      <FloatingBadge icon={penalties.illustration.badges[0].icon} label={penalties.illustration.badges[0].label} delay={0.1} rotate={-6} />
+      <FloatingBadge icon={penalties.illustration.badges[1].icon} label={penalties.illustration.badges[1].label} delay={0.2} rotate={5} />
     </div>
 
     {/* Real client-supplied illustration (clock face + PF/ESI document
@@ -104,11 +108,11 @@ const PenaltyIllustration = () => (
       className="relative flex-shrink-0"
     >
       {/* Warm ambient glow behind the clock image, scaled with the image. */}
-      <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
+      <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
       <img
         src="/assets/sections/returns-penalties-clock.png"
         alt="Alarm clock reading Don't Delay beside a PF Return and ESI Return document stack"
-        className="relative h-auto w-[560px] drop-shadow-2xl"
+        className="relative h-auto w-[620px] drop-shadow-2xl"
       />
     </motion.div>
   </div>
@@ -133,7 +137,7 @@ export const ReturnsPenalties = () => (
         </Reveal>
       </div>
 
-      <RevealGroup className="mt-5 grid grid-cols-1 gap-6 lg:grid-cols-2" stagger={0.15}>
+      <RevealGroup className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2" stagger={0.15}>
         {penalties.blocks.map((b) => {
           const isPf = b.theme === "pf";
           const badgeBg = isPf ? "bg-ak-returnsScopeNavy" : "bg-ak-returnsEsiHeader";
@@ -182,7 +186,7 @@ export const ReturnsPenalties = () => (
             </p>
           </div>
         </div>
-        <AkButton href={penalties.cta.href} variant="primary" withArrow data-testid="returns-penalties-cta" className="flex-shrink-0">
+        <AkButton href={penalties.cta.href} variant="primary" withArrow largeArrowChip data-testid="returns-penalties-cta" className="flex-shrink-0 !py-2 !pl-7 !pr-2">
           {penalties.cta.label}
         </AkButton>
       </Reveal>
