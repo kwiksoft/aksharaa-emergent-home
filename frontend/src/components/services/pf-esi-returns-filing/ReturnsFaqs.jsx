@@ -46,14 +46,16 @@ const EASE = [0.22, 1, 0.36, 1];
  */
 
 const FaqCollage = () => (
-  // Sized to match the accordion column's full height per client
-  // request — the image was previously sized by width only (h-auto),
-  // which at its natural 1000x799 aspect ratio rendered noticeably
-  // shorter than the right column (measured: 358px vs 717px at
-  // 1440px). Wrapping in an h-full container (enabled by the parent
-  // grid's items-stretch, see below) and using object-cover lets the
-  // image fill the full column height without distorting its aspect
-  // ratio — it crops slightly at the sides/edges instead of stretching.
+  // CORRECTION (this thread): client asked to "place the full image fitted
+  // into the cell" — overriding an earlier object-cover crop (commit
+  // 0998a18) that had matched the accordion column's full height (717px
+  // at 1440px) by cropping the sides, which trimmed the "PF"/"ESI"
+  // prefixes off the binder labels down to just "RETURNS". Switched to
+  // object-contain so the full 1000x799 source renders uncropped, with
+  // its own aspect ratio preserved inside the h-full w-full box — this
+  // means visible empty space above/below the image at this column's
+  // taller aspect ratio (the tradeoff was raised and the client chose
+  // full image over the tighter height-matched crop).
   <div className="mx-auto hidden h-full w-full max-w-md lg:block">
     <motion.img
       initial={{ opacity: 0, y: 16 }}
@@ -62,7 +64,7 @@ const FaqCollage = () => (
       transition={{ duration: 0.7, ease: EASE }}
       src={faqs.collageImage}
       alt="Aksharaa team reviewing PF and ESI returns filing documents with a client, 15+ years of experience"
-      className="h-full w-full rounded-2xl object-cover"
+      className="h-full w-full rounded-2xl object-contain"
     />
   </div>
 );
