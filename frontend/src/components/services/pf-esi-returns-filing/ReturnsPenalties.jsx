@@ -133,7 +133,7 @@ export const ReturnsPenalties = () => (
         </Reveal>
       </div>
 
-      <RevealGroup className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2" stagger={0.15}>
+      <RevealGroup className="mt-5 grid grid-cols-1 gap-6 lg:grid-cols-2" stagger={0.15}>
         {penalties.blocks.map((b) => {
           const isPf = b.theme === "pf";
           const badgeBg = isPf ? "bg-ak-returnsScopeNavy" : "bg-ak-returnsEsiHeader";
