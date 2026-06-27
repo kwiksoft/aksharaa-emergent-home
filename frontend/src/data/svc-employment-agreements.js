@@ -13,22 +13,48 @@ export const meta = {
 export const hero = {
   eyebrow: "Legal & Documentation",
   headline: ["Employment Agreements", "That Actually Protect You"],
-  sub: "A poorly drafted employment agreement leaves your business exposed — ambiguous termination clauses, unenforceable non-competes, and missing IP assignments can cost more than any single employee. Aksharaa drafts employment agreements that are legally precise, role-specific, and built to hold.",
+  sub: "Legally precise. Role-specific.\nBuilt to protect your business and people.",
   ctas: [
     { label: "Get Your Agreement Drafted", variant: "primary", href: "#service-cta" },
-    { label: "All Legal Services", variant: "secondary", href: "/legal-documentation" },
+    { label: "Explore All Legal Services", variant: "secondary", href: "/legal-documentation" },
   ],
-  trustItems: ["Drafted by legal experts — not templates", "Role-specific & establishment-specific", "Delivered within 3–5 working days", "One revision included as standard"],
-  docPreview: {
-    title: "Employment Agreement",
-    sections: ["PARTIES", "COMMENCEMENT & ROLE", "REMUNERATION"],
-    clauses: [
-      { num: "§ 7", title: "Confidentiality & Non-Disclosure" },
-      { num: "§ 9", title: "Intellectual Property Assignment", highlight: true },
-      { num: "§ 12", title: "Termination & Notice Period" },
-    ],
-    badges: ["Legally vetted", "Role-specific", "Court-enforceable"],
-  },
+  // Rebuilt from a single-line 4-item checklist to a 3-item rich format
+  // per client reference image: icon box + bold title + description,
+  // divided by thin separators. Reference's 3 items kept verbatim
+  // (Legally Vetted / Role-Specific & Precise / Court-Enforceable);
+  // the old list's 4th item ("One revision included as standard") and
+  // delivery-timeline item moved into the new bottom trust strip below,
+  // which the reference shows as a separate dedicated section.
+  trustItems: [
+    { icon: "shield", title: "Legally Vetted", desc: "Drafted by experienced legal experts to protect your interests." },
+    { icon: "fileSignature", title: "Role-Specific & Precise", desc: "Custom clauses tailored to every role and responsibility." },
+    { icon: "gavel", title: "Court-Enforceable", desc: "Built to be enforceable, minimizing risks and disputes." },
+  ],
+  // Floating badges scattered around the hero photo, per client reference
+  // image — positions are percentage-based (relative to the photo panel)
+  // rather than fixed pixels, sampled from the reference at 1444x976:
+  // Confidentiality (65.5%, 20%), Your IP (80.7%, 37.4%), Legally Vetted
+  // (36.4%, 56.9%), Clear Terms (75.2%, 53.8%). Centre shield+checkmark
+  // icon and the dotted-ring decorations are NOT in this data — they're
+  // confirmed absent from the supplied background asset (agreements-hero-bg.jpg
+  // is photo + vignette + city-skyline watermark only), so both are
+  // built directly in the component as fixed decorative elements, same
+  // treatment as Returns Hero's dotted ring.
+  badges: [
+    { icon: "lock", title: "Confidentiality", title2: "Protected", pos: { left: "65.5%", top: "20%" } },
+    { icon: "lightbulb", title: "Your IP,", title2: "Your Rights", pos: { left: "80.7%", top: "37.4%" } },
+    { icon: "shield", title: "Legally Vetted", title2: "by Experts", pos: { left: "36.4%", top: "56.9%" } },
+    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "75.2%", top: "53.8%" } },
+  ],
+  // New bottom trust strip, per client reference image — does not exist
+  // in the previous version of this Hero at all. 4-item row, separated
+  // by thin vertical dividers (collapses to 2x2 on mobile).
+  bottomStrip: [
+    { icon: "clock", title: "Delivered in 3–5 Days", desc: "Fast turnaround without compromising quality." },
+    { icon: "clipboardCheck", title: "One Revision Included", desc: "We fine-tune it until it's right for you." },
+    { icon: "headset", title: "Expert Legal Support", desc: "Get guidance from legal professionals, always." },
+    { icon: "scale", title: "Built for Your Business", desc: "Agreements that grow with your business." },
+  ],
 };
 
 export const types = {

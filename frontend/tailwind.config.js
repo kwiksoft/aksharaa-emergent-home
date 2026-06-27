@@ -213,6 +213,20 @@ module.exports = {
           // orange/peach token, so added as a new token rather than
           // reusing a near-duplicate.
           returnsFaqTint: '#FEF8F5',
+          // Employment Agreements Hero (Legal & Documentation template),
+          // client reference image. PIL-sampled: headline/icon orange
+          // averaged across multiple solid-fill regions (headline text,
+          // clock icon) converged on #FA8021/#FB8421 — within normal
+          // anti-aliasing variance of each other but a genuinely
+          // distinct, more amber-leaning orange than both ak.orange
+          // (#F28C28) and ak.orange2 (#FF6B05), so added as its own
+          // token rather than reusing either. Bottom trust-strip
+          // background sampled separately at #F6F0EB — a warmer/darker
+          // tint than the page's existing #FAF6EE parchment base
+          // (which stays unchanged, within normal sampling tolerance of
+          // the reference's own #F9F6F3 page background).
+          agreementsOrange: '#FA8021',
+          agreementsStripBg: '#F6F0EB',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
