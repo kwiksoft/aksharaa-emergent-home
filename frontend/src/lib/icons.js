@@ -17,7 +17,7 @@ import {
   Download, Headset, User, History, IdCard, Rocket, Gavel,
   Eye, FolderUp, UsersRound, Award, ConciergeBell, Shuffle, AlertCircle,
   Cog, Calendar, ThumbsUp, Folders, AlarmClock, LockKeyhole,
-  MessagesSquare, Minus, Plus, Lightbulb, Bell, Ban,
+  MessagesSquare, Minus, Plus, Lightbulb, Bell, Ban, Handshake,
 } from "lucide-react";
 
 export const icons = {
@@ -52,6 +52,7 @@ export const icons = {
   lightbulb: Lightbulb,
   bell: Bell,
   ban: Ban,
+  handshake: Handshake,
 };
 
 export const Icon = ({ name, ...props }) => {

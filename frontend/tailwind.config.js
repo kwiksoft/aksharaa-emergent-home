@@ -237,6 +237,25 @@ module.exports = {
           // in both places.
           agreementsCritical: '#DB763B',
           agreementsIconBg: '#F7E4D5',
+          // Employment Agreements "Scope" section (Section 4), client
+          // reference image — full redesign to a 2-col alternating
+          // filled/outline card grid. Two new fills PIL-sampled directly
+          // from the reference, both genuinely distinct from every
+          // existing agreements* token: a muted gold (#D29D2D, used as
+          // Card 01's solid fill, and reused as the numeral/underline
+          // accent colour on the plain white cards) and a vivid
+          // burnt-orange (#D85604, used as Card 04's solid fill, and
+          // reused as the 2nd alternating colour in the new bottom
+          // trust-strip icon circles) — distinct from agreementsOrange
+          // (#FA8021, brighter amber) and agreementsCritical (#DB763B,
+          // dustier/more muted) respectively, confirmed via direct
+          // pixel sampling rather than assumed reuse. The dark card
+          // (05) reuses the page's existing ak.ink rather than a new
+          // token, since the sampled fill (#443939) sits within normal
+          // tolerance of ink's own value once rendering/anti-aliasing
+          // variance is accounted for.
+          agreementsGold: '#D29D2D',
+          agreementsRust: '#D85604',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

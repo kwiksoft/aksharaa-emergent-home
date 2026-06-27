@@ -99,19 +99,53 @@ export const clauses = {
   note: "Additional clauses — ESOP vesting, garden leave, training cost recovery, non-compete — are included based on role level and industry. Aksharaa advises on which clauses are enforceable under Indian law before including them.",
 };
 
+/**
+ * Scope — FULL REDESIGN per client reference image (Section 4). Previous
+ * version: plain uniform 3-col grid, every card identical (white bg, small
+ * orange icon box, no numerals, no bottom strip).
+ *
+ * - Heading split for an orange-emphasis word ("Aksharaa"), matching the
+ *   [part1, part2, part3] pattern used on other rebuilt sections.
+ * - Switched from a 3-col grid to a 2-col layout (6 cards, 2x3 per side)
+ *   per the reference's wider card proportions.
+ * - Each item now carries a `display` numeral ("01"-"06") and a `fill`
+ *   treatment ("gold" | "rust" | "dark" | "light") — reproducing the
+ *   reference's specific alternating pattern exactly (01 gold, 02 light,
+ *   03 light, 04 rust, 05 dark, 06 light) rather than a generic alternation,
+ *   confirmed via direct pixel sampling of the reference.
+ * - Icons re-mapped to match the reference's actual glyphs: item 2 switched
+ *   from fileSignature to clipboardCheck (file+checklist+pen in reference,
+ *   distinct from item 1's plain file+pen); item 6 switched from
+ *   checkCircle to the new `handshake` icon (reference shows a handshake,
+ *   no existing equivalent, added as a new icon import rather than reusing
+ *   an unrelated glyph). Item 5 (HR Policy) kept on fileText — reference
+ *   shows a file+bookmark glyph with no close existing match, not deemed
+ *   worth a new near-duplicate icon import for a single card.
+ * - New `trustStrip` data block added below (didn't exist before): 4 items
+ *   in a single bordered card, alternating gold/rust icon-circle fills,
+ *   reusing existing icons (shield, userCheck, clock, headset) — no new
+ *   icons needed for the strip.
+ */
 export const scope = {
   kicker: "Complete Service Scope",
-  heading: "What Aksharaa Delivers",
+  heading: ["What ", "Aksharaa", " Delivers"],
   sub: "From a single employment agreement to a complete HR legal documentation suite — Aksharaa covers every document a growing business needs for its workforce.",
   items: [
-    { icon: "fileText", title: "Fresh Agreement Drafting", desc: "New employment agreements drafted from scratch based on your brief — role, industry, seniority, and specific clauses required." },
-    { icon: "fileSignature", title: "Existing Agreement Review & Vetting", desc: "Aksharaa reviews your current agreements, identifies legal gaps, and provides a written report with redraft recommendations." },
-    { icon: "users", title: "Bulk Agreement Drafting", desc: "Multiple agreement variants for different grades, roles, or departments — delivered as a structured template set." },
-    { icon: "shield", title: "NDA & Restrictive Covenant Drafting", desc: "Standalone NDAs, non-disclosure clauses, and non-compete clauses — drafted to the limits of what Indian courts will enforce." },
-    { icon: "fileText", title: "HR Policy Document Drafting", desc: "Employee handbook, leave policy, code of conduct, and POSH policy — drafted as standalone enforceable HR documents." },
-    { icon: "checkCircle", title: "Separation & Settlement Agreements", desc: "Full and final settlement agreements, mutual separation deeds, and relieving documentation." },
+    { display: "01", fill: "gold", icon: "fileSignature", title: "Fresh Agreement Drafting", desc: "New employment agreements drafted from scratch based on your brief — role, industry, seniority, and specific clauses required." },
+    { display: "02", fill: "light", icon: "clipboardCheck", title: "Existing Agreement Review & Vetting", desc: "Aksharaa reviews your current agreements, identifies legal gaps, and provides a written report with redraft recommendations." },
+    { display: "03", fill: "light", icon: "users", title: "Bulk Agreement Drafting", desc: "Multiple agreement variants for different grades, roles, or departments — delivered as a structured template set." },
+    { display: "04", fill: "rust", icon: "shield", title: "NDA & Restrictive Covenant Drafting", desc: "Standalone NDAs, non-disclosure clauses, and non-compete clauses — drafted to the limits of what Indian courts will enforce." },
+    { display: "05", fill: "dark", icon: "fileText", title: "HR Policy Document Drafting", desc: "Employee handbook, leave policy, code of conduct, and POSH policy — drafted as standalone enforceable HR documents." },
+    { display: "06", fill: "light", icon: "handshake", title: "Separation & Settlement Agreements", desc: "Full and final settlement agreements, mutual separation deeds, and relieving documentation." },
   ],
 };
+
+export const scopeTrustStrip = [
+  { icon: "shield", accent: "gold", title: "Legally Precise", desc: "Expert-drafted documents that stand up to scrutiny." },
+  { icon: "userCheck", accent: "rust", title: "Role-Specific & Flexible", desc: "Tailored to your roles, industry practices & business needs." },
+  { icon: "clock", accent: "gold", title: "Quick Turnaround", desc: "Most documents delivered within 3–5 working days." },
+  { icon: "headset", accent: "rust", title: "Ongoing Legal Support", desc: "Revisions, updates & expert guidance whenever needed." },
+];
 
 export const process = {
   kicker: "How It Works",
