@@ -32,29 +32,35 @@ export const hero = {
 };
 
 export const what = {
-  kicker: "Complete Filing Coverage",
-  heading: "What Aksharaa Files on Your Behalf",
-  sub: "Three statutory filing streams — PF, ESI, and Professional Tax — each with different frequencies, portals, and deadlines. Aksharaa manages all of them under one engagement.",
+  kicker: "Three Streams. One Commitment.",
+  headingLine1: "What Aksharaa",
+  headingLine2: "Files on Your Behalf",
+  sub: "Two statutory filing streams — PF and ESI — each with different frequencies, portals, and deadlines. Aksharaa manages all of them under one engagement.",
   streams: [
     {
+      theme: "pf",
+      icon: "cog",
       tag: "Employees' Provident Fund",
       title: "PF Returns Filing",
       freq: "Monthly + Annual",
       rows: [
-        { name: "Monthly ECR (Electronic Challan cum Return)", deadline: "By 15th of each month", what: "Employer + employee PF contributions for the previous month. Aksharaa prepares ECR from your payroll data, verifies contributions, and files on EPFO portal." },
-        { name: "UAN Activation & KYC Seeding", deadline: "Ongoing — new joiners", what: "New employee UAN generation, Aadhaar seeding, and KYC approval so members can view their passbook and claim PF." },
-        { name: "Annual PF Return (Form 3A / 6A)", deadline: "By 25th April", what: "Annual member-wise contribution statement submitted to EPFO confirming the full year's PF credits for each employee." },
-        { name: "PF Inspection Support", deadline: "On demand", what: "Muster rolls, wage registers, and ECR history prepared and presented to EPFO inspectors on your behalf." },
+        { icon: "fileText", name: "Monthly ECR (Electronic Challan cum Return)", deadline: "By 15th of each month", what: "Employee + employer PF contributions for the previous month. Aksharaa prepares ECR from your payroll data, verifies contributions, and files on EPFO portal." },
+        { icon: "user", name: "UAN Activation & KYC Seeding", deadline: "Ongoing – New Joiners", what: "New employee UAN generation, Aadhaar seeding, and KYC approval so members can view their passbook and claim PF." },
+        { icon: "calendarPlain", name: "Annual PF Return (Form 3A / 6A)", deadline: "By 25th April", what: "Annual member-wise contribution statement submitted to EPFO confirming the full year's PF credits for each employee." },
+        { icon: "shield", name: "PF Inspection Support", deadline: "On Demand", what: "Muster rolls, wage registers, and ECR history prepared and presented to EPFO inspectors on your behalf." },
       ],
     },
     {
+      theme: "esi",
+      icon: "heart",
       tag: "Employees' State Insurance",
       title: "ESI Returns Filing",
-      freq: "Monthly + Half-Yearly",
+      freq: "Monthly + Annual",
       rows: [
-        { name: "Monthly ESI Challan", deadline: "By 15th of each month", what: "Employer (3.25%) + employee (0.75%) ESI contribution calculated and challan generated and paid through ESIC portal." },
-        { name: "Half-Yearly ESI Return (Form 5)", deadline: "By 11th Nov and 11th May", what: "Employee declaration covering April–September (filed by Nov 11) and October–March (filed by May 11) each year." },
-        { name: "ESI Card & IP Number Management", deadline: "Ongoing — new joiners", what: "New employee Insurance Person numbers generated, ESI cards issued, and employee details updated on ESIC portal." },
+        { icon: "calendarPlain", name: "Monthly ESI Return (Form 5)", deadline: "By 11th of each month", what: "Wage details and contribution for the previous month filed on ESIC portal." },
+        { icon: "rupee", name: "Challan Generation & Payment", deadline: "By 11th of each month", what: "Contribution amount calculated and challan generated for timely payment." },
+        { icon: "calendarPlain", name: "Annual ESI Return (Form 5A)", deadline: "By 30th April", what: "Annual consolidated return filed with employee details and contributions." },
+        { icon: "shield", name: "ESI Inspection Support", deadline: "On Demand", what: "Register maintenance, return history, and documents presented to ESIC officers." },
       ],
     },
   ],
@@ -64,6 +70,11 @@ export const calendar = {
   kicker: "Filing Rhythm",
   heading: "Your Monthly Compliance Calendar",
   sub: "A typical employer with PF and ESI obligations has recurring filings every single month of the year. Missing even one creates a cascade of interest, penalties, and audit exposure.",
+  illustration: {
+    line1: "Stay Compliant.",
+    line2: "Stay Ahead.",
+    note: "Aksharaa ensures every deadline is met, every time.",
+  },
   months: [
     { name: "Every Month", active: true, filings: [{ type: "pf", name: "PF ECR Filing", due: "Due by 15th" }, { type: "esi", name: "ESI Challan", due: "Due by 15th" }] },
     { name: "April", filings: [{ type: "pf", name: "PF Annual Return", due: "Due by 25th April" }, { type: "pf", name: "PF ECR + ESI Challan", due: "Due by 15th" }] },

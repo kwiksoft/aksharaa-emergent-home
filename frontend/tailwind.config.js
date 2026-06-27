@@ -167,6 +167,27 @@ module.exports = {
           // both noticeably more saturated/darker — this is deliberately
           // a soft background tint, not a UI accent colour.
           returnsCirclePeach: '#FEAF7B',
+          // PF & ESI Returns Filing "What Aksharaa Files" section (Section 2),
+          // client reference image. Two parallel theme groups (PF navy/blue,
+          // ESI red), each sampled via PIL from clean fill regions —
+          // multiple points averaged per value rather than a single pixel,
+          // to avoid anti-aliased edge contamination near icon strokes/text.
+          returnsPfHeader: '#001B57', // PF card header band fill
+          returnsPfChip: '#F1F5FD', // PF row icon chip background
+          returnsPfIcon: '#10429D', // PF row icon stroke colour
+          returnsPfPillText: '#041E5B', // PF "Monthly + Annual" pill text
+          returnsEsiHeader: '#AD1118', // ESI card header band fill
+          returnsEsiChip: '#FEF3F3', // ESI row icon chip background
+          returnsEsiIcon: '#B21112', // ESI row icon stroke colour
+          returnsEsiPillText: '#AC1116', // ESI "Monthly + Annual" pill text
+          // PF & ESI Returns Filing "Filing Calendar" section (Section 3),
+          // client reference image. Sampled via PIL from the "Every Month"
+          // tile's circular icon badge fill (2218 clean points averaged,
+          // ignoring icon-glyph and edge anti-aliasing pixels) — converged
+          // on #F57418. Distinct from ak.orange (#F28C28) and ak.orange2
+          // (#FF6B05): this section's specific badge tone per the reference,
+          // kept separate rather than substituting an existing orange.
+          returnsCalendarBadge: '#F57418',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
