@@ -4,8 +4,31 @@ import { Icon } from "../../../lib/icons";
 import { types } from "../../../data/svc-employment-agreements";
 
 export const AgreementsTypes = () => (
-  <section id="svc-types" data-testid="agreements-types-section" className="bg-white py-20 md:py-28">
-    <Container>
+  <section
+    id="svc-types"
+    data-testid="agreements-types-section"
+    className="relative overflow-hidden py-20 md:py-28"
+  >
+    {/* Background photo (handshake over a signed contract), per client
+        request. A white tint overlay sits on top so the kicker/heading/
+        sub text and card content stay fully readable — the photo alone
+        is busy enough (concentric ring decorations + visible contract
+        text) that placing dark text directly over it would be illegible
+        in places. Cards keep their existing opaque fills (parchment
+        #FAF6EE), so they read clearly as solid surfaces above the photo
+        rather than needing their own separate treatment. */}
+    <div
+      className="absolute inset-0"
+      style={{
+        backgroundImage: "url(/assets/sections/agreements-types-bg.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    />
+    <div className="absolute inset-0 bg-white/85" />
+
+    <Container className="relative">
       <Reveal className="max-w-2xl">
         <div className="ak-kicker mb-5">{types.kicker}</div>
         <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">{types.heading}</h2>
