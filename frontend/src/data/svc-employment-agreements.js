@@ -49,7 +49,7 @@ export const hero = {
     { icon: "lock", title: "Confidentiality", title2: "Protected", pos: { left: "58.3%", top: "11.7%" } },
     { icon: "lightbulb", title: "Your IP,", title2: "Your Rights", pos: { left: "66.9%", top: "33%" } },
     { icon: "shield", title: "Legally Vetted", title2: "by Experts", pos: { left: "11.7%", top: "58.3%" } },
-    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "3.1%", top: "33%" } },
+    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "14.6%", top: "11.7%" } },
   ],
   // New bottom trust strip, per client reference image — does not exist
   // in the previous version of this Hero at all. 4-item row, separated
