@@ -45,19 +45,21 @@ export const ReturnsScope = () => (
     <Container>
       {/* ROW 1 */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[0.85fr_1.3fr_1.05fr] lg:gap-6">
-        {/* Photo stack */}
+        {/* Photo stack — real client photos inserted per direct request,
+            replacing the icon placeholders. Paths match exactly what the
+            original placeholder docblock already specified
+            (returns-scope-team.jpg / returns-scope-binders.jpg), so no
+            layout changes were needed beyond swapping div content for
+            img tags. Source photos are 1402x1122 (~1.25:1); the
+            placeholder boxes use aspect-[3/4] (portrait) and aspect-[4/3]
+            respectively, so object-cover fits each photo into its box
+            without distorting it (crops slightly instead). */}
         <Reveal className="relative">
-          <div className="relative z-0 mx-auto aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-2xl border-4 border-white bg-gradient-to-b from-ak-ink to-ak-ink/85 shadow-md lg:max-w-none">
-            <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-white/90">
-              <Icon name="thumbsUp" className="h-14 w-14" strokeWidth={1.5} />
-              <span className="text-[11px] font-medium uppercase tracking-wide text-white/50">Team photo placeholder</span>
-            </div>
+          <div className="relative z-0 mx-auto aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-2xl border-4 border-white shadow-md lg:max-w-none">
+            <img src="/assets/sections/returns-scope-team.jpg" alt="Aksharaa team member assisting a client with PF and ESI compliance" className="h-full w-full object-cover" />
           </div>
-          <div className="relative left-1/2 z-10 mt-[-22%] aspect-[4/3] w-[78%] -translate-x-[42%] overflow-hidden rounded-2xl border-4 border-white bg-gradient-to-b from-ak-orange to-ak-orange/85 shadow-lg">
-            <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-white/90">
-              <Icon name="folders" className="h-10 w-10" strokeWidth={1.5} />
-              <span className="text-center text-[10px] font-medium uppercase tracking-wide text-white/60">PF / ESI returns photo placeholder</span>
-            </div>
+          <div className="relative left-1/2 z-10 mt-[-22%] aspect-[4/3] w-[78%] -translate-x-[42%] overflow-hidden rounded-2xl border-4 border-white shadow-lg">
+            <img src="/assets/sections/returns-scope-binders.jpg" alt="PF Returns and ESI Returns binders on a desk" className="h-full w-full object-cover" />
           </div>
         </Reveal>
 
@@ -115,12 +117,9 @@ export const ReturnsScope = () => (
                 <span className="relative z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2 border-ak-orange bg-white font-display text-xs font-bold text-ak-orange">
                   {i + 1}
                 </span>
-                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-ak-orange/10">
-                  <Icon name={s.icon} className="h-4.5 w-4.5 text-ak-orange" strokeWidth={2} />
-                </span>
                 <div className="pt-0.5">
-                  <strong className="text-[14px] font-bold text-ak-ink">{s.title}</strong>
-                  <span className="text-[13.5px] leading-relaxed text-ak-ink/55"> — {s.desc}</span>
+                  <div className="text-[14px] font-bold text-ak-ink">{s.title}</div>
+                  <div className="mt-1 text-[13.5px] leading-relaxed text-ak-ink/55">{s.desc}</div>
                 </div>
               </div>
             ))}
