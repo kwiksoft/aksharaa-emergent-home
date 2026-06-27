@@ -69,7 +69,7 @@ const PenaltyIllustration = () => (
   // image's actual 1.5:1 aspect ratio. A flex row with auto height removes
   // the fixed-box constraint entirely rather than re-guessing a taller
   // fixed value.
-  <div className="mx-auto hidden w-full max-w-lg items-center justify-center gap-5 lg:flex">
+  <div className="mx-auto hidden w-full max-w-xl items-center justify-center gap-5 lg:flex">
     <div className="flex flex-shrink-0 flex-col gap-4">
       <FloatingBadge icon={penalties.illustration.badges[0].icon} label={penalties.illustration.badges[0].label} delay={0.1} />
       <FloatingBadge icon={penalties.illustration.badges[1].icon} label={penalties.illustration.badges[1].label} delay={0.2} />
@@ -86,9 +86,16 @@ const PenaltyIllustration = () => (
         other section assets' file-size range; true alpha transparency
         confirmed (corner pixels alpha=0), so it sits cleanly on the
         section's navy background with no surrounding white box.
-        Sized up from the first attempt (220x330) to better match the
-        reference's proportions, where the illustration reads as the
-        visual anchor of the column rather than a small corner accent. */}
+        Sized up progressively per client feedback: first attempt 220x330
+        (too small, read as a corner accent), then 300x200 (still felt
+        small relative to the reference), now widened to 380px (height
+        ~253px at the asset's 1.5:1 ratio). Checked available room before
+        resizing rather than guessing: 67.6px of vertical clearance existed
+        between the image's previous bottom edge and the PF/ESI card row
+        below it (496.3px), so the ~53px height increase stays clear with
+        margin. Row's max-width bumped from max-w-lg to max-w-xl to keep
+        the badges+image combination comfortably centred rather than
+        running tight against the old cap. */}
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -96,12 +103,14 @@ const PenaltyIllustration = () => (
       transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
       className="relative flex-shrink-0"
     >
-      {/* Warm ambient glow behind the clock image */}
-      <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
+      {/* Warm ambient glow behind the clock image, sized up proportionally
+          with the image (h-44/w-44 -> h-52/w-52) so it doesn't look
+          undersized relative to the larger illustration. */}
+      <div className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
       <img
         src="/assets/sections/returns-penalties-clock.png"
         alt="Alarm clock reading Don't Delay beside a PF Return and ESI Return document stack"
-        className="relative h-auto w-[300px] drop-shadow-2xl"
+        className="relative h-auto w-[380px] drop-shadow-2xl"
       />
     </motion.div>
   </div>
