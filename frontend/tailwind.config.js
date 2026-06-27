@@ -203,6 +203,16 @@ module.exports = {
           // duplicates. Only the penalty cards' light background is
           // genuinely distinct — a neutral light grey, not pure white.
           returnsPenaltyCard: '#F0F0F0',
+          // PF & ESI Returns Filing "FAQs" section (Section 6), client
+          // reference image + photo collage asset. PIL-sampled (most-
+          // common-pixel method) from both the open accordion item's
+          // background and the bottom CTA strip background, which
+          // converged on the same value: rgb(254,248,245)/#FEF8F5 — a
+          // warm peach-white, genuinely distinct from ak.mist (#F8F9FA,
+          // cool grey) and outside reuse tolerance for any existing
+          // orange/peach token, so added as a new token rather than
+          // reusing a near-duplicate.
+          returnsFaqTint: '#FEF8F5',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

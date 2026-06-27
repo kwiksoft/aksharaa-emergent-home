@@ -168,16 +168,30 @@ export const penalties = {
 };
 
 export const faqs = {
-  kicker: "Common Questions",
+  kicker: "FAQ's",
   heading: "Frequently Asked Questions",
   sub: "Answers to what employers ask about PF and ESI returns filing.",
+  // Photo collage (left column) — client-supplied composite image, used
+  // as-is rather than reassembled from separate photos (Faq_image01.png
+  // is itself a single flattened RGB composite, not separable layers).
+  // Unlike the Scope section's earlier photo placeholders (built as icon
+  // placeholders because no source files existed for that branded
+  // photography), the client provided this exact asset directly, so
+  // there's nothing to fabricate — the real graphic is used as supplied.
+  collageImage: "/assets/sections/returns-faqs-collage.jpg",
+  experienceBadge: { value: "15+", label: "Years of Experience" },
   items: [
-    { q: "What happens if we miss the 15th deadline for PF ECR filing?", a: "Interest at 12% per annum accrues from the due date. If the default continues, EPFO can raise a damage demand of 5–25% of the outstanding contributions. Aksharaa ensures ECRs are filed by the 12th–13th of each month to give buffer before the deadline." },
+    { q: "What happens if we miss the 15th deadline for PF ECR filing?", a: "Interest at 12% per annum accrues from the due date. If the default continues, EPFO can raise a damage demand of 5–25% of the outstanding contributions. Aksharaa ensures ECRs are filed by the 12th–13th of each month to give buffer before the deadline.", icon: "calendar" },
     { q: "Does Aksharaa handle PF transfers and withdrawal claims for employees?", a: "Yes. Aksharaa assists employees with PF transfer requests when switching jobs and employer-side claim attestation for PF withdrawals via Form 13 on the EPFO unified portal." },
     { q: "We have employees in multiple states — can Aksharaa handle filings for all locations?", a: "Yes. PF filing is centralised under your establishment code — all branches file under one code. ESI filings require separate sub-codes per location, which Aksharaa maintains and files separately." },
     { q: "What data does Aksharaa need from us each month to process filings?", a: "We need monthly attendance data, gross salary details, and a list of new joiners and exits with dates. We provide a simple monthly input template — no portal access or technical knowledge required on your side." },
     { q: "Can Aksharaa help regularise past missed or incorrect filings?", a: "Yes. We handle retrospective filing, arrear computation, and penalty calculation, and assist in responding to EPFO and ESIC notices and negotiating penalty waivers where applicable." },
   ],
+  ctaStrip: {
+    title: "One Point of Contact. Timely Filings. Complete Compliance.",
+    sub: "Aksharaa manages your PF & ESI filings so you can focus on your business.",
+    cta: { label: "Talk To Us Now", href: "#service-cta" },
+  },
 };
 
 export const related = {
