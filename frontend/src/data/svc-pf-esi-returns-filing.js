@@ -127,7 +127,7 @@ export const penalties = {
   kicker: "Why Timeliness Matters",
   headingLine1: "Cost of Late or",
   headingLine2: "Missing Filings",
-  sub: "Every day of delay on PF and ESI filings attracts statutory interest. Beyond interest, EPFO and ESIC officers can initiate damage proceedings and prosecution.",
+  sub: "Every day of delay in PF and ESI filings attracts statutory interest. Beyond interest, EPFO and ESIC officers can initiate damage proceedings and prosecution.",
   illustration: {
     clockLine1: "Don't",
     clockLine2: "Delay",
@@ -164,7 +164,7 @@ export const penalties = {
   ],
   ctaText: "Already behind on filings? Aksharaa helps you regularise arrears and get back on track — minimising penalty exposure.",
   ctaTitle: "Already behind on filings?",
-  cta: { label: "Talk to Us Now", href: "#service-cta" },
+  cta: { label: "Talk To Us Now", href: "#service-cta" },
 };
 
 export const faqs = {
