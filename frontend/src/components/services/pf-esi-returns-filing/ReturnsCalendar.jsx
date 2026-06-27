@@ -5,21 +5,27 @@ import { calendar } from "../../../data/svc-pf-esi-returns-filing";
 
 /**
  * "Your Monthly Compliance Calendar" — full rebuild per client reference
- * image. Previous version was month-tiles only, no intro illustration;
- * reference shows a two-column top section (kicker/heading/sub on the
- * left, a 3D-style desk-calendar illustration on the right) ABOVE the
- * month-tile row, plus several details the old tiles didn't have:
- * a right-pointing arrow connector between the active "Every Month" tile
- * and April, a line-dot-line divider under every month label, and a faint
- * ghost calendar-icon watermark in the bottom-right corner of each
- * inactive tile.
+ * image (prior thread), then two corrections this thread.
  *
- * Desk-calendar illustration: built as a custom inline SVG rather than a
- * raster asset, since nothing in the reference requires a photographic
- * texture — flat shapes (card body, orange side-edge for the 3D tilt,
- * two binder rings, badge, text, note pill) reproduce the reference
- * closely while staying crisp at any size and matching the rest of the
- * site's icon/line-art language.
+ * Original rebuild: previous version was month-tiles only, no intro
+ * illustration; reference showed a two-column top section (kicker/
+ * heading/sub on the left, a 3D-style desk-calendar illustration on the
+ * right) ABOVE the month-tile row, plus a right-pointing arrow connector
+ * between the active "Every Month" tile and April, a line-dot-line
+ * divider under every month label, and a faint ghost calendar-icon
+ * watermark in the bottom-right corner of each inactive tile.
+ *
+ * CORRECTION (this thread): replaced the hand-built inline SVG
+ * desk-calendar illustration with the client's real supplied image
+ * (calendar01.jpeg — the same "Stay Compliant. Stay Ahead." / "Aksharaa
+ * ensures every deadline is met, every time." composition the SVG was
+ * approximating). Downscaled 1367x1150 -> 800x673 and re-saved as an
+ * optimised JPG (~64KB) to match this page's other asset sizes, placed
+ * at frontend/public/assets/sections/returns-calendar-illustration.jpg.
+ * Also removed the arrow connector between the active "Every Month"
+ * tile and April per client request, and increased the month-card text
+ * sizes (label, divider spacing, and each filing row's name/due-date
+ * text) for legibility.
  *
  * Colours: ak.returnsCalendarBadge (#F57418) sampled via PIL from the
  * "Every Month" tile's icon badge fill — see tailwind.config.js for
@@ -30,52 +36,12 @@ import { calendar } from "../../../data/svc-pf-esi-returns-filing";
  */
 
 const DeskCalendarIllustration = () => (
-  <div className="relative mx-auto w-full max-w-md">
-    <svg viewBox="0 0 420 380" className="w-full" fill="none">
-      {/* Soft ambient glow behind the card */}
-      <circle cx="260" cy="180" r="170" fill="#FDEDE0" opacity="0.6" />
-
-      {/* Orange base/stand, gives the "easel" foot of a desk calendar */}
-      <path d="M150 330 L290 330 L300 360 L140 360 Z" fill="#F28C28" />
-
-      {/* Card's orange side edge (right + bottom), reads as 3D thickness */}
-      <path d="M70 60 L330 50 L340 320 L80 332 Z" fill="#E8791C" />
-
-      {/* Card front face (white) */}
-      <rect x="60" y="48" width="262" height="270" rx="14" fill="#FFFFFF" stroke="#F1E4D8" strokeWidth="1.5" />
-
-      {/* Binder rings — chunky metal spiral-style loops */}
-      {[110, 165, 220, 275].map((x) => (
-        <g key={x}>
-          <ellipse cx={x} cy="42" rx="11" ry="16" fill="none" stroke="#AEB6C2" strokeWidth="5" />
-          <rect x={x - 11} y="42" width="22" height="22" fill="#FFFFFF" />
-        </g>
-      ))}
-
-      {/* Icon badge circle */}
-      <circle cx="118" cy="148" r="34" fill="#FCEEE3" />
-      <circle cx="118" cy="148" r="34" fill="none" stroke="#F28C28" strokeWidth="1.5" opacity="0.4" />
-      <g transform="translate(102,132)">
-        <rect x="0" y="4" width="32" height="28" rx="5" fill="none" stroke="#F28C28" strokeWidth="2.4" />
-        <line x1="0" y1="13" x2="32" y2="13" stroke="#F28C28" strokeWidth="2.4" />
-        <line x1="9" y1="0" x2="9" y2="8" stroke="#F28C28" strokeWidth="2.4" strokeLinecap="round" />
-        <line x1="23" y1="0" x2="23" y2="8" stroke="#F28C28" strokeWidth="2.4" strokeLinecap="round" />
-        <path d="M10 22 L14 26 L22 17" stroke="#F28C28" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      </g>
-
-      {/* Headline text on the card face */}
-      <text x="168" y="142" fontFamily="Sora, sans-serif" fontWeight="800" fontSize="19" fill="#1C2A39">Stay Compliant.</text>
-      <text x="168" y="168" fontFamily="Sora, sans-serif" fontWeight="800" fontSize="19" fill="#F28C28">Stay Ahead.</text>
-      <line x1="168" y1="180" x2="210" y2="180" stroke="#F28C28" strokeWidth="2.5" strokeLinecap="round" />
-
-      {/* Note pill near the bottom of the card */}
-      <rect x="88" y="222" width="210" height="58" rx="12" fill="#FCFAF7" stroke="#F1E4D8" strokeWidth="1" />
-      <circle cx="115" cy="251" r="14" fill="#FCEEE3" />
-      <path d="M115 244 l7 3 v6 c0 5 -3 8 -7 10 c-4 -2 -7 -5 -7 -10 v-6 z" fill="none" stroke="#F28C28" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="M111.5 251 l2.3 2.3 l4.7 -5" fill="none" stroke="#F28C28" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      <text x="138" y="247" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="11.5" fill="#1C2A39">Aksharaa ensures every</text>
-      <text x="138" y="262" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="11.5" fill="#1C2A39">deadline is met, every time.</text>
-    </svg>
+  <div className="mx-auto w-full max-w-md">
+    <img
+      src="/assets/sections/returns-calendar-illustration.jpg"
+      alt="Desk calendar reading Stay Compliant, Stay Ahead — Aksharaa ensures every deadline is met, every time"
+      className="w-full rounded-2xl"
+    />
   </div>
 );
 
@@ -115,7 +81,7 @@ export const ReturnsCalendar = () => (
                 >
                   <Icon name="calendarPlain" className="h-5 w-5 text-white" strokeWidth={2} />
                 </span>
-                <div className={`mt-3 font-display text-sm font-extrabold uppercase tracking-wide ${m.active ? "text-ak-orange" : "text-ak-ink"}`}>
+                <div className={`mt-3 font-display text-base font-extrabold uppercase tracking-wide ${m.active ? "text-ak-orange" : "text-ak-ink"}`}>
                   {m.name}
                 </div>
                 <div className="mt-2 flex items-center gap-1.5">
@@ -130,20 +96,13 @@ export const ReturnsCalendar = () => (
                   <div key={f.name} className="flex items-start gap-2.5">
                     <span className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${f.type === "pf" ? "bg-ak-orange" : "bg-ak-ink"}`} />
                     <div>
-                      <div className="text-[12.5px] font-bold text-ak-ink">{f.name}</div>
-                      <div className="text-[11px] text-ak-ink/45">{f.due}</div>
+                      <div className="text-sm font-bold text-ak-ink">{f.name}</div>
+                      <div className="text-[12.5px] text-ak-ink/45">{f.due}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </RevealItem>
-
-            {/* Arrow connector between the active tile and the next one (desktop only) */}
-            {m.active && (
-              <div className="absolute -right-7 top-1/2 hidden -translate-y-1/2 lg:block">
-                <Icon name="arrowRight" className="h-7 w-7 text-ak-orange" strokeWidth={3} />
-              </div>
-            )}
           </div>
         ))}
       </RevealGroup>
