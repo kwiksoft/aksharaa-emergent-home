@@ -174,7 +174,7 @@ export const ReturnsHero = () => (
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-            className="font-display text-3xl font-extrabold leading-[1.15] tracking-tight text-ak-ink md:text-4xl lg:text-[2.05rem] xl:text-[2.3rem]"
+            className="font-display text-[1.85rem] font-extrabold leading-[1.14] tracking-[-0.02em] text-ak-ink [text-shadow:0_1px_0_rgba(28,42,57,0.06)] md:text-[2.15rem] lg:text-[1.95rem] xl:text-[2.15rem]"
           >
             {hero.headline[0]}
             <br />
@@ -191,13 +191,13 @@ export const ReturnsHero = () => (
               block, since the first round shipped without one. */}
           <div className="my-8 flex justify-center lg:hidden">
             <ModelVisual
-              wrapperSize={{ h: "260px", w: "165px" }}
-              modelSize={{ h: "260px", w: "175px" }}
-              circleSize="8.5rem"
-              dotCircleSize="9.5rem"
+              wrapperSize={{ h: "290px", w: "190px" }}
+              modelSize={{ h: "290px", w: "200px" }}
+              circleSize="6.8rem"
+              dotCircleSize="7.6rem"
               badgeSize={64}
               badgeFontSize="6.6"
-              badgePos={{ left: "8%", top: "30%" }}
+              badgePos={{ left: "4%", top: "30%" }}
             />
           </div>
 
@@ -219,13 +219,13 @@ export const ReturnsHero = () => (
         {/* CENTRE — model cutout with peach circle, badge seal, dotted ring (desktop only) */}
         <div className="relative hidden items-center justify-center lg:flex">
           <ModelVisual
-            wrapperSize={{ h: "560px", w: "340px" }}
-            modelSize={{ h: "560px", w: "365px" }}
-            circleSize="17rem"
-            dotCircleSize="18.5rem"
+            wrapperSize={{ h: "610px", w: "390px" }}
+            modelSize={{ h: "610px", w: "420px" }}
+            circleSize="13.5rem"
+            dotCircleSize="15rem"
             badgeSize={130}
             badgeFontSize="6.6"
-            badgePos={{ left: "2%", top: "30%" }}
+            badgePos={{ left: "0%", top: "32%" }}
           />
         </div>
 
@@ -244,10 +244,10 @@ export const ReturnsHero = () => (
               <div className="flex items-center justify-center gap-3">
                 <span className="h-px w-7 bg-ak-orange/50" />
                 <Icon name="calendar" className="h-4 w-4 text-ak-orange" strokeWidth={2} />
-                <span className="text-base font-extrabold uppercase tracking-wide text-ak-ink">{hero.deadlineCard.title}</span>
+                <span className="text-base font-extrabold uppercase tracking-[0.06em] text-ak-ink">{hero.deadlineCard.title}</span>
                 <span className="h-px w-7 bg-ak-orange/50" />
               </div>
-              <div className="mt-1 font-display text-xl font-extrabold uppercase tracking-wide text-ak-orange">
+              <div className="mt-1 font-display text-[1.2rem] font-extrabold uppercase tracking-[0.02em] text-ak-orange [text-shadow:0_1px_0_rgba(242,140,40,0.15)]">
                 {hero.deadlineCard.titleAccent}
               </div>
               <div className="mt-2.5 flex items-center justify-center gap-2">
