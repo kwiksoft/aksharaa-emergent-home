@@ -145,24 +145,25 @@ const ModelVisual = ({ wrapperSize, modelSize, circleSize, dotCircleSize, badgeS
  *   timing so the card doesn't feel static once its entrance finishes.
  */
 export const ReturnsHero = () => (
-  <section id="svc-hero" data-testid="returns-hero-section" className="relative overflow-hidden bg-white pt-14 pb-4 md:pt-20">
-    <div className="absolute left-0 top-0 h-full w-1.5 bg-ak-orange" />
-
-    {/* Decorative background icons — faint outline, matching reference */}
-    <Icon name="calendar" className="pointer-events-none absolute right-[30%] top-6 hidden h-12 w-12 text-ak-orange/[0.12] lg:block" strokeWidth={1.3} />
-    <Icon name="fileText" className="pointer-events-none absolute bottom-24 right-[28%] hidden h-12 w-12 text-ak-orange/[0.1] lg:block" strokeWidth={1.3} />
-
-    {/* Bottom-left twinkling dot grid */}
-    <div className="pointer-events-none absolute bottom-10 left-10 grid grid-cols-5 gap-2.5">
-      {Array.from({ length: 15 }).map((_, i) => (
-        <motion.span
-          key={i}
-          className="h-1.5 w-1.5 rounded-full bg-ak-orange/40"
-          animate={{ opacity: [0.15, 0.7, 0.15] }}
-          transition={{ duration: 2.4, repeat: Infinity, delay: (i % 5) * 0.15 + Math.floor(i / 5) * 0.25, ease: "easeInOut" }}
-        />
-      ))}
-    </div>
+  <section
+    id="svc-hero"
+    data-testid="returns-hero-section"
+    className="relative overflow-hidden bg-white pt-14 pb-4 md:pt-20"
+    style={{
+      backgroundImage: "url(/assets/sections/returns-hero-bg.jpg)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+  >
+    {/* Background image (returns-hero-bg.jpg) already bakes in the
+        orange left accent bar, the faint calendar/file outline icons,
+        the dotted-circle arc, and the bottom-left dot grid — all of
+        which were previously hand-coded as separate elements here.
+        Removed those to avoid visual duplication, same lesson as the
+        FAQ collage's badge-duplication bug earlier this session: the
+        client's supplied asset already contains decoration this
+        component was independently building too. */}
 
     <Container className="relative">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.65fr_1.1fr_1.05fr] lg:gap-4">
@@ -178,8 +179,18 @@ export const ReturnsHero = () => (
           >
             {hero.headline[0]}
             <br />
-            <em className="ak-outline-orange not-italic">{hero.headline[1]}</em>
+            <em className="ak-outline-orange not-italic uppercase">{hero.headline[1]}</em>
           </motion.h1>
+
+          {/* Small orange divider line between headline and CTAs, per
+              client reference — this section previously had no divider
+              here at all. */}
+          <motion.span
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "2.5rem" }}
+            transition={{ duration: 0.5, delay: 0.25, ease: EASE }}
+            className="mt-5 block h-[3px] rounded-full bg-ak-orange"
+          />
 
           {/* Mobile/tablet visual block — same model+circle+dotted-ring+badge
               composition as the desktop centre column, at a smaller scale
@@ -205,27 +216,40 @@ export const ReturnsHero = () => (
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
-            className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-9"
+            className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-3 lg:mt-9"
           >
-            <AkButton href={hero.ctas[0].href} variant="primary" withArrow data-testid="returns-hero-cta-primary">
+            <AkButton href={hero.ctas[0].href} variant="primary" withArrow data-testid="returns-hero-cta-primary" className="!px-6">
               {hero.ctas[0].label}
             </AkButton>
-            <AkButton href={hero.ctas[1].href} variant="secondary" withArrow data-testid="returns-hero-cta-secondary">
+            <AkButton href={hero.ctas[1].href} variant="secondary" withArrow data-testid="returns-hero-cta-secondary" className="!px-6">
               {hero.ctas[1].label}
             </AkButton>
           </motion.div>
         </div>
 
-        {/* CENTRE — model cutout with peach circle, badge seal, dotted ring (desktop only) */}
-        <div className="relative hidden items-center justify-center lg:flex">
+        {/* CENTRE — model cutout with peach circle, badge seal, dotted ring
+            (desktop only). Sized up (610px->640px tall) and shifted
+            upward (-mt-10) so the model's head extends above the
+            eyebrow line, per client reference — checked the model PNG's
+            actual visible-content bounds first (content fills ~98% of
+            the frame both vertically and horizontally, negligible
+            transparent padding) rather than assuming room existed.
+            Width capped at 440px (not a larger proportional value) after
+            measuring the centre column's actual available space against
+            the right column's left edge — a wider model risked
+            overlapping the deadline card; verified via Playwright after
+            this change that no overlap occurs. Circle/dotted-ring
+            reduced (13.5rem/15rem -> 11rem/12.2rem) and moved up with
+            the model rather than staying centred independently. */}
+        <div className="relative hidden items-start justify-center lg:flex">
           <ModelVisual
-            wrapperSize={{ h: "610px", w: "390px" }}
-            modelSize={{ h: "610px", w: "420px" }}
-            circleSize="13.5rem"
-            dotCircleSize="15rem"
+            wrapperSize={{ h: "640px", w: "390px" }}
+            modelSize={{ h: "640px", w: "420px" }}
+            circleSize="11rem"
+            dotCircleSize="12.2rem"
             badgeSize={130}
             badgeFontSize="6.6"
-            badgePos={{ left: "0%", top: "32%" }}
+            badgePos={{ left: "2%", top: "30%" }}
           />
         </div>
 
@@ -270,7 +294,7 @@ export const ReturnsHero = () => (
                     <span className="font-display text-xl font-extrabold leading-none text-ak-ink">{r.day}</span>
                     <span className="mt-0.5 text-[9px] font-medium uppercase text-ak-ink/35">{r.month}</span>
                   </div>
-                  <div className="flex-1 text-[13px] font-bold leading-snug text-ak-ink">{r.name}</div>
+                  <div className="flex-1 text-[13px] font-bold uppercase leading-snug text-ak-ink">{r.name}</div>
                   <motion.span
                     animate={{ scale: [1, 1.08, 1] }}
                     transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
