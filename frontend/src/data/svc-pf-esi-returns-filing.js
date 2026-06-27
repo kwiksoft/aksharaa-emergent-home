@@ -206,6 +206,7 @@ export const related = {
 };
 
 export const serviceCta = {
+  kicker: "Get Started Today",
   heading: "Never Miss a Deadline Again",
   sub: "Share your payroll data once a month — we handle every filing, every deadline, every year. No portal access needed, no compliance stress on your side.",
   ctas: [
