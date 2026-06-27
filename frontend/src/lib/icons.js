@@ -16,7 +16,7 @@ import {
   AlertTriangle, Calculator, Percent, IndianRupee, UserPlus,
   Download, Headset, User, History, IdCard, Rocket, Gavel,
   Eye, FolderUp, UsersRound, Award, ConciergeBell, Shuffle, AlertCircle,
-  Cog, Calendar,
+  Cog, Calendar, ThumbsUp, Folders,
 } from "lucide-react";
 
 export const icons = {
@@ -41,6 +41,8 @@ export const icons = {
   alertCircle: AlertCircle,
   cog: Cog,
   calendarPlain: Calendar,
+  thumbsUp: ThumbsUp,
+  folders: Folders,
 };
 
 export const Icon = ({ name, ...props }) => {

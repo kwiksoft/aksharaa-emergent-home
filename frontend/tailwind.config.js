@@ -188,6 +188,12 @@ module.exports = {
           // (#FF6B05): this section's specific badge tone per the reference,
           // kept separate rather than substituting an existing orange.
           returnsCalendarBadge: '#F57418',
+          // PF & ESI Returns Filing "Scope" section (Section 4), client
+          // reference image. Sampled via PIL from clean interior points,
+          // away from text and icons.
+          returnsScopeNavy: '#02213F', // Filing Guarantee card bg + 100% Satisfaction badge bg (same dark navy, confirmed by separate sample sets converging within 2 units per channel)
+          returnsScopeBlueCard: '#EAF2FD', // "Trusted Experts" card background
+          returnsScopeBlue: '#0B5DDD', // "Learn More" button fill
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

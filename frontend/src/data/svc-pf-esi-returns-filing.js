@@ -88,11 +88,19 @@ export const scope = {
   kicker: "What We Handle",
   heading: "Aksharaa's Complete Filing Scope",
   sub: "From receiving your monthly attendance and payroll data to generating the filed acknowledgement — Aksharaa manages the entire cycle. You share data, we handle everything else.",
+  trustedCard: {
+    icon: "user",
+    title: "Trusted Experts For Your Compliance",
+    desc: "End-to-end support, accurate filings and complete peace of mind.",
+    cta: "Learn More",
+    badgeValue: "100%",
+    badgeLabel: "Satisfaction Guarantee",
+  },
   steps: [
-    { title: "You share payroll data", desc: "attendance inputs, salary details, new joiners and exits by the 5th of each month" },
-    { title: "Aksharaa computes contributions", desc: "PF (employee 12% + employer 12%), ESI (employee 0.75% + employer 3.25%) verified" },
-    { title: "ECR and challans filed", desc: "on EPFO and ESIC portals by the 15th, well before statutory deadlines" },
-    { title: "Acknowledgement & MIS shared", desc: "filed receipts, challan copies, and monthly compliance report delivered to you" },
+    { icon: "usersRound", title: "You share payroll data", desc: "attendance inputs, salary details, new joiners and exits by the 5th of each month" },
+    { icon: "calculator", title: "Aksharaa computes contributions", desc: "PF (employee 12% + employer 12%), ESI (employee 0.75% + employer 3.25%) verified" },
+    { icon: "fileText", title: "ECR and challans filed", desc: "on EPFO and ESIC portals by the 15th, well before statutory deadlines" },
+    { icon: "mail", title: "Acknowledgement & MIS shared", desc: "filed receipts, challan copies, and monthly compliance report delivered to you" },
   ],
   guarantee: {
     title: "Aksharaa's Filing Guarantee",
