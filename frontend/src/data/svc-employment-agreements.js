@@ -32,11 +32,16 @@ export const hero = {
   ],
   // Floating badges scattered around the hero photo, per client reference
   // image — positions are percentage-based (relative to the photo panel)
-  // rather than fixed pixels, sampled from the reference at 1444x976:
-  // Confidentiality (65.5%, 20%), Your IP (80.7%, 37.4%), Legally Vetted
-  // (36.4%, 56.9%), Clear Terms (75.2%, 53.8%). Centre shield+checkmark
-  // icon and the dotted-ring decorations are NOT in this data — they're
-  // confirmed absent from the supplied background asset (agreements-hero-bg.jpg
+  // rather than fixed pixels, originally sampled from the reference at
+  // 1444x976: Confidentiality (58.3%, 11.7%), Your IP (66.9%, 33%),
+  // Legally Vetted (11.7%, 58.3%), Clear Terms (originally 33%, 52%).
+  // UPDATED (this thread, per direct instruction): Clear Terms repositioned
+  // to sit at the exact same coordinates as Confidentiality Protected,
+  // then offset 20% to the left along the same row — left: 58.3% - 20% =
+  // 38.3%, top unchanged at 11.7% (same height as Confidentiality, not
+  // its original lower-left spot). Centre shield+checkmark icon and the
+  // dotted-ring decorations are NOT in this data — they're confirmed
+  // absent from the supplied background asset (agreements-hero-bg.jpg
   // is photo + vignette + city-skyline watermark only), so both are
   // built directly in the component as fixed decorative elements, same
   // treatment as Returns Hero's dotted ring.
@@ -44,7 +49,7 @@ export const hero = {
     { icon: "lock", title: "Confidentiality", title2: "Protected", pos: { left: "58.3%", top: "11.7%" } },
     { icon: "lightbulb", title: "Your IP,", title2: "Your Rights", pos: { left: "66.9%", top: "33%" } },
     { icon: "shield", title: "Legally Vetted", title2: "by Experts", pos: { left: "11.7%", top: "58.3%" } },
-    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "33%", top: "52%" } },
+    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "38.3%", top: "11.7%" } },
   ],
   // New bottom trust strip, per client reference image — does not exist
   // in the previous version of this Hero at all. 4-item row, separated
