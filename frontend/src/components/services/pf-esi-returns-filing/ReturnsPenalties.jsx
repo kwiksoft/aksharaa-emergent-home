@@ -47,10 +47,13 @@ const FloatingBadge = ({ icon, label, delay }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay, ease: EASE }}
-    className="flex w-24 flex-col items-start gap-2 rounded-2xl border border-white/10 bg-white/[0.04] p-4"
+    // Border bumped from white/10 to white/25 per client correction —
+    // reference shows a clearly visible thin outline around each badge,
+    // not the near-invisible 10%-opacity hairline this had before.
+    className="flex w-24 flex-col items-start gap-2 rounded-2xl border border-white/25 bg-white/[0.04] p-4"
   >
-    <Icon name={icon} className="h-6 w-6 text-ak-orange" strokeWidth={1.8} />
-    <span className="border-t border-ak-orange/40 pt-1.5 text-[12px] font-bold text-white">{label}</span>
+    <Icon name={icon} className="h-6 w-6 text-ak-orange2" strokeWidth={1.8} />
+    <span className="border-t border-ak-orange2/40 pt-1.5 text-[12px] font-bold text-white">{label}</span>
   </motion.div>
 );
 
@@ -69,8 +72,8 @@ const DocCard = ({ label, offset, delay }) => (
         <span key={i} className="block h-[3px] w-full rounded bg-ak-ink/10" />
       ))}
     </div>
-    <span className="mt-2 flex h-5 w-5 items-center justify-center rounded-full bg-ak-orange/15">
-      <Icon name="checkCircle" className="h-3 w-3 text-ak-orange" strokeWidth={2.5} />
+    <span className="mt-2 flex h-5 w-5 items-center justify-center rounded-full bg-ak-orange2/15">
+      <Icon name="checkCircle" className="h-3 w-3 text-ak-orange2" strokeWidth={2.5} />
     </span>
   </motion.div>
 );
@@ -83,7 +86,7 @@ const PenaltyIllustration = () => (
     </div>
 
     {/* Warm ambient glow behind the clock face */}
-    <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange/25 blur-2xl" />
+    <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
 
     {/* Fixed-size wrapper so every absolutely-positioned detail (bells,
         feet) measures from the same stable box as the clock face,
@@ -107,7 +110,7 @@ const PenaltyIllustration = () => (
       <div className="relative h-full w-full rounded-full border-[7px] border-ak-ink bg-white shadow-2xl">
         <div className="flex h-full w-full flex-col items-center justify-center text-center">
           <span className="font-display text-xl font-extrabold leading-tight text-ak-ink">{penalties.illustration.clockLine1}</span>
-          <span className="font-display text-xl font-extrabold leading-tight text-ak-orange">{penalties.illustration.clockLine2}</span>
+          <span className="font-display text-xl font-extrabold leading-tight text-ak-orange2">{penalties.illustration.clockLine2}</span>
         </div>
       </div>
 
@@ -132,9 +135,9 @@ export const ReturnsPenalties = () => (
           <h2 className="font-display text-3xl font-extrabold leading-[1.1] tracking-tight text-white md:text-4xl">
             {penalties.headingLine1}
             <br />
-            <span className="text-ak-orange">{penalties.headingLine2}</span>
+            <span className="text-ak-orange2">{penalties.headingLine2}</span>
           </h2>
-          <span className="mt-3 block h-1 w-16 rounded-full bg-ak-orange" />
+          <span className="mt-3 block h-1 w-16 rounded-full bg-ak-orange2" />
           <p className="mt-5 max-w-lg text-base leading-relaxed text-white/55">{penalties.sub}</p>
         </Reveal>
         <Reveal delay={0.15}>
@@ -181,8 +184,8 @@ export const ReturnsPenalties = () => (
 
       <Reveal delay={0.3} className="mt-6 flex flex-col items-start gap-6 rounded-2xl bg-white/[0.05] p-6 md:flex-row md:items-center md:justify-between">
         <div className="flex items-start gap-4">
-          <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border-2 border-ak-orange">
-            <Icon name="shield" className="h-5 w-5 text-ak-orange" strokeWidth={2} />
+          <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border-2 border-ak-orange2">
+            <Icon name="shield" className="h-5 w-5 text-ak-orange2" strokeWidth={2} />
           </span>
           <div>
             <div className="font-display text-base font-extrabold text-white">{penalties.ctaTitle}</div>
