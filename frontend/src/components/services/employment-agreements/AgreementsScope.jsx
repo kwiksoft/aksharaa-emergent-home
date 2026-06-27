@@ -83,7 +83,7 @@ const ScopeCard = ({ item }) => {
 };
 
 export const AgreementsScope = () => (
-  <section id="svc-scope" data-testid="agreements-scope-section" className="relative overflow-hidden bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-scope" data-testid="agreements-scope-section" className="relative overflow-hidden bg-ak-mist/40 py-10 md:py-14">
     {/* dot-grid watermark, top-right, desktop only */}
     <svg
       className="pointer-events-none absolute right-10 top-10 hidden h-28 w-36 lg:block"

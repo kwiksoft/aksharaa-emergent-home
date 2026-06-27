@@ -57,7 +57,7 @@ const fileBadgeStyle = {
 };
 
 export const AgreementsProcess = () => (
-  <section id="svc-process" data-testid="agreements-process-section" className="bg-white py-20 md:py-28">
+  <section id="svc-process" data-testid="agreements-process-section" className="bg-white py-10 md:py-14">
     {/* Top photo banner — reuses the Hero's own background photo at full
         strength (no fade mask), since the reference shows the same
         underlying photograph. Desktop only, matching the Hero's own

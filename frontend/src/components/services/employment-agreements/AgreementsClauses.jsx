@@ -37,7 +37,7 @@ import { clauses } from "../../../data/svc-employment-agreements";
  *   the icon-circle colour (ak.agreementsIconBg).
  */
 export const AgreementsClauses = () => (
-  <section id="svc-clauses" data-testid="agreements-clauses-section" className="bg-[#FFFCF9] py-20 md:py-28">
+  <section id="svc-clauses" data-testid="agreements-clauses-section" className="bg-[#FFFCF9] py-10 md:py-14">
     <Container>
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-12">
         {/* LEFT — kicker, heading, sub */}

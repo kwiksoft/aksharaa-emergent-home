@@ -3,7 +3,7 @@ import { Reveal, RevealGroup, RevealItem } from "../../common/Reveal";
 import { process } from "../../../data/svc-pf-compliance";
 
 export const PfCompProcess = () => (
-  <section id="svc-process" data-testid="pfcomp-process-section" className="bg-white py-20 md:py-28">
+  <section id="svc-process" data-testid="pfcomp-process-section" className="bg-white py-10 md:py-14">
     <Container>
       <Reveal className="max-w-2xl">
         <div className="ak-kicker mb-5">{process.kicker}</div>

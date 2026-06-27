@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { related } from "../../../data/svc-pf-compliance";
 
 export const PfCompRelated = () => (
-  <section id="svc-related" data-testid="pfcomp-related-section" className="bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-related" data-testid="pfcomp-related-section" className="bg-ak-mist/40 py-10 md:py-14">
     <Container>
       <Reveal className="mb-10 max-w-2xl">
         <div className="ak-kicker mb-5">{related.kicker}</div>

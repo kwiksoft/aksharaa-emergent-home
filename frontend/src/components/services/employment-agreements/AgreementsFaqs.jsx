@@ -23,7 +23,7 @@ const orbitPositions = [
 export const AgreementsFaqs = () => {
   const [openIdx, setOpenIdx] = useState(0);
   return (
-    <section id="svc-faqs" data-testid="agreements-faqs-section" className="relative overflow-hidden bg-[#FFFBF8] py-20 md:py-28">
+    <section id="svc-faqs" data-testid="agreements-faqs-section" className="relative overflow-hidden bg-[#FFFBF8] py-10 md:py-14">
       {/* soft diagonal wave, bottom of section */}
       <svg className="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="none" aria-hidden="true">
         <path d="M0 120 C 360 40, 1080 200, 1440 80 V 200 H 0 Z" fill="#FA8021" fillOpacity="0.05" />

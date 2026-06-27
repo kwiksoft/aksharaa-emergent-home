@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { scope } from "../../../data/svc-pf-compliance";
 
 export const PfCompScope = () => (
-  <section id="svc-scope" data-testid="pfcomp-scope-section" className="bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-scope" data-testid="pfcomp-scope-section" className="bg-ak-mist/40 py-10 md:py-14">
     <Container>
       <Reveal className="max-w-2xl">
         <div className="ak-kicker mb-5">{scope.kicker}</div>

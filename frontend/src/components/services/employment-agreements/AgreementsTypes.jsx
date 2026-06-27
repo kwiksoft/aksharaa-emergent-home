@@ -7,7 +7,7 @@ export const AgreementsTypes = () => (
   <section
     id="svc-types"
     data-testid="agreements-types-section"
-    className="relative overflow-hidden py-20 md:py-28"
+    className="relative overflow-hidden py-10 md:py-14"
   >
     {/* Background photo (handshake over a signed contract), per client
         request. A white tint overlay sits on top so the kicker/heading/

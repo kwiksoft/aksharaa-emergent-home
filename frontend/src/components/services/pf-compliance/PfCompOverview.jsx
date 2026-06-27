@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { overview } from "../../../data/svc-pf-compliance";
 
 export const PfCompOverview = () => (
-  <section id="svc-overview" data-testid="pfcomp-overview-section" className="bg-white py-20 md:py-28">
+  <section id="svc-overview" data-testid="pfcomp-overview-section" className="bg-white py-10 md:py-14">
     <Container>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
         <div>

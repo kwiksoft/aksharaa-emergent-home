@@ -3,7 +3,7 @@ import { Reveal, RevealGroup, RevealItem } from "../../common/Reveal";
 import { applicability } from "../../../data/svc-pf-compliance";
 
 export const PfCompApplicability = () => (
-  <section id="svc-applicability" data-testid="pfcomp-applicability-section" className="bg-ak-mist/40 py-20 md:py-28">
+  <section id="svc-applicability" data-testid="pfcomp-applicability-section" className="bg-ak-mist/40 py-10 md:py-14">
     <Container>
       <Reveal className="mx-auto max-w-2xl text-center">
         <div className="ak-kicker mx-auto mb-5 justify-center">{applicability.kicker}</div>

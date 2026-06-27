@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { obligations } from "../../../data/svc-pf-compliance";
 
 export const PfCompObligations = () => (
-  <section id="svc-obligations" data-testid="pfcomp-obligations-section" className="bg-white py-20 md:py-28">
+  <section id="svc-obligations" data-testid="pfcomp-obligations-section" className="bg-white py-10 md:py-14">
     <Container>
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
         {/* LEFT — numbered obligations list */}
