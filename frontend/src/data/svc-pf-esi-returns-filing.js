@@ -32,7 +32,7 @@ export const hero = {
 };
 
 export const what = {
-  kicker: "Three Streams. One Commitment.",
+  kicker: "Two Streams. One Commitment.",
   headingLine1: "What Aksharaa",
   headingLine2: "Files on Your Behalf",
   sub: "Two statutory filing streams — PF and ESI — each with different frequencies, portals, and deadlines. Aksharaa manages all of them under one engagement.",
