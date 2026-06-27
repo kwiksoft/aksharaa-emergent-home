@@ -210,10 +210,40 @@ export const process = {
   ],
 };
 
+/**
+ * FAQs — FULL REDESIGN per client reference image (Section 6). Previous
+ * version: single full-width white accordion card (no left illustration
+ * column), x/arrowUpRight toggle icons with a colour-inverted border-only
+ * treatment for both open and closed states, plain bg-ak-mist/40 section
+ * background.
+ *
+ * - Switched to a 2-col layout: left column gets the kicker/heading/sub
+ *   plus a new illustration (didn't exist before) — two overlapping flat
+ *   speech-bubble shapes (large orange-gradient + small cream, each with
+ *   a "?" ) with 3 small white icon-badges (scale, fileText, users)
+ *   orbiting on dashed arcs, reusing the same orbit-badge construction
+ *   pattern already established on the Hero and Section 5 (absolute
+ *   positioning, dashed SVG arcs) rather than inventing a new technique.
+ *   Built as flat SVG/shapes per the project's established convention,
+ *   not a raster mockup.
+ * - Accordion items redesigned: closed items are a plain white card with
+ *   an orange-outlined (unfilled) plus-circle; the open item switches to
+ *   a peach card background (reusing the page's existing #FAF6EE
+ *   parchment tone — PIL-sampled reference value landed almost exactly
+ *   on this already-used token, not a new one) with a solid
+ *   agreementsOrange-filled minus-circle — a real state distinction,
+ *   replacing the old build's same-treatment-both-states pattern (just
+ *   colour-inverted x/arrowUpRight icons). Toggle icons switched to the
+ *   already-registered minus/plus keys (no new icon imports needed).
+ * - New section-level background decoration (didn't exist before): a
+ *   soft diagonal wave shape and dot-grid watermarks in both bottom
+ *   corners, built as flat SVG per the same no-raster convention.
+ */
 export const faqs = {
   kicker: "Common Questions",
   heading: "Frequently Asked Questions",
   sub: "What employers and HR managers ask about employment agreement drafting.",
+  illustrationIcons: ["scale", "fileText", "users"],
   items: [
     { q: "Are non-compete clauses enforceable in India?", a: "Post-employment non-compete clauses are generally not enforceable in India under Section 27 of the Indian Contract Act. However, non-solicitation clauses and confidentiality obligations are enforceable. Aksharaa drafts only what Indian courts will uphold." },
     { q: "Can we use the same agreement template for all employees?", a: "Not advisably. A factory worker's agreement must comply with Factories Act requirements; a software engineer's needs strong IP clauses; a CXO agreement needs ESOP and garden leave provisions. Aksharaa creates role-tier templates appropriate for each grade." },
