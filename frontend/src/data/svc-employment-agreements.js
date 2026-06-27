@@ -41,10 +41,10 @@ export const hero = {
   // built directly in the component as fixed decorative elements, same
   // treatment as Returns Hero's dotted ring.
   badges: [
-    { icon: "lock", title: "Confidentiality", title2: "Protected", pos: { left: "48%", top: "16%" } },
-    { icon: "lightbulb", title: "Your IP,", title2: "Your Rights", pos: { left: "62%", top: "27%" } },
-    { icon: "shield", title: "Legally Vetted", title2: "by Experts", pos: { left: "20%", top: "54%" } },
-    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "58%", top: "63%" } },
+    { icon: "lock", title: "Confidentiality", title2: "Protected", pos: { left: "58.3%", top: "11.7%" } },
+    { icon: "lightbulb", title: "Your IP,", title2: "Your Rights", pos: { left: "66.9%", top: "43.5%" } },
+    { icon: "shield", title: "Legally Vetted", title2: "by Experts", pos: { left: "11.7%", top: "58.3%" } },
+    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "51.5%", top: "63.6%" } },
   ],
   // New bottom trust strip, per client reference image — does not exist
   // in the previous version of this Hero at all. 4-item row, separated

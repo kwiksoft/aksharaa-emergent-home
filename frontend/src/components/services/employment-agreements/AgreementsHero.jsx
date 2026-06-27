@@ -202,16 +202,17 @@ export const AgreementsHero = () => (
           />
 
           {/* Centre shield + checkmark — semi-transparent so the document
-              underneath shows through. CORRECTION (this thread): shrunk
-              overall (28%→20% width) and shifted right (8%→16% left) per
-              direct client feedback — it read too large and sat slightly
-              left of the dotted ring's own centre. */}
+              underneath shows through. SECOND CORRECTION (this thread):
+              shrunk further (20%→14% width) and recentred precisely at
+              the outer dotted ring's own centre (35%, 35%) per repeated
+              direct feedback that it still read too large / off-centre
+              relative to the orbit area. */}
           <motion.svg
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
             className="absolute"
-            style={{ left: "16%", top: "13%", width: "20%", height: "32%" }}
+            style={{ left: "28%", top: "25.2%", width: "14%", height: "19.6%" }}
             viewBox="0 0 100 140"
             fill="none"
           >
