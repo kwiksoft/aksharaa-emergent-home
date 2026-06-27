@@ -57,72 +57,53 @@ const FloatingBadge = ({ icon, label, delay }) => (
   </motion.div>
 );
 
-const DocCard = ({ label, offset, delay }) => (
-  <motion.div
-    initial={{ opacity: 0, x: 20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay, ease: EASE }}
-    className="absolute w-32 rounded-lg border border-ak-ink/5 bg-white p-3 shadow-lg"
-    style={{ left: offset.left, top: offset.top, zIndex: offset.z }}
-  >
-    <div className="text-[10px] font-extrabold uppercase tracking-wide text-ak-ink">{label}</div>
-    <div className="mt-2 space-y-1">
-      {[1, 2, 3].map((i) => (
-        <span key={i} className="block h-[3px] w-full rounded bg-ak-ink/10" />
-      ))}
-    </div>
-    <span className="mt-2 flex h-5 w-5 items-center justify-center rounded-full bg-ak-orange2/15">
-      <Icon name="checkCircle" className="h-3 w-3 text-ak-orange2" strokeWidth={2.5} />
-    </span>
-  </motion.div>
-);
-
 const PenaltyIllustration = () => (
-  <div className="relative mx-auto hidden h-[230px] w-full max-w-md lg:block">
-    <div className="absolute left-0 top-2 z-10 flex flex-col gap-4">
+  // Switched from a fixed-height absolute-overlay layout (badges + image
+  // all centred on top of each other inside a short h-[230px] box) to a
+  // flex row with natural height. The fixed short box was the root cause
+  // of a real bug caught via Playwright measurement: the image's bottom
+  // edge (y=548.8px) overlapped the PF/ESI card row's top edge (y=496.3px)
+  // by ~52px — same class of collision the original hand-built clock hit
+  // in the prior rebuild (bells vs doc-cards), just recurring with the new
+  // asset because the short fixed-height container didn't account for the
+  // image's actual 1.5:1 aspect ratio. A flex row with auto height removes
+  // the fixed-box constraint entirely rather than re-guessing a taller
+  // fixed value.
+  <div className="mx-auto hidden w-full max-w-lg items-center justify-center gap-5 lg:flex">
+    <div className="flex flex-shrink-0 flex-col gap-4">
       <FloatingBadge icon={penalties.illustration.badges[0].icon} label={penalties.illustration.badges[0].label} delay={0.1} />
       <FloatingBadge icon={penalties.illustration.badges[1].icon} label={penalties.illustration.badges[1].label} delay={0.2} />
     </div>
 
-    {/* Warm ambient glow behind the clock face */}
-    <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
-
-    {/* Fixed-size wrapper so every absolutely-positioned detail (bells,
-        feet) measures from the same stable box as the clock face,
-        instead of an unsized motion.div whose bounds depend on its
-        content — that mismatch was the root cause of the bells and feet
-        rendering in the wrong place initially. */}
+    {/* Real client-supplied illustration (clock face + PF/ESI document
+        card stack), replacing the previous hand-built SVG/HTML clock and
+        DocCard components per explicit client request. The source image
+        already renders the document cards fanned/tilted with a natural
+        offset, so no separate CSS rotation treatment is needed for the
+        "cards twist" ask — it's baked into the asset itself.
+        Source: clock_and_files.png, downscaled 1536x1024 -> 900x600 and
+        re-saved with optimisation (2.3MB -> ~250KB) to match this page's
+        other section assets' file-size range; true alpha transparency
+        confirmed (corner pixels alpha=0), so it sits cleanly on the
+        section's navy background with no surrounding white box.
+        Sized up from the first attempt (220x330) to better match the
+        reference's proportions, where the illustration reads as the
+        visual anchor of the column rather than a small corner accent. */}
     <motion.div
-      initial={{ opacity: 0, scale: 0.85 }}
+      initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
-      className="absolute left-1/2 top-1/2 z-20 h-40 w-40 -translate-x-1/2 -translate-y-1/2"
+      className="relative flex-shrink-0"
     >
-      {/* Alarm bells on top */}
-      <div className="absolute -top-6 left-1/2 z-30 flex -translate-x-1/2 gap-9">
-        <span className="h-5 w-5 rounded-full border-[3px] border-ak-ink bg-ak-slate" />
-        <span className="h-5 w-5 rounded-full border-[3px] border-ak-ink bg-ak-slate" />
-      </div>
-      <span className="absolute -top-8 left-1/2 z-30 h-4 w-1.5 -translate-x-1/2 rounded-full bg-ak-ink" />
-
-      <div className="relative h-full w-full rounded-full border-[7px] border-ak-ink bg-white shadow-2xl">
-        <div className="flex h-full w-full flex-col items-center justify-center text-center">
-          <span className="font-display text-xl font-extrabold leading-tight text-ak-ink">{penalties.illustration.clockLine1}</span>
-          <span className="font-display text-xl font-extrabold leading-tight text-ak-orange2">{penalties.illustration.clockLine2}</span>
-        </div>
-      </div>
-
-      {/* Feet */}
-      <span className="absolute -bottom-2 left-4 h-3 w-2.5 rounded-full bg-ak-ink" />
-      <span className="absolute -bottom-2 right-4 h-3 w-2.5 rounded-full bg-ak-ink" />
+      {/* Warm ambient glow behind the clock image */}
+      <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
+      <img
+        src="/assets/sections/returns-penalties-clock.png"
+        alt="Alarm clock reading Don't Delay beside a PF Return and ESI Return document stack"
+        className="relative h-auto w-[300px] drop-shadow-2xl"
+      />
     </motion.div>
-
-    <div className="absolute right-0 top-24 z-0 h-44 w-36">
-      <DocCard label={penalties.illustration.documents[0].label} offset={{ left: "30%", top: "0%", z: 1 }} delay={0.25} />
-      <DocCard label={penalties.illustration.documents[1].label} offset={{ left: "10%", top: "26%", z: 2 }} delay={0.35} />
-    </div>
   </div>
 );
 
