@@ -75,7 +75,7 @@ const FaqCollage = () => (
 export const ReturnsFaqs = () => {
   const [openIdx, setOpenIdx] = useState(0);
   return (
-    <section id="svc-faqs" data-testid="returns-faqs-section" className="bg-white py-24 md:py-32">
+    <section id="svc-faqs" data-testid="returns-faqs-section" className="bg-white py-10 md:py-14">
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
           <Reveal className="h-full">

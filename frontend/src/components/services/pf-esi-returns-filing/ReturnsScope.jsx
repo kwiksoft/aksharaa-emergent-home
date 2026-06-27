@@ -41,7 +41,7 @@ import { scope } from "../../../data/svc-pf-esi-returns-filing";
  * the new trustedCard content block was added.
  */
 export const ReturnsScope = () => (
-  <section id="svc-scope" data-testid="returns-scope-section" className="bg-ak-mist/40 py-24 md:py-32">
+  <section id="svc-scope" data-testid="returns-scope-section" className="bg-ak-mist/40 py-10 md:py-14">
     <Container>
       {/* ROW 1 */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[0.85fr_1.3fr_1.05fr] lg:gap-6">

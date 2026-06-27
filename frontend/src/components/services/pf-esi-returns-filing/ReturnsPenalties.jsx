@@ -119,7 +119,7 @@ const PenaltyIllustration = () => (
 );
 
 export const ReturnsPenalties = () => (
-  <section id="svc-penalties" data-testid="returns-penalties-section" className="bg-ak-returnsScopeNavy py-24 md:py-32">
+  <section id="svc-penalties" data-testid="returns-penalties-section" className="bg-ak-returnsScopeNavy py-10 md:py-14">
     <Container>
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
         <Reveal>

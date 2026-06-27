@@ -46,7 +46,7 @@ const DeskCalendarIllustration = () => (
 );
 
 export const ReturnsCalendar = () => (
-  <section id="svc-calendar" data-testid="returns-calendar-section" className="bg-white py-24 md:py-32">
+  <section id="svc-calendar" data-testid="returns-calendar-section" className="bg-white py-10 md:py-14">
     <Container>
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
         <Reveal>

@@ -31,7 +31,7 @@ import { what } from "../../../data/svc-pf-esi-returns-filing";
  * data was missing — PF and ESI cards are both 4 rows now, matching.
  */
 export const ReturnsWhat = () => (
-  <section id="svc-what" data-testid="returns-what-section" className="bg-ak-mist/40 py-24 md:py-32">
+  <section id="svc-what" data-testid="returns-what-section" className="bg-ak-mist/40 py-10 md:py-14">
     <Container>
       <Reveal className="mx-auto max-w-4xl text-center">
         <div className="flex items-center justify-center gap-3">

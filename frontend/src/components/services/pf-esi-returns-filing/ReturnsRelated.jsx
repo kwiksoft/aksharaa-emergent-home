@@ -4,7 +4,7 @@ import { Icon } from "../../../lib/icons";
 import { related } from "../../../data/svc-pf-esi-returns-filing";
 
 export const ReturnsRelated = () => (
-  <section id="svc-related" data-testid="returns-related-section" className="bg-ak-mist/40 py-24 md:py-32">
+  <section id="svc-related" data-testid="returns-related-section" className="bg-ak-mist/40 py-10 md:py-14">
     <Container>
       <Reveal className="mb-12 max-w-2xl">
         <div className="ak-kicker mb-5">{related.kicker}</div>
