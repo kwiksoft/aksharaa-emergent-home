@@ -264,7 +264,24 @@ export const related = {
   ],
 };
 
+/**
+ * Final CTA — rebuilt to match the shared service-cta-section template
+ * used across Payroll Processing (PayrollCta.jsx, the original) and
+ * Flexi Staffing (FlexiCta.jsx), per direct instruction to do this
+ * section "exactly as we did to other pages." Previously this section
+ * was a flat bg-ak-ink fill with a single combined Reveal fade-up and a
+ * dark AkButton pill — replaced wholesale with the shared template's
+ * structure: bg-ak-orange fill + shared cta-bg.png background image,
+ * staggered entrance (kicker -> heading -> sub -> actions rather than
+ * one combined fade-up), white pill primary button with a soft
+ * breathing glow behind it, a vertical divider, and a phone link whose
+ * icon badge pulses on hover. `kicker` added below ("Get Started
+ * Today" — identical text to both Payroll's and Flexi's, the
+ * established standard phrase for this template), since the previous
+ * structure didn't render any kicker line at all.
+ */
 export const serviceCta = {
+  kicker: "Get Started Today",
   heading: "Get Your Employment Agreements Drafted by Aksharaa",
   sub: "Share your requirements — role, seniority, employment type, and any specific clauses needed — and Aksharaa will deliver a legally precise, role-specific agreement within 3-5 working days.",
   ctas: [
