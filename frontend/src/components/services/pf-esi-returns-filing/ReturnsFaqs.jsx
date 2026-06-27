@@ -15,12 +15,10 @@ const EASE = [0.22, 1, 0.36, 1];
  * Rebuilt to match the reference's two-column layout:
  *
  * - Left: the client's photo collage (calculator/charts photo, PF/ESI
- *   binder photo, consultation photo) used as a single composite image
- *   rather than reassembled from layers — the source file is itself a
- *   flattened RGB composite with no separable layers — plus a floating
- *   "15+ Years of Experience" badge card and a soft dotted-circle
- *   decoration behind it (reused the existing radial-gradient dot-pattern
- *   technique from FlexiWho.jsx rather than inventing a new approach).
+ *   binder photo, consultation photo, plus a "15+ Years of Experience"
+ *   badge and dotted-circle decoration) — all baked into a single
+ *   supplied composite image, used as-is rather than reassembled or
+ *   overlaid with duplicate elements.
  * - Right: kicker changed from "Common Questions" to "FAQ's" with a
  *   chat-bubble icon (reference shows this exact label + icon, not the
  *   generic kicker text the old version had), heading/sub unchanged
@@ -48,24 +46,25 @@ const EASE = [0.22, 1, 0.36, 1];
  */
 
 const FaqCollage = () => (
-  // The supplied collage image (Faq_image01.png) already contains its
-  // own "15+ Years of Experience" badge card and dotted-circle
-  // decoration baked directly into the composite — confirmed by
-  // inspecting the source asset directly, not assumed. An earlier
-  // version of this component additionally layered a hand-built badge
-  // + a separate dot-pattern decoration on top, which produced a real,
-  // visible duplication bug (two overlapping badges) caught via
-  // screenshot review. Fixed by rendering the image alone with no
-  // overlay elements.
-  <motion.img
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.7, ease: EASE }}
-    src={faqs.collageImage}
-    alt="Aksharaa team reviewing PF and ESI returns filing documents with a client, 15+ years of experience"
-    className="mx-auto hidden w-full max-w-md lg:block"
-  />
+  // Sized to match the accordion column's full height per client
+  // request — the image was previously sized by width only (h-auto),
+  // which at its natural 1000x799 aspect ratio rendered noticeably
+  // shorter than the right column (measured: 358px vs 717px at
+  // 1440px). Wrapping in an h-full container (enabled by the parent
+  // grid's items-stretch, see below) and using object-cover lets the
+  // image fill the full column height without distorting its aspect
+  // ratio — it crops slightly at the sides/edges instead of stretching.
+  <div className="mx-auto hidden h-full w-full max-w-md lg:block">
+    <motion.img
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: EASE }}
+      src={faqs.collageImage}
+      alt="Aksharaa team reviewing PF and ESI returns filing documents with a client, 15+ years of experience"
+      className="h-full w-full rounded-2xl object-cover"
+    />
+  </div>
 );
 
 export const ReturnsFaqs = () => {
@@ -73,8 +72,8 @@ export const ReturnsFaqs = () => {
   return (
     <section id="svc-faqs" data-testid="returns-faqs-section" className="bg-white py-24 md:py-32">
       <Container>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-center">
-          <Reveal>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
+          <Reveal className="h-full">
             <FaqCollage />
           </Reveal>
 
