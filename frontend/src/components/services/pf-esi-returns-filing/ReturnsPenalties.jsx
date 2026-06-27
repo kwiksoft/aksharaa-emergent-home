@@ -69,7 +69,7 @@ const PenaltyIllustration = () => (
   // image's actual 1.5:1 aspect ratio. A flex row with auto height removes
   // the fixed-box constraint entirely rather than re-guessing a taller
   // fixed value.
-  <div className="mx-auto hidden w-full max-w-xl items-center justify-center gap-5 lg:flex">
+  <div className="mx-auto hidden w-full max-w-3xl items-center justify-center gap-5 lg:flex">
     <div className="flex flex-shrink-0 flex-col gap-4">
       <FloatingBadge icon={penalties.illustration.badges[0].icon} label={penalties.illustration.badges[0].label} delay={0.1} />
       <FloatingBadge icon={penalties.illustration.badges[1].icon} label={penalties.illustration.badges[1].label} delay={0.2} />
@@ -103,14 +103,12 @@ const PenaltyIllustration = () => (
       transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
       className="relative flex-shrink-0"
     >
-      {/* Warm ambient glow behind the clock image, sized up proportionally
-          with the image (h-44/w-44 -> h-52/w-52) so it doesn't look
-          undersized relative to the larger illustration. */}
-      <div className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
+      {/* Warm ambient glow behind the clock image, scaled with the image. */}
+      <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ak-orange2/25 blur-2xl" />
       <img
         src="/assets/sections/returns-penalties-clock.png"
         alt="Alarm clock reading Don't Delay beside a PF Return and ESI Return document stack"
-        className="relative h-auto w-[380px] drop-shadow-2xl"
+        className="relative h-auto w-[560px] drop-shadow-2xl"
       />
     </motion.div>
   </div>
@@ -135,7 +133,7 @@ export const ReturnsPenalties = () => (
         </Reveal>
       </div>
 
-      <RevealGroup className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2" stagger={0.15}>
+      <RevealGroup className="mt-20 grid grid-cols-1 gap-6 lg:grid-cols-2" stagger={0.15}>
         {penalties.blocks.map((b) => {
           const isPf = b.theme === "pf";
           const badgeBg = isPf ? "bg-ak-returnsScopeNavy" : "bg-ak-returnsEsiHeader";
