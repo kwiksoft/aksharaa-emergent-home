@@ -147,28 +147,67 @@ export const scopeTrustStrip = [
   { icon: "headset", accent: "rust", title: "Ongoing Legal Support", desc: "Revisions, updates & expert guidance whenever needed." },
 ];
 
+/**
+ * Process — FULL REDESIGN per client reference image (Section 5).
+ * Previous version: plain numbered-circle (all same ak.orange colour) +
+ * text list on the left, a basic photo-less layout; Turnaround card was a
+ * flat row list with inline trailing time text; Delivered In card used a
+ * generic repeated fileText icon for both formats.
+ *
+ * - Heading split for an orange-emphasis word ("4 Steps"), matching the
+ *   [part1, part2] pattern used on Section 3.
+ * - Each step now carries an `accent` + `tint` (hex pair — solid colour
+ *   for the numbered circle/underline, light tint for the icon-box
+ *   background) and an `icon` (mapped to the reference's actual small
+ *   icon-box glyph per step: clipboardList, fileClock [new],
+ *   messagesSquare, send). Stored as literal hex rather than a Tailwind
+ *   token-name string, matching the established inline-style pattern
+ *   already used for per-item dynamic colour in this codebase (see
+ *   ReturnsCalendar.jsx's `style={{ backgroundColor: ... }}`), since
+ *   Tailwind can't generate class names from a JS template string at
+ *   build time. The matching ak.agreementsStep1-4 tokens are still
+ *   defined in tailwind.config.js for documentation/provenance and any
+ *   future class-based reuse, even though this component itself
+ *   references the hex values directly. The reference also shows a real
+ *   photo per step; per direct instruction this build uses an icon-box
+ *   placeholder (no image-generation available in this environment) in
+ *   the same position — swappable for a real photo later without any
+ *   further code change, just an `image` field + img tag.
+ * - `turnaround.rows[].time` split into `{ range, unit }` (e.g. "3–5" /
+ *   "working days") to support the reference's two-line pill display
+ *   (bold range on top, smaller unit label below) rather than one
+ *   inline string — cleaner than parsing at render time.
+ * - `formats` switched from plain strings to `{ ext, label }` objects
+ *   ("WORD"/"PDF" + the existing descriptive text) to support the new
+ *   colour-coded file-type badge per the reference (blue "W"/red "PDF"
+ *   flat badges — built as plain coloured boxes with text, not a
+ *   reproduction of Microsoft's/Adobe's actual logo artwork).
+ */
 export const process = {
   kicker: "How It Works",
-  heading: "From Brief to Document in 4 Steps",
+  heading: ["From Brief to Document in ", "4 Steps"],
   sub: "Aksharaa's drafting process is designed to minimise back-and-forth. We collect everything we need upfront, draft precisely, and deliver a legally sound document within the agreed timeline.",
   steps: [
-    { num: "01", title: "Brief & Requirement Capture", desc: "You share the role details, employment type, seniority level, specific clauses needed, and any existing documents to align with." },
-    { num: "02", title: "First Draft Delivered", desc: "Aksharaa delivers a complete first draft within 3–5 working days. Longer documents may take 5–7 days." },
-    { num: "03", title: "Your Review & One Revision", desc: "You review the draft and provide consolidated feedback. One round of revision is included as standard." },
-    { num: "04", title: "Final Delivery", desc: "Final agreement delivered in Word format (.docx) and PDF for execution. Guidance on signing formalities provided if required." },
+    { num: "01", accent: "#EF7439", tint: "#FDEEE7", icon: "clipboardList", title: "Brief & Requirement Capture", desc: "You share the role details, employment type, seniority level, specific clauses needed, and any existing documents to align with." },
+    { num: "02", accent: "#1C6BE4", tint: "#E8F0FD", icon: "fileClock", title: "First Draft Delivered", desc: "Aksharaa delivers a complete first draft within 3–5 working days. Longer documents may take 5–7 days." },
+    { num: "03", accent: "#10B57B", tint: "#E5F7EF", icon: "messagesSquare", title: "Your Review & One Revision", desc: "You review the draft and provide consolidated feedback. One round of revision is included as standard." },
+    { num: "04", accent: "#8256F3", tint: "#EFE8FE", icon: "send", title: "Final Delivery", desc: "Final agreement delivered in Word format (.docx) and PDF for execution. Guidance on signing formalities provided if required." },
   ],
   turnaround: {
     title: "Turnaround Times",
     rows: [
-      { type: "Single Employment Agreement", time: "3–5 working days" },
-      { type: "CXO / Senior Agreement", time: "5–7 working days" },
-      { type: "Agreement + NDA Bundle", time: "4–6 working days" },
-      { type: "Bulk Agreement Set (5+ roles)", time: "7–10 working days" },
-      { type: "Existing Agreement Vetting", time: "2–3 working days" },
+      { type: "Single Employment Agreement", range: "3–5", unit: "working days" },
+      { type: "CXO / Senior Agreement", range: "5–7", unit: "working days" },
+      { type: "Agreement + NDA Bundle", range: "4–6", unit: "working days" },
+      { type: "Bulk Agreement Set (5+ roles)", range: "7–10", unit: "working days" },
+      { type: "Existing Agreement Vetting", range: "2–3", unit: "working days" },
     ],
     note: "All timelines from date of complete brief receipt. Expedited drafting available on request.",
   },
-  formats: ["Word (.docx) — editable", "PDF — execution ready"],
+  formats: [
+    { ext: "WORD", label: "Word (.docx) — editable" },
+    { ext: "PDF", label: "PDF — execution ready" },
+  ],
 };
 
 export const faqs = {

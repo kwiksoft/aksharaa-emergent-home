@@ -256,6 +256,24 @@ module.exports = {
           // variance is accounted for.
           agreementsGold: '#D29D2D',
           agreementsRust: '#D85604',
+          // Employment Agreements "Process" section (Section 5), client
+          // reference image (WhatsApp JPEG, lower fidelity than the clean
+          // PNG references used for Sections 3-4 — sampled with that in
+          // mind). Four step-badge colours, one per timeline step,
+          // PIL-sampled directly from the reference's numbered circles:
+          // step01 orange, step02 blue, step03 green, step04 purple. None
+          // of these are reused from existing tokens — the reference uses
+          // a genuinely distinct 4-colour rotation here, unlike Sections
+          // 3-4 which stayed within the page's orange/gold/rust/ink
+          // palette. The existing ak.ink (#1C2A39) is reused as-is for
+          // the redesigned "Delivered In" card's navy fill — the
+          // reference's sampled value (#102540) sits within normal
+          // tolerance once JPEG compression/lighting on a phone photo is
+          // accounted for, so not added as a new near-duplicate token.
+          agreementsStep1: '#EF7439',
+          agreementsStep2: '#1C6BE4',
+          agreementsStep3: '#10B57B',
+          agreementsStep4: '#8256F3',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
