@@ -26,7 +26,7 @@ export const AgreementsTypes = () => (
         backgroundRepeat: "no-repeat",
       }}
     />
-    <div className="absolute inset-0 bg-white/85" />
+    <div className="absolute inset-0 bg-white/60" />
 
     <Container className="relative">
       <Reveal className="max-w-2xl">
