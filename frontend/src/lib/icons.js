@@ -17,7 +17,7 @@ import {
   Download, Headset, User, History, IdCard, Rocket, Gavel,
   Eye, FolderUp, UsersRound, Award, ConciergeBell, Shuffle, AlertCircle,
   Cog, Calendar, ThumbsUp, Folders, AlarmClock, LockKeyhole,
-  MessagesSquare, Minus, Plus, Lightbulb,
+  MessagesSquare, Minus, Plus, Lightbulb, Bell, Ban,
 } from "lucide-react";
 
 export const icons = {
@@ -50,6 +50,8 @@ export const icons = {
   minus: Minus,
   plus: Plus,
   lightbulb: Lightbulb,
+  bell: Bell,
+  ban: Ban,
 };
 
 export const Icon = ({ name, ...props }) => {

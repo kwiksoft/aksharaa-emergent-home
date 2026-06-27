@@ -227,6 +227,16 @@ module.exports = {
           // the reference's own #F9F6F3 page background).
           agreementsOrange: '#FA8021',
           agreementsStripBg: '#F6F0EB',
+          // Employment Agreements "Key Clauses" section (Section 3),
+          // client reference image. The Critical-tier filled pill
+          // sampled to a deeper, more saturated rust-orange (#DB763B)
+          // than the page's existing agreementsOrange (#FA8021) used
+          // for icon strokes/numerals — genuinely distinct, not reused.
+          // Icon-circle and footnote-card backgrounds both sampled to
+          // the same light peach value (#F7E4D5), added once and reused
+          // in both places.
+          agreementsCritical: '#DB763B',
+          agreementsIconBg: '#F7E4D5',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

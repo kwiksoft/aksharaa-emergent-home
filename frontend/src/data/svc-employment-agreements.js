@@ -73,18 +73,28 @@ export const types = {
 
 export const clauses = {
   kicker: "What Goes In",
-  heading: "Key Clauses Every Agreement Must Have",
+  // Split for the orange-emphasis word ("Must Have"), matching the
+  // [part1, part2] pattern used elsewhere (e.g. Hero headline) — per
+  // client reference image redesign (Section 3).
+  heading: ["Key Clauses Every Agreement ", "Must Have"],
   sub: "Generic templates miss clauses that are specific to Indian employment law. Aksharaa ensures every agreement contains these legally critical provisions — drafted for enforceability, not just formality.",
+  // `num` kept as the original §-reference (used nowhere visually now,
+  // retained as content metadata); `display` is the new plain 01-09
+  // numeral per reference (replaces the old § N display). `icon` is
+  // new — each clause mapped to a distinct icon per the reference's
+  // icon-circle treatment (person, calendar, wallet, clock, shield,
+  // lightbulb, ban, bell, gavel — `ban` substituted for the reference's
+  // no-entry glyph on Non-Solicitation, semantically equivalent).
   items: [
-    { num: "§ 1", title: "Parties, Designation & Reporting Structure", desc: "Full legal name of employer entity, employee details, role title, department, and the reporting manager.", tier: "Essential" },
-    { num: "§ 2", title: "Commencement Date & Probation Period", desc: "Start date, duration of probation (typically 3–6 months), conditions for confirmation, and extension terms.", tier: "Essential" },
-    { num: "§ 3", title: "Compensation, Benefits & Deductions", desc: "Gross salary structure, statutory deductions (PF, ESI, PT, TDS), variable pay terms, and increment policy.", tier: "Essential" },
-    { num: "§ 4", title: "Working Hours, Leave & Holiday Policy", desc: "Applicable Factory Act / Shops Act provisions, leave entitlements (EL, CL, SL), and flexible working terms.", tier: "Essential" },
-    { num: "§ 5", title: "Confidentiality & Non-Disclosure", desc: "Definition of confidential information, obligations during and after employment, and remedies for breach.", tier: "Critical" },
-    { num: "§ 6", title: "Intellectual Property Assignment", desc: "All work product created during employment is assigned to the employer — covering software, designs, inventions.", tier: "Critical" },
-    { num: "§ 7", title: "Non-Solicitation Clause", desc: "Restricts the employee from poaching clients, customers, or colleagues for a defined period post-employment.", tier: "Critical" },
-    { num: "§ 8", title: "Termination, Notice Period & Garden Leave", desc: "Notice period for both parties, payment in lieu of notice, grounds for summary termination, garden leave.", tier: "Essential" },
-    { num: "§ 9", title: "Governing Law & Dispute Resolution", desc: "Jurisdiction clause specifying which state's courts govern, and dispute resolution mechanism.", tier: "Essential" },
+    { num: "§ 1", display: "01", icon: "user", title: "Parties, Designation & Reporting Structure", desc: "Full legal name of employer entity, employee details, role title, department, and the reporting manager.", tier: "Essential" },
+    { num: "§ 2", display: "02", icon: "calendarPlain", title: "Commencement Date & Probation Period", desc: "Start date, duration of probation (typically 3–6 months), conditions for confirmation, and extension terms.", tier: "Essential" },
+    { num: "§ 3", display: "03", icon: "wallet", title: "Compensation, Benefits & Deductions", desc: "Gross salary structure, statutory deductions (PF, ESI, PT, TDS), variable pay terms, and increment policy.", tier: "Essential" },
+    { num: "§ 4", display: "04", icon: "clock", title: "Working Hours, Leave & Holiday Policy", desc: "Applicable Factory Act / Shops Act provisions, leave entitlements (EL, CL, SL), and flexible working terms.", tier: "Essential" },
+    { num: "§ 5", display: "05", icon: "shield", title: "Confidentiality & Non-Disclosure", desc: "Definition of confidential information, obligations during and after employment, and remedies for breach.", tier: "Critical" },
+    { num: "§ 6", display: "06", icon: "lightbulb", title: "Intellectual Property Assignment", desc: "All work product created during employment is assigned to the employer — covering software, designs, inventions.", tier: "Critical" },
+    { num: "§ 7", display: "07", icon: "ban", title: "Non-Solicitation Clause", desc: "Restricts the employee from poaching clients, customers, or colleagues for a defined period post-employment.", tier: "Critical" },
+    { num: "§ 8", display: "08", icon: "bell", title: "Termination, Notice Period & Garden Leave", desc: "Notice period for both parties, payment in lieu of notice, grounds for summary termination, garden leave.", tier: "Essential" },
+    { num: "§ 9", display: "09", icon: "gavel", title: "Governing Law & Dispute Resolution", desc: "Jurisdiction clause specifying which state's courts govern, and dispute resolution mechanism.", tier: "Essential" },
   ],
   note: "Additional clauses — ESOP vesting, garden leave, training cost recovery, non-compete — are included based on role level and industry. Aksharaa advises on which clauses are enforceable under Indian law before including them.",
 };
