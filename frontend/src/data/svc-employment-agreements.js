@@ -42,9 +42,9 @@ export const hero = {
   // treatment as Returns Hero's dotted ring.
   badges: [
     { icon: "lock", title: "Confidentiality", title2: "Protected", pos: { left: "58.3%", top: "11.7%" } },
-    { icon: "lightbulb", title: "Your IP,", title2: "Your Rights", pos: { left: "66.9%", top: "43.5%" } },
+    { icon: "lightbulb", title: "Your IP,", title2: "Your Rights", pos: { left: "66.9%", top: "33%" } },
     { icon: "shield", title: "Legally Vetted", title2: "by Experts", pos: { left: "11.7%", top: "58.3%" } },
-    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "51.5%", top: "63.6%" } },
+    { icon: "users", title: "Clear Terms,", title2: "Fewer Disputes", pos: { left: "33%", top: "52%" } },
   ],
   // New bottom trust strip, per client reference image — does not exist
   // in the previous version of this Hero at all. 4-item row, separated
