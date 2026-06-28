@@ -54,7 +54,7 @@ const ApplicabilityPhoto = () => (
     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8, ease: EASE }}
-    className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
+    className="relative mx-auto w-full max-w-xs lg:mx-0 lg:ml-auto lg:max-w-[280px]"
   >
     {/* soft radial glow behind, echoes the prior corner-illustration treatment */}
     <div className="absolute inset-0 -z-10 scale-105 rounded-3xl bg-ak-orange/[0.07] blur-2xl" />
@@ -62,7 +62,7 @@ const ApplicabilityPhoto = () => (
       <img
         src="/assets/sections/reg-applicability-photo.jpg"
         alt="Registration checklist, employee records, and statutory compliance binders on a desk — PF and ESI registration must be completed within 30 days of crossing the applicable employee threshold"
-        className="aspect-[3/2] w-full rounded-xl object-cover"
+        className="aspect-[4/3] w-full rounded-xl object-cover"
         loading="lazy"
       />
     </div>

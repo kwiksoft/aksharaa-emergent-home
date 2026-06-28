@@ -117,6 +117,17 @@ Verified at 1440px, 768px, 390px — zero console errors at all three
 overflow at any breakpoint. Comparison cards below confirmed visually
 unchanged. **Pending your sign-off on the live site.**
 
+CORRECTION (this thread, round 2 — direct user feedback that the photo
+was "too big, doesn't sit well"): the desktop layout had `lg:max-w-none`
+on the photo column, which let it stretch to fill the entire right grid
+track at large viewports — that's why it dominated the row instead of
+reading as a supporting visual. Capped the photo at `max-w-[280px]` on
+desktop (was: uncapped) and `max-w-xs` on mobile/tablet (was: `max-w-md`),
+right-aligned within its column on desktop via `lg:ml-auto`. Also
+tightened the aspect ratio from 3:2 to 4:3 so it reads as a compact
+photo card rather than a wide banner. Re-verified at 1440px, 768px,
+390px — zero console errors at all three, no horizontal overflow.
+
 ---
 
 Tell me where to start — section number, what kind of change, and any
