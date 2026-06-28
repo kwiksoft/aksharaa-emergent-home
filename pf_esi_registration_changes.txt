@@ -71,7 +71,7 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 |---|---------|--------|
 | 1 | Hero | Round 6 — see full notes above, pending sign-off |
 | 2 | Overview | Pending review |
-| 3 | Applicability | Photo swap done this thread (see note below), pending sign-off |
+| 3 | Applicability | PAUSED — fix pushed (c4b473e) but unconfirmed on live site, see note above. Not done. |
 | 4 | Documents | Pending review |
 | 5 | Process | Pending review |
 | 6 | Penalties | Pending review |
@@ -197,6 +197,25 @@ Re-verified at 1440px, 768px, 390px — zero console errors at all
 three, no horizontal overflow. Seam is substantially softer; not
 literally invisible (a very faint tone difference remains on close
 inspection) but no longer reads as a pasted rectangle.
+
+PAUSED (this thread, direct user instruction — "nothing has changed,"
+"too long on this same section"): user reported the round-4 fix wasn't
+visible on their end. Confirmed via direct git fetch against origin
+that commit c4b473e (containing the fix) is genuinely on GitHub's main
+branch — the push itself succeeded. The gap is most likely a
+deploy/build step between GitHub and the live site that this thread
+has no visibility into (every verification so far has been against a
+local dev server in the work container, not the actual production
+site) — this was NOT investigated or resolved this thread.
+
+Section 3 is being left exactly as-is (commit c4b473e) — no further
+changes — per direct instruction to move to another section. Status
+remains "pending sign-off," NOT done, since the user has not been able
+to confirm the visual result. Whoever picks this back up should
+confirm (a) how this repo actually reaches the live site — build
+command, deploy trigger, manual upload, etc. — and (b) re-check the
+live site against this commit before making further visual judgments
+about Section 3.
 
 ---
 
