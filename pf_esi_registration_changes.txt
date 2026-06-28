@@ -305,6 +305,18 @@ left-[610px] w-[500px] (bigger than before, per request). Re-verified
 at 1024px, 1440px (text-clearance double-checked via zoomed crop),
 768px, 390px — zero console errors at all four, no horizontal overflow.
 
+CORRECTION (this thread, direct user feedback: "image should not
+touches the box move to right"): although the card's text was fully
+legible after the prior round's fix, the image's edge was still
+visually touching the "10+ EMPLOYEES" card's outer border/box itself —
+a different, stricter standard than "text not obscured." Pushed the
+image right with a clear gap from the card edge: lg:left-[560px] (was
+470px), xl:left-[700px] (was 610px). Re-verified at 1024px and 1440px
+with a tight zoomed crop on the card-to-image boundary specifically —
+confirmed a visible gap, no touching, at both breakpoints. 768px and
+390px re-confirmed unchanged (image correctly hidden, no overflow).
+Zero console errors at all four breakpoints throughout.
+
 ---
 
 Tell me where to start — section number, what kind of change, and any
