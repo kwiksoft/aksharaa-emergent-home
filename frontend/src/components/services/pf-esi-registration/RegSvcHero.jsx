@@ -28,9 +28,8 @@ const EASE = [0.22, 1, 0.36, 1];
  *   Row 3: bottomFeatures, a plain unbordered 4-item row (icon circle +
  *          title + desc) — entirely new, no equivalent existed before.
  *
- * All 3 photo slots are temporary placeholders (see data-file comment);
- * swapping in real photos later only needs the `image`/`image2`/`image3`
- * URLs updated, no structural change.
+ * Real client-supplied photos are wired in for all 3 slots (this
+ * thread); see the data-file comment for exact specs/provenance.
  */
 export const RegSvcHero = () => (
   <section

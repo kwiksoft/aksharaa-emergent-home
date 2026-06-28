@@ -31,13 +31,8 @@ export const meta = {
  *   collage (top-left rounded-square "signing the document", top-right
  *   circular "EPFO/ESIC documents on a desk", bottom-right rounded-square
  *   "handover meeting between two people") — not one photo reused twice.
- *   All 3 are TEMPORARY PLACEHOLDERS reusing the page's existing approved
- *   Unsplash asset (same one previously used for image/image2 in the old
- *   layout) pending real photos from the client. Real photo specs given
- *   directly to the client: Photo 1 ~800x800 (square, signing/reviewing a
- *   document at a desk), Photo 2 ~800x800 (square, gets circle-cropped by
- *   CSS — EPFO/ESIC registration documents on a desk), Photo 3 ~1200x840
- *   (3:2, two people in a handover/consultation moment).
+ *   Real client-supplied photos now wired in (this thread) — see the
+ *   image-slot comment further down for exact specs/provenance.
  * - `complianceBadge` added: the white circular "AKSHARAA Compliance
  *   Experts" badge (shield-check icon + 3-star rating) that overlaps the
  *   junction of all 3 photos in the reference — entirely new, no
@@ -89,14 +84,20 @@ export const hero = {
     sub: "Compliance Experts",
     stars: 3,
   },
-  // Photography slots — TEMPORARY PLACEHOLDERS, all 3 reuse the same
-  // pre-existing approved asset pending real client photos (see specs in
-  // the comment block above this export).
-  image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
-  imageAlt: "Compliance officer reviewing PF and ESI registration paperwork",
-  image2: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
+  // Photography slots — real photos supplied by the client (this thread),
+  // replacing the temporary placeholders. Each maps directly onto the
+  // spec given when requesting them: Photo 1 ~1024x1024 square (signing/
+  // reviewing a document at a desk), Photo 2 ~1024x1024 square (EPFO/ESIC
+  // registration documents on a desk, gets circle-cropped by CSS), Photo
+  // 3 ~1024x687 3:2 (two people in a handover/consultation moment) — all
+  // converted from the supplied PNGs to optimised JPGs (quality 85) to
+  // match this project's existing asset-size convention (~100-135KB each,
+  // down from ~950KB-1MB as supplied).
+  image: "/assets/sections/reg-hero-photo1.jpg",
+  imageAlt: "Compliance professional reviewing a PF and ESI registration document",
+  image2: "/assets/sections/reg-hero-photo2.jpg",
   image2Alt: "EPFO and ESIC registration documents on a desk",
-  image3: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
+  image3: "/assets/sections/reg-hero-photo3.jpg",
   image3Alt: "Aksharaa consultant handing over completed registration documents to a client",
 };
 
