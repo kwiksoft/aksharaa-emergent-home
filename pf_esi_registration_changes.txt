@@ -157,6 +157,47 @@ overflow. Flagged to client: at 390px the illustration's internal text
 to read since it's a wide image compressed into a narrow viewport —
 client confirmed shipping as-is is fine for now.
 
+ROUND 4 (this thread — client feedback: "image has designer background
+that doesn't match" the section): the illustration's own background is
+a near-uniform warm off-white (~RGB 251,246,243, fading to near-pure-
+white on the right side), close to but not identical to the section's
+ak-mist background — producing a visible rectangular seam, most
+noticeable as hard horizontal lines top and bottom.
+
+Investigated automated background removal (rembg/u2net) as a first
+attempt — it cleanly separated solid objects (clipboard, binders,
+plant, podium blocks) but left a visible smudge/ghost-streak where a
+faint decorative wavy-line pattern sat in the upper-left, and the
+platform's soft drop-shadow trailed off rather than cutting cleanly.
+Tested an alpha-threshold cleanup pass on the rembg output, which made
+things worse (ate into legitimate object edges and the decorative
+linework, which is drawn at high opacity despite being visually faint
+in color). Concluded a transparent-cutout approach wasn't viable
+without manual per-region masking, which wasn't worth the effort given
+a much simpler fix existed.
+
+Client also sent a second "fixed" image attempting a transparent-bg
+version, which turned out to be a fresh AI regeneration with garbled/
+misspelled text baked in ("EMP LOVEES", "Est Registration", "PF
+RSOISTRATION", "ESI REOISTRAIION", "Loael Compliance", "Employse
+Welltare", "Socunc Future") — caught before use and explicitly NOT
+placed; client confirmed and asked to fix the original instead.
+
+Actual fix: left the original (correctly-spelled, untouched) JPEG in
+place — no pixel editing of the asset at all — and added a CSS
+mask-image (linear-gradient, vertical only: fades in over the top ~12%
+and out over the bottom ~12%) to the <img> element. Chose vertical-only
+because the image's real empty margin (sky/dot-pattern above, floor
+below) sits top and bottom; left/right edges have real subject matter
+(platform, binders, plant) close to the frame and would clip if faded.
+This softens exactly the hard horizontal seam lines without touching
+the source file, so zero risk of reintroducing a text/content error.
+
+Re-verified at 1440px, 768px, 390px — zero console errors at all
+three, no horizontal overflow. Seam is substantially softer; not
+literally invisible (a very faint tone difference remains on close
+inspection) but no longer reads as a pasted rectangle.
+
 ---
 
 Tell me where to start — section number, what kind of change, and any
