@@ -70,7 +70,7 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 | # | Section | Status |
 |---|---------|--------|
 | 1 | Hero | Round 6 — see full notes above, pending sign-off |
-| 2 | Overview | Pending review |
+| 2 | Overview | Desk-props background image added this thread (see note below), pending sign-off |
 | 3 | Applicability | PAUSED — fix pushed (c4b473e) but unconfirmed on live site, see note above. Not done. |
 | 4 | Documents | Pending review |
 | 5 | Process | Pending review |
@@ -216,6 +216,67 @@ confirm (a) how this repo actually reaches the live site — build
 command, deploy trigger, manual upload, etc. — and (b) re-check the
 live site against this commit before making further visual judgments
 about Section 3.
+
+---
+
+OVERVIEW (Section 2) — desk-props background image, this thread
+
+Client supplied a full-page mockup (image 1) showing a more developed
+version of this section, including a calendar+binders+plant desk photo
+positioned bottom-right behind the cards. Direct instruction: add ONLY
+the photo as a background element — keep all existing text, headings,
+icon treatment, and card layout exactly as currently built. The kicker
+text, heading style, icon-row PF/ESI explainer, and icon badges shown
+in the mockup were explicitly NOT requested and were not built.
+
+Asset handling took several rounds:
+1. First upload (binders read "PREREGISTRATION" / "EBIREGISTRATION") —
+   garbled text, not used.
+2. Second upload was presented as a transparent PNG but was actually a
+   flattened JPEG with the checkerboard "this is transparent" pattern
+   baked into solid pixels — not real transparency. Confirmed via
+   pixel sampling (alternating ~254/~246 grey values at a precise 36px
+   tile period) before raising it with the client.
+3. Client confirmed the grey checker should be treated as background
+   and asked for removal to be done directly rather than re-sourcing
+   the file. Built a two-stage pipeline:
+   a. Detected the exact checkerboard phase per-pixel (comparing each
+      pixel to its expected ideal value at that tile position, given
+      the known 36px period and ~254/~246 tile colours) and flattened
+      matching pixels to solid white. A naive global brightness/flood-
+      fill approach was tried first and rejected — it leaked into the
+      calendar's white paper, since that's nearly as bright as the
+      checker with no hard edge between them. The phase-match approach
+      doesn't have this problem because it requires periodicity, not
+      just brightness.
+   b. Ran rembg (u2net) on the flattened result for the actual subject
+      cutout — worked cleanly since the background was now a uniform
+      flat colour rembg could separate confidently.
+   Verified the result against bold contrasting backgrounds (red,
+   blue) to check for transparency ghosting/halos — clean, with only a
+   very faint residual cross-hatch on the calendar's white face on
+   close inspection (not noticeable at actual display size). Binder
+   text confirmed correct: "PF REGISTRATION" / "ESI REGISTRATION" /
+   "COMPLIANCE".
+
+Cropped to content bounding box, resized to 700px wide (sensible
+display ceiling for a background element at this section's
+proportions), saved as reg-overview-deskprops.png (~236KB — PNG with
+alpha is inherently larger than this project's usual JPEG convention,
+expected and accepted since transparency requires it).
+
+Implementation: absolutely-positioned <img> anchored bottom-right of
+the section, z-0 (behind the existing card content, which got z-10),
+hidden below md breakpoint per direct scope ("keep current layout
+otherwise" — mobile already has no spare room without restructuring,
+which was out of scope this round). No existing text, cards, or
+spacing touched.
+
+Verified at 1440px (clean placement matching the reference's bottom-
+right positioning), 768px (image renders at the very bottom of the
+taller stacked layout, slightly under the alert card's corner — no
+text obscured, acceptable), 390px (image correctly hidden, layout
+unchanged) — zero console errors at all three, no horizontal overflow.
 
 ---
 
