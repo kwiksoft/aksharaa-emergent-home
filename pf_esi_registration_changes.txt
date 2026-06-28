@@ -71,7 +71,7 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 |---|---------|--------|
 | 1 | Hero | Round 6 — see full notes above, pending sign-off |
 | 2 | Overview | Desk-props background image added this thread (see note below), pending sign-off |
-| 3 | Applicability | PAUSED — fix pushed (c4b473e) but unconfirmed on live site, see note above. Not done. |
+| 3 | Applicability | RESUMED — illustration replaced with v2 transparent PNG, see note below. Pending sign-off. |
 | 4 | Documents | Pending review |
 | 5 | Process | Pending review |
 | 6 | Penalties | Pending review |
@@ -216,6 +216,65 @@ confirm (a) how this repo actually reaches the live site — build
 command, deploy trigger, manual upload, etc. — and (b) re-check the
 live site against this commit before making further visual judgments
 about Section 3.
+
+ROUND 7 (resumed this thread, direct user instruction — client supplied
+a NEW, larger version of the growth-bar illustration and asked to
+replace the image in Section 3 with it): this new source image had the
+exact same problem as the round-3 asset — presented as if transparent
+(checkerboard visible) but actually a flattened JPEG with the
+checkerboard baked into solid pixels, confirmed via the same pixel-
+sampling method as before (alternating ~254/~245 grey values, this
+time at a ~33-34px tile period rather than the prior image's 36px).
+
+The phase-matching technique used successfully on the round-3/Section-2
+desk-props image was tried first here and DIDN'T work cleanly — this
+image's checkerboard period drifted slightly across the canvas (likely
+from compression or scaling during export), causing the per-pixel
+ideal-phase comparison to fall out of sync partway across the image
+and bleed into real content. Recognised this as a fragile, image-
+specific technique rather than a general solution.
+
+Switched to a more robust discriminator: local pixel-value standard
+deviation in a small sliding window. The checkerboard area has very
+low local variance (only two flat alternating values, ~9 units apart)
+while real subject content (object edges, text, shading) has much
+higher local variance — this doesn't depend on knowing the exact tile
+period/phase at all, so it isn't vulnerable to the same drift problem.
+Verified empirically before trusting it: background sample ~0.97 std,
+subject sample ~13 std — a wide, reliable margin.
+
+Built the alpha channel DIRECTLY from this variance mask (skipped
+rembg's neural segmentation entirely this round) — rembg was tried on
+top of the flattened result first but kept a large white "wall/desk
+surface" patch as false-positive foreground (visible as a white wedge
+behind the podiums on any non-white test background), which the
+variance-only mask didn't have. Applied morphological close+open to
+remove small noise, binary_fill_holes to patch small enclosed gaps
+(e.g. inside clipboard rule-line spacing), and a light Gaussian blur
+(sigma 0.6) on the final alpha for sub-pixel edge smoothing. Verified
+against bold red and blue test backgrounds — clean cutout, no halos,
+no residual checker pattern, correct text throughout (binder labels,
+checklist items, threshold callouts all read correctly — no repeat of
+the round-3-attempt garbled-text problem, this source image's text was
+fine from the start).
+
+Cropped to content bounds, resized to 800px wide (~320KB), saved as
+reg-applicability-illustration-v2.png. Swapped into the
+ApplicabilityIllustration component; also removed the CSS mask-image
+vertical fade that round-4 added — that was a workaround specifically
+for the OLD jpeg's flat-but-mismatched background colour, and is dead
+weight (though harmless) now that this asset has genuine alpha
+transparency and the seam problem it was built to soften no longer
+exists. Deleted the old reg-applicability-illustration.jpg (fully
+superseded, not a variant).
+
+Verified at 1440px, 768px, 390px — zero console errors at all three,
+no horizontal overflow, no visible seam at any breakpoint (a
+meaningful improvement over every prior round, which all had some
+residual edge mismatch). Side benefit: this image's in-illustration
+text renders larger/bolder than the prior asset, so the round-3
+mobile-legibility concern is also improved, though not specifically
+re-tested against a strict standard.
 
 ---
 
