@@ -107,89 +107,93 @@ export const RegSvcHero = () => (
         </div>
 
         {/* RIGHT — 3-photo collage + overlapping compliance badge.
-            Geometry derived from the reference: photo1 top-left tall
-            rounded-rect, photo2 top-right TRUE CIRCLE, photo3 bottom-
-            right wide rounded-rect, badge TRUE CIRCLE overlapping the
-            junction of all 3. CORRECTION (this thread, round 4): rounds
-            1-3 each fixed one element while leaving others wrong, because
-            manual grid-reading on separately-cropped sub-images kept
-            producing inconsistent boundaries — the 4 elements genuinely
-            touch/overlap with no background gap between most of them
-            (confirmed via content-vs-background masking: they form one
-            single connected region, not 4 independent shapes), so
-            "where does element X end" cannot be read from any one crop
-            in isolation. Re-measured everything from ONE single,
-            continuous grid overlay spanning the entire collage region
-            (not stitched-together sub-crops), reading every boundary
-            against the same coordinate frame, then cross-validated the
-            two circles (Photo 2, the badge) by confirming their
-            measured width and height come out equal — a real circle
-            must satisfy this, and using it as a check caught remaining
-            errors that one-off eyeballing had missed. Final verified
-            pixel measurements (in the 1536x1024 reference): Photo 1
-            x665-940/y135-638 (275x503), Photo 2 x1062-1450/y140-528
-            (388x388, true circle), badge centred at (1070,531) radius 99
-            (198x198, true circle), Photo 3 x935-1450/y565-835 (515x270,
-            much wider/shorter than earlier rounds assumed — its left
-            edge tucks under the badge and is NOT visible directly, but
-            corroborated by the visible dark-hair content peeking out
-            from under the badge's curve at x~940). Column bounding box:
-            785x700px, aspect 1.121:1. */}
+            Geometry derived from the reference: photo1 top-left PORTRAIT
+            rectangle (taller than wide), photo2 top-right TRUE CIRCLE,
+            photo3 bottom-right WIDE LANDSCAPE rectangle (wider than
+            tall), badge TRUE CIRCLE overlapping the junction of all 3.
+            CORRECTION (this thread, round 6 — direct user feedback that
+            the basic SHAPES were wrong, not just positions: "photo is
+            wider rectangle photo 2 circle photo 3 rounded square"):
+            every previous round (1-5) treated Photo 1 as roughly
+            square-ish and Photo 3 as narrower than it actually is,
+            because each measurement attempt zoomed into individual
+            corners/edges in isolation and lost track of the overall
+            shape. This round started over by looking at the WHOLE
+            collage at once with no grid, confirming the basic shape
+            categories by eye first (Photo 1 = portrait rect, Photo 2 =
+            circle, Photo 3 = wide landscape rect, badge = circle) BEFORE
+            measuring any pixel, then read all 4 boundaries from one
+            clean, lightly-gridded crop, then did a final direct-overlay
+            visual confirmation (candidate shapes drawn straight onto a
+            copy of the reference and compared by eye) for every single
+            element, not just the circles. Final measurements (1536x1024
+            reference): Photo 1 662-1060x139-633 (398x494 — genuinely a
+            portrait rectangle, NOT square as every prior round assumed),
+            Photo 2 centred circle 1060-1448x135-523 (388x388), Photo 3
+            1000-1448x523-873 (448x350 — properly wide/landscape, NOT the
+            narrower box prior rounds used), badge centred circle
+            965-1181x422-638 (216x216). Column bounding box: 786x738px,
+            aspect 1.065:1 (much closer to square than any previous
+            round's estimate — this also explains why earlier rounds'
+            circles kept coming out distorted even when individually
+            "fixed": the column aspect itself was off because Photo 1's
+            width was wrong). */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-          className="relative mx-auto aspect-[785/700] w-full max-w-xl lg:max-w-none"
+          className="relative mx-auto aspect-[786/738] w-full max-w-xl lg:max-w-none"
           data-testid="reg-svc-hero-visual"
         >
-          {/* Photo 1 — top-left, tall rounded rectangle, orange border */}
+          {/* Photo 1 — top-left, PORTRAIT rectangle (taller than wide),
+              orange border */}
           <div
             className="absolute overflow-hidden rounded-3xl border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "0%", top: "0%", width: "35%", height: "71.9%" }}
+            style={{ left: "0%", top: "0.5%", width: "50.6%", height: "66.9%" }}
           >
             <img src={hero.image} alt={hero.imageAlt} className="h-full w-full object-cover" />
           </div>
 
-          {/* Photo 2 — top-right, TRUE circle (388x388px verified) */}
+          {/* Photo 2 — top-right, TRUE circle */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.45, ease: EASE }}
             className="absolute overflow-hidden rounded-full border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "50.6%", top: "0.7%", width: "49.4%", height: "55.4%" }}
+            style={{ left: "50.6%", top: "0%", width: "49.4%", height: "52.6%" }}
           >
             <img src={hero.image2} alt={hero.image2Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* Photo 3 — bottom-right, wide rounded rectangle, no border.
-              Left edge tucks under the badge (z-index below it). */}
+          {/* Photo 3 — bottom-right, WIDE LANDSCAPE rectangle (wider
+              than tall), no border. Left edge tucks under the badge
+              (z-index below it). */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
             className="absolute overflow-hidden rounded-3xl shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "34.4%", top: "61.4%", width: "65.6%", height: "38.6%" }}
+            style={{ left: "43%", top: "52.6%", width: "57%", height: "47.4%" }}
           >
             <img src={hero.image3} alt={hero.image3Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* Compliance badge — white TRUE circle (198x198px verified),
-              overlaps Photo 1's right edge, Photo 2's bottom-left, and
-              Photo 3's top-left junction. */}
+          {/* Compliance badge — white TRUE circle, overlaps Photo 1's
+              right edge, Photo 2's bottom-left, and Photo 3's top-left. */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
             className="absolute z-10 flex flex-col items-center justify-center rounded-full border border-ak-orange/30 bg-white text-center shadow-[0_20px_45px_-15px_rgba(28,42,57,0.3)]"
-            style={{ left: "39%", top: "42.4%", width: "25.2%", height: "28.3%" }}
+            style={{ left: "38.5%", top: "38.9%", width: "27.5%", height: "29.3%" }}
             data-testid="reg-svc-compliance-badge"
           >
-            <Icon name="shield" className="h-5 w-5 text-ak-ink" strokeWidth={1.8} />
-            <span className="mt-1 font-display text-[11px] font-extrabold italic tracking-wide text-ak-orange md:text-xs">{hero.complianceBadge.title}</span>
-            <span className="text-[10px] font-semibold text-ak-ink md:text-[11px]">{hero.complianceBadge.sub}</span>
-            <span className="mt-0.5 flex items-center gap-0.5">
+            <Icon name="shield" className="h-5 w-5 text-ak-ink md:h-6 md:w-6" strokeWidth={1.8} />
+            <span className="mt-1 font-display text-xs font-extrabold italic tracking-wide text-ak-orange md:text-sm">{hero.complianceBadge.title}</span>
+            <span className="text-[11px] font-semibold text-ak-ink md:text-xs">{hero.complianceBadge.sub}</span>
+            <span className="mt-1 flex items-center gap-0.5">
               {Array.from({ length: hero.complianceBadge.stars }).map((_, i) => (
-                <svg key={i} viewBox="0 0 20 20" className="h-2 w-2 fill-ak-orange">
+                <svg key={i} viewBox="0 0 20 20" className="h-2.5 w-2.5 fill-ak-orange">
                   <path d="M10 1.5l2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L1.4 7.8l6-.8L10 1.5z" />
                 </svg>
               ))}

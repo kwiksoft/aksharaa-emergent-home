@@ -61,9 +61,15 @@ ROUND 4 (this thread): two further changes per direct user instruction.
 
 Re-verified with a fresh scale-matched side-by-side comparison: badge size/position/overlap with all 3 photos, Photo 1's proportions, and Photo 3's wider rectangle now all closely match the reference — the closest match across all 4 rounds. Verified at 1440px, 768px, 390px — zero console errors at all three, no horizontal overflow, stat-boxes row confirmed fully removed at all breakpoints.
 
+ROUND 5 (this thread — direct user feedback that "both the circle are not in correct position"): abandoned every indirect measurement technique used in rounds 1-4 (grid-reading on stitched sub-crops, colour-threshold + connected-component detection) for a direct visual-fit method instead: drew candidate circles straight onto a copy of the reference image and visually compared the drawn outline against the actual photo border, iterating the centre/radius until it traced almost exactly. This caught that Photo 2's circle was close but slightly off, and the badge's circle was noticeably too small and shifted up-left of the real badge. New badge size: centred (1065,528) r=112 (224x224), significantly bigger than the round 3-4 estimate of 198px.
+
+ROUND 6 (this thread — direct user feedback that the basic SHAPES were wrong, not just positions: "photo is wider rectangle photo 2 circle photo 3 rounded square"): recognised that every round 1-5 had treated Photo 1 as roughly square-ish and Photo 3 as narrower than it actually is, because each measurement pass zoomed into individual corners in isolation and lost track of the overall shape category. Started over by looking at the whole collage at once with no grid, confirming the basic shape (Photo 1 = portrait rectangle, Photo 2 = circle, Photo 3 = wide landscape rectangle, badge = circle) BEFORE measuring any pixel value, then read all boundaries from one clean lightly-gridded crop, then did a final direct-overlay visual confirmation for every element (not just the circles). Final measurements (1536x1024 reference): Photo 1 662-1060x139-633 (398x494, genuinely portrait — not square as every prior round assumed), Photo 2 circle 1060-1448x135-523 (388x388), Photo 3 1000-1448x523-873 (448x350, properly wide/landscape — not the narrower box prior rounds used), badge circle 965-1181x422-638 (216x216). Column bounding box: 786x738px, aspect 1.065:1 — much closer to square than any previous round's estimate, which also explains why the circles kept coming out distorted even when individually "fixed" in earlier rounds: the column aspect itself was wrong because Photo 1's width was wrong.
+
+Re-verified with a fresh scale-matched side-by-side comparison: this is by far the closest match across all 6 rounds — Photo 1's portrait proportions, Photo 3's landscape proportions, and both circles' size/position all align closely with the reference. Verified at 1440px, 768px, 390px — zero console errors at all three, no horizontal overflow.
+
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero | Round 4 in progress — see full notes above, pending sign-off |
+| 1 | Hero | Round 6 — see full notes above, pending sign-off |
 | 2 | Overview | Pending review |
 | 3 | Applicability | Pending review |
 | 4 | Documents | Pending review |
