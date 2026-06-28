@@ -278,6 +278,33 @@ taller stacked layout, slightly under the alert card's corner — no
 text obscured, acceptable), 390px (image correctly hidden, layout
 unchanged) — zero console errors at all three, no horizontal overflow.
 
+CORRECTION (this thread, direct user feedback: "make image little
+bigger move to left near to the 10+ employees box"): the image was
+pinned to the section's far-right edge; needed to move left toward the
+"10+ EMPLOYEES" threshold card (left/main column) and increase in
+size. First attempt overshot — a single fixed left-offset placed the
+image directly on top of the card, fully covering its text. Pulled
+back to sit beside/behind the card instead, then caught (via zoomed
+screenshot comparison) that the calendar's corner was still overlapping
+"ESI Registration Mandatory" and "ESI Act, 1948 — applicable states" —
+nudged further until both lines were confirmed fully clear in a tight
+crop.
+
+Also caught mid-fix: the original single fixed-px left offset that
+worked at 1440px pushed the image almost entirely off-screen at 768px,
+since fixed-px positioning doesn't scale with viewport and the
+2-column grid this positioning depends on only exists at lg+ anyway —
+switched to lg:-only positioning (hidden below lg, was: hidden below
+md) with separate left-offset/width values for lg vs xl, since a
+single value didn't hold cleanly across both. Checked the lg breakpoint
+boundary (1024px) specifically, which hadn't been tested before — sits
+correctly beside the card there too.
+
+Final: hidden below lg; at lg, left-[470px] w-[440px]; at xl,
+left-[610px] w-[500px] (bigger than before, per request). Re-verified
+at 1024px, 1440px (text-clearance double-checked via zoomed crop),
+768px, 390px — zero console errors at all four, no horizontal overflow.
+
 ---
 
 Tell me where to start — section number, what kind of change, and any

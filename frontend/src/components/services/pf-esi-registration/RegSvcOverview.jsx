@@ -5,13 +5,15 @@ import { overview } from "../../../data/svc-pf-esi-registration";
 
 export const RegSvcOverview = () => (
   <section id="svc-overview" data-testid="reg-svc-overview-section" className="relative overflow-hidden bg-white py-14 md:py-20">
-    {/* decorative desk-props background image, bottom-right — per client reference,
-        sits behind the existing cards/content (z-0), does not alter their layout */}
+    {/* decorative desk-props background image — positioned near the
+        "10+ EMPLOYEES" threshold card per direct feedback (was: pinned
+        to the section's far right edge), sits behind the existing
+        cards/content (z-0), does not alter their layout */}
     <img
       src="/assets/sections/reg-overview-deskprops.png"
       alt=""
       aria-hidden="true"
-      className="pointer-events-none absolute bottom-0 right-0 z-0 hidden w-[260px] opacity-90 md:block lg:w-[340px] xl:w-[400px]"
+      className="pointer-events-none absolute bottom-0 z-0 hidden w-[440px] opacity-90 lg:left-[470px] lg:block xl:left-[610px] xl:w-[500px]"
     />
 
     <Container className="relative z-10">
