@@ -16,10 +16,57 @@ export const meta = {
   category: { name: "Registrations & Licensing", href: "/registrations-licensing" },
 };
 
+/**
+ * Hero — FULL REBUILD per client reference image. Previous version: single
+ * framed photo (orange outline square + small circular accent) on the
+ * right, a full-width "Registration Scope" 5-step tracker card below row 1,
+ * and a 3-stat bordered strip (450+ Establishments / 15+ Years / Pan-India)
+ * below that.
+ *
+ * Replaced wholesale to match the reference exactly:
+ * - `accentWord` ("Done Right, Done Once") is now a full-size orange
+ *   heading line under the headline, not a small outline-styled accent —
+ *   reference shows it at a prominent size, not a decorative sub-line.
+ * - `image2`/`image3` added: the reference uses 3 distinct photos in a
+ *   collage (top-left rounded-square "signing the document", top-right
+ *   circular "EPFO/ESIC documents on a desk", bottom-right rounded-square
+ *   "handover meeting between two people") — not one photo reused twice.
+ *   All 3 are TEMPORARY PLACEHOLDERS reusing the page's existing approved
+ *   Unsplash asset (same one previously used for image/image2 in the old
+ *   layout) pending real photos from the client. Real photo specs given
+ *   directly to the client: Photo 1 ~800x800 (square, signing/reviewing a
+ *   document at a desk), Photo 2 ~800x800 (square, gets circle-cropped by
+ *   CSS — EPFO/ESIC registration documents on a desk), Photo 3 ~1200x840
+ *   (3:2, two people in a handover/consultation moment).
+ * - `complianceBadge` added: the white circular "AKSHARAA Compliance
+ *   Experts" badge (shield-check icon + 3-star rating) that overlaps the
+ *   junction of all 3 photos in the reference — entirely new, no
+ *   equivalent existed before.
+ * - `stats` restructured: previous values (450+ Establishments / 15+
+ *   Years / Pan-India Coverage) replaced with the reference's actual
+ *   content (20+ Employees → PF Mandatory / 10+ Employees → ESI Mandatory
+ *   / All India → Compliance Support) — each stat now also carries an
+ *   `icon` field for the new circular icon-badge treatment per stat,
+ *   which didn't exist in the old plain-text stat strip. The reference's
+ *   third stat icon is a literal India-outline glyph; an attempt to trace
+ *   this from the low-resolution source produced an illegible shape, and
+ *   reusing a real geographic SVG (e.g. Wikimedia's CC-BY-SA India
+ *   outline) would need attribution for what is a small decorative stat
+ *   icon — not worth the complexity, so this uses the existing `map` icon
+ *   (a generic pin/map glyph) as a safe substitute that still reads
+ *   correctly next to "All India / Compliance Support."
+ * - `tracker` REMOVED entirely (the old 5-step "Registration Scope"
+ *   checklist card) — no equivalent element appears anywhere in the
+ *   reference image.
+ * - `bottomFeatures` added: the new 4-item plain row (End-to-end Support /
+ *   100% Compliance Assurance / Timely & Hassle-free Process / Expert
+ *   Handling) beneath the stat-boxes row — entirely new, replacing the
+ *   old layout's reliance on the tracker card for this kind of detail.
+ */
 export const hero = {
   eyebrow: "Registrations & Licensing",
   headline: ["PF & ESI", "Registration"],
-  accentWord: "Done Right, Done Once",
+  accentWord: "Done Right. Done Once.",
   sub:
     "Every employer crossing the statutory threshold must register under EPF & MP Act and ESI Act. Aksharaa handles the complete registration process — from document preparation to certificate delivery — with zero back-and-forth on your end.",
   ctas: [
@@ -27,26 +74,30 @@ export const hero = {
     { label: "All Registrations", variant: "secondary", href: "/registrations-licensing" },
   ],
   stats: [
-    { value: 450, suffix: "+", label: "Establishments Registered" },
-    { value: 15, suffix: "+", label: "Years Experience" },
-    { text: "Pan-India", label: "Coverage" },
+    { value: 20, suffix: "+", icon: "users", label: "EMPLOYEES", note: "PF Mandatory" },
+    { value: 10, suffix: "+", icon: "shield", label: "EMPLOYEES", note: "ESI Mandatory" },
+    { text: "All India", icon: "map", label: "", note: "Compliance Support" },
   ],
-  // tracker = the registration-scope checklist card, floated right of headline
-  tracker: {
-    title: "Registration Scope",
-    sub: "What Aksharaa handles end-to-end",
-    badge: "Typically 7–10 working days",
-    steps: [
-      { state: "done", icon: "folderCheck", title: "Document Collection & Verification", desc: "All employer and establishment documents compiled and verified" },
-      { state: "done", icon: "building", title: "PF Registration (EPFO Portal)", desc: "Employer registration on EPFO unified portal, establishment code issued" },
-      { state: "done", icon: "shield", title: "ESI Registration (ESIC Portal)", desc: "Employer code obtained, sub-code for each branch location" },
-      { state: "active", icon: "userCheck", title: "Employee UAN & IP Number Generation", desc: "Universal Account Numbers and Insurance Person numbers for all employees" },
-      { state: "pending", icon: "badge", title: "Certificate & First Contribution Setup", desc: "Registration certificates delivered, first month ECR and challan guided" },
-    ],
+  bottomFeatures: [
+    { icon: "headset", title: "End-to-end Support", desc: "From documents to certificates" },
+    { icon: "shield", title: "100% Compliance Assurance", desc: "Stay compliant with zero penalties" },
+    { icon: "clock", title: "Timely & Hassle-free Process", desc: "Typically completed in 7–10 working days" },
+    { icon: "fileText", title: "Expert Handling", desc: "By compliance professionals you can trust" },
+  ],
+  complianceBadge: {
+    title: "AKSHARAA",
+    sub: "Compliance Experts",
+    stars: 3,
   },
-  // Photography slot — documentary, specifically registration/paperwork focused
+  // Photography slots — TEMPORARY PLACEHOLDERS, all 3 reuse the same
+  // pre-existing approved asset pending real client photos (see specs in
+  // the comment block above this export).
   image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
   imageAlt: "Compliance officer reviewing PF and ESI registration paperwork",
+  image2: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
+  image2Alt: "EPFO and ESIC registration documents on a desk",
+  image3: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
+  image3Alt: "Aksharaa consultant handing over completed registration documents to a client",
 };
 
 export const overview = {

@@ -7,58 +7,87 @@ import { hero } from "../../../data/svc-pf-esi-registration";
 
 const EASE = [0.22, 1, 0.36, 1];
 
-const item = {
-  hidden: { opacity: 0, y: 26 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-};
-
 /**
- * PF & ESI Registration hero — TEMPLATE PATTERN for all Registrations services.
+ * PF & ESI Registration hero — TEMPLATE PATTERN for all Registrations
+ * services. FULL REBUILD (this thread) per client reference image — see
+ * the data-file comment above `hero` for the content-level rationale
+ * (photo collage replacing the single-photo+tracker layout, new
+ * complianceBadge, restructured stats, new bottomFeatures row, removed
+ * tracker). This file implements the visual side.
  *
- * REVISED LAYOUT (per human feedback, round 1):
- *   Row 1: headline+CTAs (left) / framed photo with orange accent square
- *          + overlapping circular accent (right) — Image-1 style framing,
- *          Aksharaa orange instead of the reference's blue.
- *   Row 2: Registration Scope tracker card, now FULL WIDTH beneath row 1
- *          (was previously a narrow sticky card floating top-right).
- *   Row 3: stat row restyled as ONE unified bordered strip with vertical
- *          dividers between each stat (Image-5 style), replacing the
- *          previous loosely-spaced plain stat blocks.
+ * Layout, top to bottom:
+ *   Row 1: headline + prominent orange accent line + sub + CTAs (left) /
+ *          3-photo collage with overlapping circular compliance badge
+ *          (right) — photo positions/sizes geometrically derived from the
+ *          reference (photo1 ~1:1 top-left, photo2 ~1:1 circle-cropped
+ *          top-right, photo3 ~3:2 rounded-square bottom-right, badge
+ *          centred on the photos' shared junction point).
+ *   Row 2: stat-boxes card (20+/10+/All India), 3 columns with vertical
+ *          dividers, circular icon badges above each number — replaces
+ *          the old plain-text stat strip.
+ *   Row 3: bottomFeatures, a plain unbordered 4-item row (icon circle +
+ *          title + desc) — entirely new, no equivalent existed before.
+ *
+ * All 3 photo slots are temporary placeholders (see data-file comment);
+ * swapping in real photos later only needs the `image`/`image2`/`image3`
+ * URLs updated, no structural change.
  */
 export const RegSvcHero = () => (
   <section
     id="svc-hero"
     data-testid="reg-svc-hero-section"
-    className="relative overflow-hidden bg-[#FBF4EA] pt-6 pb-10 md:pt-8 md:pb-14"
+    className="relative overflow-hidden bg-[#FBF4EA] pt-8 pb-12 md:pt-10 md:pb-16"
   >
+    {/* dot-grid watermark, top-right corner, per reference */}
+    <svg className="pointer-events-none absolute right-8 top-6 hidden h-20 w-24 lg:block" viewBox="0 0 100 80" fill="none" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, row) =>
+        Array.from({ length: 6 }).map((_, col) => (
+          <circle key={`${row}-${col}`} cx={6 + col * 17} cy={6 + row * 16} r="2" fill="#FA8021" opacity="0.35" />
+        ))
+      )}
+    </svg>
+
     <Container className="relative z-10">
       <motion.div initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}>
-        <motion.div variants={item} className="ak-kicker mb-5">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE }}
+          className="ak-kicker mb-5"
+        >
           {hero.eyebrow}
         </motion.div>
       </motion.div>
 
-      {/* ROW 1 — headline+CTAs left / framed photo right */}
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
-        {/* LEFT — headline, sub, CTAs */}
+      {/* ROW 1 — headline+CTAs left / 3-photo collage right */}
+      <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+        {/* LEFT — headline, accent line, sub, CTAs */}
         <div>
           <motion.h1
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-            className="font-display text-5xl font-extrabold uppercase leading-[0.94] tracking-tight text-ak-ink md:text-6xl lg:text-[4.4rem]"
+            className="font-display text-5xl font-extrabold uppercase leading-[0.94] tracking-tight text-ak-ink md:text-6xl lg:text-[4.2rem]"
           >
             {hero.headline[0]}
             <br />
             {hero.headline[1]}
-            <br />
-            <span className="ak-outline-orange text-3xl md:text-4xl lg:text-[2.6rem]">{hero.accentWord}</span>
           </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
+            className="mt-3"
+          >
+            <span className="font-display text-2xl font-bold text-ak-orange md:text-3xl">{hero.accentWord}</span>
+            <span className="mt-3 block h-[3px] w-16 rounded-full bg-ak-orange" />
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
+            transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
             className="mt-6 max-w-md text-[15px] leading-relaxed text-ak-ink/60 md:text-base"
           >
             {hero.sub}
@@ -67,7 +96,7 @@ export const RegSvcHero = () => (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease: EASE }}
+            transition={{ duration: 0.7, delay: 0.4, ease: EASE }}
             className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3"
           >
             <AkButton href={hero.ctas[0].href} variant="primary" withArrow data-testid="reg-svc-hero-cta-primary">
@@ -79,192 +108,112 @@ export const RegSvcHero = () => (
           </motion.div>
         </div>
 
-        {/* RIGHT — framed photo, Image-1 style: orange outline square behind
-            + small overlapping circular accent photo, no blue, no badge
-            (stats now have their own section below, so no duplicate badge here) */}
+        {/* RIGHT — 3-photo collage + overlapping compliance badge.
+            Geometry derived from the reference: photo1 top-left ~1:1,
+            photo2 top-right circle (~46% of column width in diameter),
+            photo3 bottom-right ~3:2, badge centred on the 3 photos'
+            shared junction, diameter ~32% of column width. */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-          className="relative mx-auto w-full max-w-md lg:max-w-none"
+          className="relative mx-auto aspect-[1536/900] w-full max-w-xl lg:max-w-none"
+          data-testid="reg-svc-hero-visual"
         >
-          {/* orange outline square sitting behind/around the photo */}
-          <div
-            aria-hidden
-            className="absolute -left-4 -top-4 h-[88%] w-[78%] rounded-2xl border-2 border-ak-orange/70 md:-left-6 md:-top-6"
-          />
-
-          {/* main photo */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(28,42,57,0.25)]">
+          {/* Photo 1 — top-left, rounded square, orange border */}
+          <div className="absolute left-0 top-0 h-[46%] w-[43%] overflow-hidden rounded-3xl border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]">
             <img src={hero.image} alt={hero.imageAlt} className="h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ak-ink/25 via-transparent to-transparent" />
           </div>
 
-          {/* small overlapping circular accent photo, bottom-right */}
+          {/* Photo 2 — top-right, circular, orange border */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
-            className="absolute -bottom-6 -right-5 h-28 w-28 overflow-hidden rounded-full border-[5px] border-[#FBF4EA] shadow-xl md:-bottom-8 md:-right-7 md:h-36 md:w-36"
+            transition={{ duration: 0.7, delay: 0.45, ease: EASE }}
+            className="absolute right-0 top-0 h-[51%] w-[46%] overflow-hidden rounded-full border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
           >
-            <img src={hero.image} alt="" className="h-full w-full scale-110 object-cover" />
+            <img src={hero.image2} alt={hero.image2Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* small floating dot accents, matching image-1's decorative dots */}
-          <span className="absolute -right-1 -top-3 hidden h-3 w-3 rounded-full bg-ak-orange md:block" />
-          <span className="absolute -bottom-2 left-6 hidden h-2.5 w-2.5 rounded-full bg-ak-ink/20 md:block" />
+          {/* Photo 3 — bottom-right, rounded square, no border */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
+            className="absolute bottom-0 right-0 h-[44%] w-[56%] overflow-hidden rounded-3xl shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
+          >
+            <img src={hero.image3} alt={hero.image3Alt} className="h-full w-full object-cover" />
+          </motion.div>
+
+          {/* Compliance badge — white circle, overlaps the 3 photos'
+              shared junction point */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
+            className="absolute left-[28%] top-[38%] z-10 flex h-[32%] w-[32%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-ak-orange/30 bg-white text-center shadow-[0_20px_45px_-15px_rgba(28,42,57,0.3)]"
+            data-testid="reg-svc-compliance-badge"
+          >
+            <Icon name="shield" className="h-6 w-6 text-ak-ink" strokeWidth={1.8} />
+            <span className="mt-1.5 font-display text-sm font-extrabold italic tracking-wide text-ak-orange">{hero.complianceBadge.title}</span>
+            <span className="text-xs font-semibold text-ak-ink">{hero.complianceBadge.sub}</span>
+            <span className="mt-1 flex items-center gap-0.5">
+              {Array.from({ length: hero.complianceBadge.stars }).map((_, i) => (
+                <svg key={i} viewBox="0 0 20 20" className="h-2.5 w-2.5 fill-ak-orange">
+                  <path d="M10 1.5l2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L1.4 7.8l6-.8L10 1.5z" />
+                </svg>
+              ))}
+            </span>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* ROW 2 — Registration Scope tracker, now full-width */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-        className="mt-14 md:mt-20"
-      >
-        <div
-          data-testid="reg-svc-tracker-card"
-          className="rounded-3xl border border-ak-ink/[0.07] bg-white p-5 shadow-[0_30px_70px_-30px_rgba(28,42,57,0.25)] md:p-6"
-        >
-          <div className="flex items-start gap-3 border-b border-ak-ink/[0.07] pb-4">
-            <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-ak-ink text-white">
-              <Icon name="checkCircle" className="h-5 w-5" strokeWidth={1.9} />
-            </span>
-            <div>
-              <div className="font-display text-base font-bold text-ak-ink">{hero.tracker.title}</div>
-              <div className="text-xs text-ak-ink/45">{hero.tracker.sub}</div>
-            </div>
-          </div>
-
-          {/* steps row — circular icon avatars with a double-ring halo, sitting
-              on top of a dashed connector line that runs continuously behind
-              every circle (not just the gaps), numbered, active step elevated
-              as a featured card — per the latest reference image */}
-          <div className="relative mt-5 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:flex lg:items-start lg:justify-between lg:gap-2">
-            {/* dashed connector line — desktop only, z-0 so it passes behind
-                every circle. top value = exact vertical center of the 64px
-                (h-16) icon avatar below, so dashes bisect each circle cleanly */}
-            <div
-              aria-hidden
-              className="absolute left-0 right-0 top-[32px] z-0 hidden border-t-2 border-dashed border-ak-ink/15 lg:block"
-            />
-
-            {hero.tracker.steps.map((s, i) => {
-              const isDone = s.state === "done";
-              const isActive = s.state === "active";
-              const isPending = s.state === "pending";
-              return (
-                <motion.div
-                  key={s.title}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.55 + i * 0.08, ease: EASE }}
-                  className={`relative z-10 flex flex-col items-center text-center lg:flex-1 ${
-                    isActive
-                      ? "rounded-2xl bg-gradient-to-b from-ak-orange/[0.06] to-transparent px-3 pb-3 pt-0 ring-1 ring-ak-orange/15"
-                      : "px-2"
-                  }`}
-                >
-                  {/* star ribbon, active step only */}
-                  {isActive && (
-                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-md bg-ak-orange text-white shadow-md">
-                      <Icon name="badge" className="h-3.5 w-3.5" strokeWidth={2.2} />
-                    </span>
-                  )}
-
-                  {/* double-ring icon avatar: soft outer halo -> white ring
-                      layer -> inner icon circle, matching the reference */}
-                  <span
-                    className={`relative z-10 flex h-16 w-16 items-center justify-center rounded-full ${
-                      isPending ? "bg-ak-ink/[0.04]" : "bg-ak-orange/[0.08]"
-                    }`}
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
-                      <span
-                        className={`flex h-9 w-9 items-center justify-center rounded-full ${
-                          isActive
-                            ? "bg-ak-orange text-white shadow-[0_10px_24px_-6px_rgba(242,140,40,0.55)] ring-4 ring-ak-orange/15"
-                            : isDone
-                            ? "bg-ak-orange/10 text-ak-orange"
-                            : "bg-ak-ink/[0.05] text-ak-ink/30"
-                        }`}
-                      >
-                        <Icon name={s.icon} className="h-5 w-5" strokeWidth={1.8} />
-                      </span>
-                    </span>
-                  </span>
-
-                  {/* small state dot beneath circle, matching connector line height */}
-                  <span
-                    className={`mt-2 h-2 w-2 rounded-full ${
-                      isActive ? "bg-ak-orange" : isDone ? "bg-ak-orange/70" : "bg-ak-ink/15"
-                    }`}
-                  />
-
-                  {/* number */}
-                  <div
-                    className={`mt-2 font-display text-sm font-extrabold ${
-                      isPending ? "text-ak-ink/25" : "text-ak-orange"
-                    }`}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-
-                  {/* title — no strikethrough on done steps; reads normally
-                      across done/active states, only pending is dimmed */}
-                  <div
-                    className={`mt-1 text-[13px] font-semibold leading-tight ${
-                      isPending ? "text-ak-ink/35" : "text-ak-ink"
-                    }`}
-                  >
-                    {s.title}
-                  </div>
-
-                  {/* short underline accent beneath title, per reference */}
-                  <span
-                    className={`mt-1.5 h-[2px] w-6 rounded-full ${
-                      isPending ? "bg-ak-ink/15" : "bg-ak-orange"
-                    }`}
-                  />
-
-                  {/* description */}
-                  <div className={`mt-1.5 text-[11px] leading-snug ${isPending ? "text-ak-ink/30" : "text-ak-ink/40"}`}>
-                    {s.desc}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <div className="ak-mono-label mt-4 inline-flex items-center gap-1.5 rounded-full bg-ak-orange/10 px-3.5 py-1.5 text-ak-orange">
-            <Icon name="clock" className="h-3 w-3" strokeWidth={2.2} />
-            {hero.tracker.badge}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* ROW 3 — unified stat strip, Image-5 style: one bordered card,
-          vertical dividers between each stat */}
+      {/* ROW 2 — stat boxes (20+/10+/All India), bordered card, dividers */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.6, ease: EASE }}
-        className="mt-8"
+        transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
+        className="mt-12 md:mt-16"
       >
         <div
           data-testid="reg-svc-hero-stats-strip"
           className="grid grid-cols-1 divide-y divide-ak-ink/[0.08] rounded-2xl border border-ak-ink/[0.07] bg-white shadow-[0_20px_50px_-30px_rgba(28,42,57,0.2)] sm:grid-cols-3 sm:divide-x sm:divide-y-0"
         >
           {hero.stats.map((s) => (
-            <div key={s.label} className="px-7 py-6 text-center">
-              <div className="font-display text-2xl font-extrabold text-ak-ink md:text-[1.7rem]">
+            <div key={s.note} className="flex flex-col items-center px-7 py-7 text-center">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ak-orange/10 text-ak-orange">
+                <Icon name={s.icon} className="h-5 w-5" strokeWidth={1.8} />
+              </span>
+              <div className="mt-3 font-display text-3xl font-extrabold text-ak-ink">
                 {s.text ? s.text : <Counter value={s.value} suffix={s.suffix} />}
               </div>
-              <div className="mt-1 text-[11px] font-medium uppercase tracking-wide text-ak-ink/45">{s.label}</div>
+              {s.label && <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-ak-ink/45">{s.label}</div>}
+              <div className="mt-1.5 text-[12.5px] font-semibold text-ak-orange">{s.note}</div>
+              <span className="mt-2 h-[2px] w-6 rounded-full bg-ak-orange/40" />
             </div>
           ))}
         </div>
+      </motion.div>
+
+      {/* ROW 3 — bottomFeatures, plain 4-item row, no card border */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.6, ease: EASE }}
+        className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4"
+        data-testid="reg-svc-hero-bottom-features"
+      >
+        {hero.bottomFeatures.map((f) => (
+          <div key={f.title} className="flex items-start gap-3.5">
+            <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-ak-orange/50 text-ak-orange">
+              <Icon name={f.icon} className="h-5 w-5" strokeWidth={1.8} />
+            </span>
+            <div>
+              <div className="font-display text-[14px] font-bold leading-snug text-ak-ink">{f.title}</div>
+              <p className="mt-1 text-[12.5px] leading-snug text-ak-ink/55">{f.desc}</p>
+            </div>
+          </div>
+        ))}
       </motion.div>
     </Container>
   </section>
