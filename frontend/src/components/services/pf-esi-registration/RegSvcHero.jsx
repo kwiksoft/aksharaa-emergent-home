@@ -109,27 +109,38 @@ export const RegSvcHero = () => (
 
         {/* RIGHT — 3-photo collage + overlapping compliance badge.
             Geometry derived from the reference: photo1 top-left ~1:1,
-            photo2 top-right circle (~46% of column width in diameter),
-            photo3 bottom-right ~3:2, badge centred on the 3 photos'
-            shared junction, diameter ~32% of column width. */}
+            photo2 top-right TRUE CIRCLE, photo3 bottom-right ~3:2, badge
+            centred on the 3 photos' shared junction. CORRECTION (this
+            thread): the container previously used the full reference
+            image's aspect ratio (1536:900) instead of the photo-collage
+            column's own bounding-box aspect ratio (measured directly:
+            869:748 ≈ 1.162:1) — this squashed every element, turning the
+            circle into an oval and compressing the whole arrangement.
+            Recomputed all 4 positions from the same pixel measurements
+            against the corrected column box. */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-          className="relative mx-auto aspect-[1536/900] w-full max-w-xl lg:max-w-none"
+          className="relative mx-auto aspect-[869/748] w-full max-w-xl lg:max-w-none"
           data-testid="reg-svc-hero-visual"
         >
           {/* Photo 1 — top-left, rounded square, orange border */}
-          <div className="absolute left-0 top-0 h-[46%] w-[43%] overflow-hidden rounded-3xl border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]">
+          <div
+            className="absolute overflow-hidden rounded-3xl border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
+            style={{ left: "0%", top: "0.1%", width: "37.7%", height: "42.9%" }}
+          >
             <img src={hero.image} alt={hero.imageAlt} className="h-full w-full object-cover" />
           </div>
 
-          {/* Photo 2 — top-right, circular, orange border */}
+          {/* Photo 2 — top-right, TRUE circle (container is now correctly
+              proportioned so equal % width/height = equal absolute px) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.45, ease: EASE }}
-            className="absolute right-0 top-0 h-[51%] w-[46%] overflow-hidden rounded-full border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
+            className="absolute overflow-hidden rounded-full border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
+            style={{ left: "47.3%", top: "0%", width: "44.9%", height: "52.1%" }}
           >
             <img src={hero.image2} alt={hero.image2Alt} className="h-full w-full object-cover" />
           </motion.div>
@@ -139,7 +150,8 @@ export const RegSvcHero = () => (
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
-            className="absolute bottom-0 right-0 h-[44%] w-[56%] overflow-hidden rounded-3xl shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
+            className="absolute overflow-hidden rounded-3xl shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
+            style={{ left: "39%", top: "50.5%", width: "61%", height: "49.5%" }}
           >
             <img src={hero.image3} alt={hero.image3Alt} className="h-full w-full object-cover" />
           </motion.div>
@@ -150,7 +162,8 @@ export const RegSvcHero = () => (
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
-            className="absolute left-[28%] top-[38%] z-10 flex h-[32%] w-[32%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-ak-orange/30 bg-white text-center shadow-[0_20px_45px_-15px_rgba(28,42,57,0.3)]"
+            className="absolute z-10 flex flex-col items-center justify-center rounded-full border border-ak-orange/30 bg-white text-center shadow-[0_20px_45px_-15px_rgba(28,42,57,0.3)]"
+            style={{ left: "36.1%", top: "33.8%", width: "28.8%", height: "33.4%" }}
             data-testid="reg-svc-compliance-badge"
           >
             <Icon name="shield" className="h-6 w-6 text-ak-ink" strokeWidth={1.8} />
