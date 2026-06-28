@@ -71,13 +71,51 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 |---|---------|--------|
 | 1 | Hero | Round 6 — see full notes above, pending sign-off |
 | 2 | Overview | Pending review |
-| 3 | Applicability | Pending review |
+| 3 | Applicability | Photo swap done this thread (see note below), pending sign-off |
 | 4 | Documents | Pending review |
 | 5 | Process | Pending review |
 | 6 | Penalties | Pending review |
 | 7 | FAQs | Pending review |
 | 8 | Related Services | Pending review |
 | 9 | Final CTA | Pending review |
+
+---
+
+APPLICABILITY (Section 3) — photo swap, this thread
+
+Client supplied a real desk-scene photo (registration checklist, employee
+list, "30 DAYS — Register within 30 days of crossing the applicable
+employee threshold" flip-calendar card, compliance binders/books) to
+replace the small inline-SVG calendar illustration that was floating in
+the section header's top-right corner. Per direct instruction, this was
+NOT a like-for-like swap at the same small size — the client wanted it
+treated as "a proper section visual, not just a small accent," with the
+photo framed in the same white-card/shadow-lg/rounded-2xl chrome the
+illustration had.
+
+Because the section's structural identity is the 2-card PF/ESI
+comparison grid (connected at center border, not tabs — this is called
+out as deliberate in the section's own row above and was NOT touched),
+a large photo couldn't simply replace the small corner accent without
+restructuring something. Resolved by converting the header from
+centered-text-only into a text-left/photo-right split row (echoing the
+asymmetric-split pattern already used in Section 2/Overview), with the
+2-card grid kept completely unchanged below it.
+
+Photo converted from the supplied ~scaled PNG to optimised JPG (quality
+78, ~195KB) and saved as frontend/public/assets/sections/
+reg-applicability-photo.jpg. Old CalendarIllustration SVG component
+removed entirely (no longer referenced anywhere). Note: the photo's own
+"30 days" card text happens to closely mirror this section's existing
+sub-copy ("Registration must happen within 30 days of crossing the
+applicable employee threshold"), which is a good sign it's the right
+visual for this spot — not a coincidence worth re-checking, just a nice
+confirmation.
+
+Verified at 1440px, 768px, 390px — zero console errors at all three
+(full-page load also checked separately, zero errors), no horizontal
+overflow at any breakpoint. Comparison cards below confirmed visually
+unchanged. **Pending your sign-off on the live site.**
 
 ---
 

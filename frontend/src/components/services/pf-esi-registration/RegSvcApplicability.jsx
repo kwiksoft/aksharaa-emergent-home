@@ -7,15 +7,23 @@ import { applicability } from "../../../data/svc-pf-esi-registration";
 const EASE = [0.22, 1, 0.36, 1];
 
 /**
- * Section 3 — Applicability, round 2 rebuild per reference screenshot.
+ * Section 3 — Applicability, round 3 rebuild per direct client photo.
  *
- * Each card now carries its own accent identity — PF in Aksharaa orange,
+ * Each card carries its own accent identity — PF in Aksharaa orange,
  * ESI in blue — communicating "two distinct acts, two distinct colour
- * identities" the way the reference does. Left-border accent stripe,
- * tinted icon circle, tinted threshold highlight box, dotted decorative
- * pattern top-right of each card, and a calendar illustration anchoring
- * the section header (built as layered SVG shapes, not an image asset,
- * so it inherits the design system's icon weight/style).
+ * identities". Left-border accent stripe, tinted icon circle, tinted
+ * threshold highlight box, dotted decorative pattern top-right of each
+ * card.
+ *
+ * Header is now a text/photo split (was: centered text + small corner
+ * SVG calendar illustration). The client supplied a real desk-scene
+ * photo whose own "30 DAYS — Register within 30 days of crossing the
+ * applicable employee threshold" card mirrors this section's sub-copy
+ * almost verbatim, so it's used as a proper section visual (framed,
+ * shadowed) rather than a small decorative accent — per direct
+ * instruction this should read as a real section visual, not a corner
+ * ornament. The 2-card PF/ESI comparison grid below is unchanged; it's
+ * this section's structural core and wasn't touched.
  */
 const accent = {
   pf: {
@@ -40,50 +48,41 @@ const accent = {
   },
 };
 
-const CalendarIllustration = () => (
+const ApplicabilityPhoto = () => (
   <motion.div
-    initial={{ opacity: 0, y: -16, rotate: -4 }}
+    initial={{ opacity: 0, y: 24, rotate: -1.5 }}
     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8, ease: EASE }}
-    className="pointer-events-none absolute -top-2 right-2 hidden h-32 w-28 md:block lg:right-6 lg:h-40 lg:w-36"
+    className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
   >
-    {/* soft radial glow behind */}
-    <div className="absolute inset-0 -z-10 scale-150 rounded-full bg-ak-orange/[0.06] blur-xl" />
-    <div className="relative h-full w-full rounded-2xl border border-ak-ink/[0.08] bg-white shadow-lg">
-      <div className="h-2.5 rounded-t-2xl bg-ak-orange" />
-      <div className="absolute -top-1.5 left-4 h-3 w-1.5 rounded-full bg-ak-ink/15" />
-      <div className="absolute -top-1.5 right-4 h-3 w-1.5 rounded-full bg-ak-ink/15" />
-      <div className="grid grid-cols-4 gap-1.5 p-3">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <span key={i} className={`h-2.5 w-2.5 rounded-[3px] ${i === 6 ? "bg-ak-orange" : "bg-ak-mist"}`} />
-        ))}
-      </div>
+    {/* soft radial glow behind, echoes the prior corner-illustration treatment */}
+    <div className="absolute inset-0 -z-10 scale-105 rounded-3xl bg-ak-orange/[0.07] blur-2xl" />
+    <div className="relative overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white p-2 shadow-lg">
+      <img
+        src="/assets/sections/reg-applicability-photo.jpg"
+        alt="Registration checklist, employee records, and statutory compliance binders on a desk — PF and ESI registration must be completed within 30 days of crossing the applicable employee threshold"
+        className="aspect-[3/2] w-full rounded-xl object-cover"
+        loading="lazy"
+      />
     </div>
-    {/* small bell accent bottom-right */}
-    <motion.div
-      initial={{ rotate: -8 }}
-      animate={{ rotate: [-8, 8, -8] }}
-      transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-ak-orange shadow-md"
-    >
-      <Icon name="clock" className="h-3.5 w-3.5 text-white" strokeWidth={2} />
-    </motion.div>
   </motion.div>
 );
 
 export const RegSvcApplicability = () => (
   <section id="svc-applicability" data-testid="reg-svc-applicability-section" className="relative overflow-hidden bg-ak-mist/40 py-14 md:py-20">
     <Container className="relative">
-      <CalendarIllustration />
+      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
+        <Reveal>
+          <div className="ak-kicker mb-5">{applicability.kicker}</div>
+          <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">
+            {applicability.heading}
+          </h2>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-ak-ink/60">{applicability.sub}</p>
+        </Reveal>
 
-      <Reveal className="max-w-2xl">
-        <div className="ak-kicker mb-5">{applicability.kicker}</div>
-        <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">
-          {applicability.heading}
-        </h2>
-        <p className="mt-5 text-base leading-relaxed text-ak-ink/60">{applicability.sub}</p>
-      </Reveal>
+        <ApplicabilityPhoto />
+      </div>
 
       <RevealGroup className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.18}>
         {applicability.tabs.map((t) => {
