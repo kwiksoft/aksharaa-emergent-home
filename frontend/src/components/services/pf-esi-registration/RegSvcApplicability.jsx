@@ -7,23 +7,28 @@ import { applicability } from "../../../data/svc-pf-esi-registration";
 const EASE = [0.22, 1, 0.36, 1];
 
 /**
- * Section 3 — Applicability, round 3 rebuild per direct client photo.
+ * Section 3 — Applicability, round 4 rebuild per client reference image.
  *
  * Each card carries its own accent identity — PF in Aksharaa orange,
  * ESI in blue — communicating "two distinct acts, two distinct colour
  * identities". Left-border accent stripe, tinted icon circle, tinted
  * threshold highlight box, dotted decorative pattern top-right of each
- * card.
+ * card. The 2-card PF/ESI comparison grid is unchanged across every
+ * round of this section's header rework; it's the structural core.
  *
- * Header is now a text/photo split (was: centered text + small corner
- * SVG calendar illustration). The client supplied a real desk-scene
- * photo whose own "30 DAYS — Register within 30 days of crossing the
- * applicable employee threshold" card mirrors this section's sub-copy
- * almost verbatim, so it's used as a proper section visual (framed,
- * shadowed) rather than a small decorative accent — per direct
- * instruction this should read as a real section visual, not a corner
- * ornament. The 2-card PF/ESI comparison grid below is unchanged; it's
- * this section's structural core and wasn't touched.
+ * Header has gone through two photo treatments before this one:
+ * (1) original — small SVG calendar illustration, corner accent
+ * (2) round 3 — real desk photo, framed card, right side of header
+ * (3) THIS ROUND — client supplied an actual reference image showing
+ *     a wide 3D-style illustration (growth-bar/podium graphic with
+ *     "20+ employees -> PF Registration" / "10+ employees -> ESI
+ *     Registration" callout bubbles, plus a compliance-checklist
+ *     clipboard and labelled binders) spanning the full width of the
+ *     header row, sitting directly on the page background with no
+ *     card frame. Text column narrowed accordingly to give the wide
+ *     illustration room; illustration placed bare (no border/shadow)
+ *     since the reference shows it blending directly into the
+ *     section background rather than being boxed.
  */
 const accent = {
   pf: {
@@ -48,31 +53,27 @@ const accent = {
   },
 };
 
-const ApplicabilityPhoto = () => (
+const ApplicabilityIllustration = () => (
   <motion.div
-    initial={{ opacity: 0, y: 24, rotate: -1.5 }}
-    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8, ease: EASE }}
-    className="relative mx-auto w-full max-w-xs lg:mx-0 lg:ml-auto lg:max-w-[280px]"
+    className="relative w-full"
   >
-    {/* soft radial glow behind, echoes the prior corner-illustration treatment */}
-    <div className="absolute inset-0 -z-10 scale-105 rounded-3xl bg-ak-orange/[0.07] blur-2xl" />
-    <div className="relative overflow-hidden rounded-2xl border border-ak-ink/[0.08] bg-white p-2 shadow-lg">
-      <img
-        src="/assets/sections/reg-applicability-photo.jpg"
-        alt="Registration checklist, employee records, and statutory compliance binders on a desk — PF and ESI registration must be completed within 30 days of crossing the applicable employee threshold"
-        className="aspect-[4/3] w-full rounded-xl object-cover"
-        loading="lazy"
-      />
-    </div>
+    <img
+      src="/assets/sections/reg-applicability-illustration.jpg"
+      alt="Employee growth bars showing the 20+ employee threshold for PF Registration and 10+ employee threshold for ESI Registration, alongside a compliance checklist clipboard and labelled PF and ESI registration binders"
+      className="w-full"
+      loading="lazy"
+    />
   </motion.div>
 );
 
 export const RegSvcApplicability = () => (
   <section id="svc-applicability" data-testid="reg-svc-applicability-section" className="relative overflow-hidden bg-ak-mist/40 py-14 md:py-20">
     <Container className="relative">
-      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[0.85fr_1.3fr] lg:gap-10">
         <Reveal>
           <div className="ak-kicker mb-5">{applicability.kicker}</div>
           <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">
@@ -81,7 +82,7 @@ export const RegSvcApplicability = () => (
           <p className="mt-5 max-w-xl text-base leading-relaxed text-ak-ink/60">{applicability.sub}</p>
         </Reveal>
 
-        <ApplicabilityPhoto />
+        <ApplicabilityIllustration />
       </div>
 
       <RevealGroup className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.18}>
