@@ -110,60 +110,71 @@ export const RegSvcHero = () => (
         {/* RIGHT — 3-photo collage + overlapping compliance badge.
             Geometry derived from the reference: photo1 top-left ~1:1,
             photo2 top-right TRUE CIRCLE, photo3 bottom-right ~3:2, badge
-            centred on the 3 photos' shared junction. CORRECTION (this
-            thread): the container previously used the full reference
-            image's aspect ratio (1536:900) instead of the photo-collage
-            column's own bounding-box aspect ratio (measured directly:
-            869:748 ≈ 1.162:1) — this squashed every element, turning the
-            circle into an oval and compressing the whole arrangement.
-            Recomputed all 4 positions from the same pixel measurements
-            against the corrected column box. */}
+            overlapping the 3 photos' shared junction. CORRECTION (this
+            thread, round 2): a direct side-by-side comparison against
+            the reference (scale-matched crops, not eyeballed separately)
+            showed the first fix still didn't match — Photo 1 was far too
+            short, the badge was noticeably undersized, and Photo 3 sat
+            with a visible gap instead of tucking under the badge. Re-
+            measured every element from scratch with a fine 20px grid
+            overlay directly on the original reference image (not the
+            earlier coarse 25-50px grid), reading exact boundary
+            crossings rather than approximate edges: Photo 1 spans
+            y148-645 (not y148-469 as first measured — nearly 70% taller
+            than originally read), the badge spans a much larger 350px
+            diameter circle that overlaps the bottom-left of Photo 2 and
+            the top of Photo 3 (not a smaller non-overlapping circle),
+            and Photo 3 starts almost directly under the badge with
+            near-zero gap. Column bounding box recomputed as the union of
+            all 4 elements' true extents (830x735 px, aspect 1.129:1 —
+            different again from the previous 869:748 estimate). */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-          className="relative mx-auto aspect-[869/748] w-full max-w-xl lg:max-w-none"
+          className="relative mx-auto aspect-[830/735] w-full max-w-xl lg:max-w-none"
           data-testid="reg-svc-hero-visual"
         >
-          {/* Photo 1 — top-left, rounded square, orange border */}
+          {/* Photo 1 — top-left, tall rounded rectangle, orange border */}
           <div
             className="absolute overflow-hidden rounded-3xl border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "0%", top: "0.1%", width: "37.7%", height: "42.9%" }}
+            style={{ left: "0%", top: "2.4%", width: "33.7%", height: "67.6%" }}
           >
             <img src={hero.image} alt={hero.imageAlt} className="h-full w-full object-cover" />
           </div>
 
-          {/* Photo 2 — top-right, TRUE circle (container is now correctly
-              proportioned so equal % width/height = equal absolute px) */}
+          {/* Photo 2 — top-right, TRUE circle */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.45, ease: EASE }}
             className="absolute overflow-hidden rounded-full border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "47.3%", top: "0%", width: "44.9%", height: "52.1%" }}
+            style={{ left: "49.4%", top: "0%", width: "47.6%", height: "53.7%" }}
           >
             <img src={hero.image2} alt={hero.image2Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* Photo 3 — bottom-right, rounded square, no border */}
+          {/* Photo 3 — bottom-right, rounded square, no border, tucks
+              almost directly under the badge */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
             className="absolute overflow-hidden rounded-3xl shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "39%", top: "50.5%", width: "61%", height: "49.5%" }}
+            style={{ left: "32.5%", top: "60.5%", width: "67.5%", height: "39.5%" }}
           >
             <img src={hero.image3} alt={hero.image3Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* Compliance badge — white circle, overlaps the 3 photos'
-              shared junction point */}
+          {/* Compliance badge — white circle, deliberately overlaps
+              Photo 1's right edge, Photo 2's bottom-left, and Photo 3's
+              top — much larger than the first attempt, per re-measurement */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
             className="absolute z-10 flex flex-col items-center justify-center rounded-full border border-ak-orange/30 bg-white text-center shadow-[0_20px_45px_-15px_rgba(28,42,57,0.3)]"
-            style={{ left: "36.1%", top: "33.8%", width: "28.8%", height: "33.4%" }}
+            style={{ left: "10.2%", top: "21.8%", width: "42.2%", height: "46.3%" }}
             data-testid="reg-svc-compliance-badge"
           >
             <Icon name="shield" className="h-6 w-6 text-ak-ink" strokeWidth={1.8} />
