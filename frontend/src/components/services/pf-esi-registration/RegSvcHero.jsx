@@ -166,23 +166,41 @@ export const RegSvcHero = () => (
             <img src={hero.image3} alt={hero.image3Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* Compliance badge — white circle, deliberately overlaps
-              Photo 1's right edge, Photo 2's bottom-left, and Photo 3's
-              top — much larger than the first attempt, per re-measurement */}
+          {/* Compliance badge — white circle, overlaps Photo 1's right
+              edge, Photo 2's bottom-left, and Photo 3's top. CORRECTION
+              (this thread, round 3): rounds 1-2 both mis-measured this
+              element by eye against a busy, low-contrast background (the
+              orange ring is only ~2px thick and easy to misread against
+              office-photo textures) — round 1 had it too small, round 2
+              overcorrected and made it far too large (42.2%x46.3%,
+              visibly engulfing most of Photo 1 and Photo 2 on the live
+              page, caught via direct user feedback). Abandoned manual
+              grid-reading for this element specifically and instead
+              detected it programmatically: isolated the badge's solid
+              white fill via colour-threshold + connected-component
+              labelling (reliable here because white-on-photo has far
+              higter contrast than the thin orange ring against the
+              cream page background), confirmed it forms a near-perfect
+              circle (199x196px raw), then added the ~2px ring stroke
+              measured directly via pixel sampling. Final corrected size:
+              24.0% x 27.2% of the column (830x735px) — these percentages
+              are NOT equal because the column itself isn't square, but
+              both resolve to ~199px in actual rendered pixels, so the
+              badge still renders as a true circle. */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
             className="absolute z-10 flex flex-col items-center justify-center rounded-full border border-ak-orange/30 bg-white text-center shadow-[0_20px_45px_-15px_rgba(28,42,57,0.3)]"
-            style={{ left: "10.2%", top: "21.8%", width: "42.2%", height: "46.3%" }}
+            style={{ left: "37.5%", top: "41%", width: "24%", height: "27.2%" }}
             data-testid="reg-svc-compliance-badge"
           >
-            <Icon name="shield" className="h-6 w-6 text-ak-ink" strokeWidth={1.8} />
-            <span className="mt-1.5 font-display text-sm font-extrabold italic tracking-wide text-ak-orange">{hero.complianceBadge.title}</span>
-            <span className="text-xs font-semibold text-ak-ink">{hero.complianceBadge.sub}</span>
-            <span className="mt-1 flex items-center gap-0.5">
+            <Icon name="shield" className="h-5 w-5 text-ak-ink" strokeWidth={1.8} />
+            <span className="mt-1 font-display text-[11px] font-extrabold italic tracking-wide text-ak-orange md:text-xs">{hero.complianceBadge.title}</span>
+            <span className="text-[10px] font-semibold text-ak-ink md:text-[11px]">{hero.complianceBadge.sub}</span>
+            <span className="mt-0.5 flex items-center gap-0.5">
               {Array.from({ length: hero.complianceBadge.stars }).map((_, i) => (
-                <svg key={i} viewBox="0 0 20 20" className="h-2.5 w-2.5 fill-ak-orange">
+                <svg key={i} viewBox="0 0 20 20" className="h-2 w-2 fill-ak-orange">
                   <path d="M10 1.5l2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-3-5.3 3 1.1-6L1.4 7.8l6-.8L10 1.5z" />
                 </svg>
               ))}
