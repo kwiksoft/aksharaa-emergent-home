@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Container } from "../../common/Container";
-import { Counter } from "../../common/Counter";
 import { AkButton } from "../../common/AkButton";
 import { Icon } from "../../../lib/icons";
 import { hero } from "../../../data/svc-pf-esi-registration";
@@ -108,91 +107,81 @@ export const RegSvcHero = () => (
         </div>
 
         {/* RIGHT — 3-photo collage + overlapping compliance badge.
-            Geometry derived from the reference: photo1 top-left ~1:1,
-            photo2 top-right TRUE CIRCLE, photo3 bottom-right ~3:2, badge
-            overlapping the 3 photos' shared junction. CORRECTION (this
-            thread, round 2): a direct side-by-side comparison against
-            the reference (scale-matched crops, not eyeballed separately)
-            showed the first fix still didn't match — Photo 1 was far too
-            short, the badge was noticeably undersized, and Photo 3 sat
-            with a visible gap instead of tucking under the badge. Re-
-            measured every element from scratch with a fine 20px grid
-            overlay directly on the original reference image (not the
-            earlier coarse 25-50px grid), reading exact boundary
-            crossings rather than approximate edges: Photo 1 spans
-            y148-645 (not y148-469 as first measured — nearly 70% taller
-            than originally read), the badge spans a much larger 350px
-            diameter circle that overlaps the bottom-left of Photo 2 and
-            the top of Photo 3 (not a smaller non-overlapping circle),
-            and Photo 3 starts almost directly under the badge with
-            near-zero gap. Column bounding box recomputed as the union of
-            all 4 elements' true extents (830x735 px, aspect 1.129:1 —
-            different again from the previous 869:748 estimate). */}
+            Geometry derived from the reference: photo1 top-left tall
+            rounded-rect, photo2 top-right TRUE CIRCLE, photo3 bottom-
+            right wide rounded-rect, badge TRUE CIRCLE overlapping the
+            junction of all 3. CORRECTION (this thread, round 4): rounds
+            1-3 each fixed one element while leaving others wrong, because
+            manual grid-reading on separately-cropped sub-images kept
+            producing inconsistent boundaries — the 4 elements genuinely
+            touch/overlap with no background gap between most of them
+            (confirmed via content-vs-background masking: they form one
+            single connected region, not 4 independent shapes), so
+            "where does element X end" cannot be read from any one crop
+            in isolation. Re-measured everything from ONE single,
+            continuous grid overlay spanning the entire collage region
+            (not stitched-together sub-crops), reading every boundary
+            against the same coordinate frame, then cross-validated the
+            two circles (Photo 2, the badge) by confirming their
+            measured width and height come out equal — a real circle
+            must satisfy this, and using it as a check caught remaining
+            errors that one-off eyeballing had missed. Final verified
+            pixel measurements (in the 1536x1024 reference): Photo 1
+            x665-940/y135-638 (275x503), Photo 2 x1062-1450/y140-528
+            (388x388, true circle), badge centred at (1070,531) radius 99
+            (198x198, true circle), Photo 3 x935-1450/y565-835 (515x270,
+            much wider/shorter than earlier rounds assumed — its left
+            edge tucks under the badge and is NOT visible directly, but
+            corroborated by the visible dark-hair content peeking out
+            from under the badge's curve at x~940). Column bounding box:
+            785x700px, aspect 1.121:1. */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-          className="relative mx-auto aspect-[830/735] w-full max-w-xl lg:max-w-none"
+          className="relative mx-auto aspect-[785/700] w-full max-w-xl lg:max-w-none"
           data-testid="reg-svc-hero-visual"
         >
           {/* Photo 1 — top-left, tall rounded rectangle, orange border */}
           <div
             className="absolute overflow-hidden rounded-3xl border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "0%", top: "2.4%", width: "33.7%", height: "67.6%" }}
+            style={{ left: "0%", top: "0%", width: "35%", height: "71.9%" }}
           >
             <img src={hero.image} alt={hero.imageAlt} className="h-full w-full object-cover" />
           </div>
 
-          {/* Photo 2 — top-right, TRUE circle */}
+          {/* Photo 2 — top-right, TRUE circle (388x388px verified) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.45, ease: EASE }}
             className="absolute overflow-hidden rounded-full border-2 border-ak-orange/70 shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "49.4%", top: "0%", width: "47.6%", height: "53.7%" }}
+            style={{ left: "50.6%", top: "0.7%", width: "49.4%", height: "55.4%" }}
           >
             <img src={hero.image2} alt={hero.image2Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* Photo 3 — bottom-right, rounded square, no border, tucks
-              almost directly under the badge */}
+          {/* Photo 3 — bottom-right, wide rounded rectangle, no border.
+              Left edge tucks under the badge (z-index below it). */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
             className="absolute overflow-hidden rounded-3xl shadow-[0_24px_50px_-20px_rgba(28,42,57,0.25)]"
-            style={{ left: "32.5%", top: "60.5%", width: "67.5%", height: "39.5%" }}
+            style={{ left: "34.4%", top: "61.4%", width: "65.6%", height: "38.6%" }}
           >
             <img src={hero.image3} alt={hero.image3Alt} className="h-full w-full object-cover" />
           </motion.div>
 
-          {/* Compliance badge — white circle, overlaps Photo 1's right
-              edge, Photo 2's bottom-left, and Photo 3's top. CORRECTION
-              (this thread, round 3): rounds 1-2 both mis-measured this
-              element by eye against a busy, low-contrast background (the
-              orange ring is only ~2px thick and easy to misread against
-              office-photo textures) — round 1 had it too small, round 2
-              overcorrected and made it far too large (42.2%x46.3%,
-              visibly engulfing most of Photo 1 and Photo 2 on the live
-              page, caught via direct user feedback). Abandoned manual
-              grid-reading for this element specifically and instead
-              detected it programmatically: isolated the badge's solid
-              white fill via colour-threshold + connected-component
-              labelling (reliable here because white-on-photo has far
-              higter contrast than the thin orange ring against the
-              cream page background), confirmed it forms a near-perfect
-              circle (199x196px raw), then added the ~2px ring stroke
-              measured directly via pixel sampling. Final corrected size:
-              24.0% x 27.2% of the column (830x735px) — these percentages
-              are NOT equal because the column itself isn't square, but
-              both resolve to ~199px in actual rendered pixels, so the
-              badge still renders as a true circle. */}
+          {/* Compliance badge — white TRUE circle (198x198px verified),
+              overlaps Photo 1's right edge, Photo 2's bottom-left, and
+              Photo 3's top-left junction. */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
             className="absolute z-10 flex flex-col items-center justify-center rounded-full border border-ak-orange/30 bg-white text-center shadow-[0_20px_45px_-15px_rgba(28,42,57,0.3)]"
-            style={{ left: "37.5%", top: "41%", width: "24%", height: "27.2%" }}
+            style={{ left: "39%", top: "42.4%", width: "25.2%", height: "28.3%" }}
             data-testid="reg-svc-compliance-badge"
           >
             <Icon name="shield" className="h-5 w-5 text-ak-ink" strokeWidth={1.8} />
@@ -209,39 +198,17 @@ export const RegSvcHero = () => (
         </motion.div>
       </div>
 
-      {/* ROW 2 — stat boxes (20+/10+/All India), bordered card, dividers */}
+      {/* ROW 2 (bottomFeatures) — plain 4-item row, no card border.
+          NOTE: the stat-boxes row (20+/10+/All India) that used to sit
+          between row 1 and this row has been REMOVED entirely per direct
+          instruction — it exists in the reference image too, but was
+          taking up space the client didn't want, independent of visual
+          accuracy to the reference. */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.5, ease: EASE }}
-        className="mt-12 md:mt-16"
-      >
-        <div
-          data-testid="reg-svc-hero-stats-strip"
-          className="grid grid-cols-1 divide-y divide-ak-ink/[0.08] rounded-2xl border border-ak-ink/[0.07] bg-white shadow-[0_20px_50px_-30px_rgba(28,42,57,0.2)] sm:grid-cols-3 sm:divide-x sm:divide-y-0"
-        >
-          {hero.stats.map((s) => (
-            <div key={s.note} className="flex flex-col items-center px-7 py-7 text-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ak-orange/10 text-ak-orange">
-                <Icon name={s.icon} className="h-5 w-5" strokeWidth={1.8} />
-              </span>
-              <div className="mt-3 font-display text-3xl font-extrabold text-ak-ink">
-                {s.text ? s.text : <Counter value={s.value} suffix={s.suffix} />}
-              </div>
-              {s.label && <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-ak-ink/45">{s.label}</div>}
-              <div className="mt-1.5 text-[12.5px] font-semibold text-ak-orange">{s.note}</div>
-              <span className="mt-2 h-[2px] w-6 rounded-full bg-ak-orange/40" />
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* ROW 3 — bottomFeatures, plain 4-item row, no card border */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.6, ease: EASE }}
-        className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4"
+        className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4 md:mt-16"
         data-testid="reg-svc-hero-bottom-features"
       >
         {hero.bottomFeatures.map((f) => (

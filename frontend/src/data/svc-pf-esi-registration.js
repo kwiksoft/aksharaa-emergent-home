@@ -68,6 +68,13 @@ export const hero = {
     { label: "Get Registration Support", variant: "primary", href: "#service-cta" },
     { label: "All Registrations", variant: "secondary", href: "/registrations-licensing" },
   ],
+  // stats — REMOVED FROM HERO (this thread) per direct instruction: the
+  // 20+/10+/All India stat-boxes card was taking up unwanted space below
+  // the photo collage, independent of whether it matches the reference
+  // image (it does appear there too, just lower in the layout — removal
+  // here is a deliberate content/scope decision, not a visual-accuracy
+  // fix). Left here, unused, rather than deleted outright in case a
+  // similar stat row is wanted elsewhere later.
   stats: [
     { value: 20, suffix: "+", icon: "users", label: "EMPLOYEES", note: "PF Mandatory" },
     { value: 10, suffix: "+", icon: "shield", label: "EMPLOYEES", note: "ESI Mandatory" },
