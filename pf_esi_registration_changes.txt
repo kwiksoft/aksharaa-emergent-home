@@ -328,6 +328,13 @@ Re-verified at 1440px, 768px, 390px — zero console errors at all
 three, no horizontal overflow. Visibly tighter section overall at
 desktop/tablet.
 
+CORRECTION (this thread, direct user instruction to reduce the same
+gap further): mt-6 was still leaving a visible gap between the
+description text and the cards. Reduced to mt-3. Re-verified at
+1440px, 768px, 390px — zero console errors at all three, no horizontal
+overflow. Cards now sit close enough to read as one cohesive block
+with the header row rather than two separate sections.
+
 ---
 
 OVERVIEW (Section 2) — desk-props background image, this thread

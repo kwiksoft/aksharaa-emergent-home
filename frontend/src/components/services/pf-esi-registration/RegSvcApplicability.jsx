@@ -85,7 +85,7 @@ export const RegSvcApplicability = () => (
         <ApplicabilityIllustration />
       </div>
 
-      <RevealGroup className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.18}>
+      <RevealGroup className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.18}>
         {applicability.tabs.map((t) => {
           const a = accent[t.id];
           return (
