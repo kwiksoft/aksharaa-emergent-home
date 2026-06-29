@@ -75,7 +75,7 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 | 4 | Documents | Pending review |
 | 5 | Process | Pending review |
 | 6 | Penalties | Pending review |
-| 7 | FAQs | Pending review |
+| 7 | FAQs | Rebuilt this thread — two-column layout, restyled accordion cards, full-bleed background. See note below. Pending sign-off. |
 | 8 | Related Services | Pending review |
 | 9 | Final CTA | Pending review |
 
@@ -534,6 +534,104 @@ headroom, not just visual screenshot check), 1440px (requested move
 applied, no clipping, 126px headroom), 768px and 390px (unaffected,
 image hidden below lg as before) — zero console errors at all four,
 no horizontal overflow.
+
+---
+
+FAQS (Section 7) — full layout rebuild, this thread
+
+Client supplied 3 reference images: a full target mockup (heading + 3D
+illustration on the left, restyled accordion on the right), a standalone
+decorative background texture (light dot-grid/circle/diagonal-line
+pattern), and a tightly-cropped version of the illustration alone.
+
+Per direct instruction, restructured the section from its prior form
+(centered heading above a single bordered/divided accordion container,
+full-width) into a two-column layout:
+
+- LEFT column: kicker/heading/sub-copy (copy unchanged) + the
+  illustration, sitting directly on the page background with no
+  card/frame — matches the reference's bare placement.
+- RIGHT column: accordion rebuilt as separate floating white cards (was:
+  one container with divider lines between items). Open card: 3px solid
+  orange left-border accent + solid-fill orange minus-circle icon. Closed
+  cards: no left border, outlined orange plus-circle icon (was: x /
+  arrowUpRight icons, plain ak-ink border). Single-open click behavior
+  and the existing height-animate open/close transition were NOT changed.
+- Full-bleed background image behind the whole section (z-0), content at
+  z-10.
+
+Column ratio: started at 0.85/1.0-ish split, caught via bounding-box
+measurement that the heading ("Frequently Asked Questions") was wrapping
+to 2 lines at 1440px where the reference shows it on one line — widened
+the left column to lg:grid-cols-[1.1fr_1.15fr], re-measured, heading now
+sits on one line (543px wide, single 40px-tall line) matching the
+reference's proportions.
+
+Illustration asset (faq_image05) — this took several rounds to get a
+clean cutout:
+1. Background confirmed genuinely flat (247,247,247), zero variance
+   across multiple sampled edge regions — NOT a fake-transparency
+   checkerboard like several prior assets in this project.
+2. First attempt: standard color-distance-from-background threshold
+   (the technique that's worked on flat/checkerboard backgrounds
+   before). This FAILED on this image specifically — a histogram of
+   per-pixel distance-from-background revealed a long, gradually-
+   declining tail between roughly distance 9 and 250, caused by a soft
+   ambient glow baked into the source image behind the figure. That
+   glow's values overlap the same range as light-toned real subject
+   matter (white folder pages, light laptop screen, cream tones), so no
+   single global threshold could cleanly separate "glow" from "light
+   subject" — tightening the cutoff to exclude the glow also excluded
+   real subject content (confirmed visually: the certificate, folder
+   pages, and laptop screen partially disappeared), while loosening it
+   let the glow back in as a visible halo (confirmed against red/blue
+   test backgrounds across two threshold attempts — halo clearly visible
+   both times, just varying in extent).
+3. Abandoned color-distance entirely and switched to rembg (u2net)
+   semantic segmentation — this reasons about object identity rather
+   than raw pixel color, so it correctly separated all the real 3D-
+   rendered objects from the ambient glow in a single pass with no
+   threshold-tuning needed. Verified clean against bold red and blue
+   test backgrounds: no halo, no fringing on fine edges (checked hair
+   and glasses frames at 2x zoom specifically), all subject detail
+   intact — folder ("PF & ESI REGISTRATION" label legible), certificate
+   ("GOVERNMENT COMPLIANCE", Ashoka emblem, wax seal), shield/checkmark,
+   laptop (compliance dashboard with donut chart), calendar checklist
+   (Registration/Contributions/Submissions/Compliance), payroll binders,
+   rupee-symbol cube icon, people-icon badge, navy podium with orange
+   glow ring.
+4. Checked all illustration text for the garbled-AI-text problem this
+   project has hit twice before (Section 2 and Section 3 assets) — none
+   found this time, all labels/text render correctly.
+5. Cropped to content bounds (760px wide), compressed with pngquant
+   (quality 80-95): 623KB → 197KB, in line with the project's existing
+   transparent-PNG size convention.
+
+Background texture asset (faq_image04) saved as-is, JPEG quality 90,
+91KB — genuine flat decorative texture, no transparency/text-legibility
+concerns.
+
+Illustration hidden below the lg breakpoint — at narrower widths there
+isn't room for it without crowding the accordion column, and the
+reference mockup itself only shows a desktop-width layout. Flagging this
+omission explicitly since it wasn't confirmed with the client, unlike
+most other responsive decisions in this project which have had an
+explicit mobile/tablet reference to work from.
+
+Verified at 1440px (scale-matched side-by-side comparison against the
+reference confirms heading/illustration/accordion proportions closely
+match), 768px (clean single-column stack, illustration correctly hidden,
+accordion full-width), 390px (clean single-column stack, all text
+readable, no cramping) — zero console errors at all three breakpoints,
+no horizontal overflow. Also specifically verified: accordion click
+interaction (opening a closed item correctly closes the previously-open
+one, confirmed via DOM visibility check rather than just a screenshot),
+and a full-page scroll-through with zero console errors or failed asset
+requests (confirms both new assets load correctly in the actual built
+page, not just in isolation). Production build (CI=true npx craco build)
+compiles clean.
+
+**Pending your sign-off on the live result.**
 
 ---
 
