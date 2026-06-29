@@ -74,7 +74,7 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 | 3 | Applicability | RESUMED — illustration replaced with v2 transparent PNG, see note below. Pending sign-off. |
 | 4 | Documents | Pending review |
 | 5 | Process | Pending review |
-| 6 | Penalties | Pending review |
+| 6 | Penalties | Photo replaced this thread (was generic stock photo, now client-supplied risk image), pending sign-off |
 | 7 | FAQs | Rebuilt this thread — two-column layout, restyled accordion cards, full-bleed background. See note below. Pending sign-off. |
 | 8 | Related Services | Pending review |
 | 9 | Final CTA | Pending review |
@@ -730,6 +730,62 @@ against the "10+" card on both versions with Playwright:
 
 Re-verified zero console errors / no overflow at 1440/768/390px,
 full-page scroll-through clean, production build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
+OVERVIEW (Section 2) — desk-props image moved 2cm right, this thread
+
+Per direct instruction: moved the calendar/binders/plant image 2cm right
+(76px at 96px/inch) from its corrected position.
+
+A flat +76px shift alone reintroduced clipping at exactly the kind of
+breakpoint-boundary zone the tracker has warned about before
+(overflow-hidden masks it from the usual scrollWidth check) — measured
+directly with Playwright bounding boxes rather than trusting a clean
+overflow check: 52px overflow at 1024px width, 110px overflow at
+1280px width. Also found in the process: the ORIGINAL pre-move position
+was already marginally clipping at exactly 1280px (-34px) — pre-existing,
+not introduced by this change, probably never noticed since real
+viewports rarely sit at that exact width.
+
+Per your direction, fixed by shrinking the image slightly at both
+breakpoints (lg: 410px->340px, xl: 500px->370px) so the full 2cm move
+fits with ~18-20px safety margin at the narrowest real width of each
+breakpoint. Verified with direct bounding-box measurements at 1024,
+1100, 1280, 1440, 1920px — zero overflow at every width. Visually
+confirmed at 1024px and 1280px specifically (the two previously-clipping
+zones) — fully visible with margin. Full screenshot suite and full-page
+scroll-through clean, zero console errors. Build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
+PENALTIES (Section 6) — photo replaced, this thread
+
+Per direct instruction with reference image: replaced the existing
+Unsplash stock photo (generic document-signing image) with a client-
+supplied image — a business owner reacting with concern to a physical
+"Compliance Audit Notice / WARNING" letter, "Compliance Records" /
+"Regulatory Filings" binders visible on the desk. Matches this section's
+"Risk of Non-Registration" framing much more directly than the previous
+generic photo.
+
+Checked for the garbled-AI-text problem this project has hit before —
+zoomed into the audit-notice text and both binder labels at 2-4x, all
+clean and legible. Optimized to JPEG quality 85 (91KB) and saved as a
+local project asset (was previously an external Unsplash URL dependency).
+
+Clean data-only swap — the component already sourced this photo via
+penalties.image/penalties.imageAlt, so no layout changes were needed;
+existing photo-slot styling (shield badge, decorative dot trail, aspect
+ratio) carried over untouched.
+
+Verified at 1440/768/390px — displays correctly in the existing slot at
+every breakpoint, zero console errors, no overflow. Full-page scroll-
+through clean. Build compiles clean.
 
 **Pending your sign-off on the live result.**
 
