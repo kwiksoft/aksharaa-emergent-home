@@ -323,9 +323,15 @@ export const penalties = {
       ],
     },
   ],
-  // Photography slot — documentary, inspection/risk-context, distinct from hero image
-  image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=700",
-  imageAlt: "Signing official compliance documentation",
+  // Photography slot — documentary, inspection/risk-context, distinct from hero image.
+  // Replaced per direct client instruction: was an Unsplash stock photo of
+  // someone signing official documents; client supplied a more specific
+  // risk-context image (a business owner reacting with concern to a
+  // physical "Compliance Audit Notice / WARNING" letter, compliance
+  // binders visible on the desk) that matches this section's "Risk of
+  // Non-Registration" framing more directly.
+  image: "/assets/sections/reg-penalties-risk.jpg",
+  imageAlt: "Business owner reacting with concern to a compliance audit warning notice",
 };
 
 export const faqs = {
