@@ -5,21 +5,28 @@ import { overview } from "../../../data/svc-pf-esi-registration";
 
 export const RegSvcOverview = () => (
   <section id="svc-overview" data-testid="reg-svc-overview-section" className="relative overflow-hidden bg-white py-14 md:py-20">
-    {/* decorative desk-props background image — positioned near the
-        "10+ EMPLOYEES" threshold card per direct feedback (was: pinned
-        to the section's far right edge), sits behind the existing
-        cards/content (z-0), does not alter their layout */}
-    <img
-      src="/assets/sections/reg-overview-deskprops.png"
-      alt=""
-      aria-hidden="true"
-      className="pointer-events-none absolute bottom-[38px] z-0 hidden w-[440px] opacity-90 lg:left-[590px] lg:w-[410px] lg:block xl:left-[814px] xl:w-[500px]"
-    />
-
     <Container className="relative z-10">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
-        {/* MAIN — wider column */}
-        <div>
+      <div className="relative">
+        {/* decorative desk-props background image — positioned near the
+            "10+ EMPLOYEES" threshold card per direct feedback (was: pinned
+            to the section's far right edge), sits behind the existing
+            cards/content (z-0), does not alter their layout. Anchored to
+            THIS wrapper (the original two-column content's own bottom
+            edge) rather than the outer <section>, so it stays put near
+            the threshold cards even after the Registration Scope timeline
+            was appended below — anchoring to the section's bottom edge
+            previously dragged the image down into a new collision zone
+            with the timeline card whenever the section grew taller. */}
+        <img
+          src="/assets/sections/reg-overview-deskprops.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-[38px] z-0 hidden w-[440px] opacity-90 lg:left-[590px] lg:w-[410px] lg:block xl:left-[814px] xl:w-[500px]"
+        />
+
+        <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+          {/* MAIN — wider column */}
+          <div>
           <Reveal>
             <div className="ak-kicker mb-5">{overview.kicker}</div>
             <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">
@@ -75,7 +82,105 @@ export const RegSvcOverview = () => (
             <p className="text-[13px] leading-relaxed text-ak-ink/70">{overview.alert}</p>
           </Reveal>
         </div>
+        </div>
       </div>
+
+      {/* APPENDED — "Registration Scope" 5-step horizontal timeline, per
+          direct client reference. Kept in the same light theme as the rest
+          of this section (white card on the section's white background) —
+          the reference's own card is white-on-peach, but the established
+          house style here is light-on-white, so the peach page-backdrop
+          was not carried over, only the card itself and its internal
+          step styling. Step 04 is the highlighted/"current" step exactly
+          as in the reference; step 05 is dimmed (upcoming) and steps
+          01-03 sit in their plain completed/default state. */}
+      <Reveal delay={0.1} className="mt-12 rounded-2xl border border-ak-ink/[0.07] bg-white p-6 shadow-[0_20px_50px_-30px_rgba(28,42,57,0.12)] md:p-8">
+        <div className="flex items-center gap-4 border-b border-ak-ink/[0.07] pb-5">
+          <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-ak-ink text-white">
+            <Icon name="checkCircle" className="h-5 w-5" strokeWidth={2} />
+          </span>
+          <div>
+            <div className="font-display text-base font-bold text-ak-ink">{overview.registrationScope.title}</div>
+            <div className="text-[13px] text-ak-ink/50">{overview.registrationScope.sub}</div>
+          </div>
+        </div>
+
+        {/* DESKTOP — horizontal timeline with a single dashed connector
+            running behind all 5 step markers */}
+        <div className="relative mt-9 hidden lg:grid lg:grid-cols-5 lg:gap-4">
+          <div className="absolute left-[10%] right-[10%] top-7 z-0 border-t-2 border-dashed border-ak-ink/15" />
+          {overview.registrationScope.steps.map((s, i) => {
+            const isActive = i === overview.registrationScope.activeStep;
+            const isUpcoming = i > overview.registrationScope.activeStep;
+            return (
+              <div
+                key={s.num}
+                className={`relative z-10 rounded-2xl p-4 text-center ${
+                  isActive ? "border border-dashed border-ak-orange bg-ak-orange/[0.06]" : ""
+                }`}
+              >
+                {isActive && (
+                  <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-ak-orange text-white shadow-sm">
+                    <Icon name="checkCircle" className="h-3.5 w-3.5" strokeWidth={2.2} />
+                  </span>
+                )}
+                <div className="relative mx-auto flex h-14 w-14 items-center justify-center">
+                  <span className={`absolute inset-0 rounded-full ${isUpcoming ? "bg-ak-ink/[0.04]" : "bg-ak-orange/10"}`} />
+                  <span
+                    className={`relative flex h-9 w-9 items-center justify-center rounded-full ${
+                      isActive ? "bg-ak-orange text-white" : isUpcoming ? "bg-ak-ink/10 text-ak-ink/30" : "bg-white text-ak-orange shadow-sm"
+                    }`}
+                  >
+                    <Icon name={s.icon} className="h-4.5 w-4.5" strokeWidth={2} />
+                  </span>
+                </div>
+                <span className={`mx-auto mt-2 block h-1.5 w-1.5 rounded-full ${isUpcoming ? "bg-ak-ink/20" : "bg-ak-orange"}`} />
+                <div className={`mt-2 font-display text-sm font-extrabold ${isUpcoming ? "text-ak-ink/30" : "text-ak-orange"}`}>{s.num}</div>
+                <div className={`mt-1.5 font-display text-[13px] font-bold leading-snug ${isUpcoming ? "text-ak-ink/35" : "text-ak-ink"}`}>
+                  {s.title}
+                </div>
+                <div className={`mx-auto mt-2 h-px w-7 ${isUpcoming ? "bg-ak-ink/15" : "bg-ak-orange/50"}`} />
+                <p className={`mt-2 text-[12px] leading-snug ${isUpcoming ? "text-ak-ink/30" : "text-ak-ink/55"}`}>{s.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* MOBILE/TABLET — stacked list, vertical dashed connector */}
+        <div className="relative mt-8 space-y-6 lg:hidden">
+          <div className="absolute bottom-7 left-7 top-7 z-0 border-l-2 border-dashed border-ak-ink/15" />
+          {overview.registrationScope.steps.map((s, i) => {
+            const isActive = i === overview.registrationScope.activeStep;
+            const isUpcoming = i > overview.registrationScope.activeStep;
+            return (
+              <div key={s.num} className="relative z-10 flex items-start gap-4">
+                <div className="relative flex h-14 w-14 flex-shrink-0 items-center justify-center">
+                  <span className={`absolute inset-0 rounded-full ${isUpcoming ? "bg-ak-ink/[0.04]" : "bg-ak-orange/10"}`} />
+                  <span
+                    className={`relative flex h-9 w-9 items-center justify-center rounded-full ${
+                      isActive ? "bg-ak-orange text-white" : isUpcoming ? "bg-ak-ink/10 text-ak-ink/30" : "bg-white text-ak-orange shadow-sm"
+                    }`}
+                  >
+                    <Icon name={s.icon} className="h-4.5 w-4.5" strokeWidth={2} />
+                  </span>
+                </div>
+                <div className={`flex-1 rounded-2xl p-4 ${isActive ? "border border-dashed border-ak-orange bg-ak-orange/[0.06]" : ""}`}>
+                  <div className={`font-display text-sm font-extrabold ${isUpcoming ? "text-ak-ink/30" : "text-ak-orange"}`}>{s.num}</div>
+                  <div className={`mt-1 font-display text-[14px] font-bold leading-snug ${isUpcoming ? "text-ak-ink/35" : "text-ak-ink"}`}>
+                    {s.title}
+                  </div>
+                  <p className={`mt-1.5 text-[12.5px] leading-snug ${isUpcoming ? "text-ak-ink/30" : "text-ak-ink/55"}`}>{s.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-ak-orange/10 px-4 py-2">
+          <Icon name="clock" className="h-3.5 w-3.5 text-ak-orange" strokeWidth={2.2} />
+          <span className="text-[11px] font-semibold uppercase tracking-wide text-ak-orange">{overview.registrationScope.duration}</span>
+        </div>
+      </Reveal>
     </Container>
   </section>
 );

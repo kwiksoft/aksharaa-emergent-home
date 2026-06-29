@@ -142,6 +142,44 @@ export const overview = {
     ],
   },
   alert: "Once registered, the obligation is permanent — even if headcount falls below the threshold at a later date.",
+  registrationScope: {
+    title: "Registration Scope",
+    sub: "What Aksharaa handles end-to-end",
+    activeStep: 3, // 0-indexed — step 04 is the highlighted/current step per reference
+    duration: "Typically 7–10 working days",
+    steps: [
+      {
+        num: "01",
+        icon: "folderCheck",
+        title: "Document Collection & Verification",
+        desc: "All employer and establishment documents compiled and verified",
+      },
+      {
+        num: "02",
+        icon: "building",
+        title: "PF Registration (EPFO Portal)",
+        desc: "Employer registration on EPFO unified portal, establishment code issued",
+      },
+      {
+        num: "03",
+        icon: "shield",
+        title: "ESI Registration (ESIC Portal)",
+        desc: "Employer code obtained, sub-code for each branch location",
+      },
+      {
+        num: "04",
+        icon: "userPlus",
+        title: "Employee UAN & IP Number Generation",
+        desc: "Universal Account Numbers and Insurance Person numbers for all employees",
+      },
+      {
+        num: "05",
+        icon: "checkCircle",
+        title: "Certificate & First Contribution Setup",
+        desc: "Registration certificates delivered, first month ECR and challan guided",
+      },
+    ],
+  },
 };
 
 export const applicability = {
