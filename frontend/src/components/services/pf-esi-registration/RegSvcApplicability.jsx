@@ -64,7 +64,7 @@ const ApplicabilityIllustration = () => (
     <img
       src="/assets/sections/reg-applicability-illustration-v2.png"
       alt="Employee growth bars showing the 20+ employee threshold for PF Registration and 10+ employee threshold for ESI Registration, alongside a compliance checklist clipboard and labelled PF and ESI registration binders"
-      className="w-full"
+      className="mx-auto w-full max-w-[480px] lg:max-w-[420px] xl:max-w-[480px]"
       loading="lazy"
     />
   </motion.div>

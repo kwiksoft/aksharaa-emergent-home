@@ -276,6 +276,19 @@ text renders larger/bolder than the prior asset, so the round-3
 mobile-legibility concern is also improved, though not specifically
 re-tested against a strict standard.
 
+CORRECTION (this thread, direct user instruction: "reduce the size of
+illustration in section 3"): the illustration was rendering at w-full,
+filling the entire 1.3fr right column at every desktop/tablet
+breakpoint. Constrained it with max-w-[480px] (max-w-[420px] at lg,
+widening back to 480px at xl) and mx-auto for centering when it's
+narrower than its container (e.g. tablet's single-column stack).
+Mobile (390px) is unaffected since the viewport itself is already
+narrower than the cap — it continues to render at full container
+width there, which wasn't part of the request anyway. Re-verified at
+1440px (visibly smaller, sits with empty space to its left rather than
+stretching the column), 768px (centred, sized down), 390px (unchanged)
+— zero console errors at all three, no horizontal overflow.
+
 ---
 
 OVERVIEW (Section 2) — desk-props background image, this thread
