@@ -485,6 +485,13 @@ clearly visible, no touching. Checked at 1024px, 1440px, 768px
 (image correctly stays hidden below lg, unaffected), 390px (unaffected)
 — zero console errors at all four, no horizontal overflow.
 
+CORRECTION (this thread, direct user instruction: "still move the
+photo to 0.5cm right"): 0.5cm ≈ 19px at the same 96px/inch reference.
+Applied: lg:left-[655px] (was 636px, +19), xl:left-[795px] (was 776px,
++19). Re-checked card-to-image gap via zoomed crop — still clearly
+visible, no touching. Verified at 1024px, 1440px, 768px, 390px — zero
+console errors at all four, no horizontal overflow.
+
 ---
 
 Tell me where to start — section number, what kind of change, and any
