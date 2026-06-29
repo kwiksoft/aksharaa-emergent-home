@@ -4,27 +4,39 @@ import { Icon } from "../../../lib/icons";
 import { overview } from "../../../data/svc-pf-esi-registration";
 
 export const RegSvcOverview = () => (
-  <section id="svc-overview" data-testid="reg-svc-overview-section" className="relative overflow-hidden bg-white py-14 md:py-20">
-    <Container className="relative z-10">
-      <div className="relative">
-        {/* decorative desk-props background image — positioned near the
-            "10+ EMPLOYEES" threshold card per direct feedback (was: pinned
-            to the section's far right edge), sits behind the existing
-            cards/content (z-0), does not alter their layout. Anchored to
-            THIS wrapper (the original two-column content's own bottom
-            edge) rather than the outer <section>, so it stays put near
-            the threshold cards even after the Registration Scope timeline
-            was appended below — anchoring to the section's bottom edge
-            previously dragged the image down into a new collision zone
-            with the timeline card whenever the section grew taller. */}
-        <img
-          src="/assets/sections/reg-overview-deskprops.png"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-[38px] z-0 hidden w-[440px] opacity-90 lg:left-[590px] lg:w-[410px] lg:block xl:left-[814px] xl:w-[500px]"
-        />
+  <section id="svc-overview" data-testid="reg-svc-overview-section" className="relative overflow-hidden bg-white">
+    {/* WRAPPER restoring the section's original (pre-timeline) footprint —
+        decorative desk-props image below is a direct child of THIS div,
+        exactly as it was before the Registration Scope timeline was
+        appended, so its bottom-[38px]/left-[...] values resolve against
+        the same coordinate system they were originally tuned against.
+        (Earlier attempt nested the image inside Container + an extra div,
+        which also shifted its horizontal position — Container adds its
+        own max-w-7xl/px-16 box that isn't present in the original markup.
+        This wrapper restores the exact original nesting instead.) Carries
+        BOTH the top and bottom padding that used to live directly on the
+        <section> (py-14 md:py-20) — moved here in full rather than split,
+        after measuring that splitting it (top kept on <section>, bottom
+        moved to wrapper) still left the wrapper 80px shorter than the
+        original section's true height, since the wrapper didn't include
+        the top-padding contribution either. Confirmed via direct
+        offsetParent height measurement against the pre-timeline commit:
+        729.5px wrapper vs 809.5px original (off by exactly one pt-20) on
+        the first attempt; this version matches 809.5px exactly. */}
+    <div className="relative py-14 md:py-20">
+      {/* decorative desk-props background image — positioned near the
+          "10+ EMPLOYEES" threshold card per direct feedback (was: pinned
+          to the section's far right edge), sits behind the existing
+          cards/content (z-0), does not alter their layout */}
+      <img
+        src="/assets/sections/reg-overview-deskprops.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-[38px] z-0 hidden w-[440px] opacity-90 lg:left-[590px] lg:w-[410px] lg:block xl:left-[814px] xl:w-[500px]"
+      />
 
-        <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
           {/* MAIN — wider column */}
           <div>
           <Reveal>
@@ -83,17 +95,22 @@ export const RegSvcOverview = () => (
           </Reveal>
         </div>
         </div>
-      </div>
+      </Container>
+    </div>
 
-      {/* APPENDED — "Registration Scope" 5-step horizontal timeline, per
-          direct client reference. Kept in the same light theme as the rest
-          of this section (white card on the section's white background) —
-          the reference's own card is white-on-peach, but the established
-          house style here is light-on-white, so the peach page-backdrop
-          was not carried over, only the card itself and its internal
-          step styling. Step 04 is the highlighted/"current" step exactly
-          as in the reference; step 05 is dimmed (upcoming) and steps
-          01-03 sit in their plain completed/default state. */}
+    {/* APPENDED — "Registration Scope" 5-step horizontal timeline, per
+        direct client reference. Kept in the same light theme as the rest
+        of this section (white card on the section's white background) —
+        the reference's own card is white-on-peach, but the established
+        house style here is light-on-white, so the peach page-backdrop
+        was not carried over, only the card itself and its internal
+        step styling. Step 04 is the highlighted/"current" step exactly
+        as in the reference; step 05 is dimmed (upcoming) and steps
+        01-03 sit in their plain completed/default state. Sits OUTSIDE
+        the wrapper above (which exists purely to restore the original
+        image's coordinate system) — this is a plain sibling section
+        within the same <section>, with its own Container. */}
+    <Container className="relative z-10 pb-14 md:pb-20">
       <Reveal delay={0.1} className="mt-12 rounded-2xl border border-ak-ink/[0.07] bg-white p-6 shadow-[0_20px_50px_-30px_rgba(28,42,57,0.12)] md:p-8">
         <div className="flex items-center gap-4 border-b border-ak-ink/[0.07] pb-5">
           <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-ak-ink text-white">
