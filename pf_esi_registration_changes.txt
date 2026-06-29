@@ -827,6 +827,23 @@ clean. Build compiles clean.
 
 ---
 
+OVERVIEW (Section 2) — desk-props image moved 1cm up, 2cm left, this thread
+
+Per direct instruction: moved the image 1cm up (38px) and 2cm left
+(76px) from its prior position next to the "10+" card. No clipping
+introduced (leftward move only increases right-edge margin). The
+leftward move does create a ~49px horizontal overlap behind the "10+"
+card's right edge — confirmed visually and confirmed with the client as
+acceptable before committing, since the image is z-0 and renders behind
+the card's opaque background.
+
+Verified at 1024/1280/1440/768/390px — zero console errors, no overflow.
+Full-page scroll-through clean. Build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
 Tell me where to start — section number, what kind of change, and any
 screenshots/frames/description you have. I'll make the change, rebuild,
 push, and you review before moving to the next section.
