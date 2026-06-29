@@ -289,6 +289,24 @@ width there, which wasn't part of the request anyway. Re-verified at
 stretching the column), 768px (centred, sized down), 390px (unchanged)
 — zero console errors at all three, no horizontal overflow.
 
+CORRECTION (this thread, direct user instruction: "reduce 1.5 cm space
+all side empty space" — interpreted as: the size-reduction in the
+prior round left excess empty space around the now-smaller image
+within its oversized column, since only the image's own max-width was
+constrained, not the column it sits in). Rebalanced the grid ratio
+from lg:grid-cols-[0.85fr_1.3fr] to lg:grid-cols-[1.15fr_1fr] — gives
+the text column more room (the heading now fits on one line at 1440px
+where it previously wrapped to two) and the image column less excess
+width. Also tightened the image's own max-width caps further:
+max-w-[420px] (was 480px), lg:max-w-[380px] (was 420px), xl:max-w-[440px]
+(was 480px) — both column and image shrink together now instead of a
+mismatch between them. Re-verified at 1440px (noticeably tighter,
+image fills its column proportionally instead of floating in leftover
+space), 768px (tighter overall, less vertical stretch), 390px
+(unaffected, as expected — single-column mobile layout doesn't have
+this column-width issue) — zero console errors at all three, no
+horizontal overflow.
+
 ---
 
 OVERVIEW (Section 2) — desk-props background image, this thread
