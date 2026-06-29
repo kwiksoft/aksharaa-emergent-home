@@ -701,6 +701,40 @@ through: zero console errors or failed asset requests. Production build
 
 ---
 
+CORRECTION — desk-props image position regression caught by client
+
+You flagged (correctly) that the spillover fix above had moved the
+calendar/binders/plant image away from its original tuned position near
+the "10+ EMPLOYEES" card. Root cause: the spillover fix had nested the
+image inside `<Container>` (which adds its own max-w-7xl + px-16 box)
+and inside a wrapper that was missing the section's original padding
+contribution — both shifted the image's coordinate system away from
+what its `bottom-[38px]`/`left-[...]` values were originally tuned
+against.
+
+Fixed properly: moved the image back to a direct child of a plain
+`relative` div with no Container/padding box in between (restoring the
+exact original nesting — confirmed the `<img>` className string is
+byte-for-byte identical to the pre-timeline commit), and gave that
+wrapper the section's full original `py-14 md:py-20` padding so its
+height exactly matches what the section's height used to be.
+
+Verified with hard numbers this time, not just a visual re-check:
+checked out the pre-timeline commit into a separate clone, ran it on a
+second dev server, and measured the image's actual rendered position
+against the "10+" card on both versions with Playwright:
+  - image.x − card.x: 288.39 on both (exact match)
+  - image.y − card.y: -60.14 (fix) vs -60.22 (original) — 0.08px,
+    sub-pixel rendering noise
+  - positioned-ancestor height: 809.5px on both (exact match)
+
+Re-verified zero console errors / no overflow at 1440/768/390px,
+full-page scroll-through clean, production build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
 Tell me where to start — section number, what kind of change, and any
 screenshots/frames/description you have. I'll make the change, rebuild,
 push, and you review before moving to the next section.
