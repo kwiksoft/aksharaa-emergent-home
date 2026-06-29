@@ -32,7 +32,7 @@ export const RegSvcOverview = () => (
         src="/assets/sections/reg-overview-deskprops.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[38px] z-0 hidden w-[440px] opacity-90 lg:left-[590px] lg:w-[410px] lg:block xl:left-[814px] xl:w-[500px]"
+        className="pointer-events-none absolute bottom-[38px] z-0 hidden w-[440px] opacity-90 lg:left-[666px] lg:w-[340px] lg:block xl:left-[890px] xl:w-[370px]"
       />
 
       <Container className="relative z-10">
