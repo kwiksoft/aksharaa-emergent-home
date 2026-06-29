@@ -492,6 +492,49 @@ Applied: lg:left-[655px] (was 636px, +19), xl:left-[795px] (was 776px,
 visible, no touching. Verified at 1024px, 1440px, 768px, 390px — zero
 console errors at all four, no horizontal overflow.
 
+CORRECTION (this thread, direct user instruction: "still more 0.5
+right") — IMPORTANT BUG FOUND AND FIXED, not just the requested move:
+
+Attempting this nudge (lg:left 655->674, xl:left 795->814) triggered a
+proper clipping check this time (previous rounds only checked
+document.scrollWidth for horizontal overflow, which does NOT catch
+clipping caused by overflow-hidden on the section — that suppresses
+the scrollbar-overflow signal entirely while still visually cutting
+the image off). Measuring the image's actual right edge against the
+section's right edge via Playwright bounding boxes revealed the image
+was being clipped by 90px at the lg breakpoint (1024px) at the
+proposed new value — and, on closer inspection, this clipping bug
+already existed at the PREVIOUSLY PUSHED value (lg:left-655px,
+commit 3b215d8) too. It had been shipping unnoticed since at least
+that commit, possibly earlier, because no prior round had checked for
+overflow-hidden-masked clipping specifically — only the standard
+document.scrollWidth check, which this kind of clipping doesn't
+trigger.
+
+At lg (1024px), the "10+" card's right edge sits at ~563px and the
+section's right edge is at 1024px — leaving very little genuine room
+for a 440px-wide image positioned anywhere that clears the card AND
+doesn't clip. Resolved by both repositioning AND slightly narrowing
+the image at this breakpoint specifically: lg:left-[590px] (was
+655px — moved LEFT, not right, to fix the clipping) with lg:w-[410px]
+(was 440px) — gives ~17px clearance from the card and ~24px clearance
+from the section edge, both confirmed via bounding-box measurement.
+The xl breakpoint (1440px+) has much more available width and was not
+affected by this issue — applied the requested move there as asked:
+xl:left-[814px] (was 795px, +19px ≈ 0.5cm).
+
+Per direct instruction ("only move the photo") — did not touch
+anything else in the section; the lg-breakpoint width reduction was
+the minimum necessary to resolve the pre-existing clipping bug while
+fulfilling the request at the breakpoint where it could safely apply.
+
+Verified at 1024px (clipping fixed — plant pot and binders fully
+visible now, confirmed via bounding-box measurement showing positive
+headroom, not just visual screenshot check), 1440px (requested move
+applied, no clipping, 126px headroom), 768px and 390px (unaffected,
+image hidden below lg as before) — zero console errors at all four,
+no horizontal overflow.
+
 ---
 
 Tell me where to start — section number, what kind of change, and any
