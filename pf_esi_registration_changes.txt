@@ -472,6 +472,19 @@ confirmed a visible gap, no touching, at both breakpoints. 768px and
 390px re-confirmed unchanged (image correctly hidden, no overflow).
 Zero console errors at all four breakpoints throughout.
 
+CORRECTION (this thread, direct user instruction: "move the desk-props
+photo right 2cm, upward 1 cm"): converted physical units to px using
+the standard 96px/inch (~37.8px/cm) web reference, since the request
+used a print/physical measurement rather than a screen unit — 2cm ≈
+76px right, 1cm ≈ 38px up. Applied as: lg:left-[636px] (was 560px, +76),
+xl:left-[776px] (was 700px, +76), and bottom-[38px] (was bottom-0, +38
+upward) at both breakpoints. Re-verified the card-to-image gap
+specifically via zoomed crop after the shift (since "right" moves it
+toward the card it was previously pulled away from) — gap is still
+clearly visible, no touching. Checked at 1024px, 1440px, 768px
+(image correctly stays hidden below lg, unaffected), 390px (unaffected)
+— zero console errors at all four, no horizontal overflow.
+
 ---
 
 Tell me where to start — section number, what kind of change, and any
