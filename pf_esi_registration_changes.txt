@@ -807,6 +807,26 @@ console errors. Build compiles clean.
 
 ---
 
+OVERVIEW (Section 2) — desk-props image placed next to "10+" card, this thread
+
+Per direct instruction: after the cumulative 2cm + 0.5cm rightward
+moves, the image had drifted to a 112px gap from the "10+" card's
+right edge (measured via actual card bounding boxes) — read as floating
+away from the card rather than sitting next to it. Brought it back left
+by 85px at both lg/xl breakpoints to land a ~27px gap, comparable to
+the natural ~16px gap between the two threshold cards themselves.
+Width unchanged (325px/355px) — only repositioned.
+
+Verified with direct bounding-box measurement (27.2px gap) and visually
+at 1024/1280/1440px. Re-checked clipping at 1024/1100/1280/1440/1920px
+— zero overflow, more margin than before since it moved away from the
+section's right edge. Full screenshot suite and full-page scroll-through
+clean. Build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
 Tell me where to start — section number, what kind of change, and any
 screenshots/frames/description you have. I'll make the change, rebuild,
 push, and you review before moving to the next section.
