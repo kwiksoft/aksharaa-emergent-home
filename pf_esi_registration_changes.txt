@@ -335,6 +335,43 @@ description text and the cards. Reduced to mt-3. Re-verified at
 overflow. Cards now sit close enough to read as one cohesive block
 with the header row rather than two separate sections.
 
+CORRECTION (this thread, direct user instruction: "large the image
+size to the width white ESI cards" — interpreted as: match the
+illustration's width to the ESI Registration card's width below it).
+Measured precisely via Playwright bounding boxes rather than visual
+estimation (per established project discipline) before changing
+anything: illustration was 517px wide, each PF/ESI card was 564px.
+First attempt set an explicit max-w-[564px] on the image directly —
+this had no effect, because the image's actual column (the right side
+of the lg:grid-cols-[1.15fr_1fr] split) was itself only 517px wide, so
+the cap never bound. Root cause was the column width, not the image's
+own constraint. Re-measured the grid math and changed the column ratio
+to lg:grid-cols-[0.97fr_1fr], which brings the right column to ~564px
+— now matching the card width exactly (564.0–564.45px, sub-pixel
+rounding only). Confirmed left/right edges align with the ESI card
+below within the same tolerance.
+
+This narrowed the text column, which pushed the heading to wrap onto
+3 lines (was 1 line at 1440px before this change) — a direct tradeoff
+of widening the image column as requested, not an unrelated
+regression.
+
+Side-effect caught and fixed: at md/768px the grid collapses to a
+single column, so the image's column become the FULL container width
+(688px) rather than matching either card (which stay 2-column, 332px
+each at this breakpoint) — removing the explicit cap meant the image
+overshot badly here. Re-added max-w-[564px] with mx-auto centering,
+overridden to mx-0 at lg+ (where the column-width match takes over
+and provides the correct value structurally). This caps the image at
+a reasonable size on tablet without trying to force a literal match to
+a 332px half-card width, which would look cramped relative to the
+full-width heading above it.
+
+Re-verified at 1440px (precise 564px match confirmed via bounding-box
+measurement, not just visual check), 768px (capped at 564px, centred,
+no longer overshooting), 390px (unaffected, cap doesn't bind at this
+width) — zero console errors at all three, no horizontal overflow.
+
 ---
 
 OVERVIEW (Section 2) — desk-props background image, this thread

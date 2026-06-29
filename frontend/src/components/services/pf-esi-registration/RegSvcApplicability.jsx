@@ -64,7 +64,7 @@ const ApplicabilityIllustration = () => (
     <img
       src="/assets/sections/reg-applicability-illustration-v2.png"
       alt="Employee growth bars showing the 20+ employee threshold for PF Registration and 10+ employee threshold for ESI Registration, alongside a compliance checklist clipboard and labelled PF and ESI registration binders"
-      className="mx-auto w-full max-w-[420px] lg:max-w-[380px] xl:max-w-[440px]"
+      className="mx-auto w-full max-w-[564px] lg:mx-0"
       loading="lazy"
     />
   </motion.div>
@@ -73,7 +73,7 @@ const ApplicabilityIllustration = () => (
 export const RegSvcApplicability = () => (
   <section id="svc-applicability" data-testid="reg-svc-applicability-section" className="relative overflow-hidden bg-ak-mist/40 py-14 md:py-20">
     <Container className="relative">
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[0.97fr_1fr] lg:gap-10">
         <Reveal>
           <div className="ak-kicker mb-5">{applicability.kicker}</div>
           <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">
