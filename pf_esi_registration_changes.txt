@@ -70,7 +70,7 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 | # | Section | Status |
 |---|---------|--------|
 | 1 | Hero | Round 6 — see full notes above, pending sign-off |
-| 2 | Overview | Desk-props background image added this thread (see note below), pending sign-off |
+| 2 | Overview | Desk-props background image (prior thread) + Registration Scope 5-step timeline appended this thread (see note below), pending sign-off |
 | 3 | Applicability | RESUMED — illustration replaced with v2 transparent PNG, see note below. Pending sign-off. |
 | 4 | Documents | Pending review |
 | 5 | Process | Pending review |
@@ -630,6 +630,72 @@ and a full-page scroll-through with zero console errors or failed asset
 requests (confirms both new assets load correctly in the actual built
 page, not just in isolation). Production build (CI=true npx craco build)
 compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
+OVERVIEW (Section 2) — Registration Scope timeline appended, this thread
+
+Client supplied 1 reference image: a 5-step horizontal process timeline
+card ("Registration Scope — What Aksharaa handles end-to-end"), with
+step 4 shown as the active/highlighted step and step 5 shown dimmed as
+upcoming.
+
+Confirmed with client before building: this is NEW content appended
+after Section 2 (Overview)'s existing content, within that same section
+— not a new section, not a replacement of anything existing, and not a
+duplicate of Section 5 (Process), which is a separate, already-built
+6-step radial/hub layout with different content. Checked RegSvcProcess.jsx
+directly to confirm before writing anything, since the "process timeline"
+framing could have been mistaken for the same thing.
+
+Client also confirmed: keep the section's existing LIGHT theme (the
+reference's own peach page-backdrop was not carried over — only the
+white card itself and its internal step styling were used).
+
+Content (matches reference exactly): 01 Document Collection &
+Verification, 02 PF Registration (EPFO Portal), 03 ESI Registration
+(ESIC Portal), 04 Employee UAN & IP Number Generation (active/
+highlighted), 05 Certificate & First Contribution Setup (dimmed/
+upcoming). Bottom pill: "Typically 7-10 working days".
+
+Colour check: sampled the reference's icon-fill/badge pixels directly —
+converged on #F28C28, an exact match for the existing ak.orange token,
+so no new colour token was added. Dashed connector grey mapped to
+existing ak-ink/15.
+
+Layout: desktop = horizontal 5-column grid with one dashed connector
+line running behind all step markers; active step gets a dashed-orange
+card border + small checkmark badge top-right; upcoming step (05) is
+fully dimmed — icon, glow, number, title, underline, and description all
+muted, matching the reference's own distinction between default/
+completed steps and the one upcoming step. Mobile/tablet = stacked list
+with a vertical dashed connector, same step-state logic.
+
+Bug found and fixed in the same pass: the section's existing desk-props
+decorative image (calendar/binders/plant/pen, added in the prior thread)
+was anchored with `bottom-[38px]` relative to the whole <section>.
+Appending the new timeline card grew the section taller, which dragged
+that image down with it — caught via screenshot review: the pen/notepad
+was spilling out from behind the new timeline card's bottom-right
+corner onto the plain page background, instead of sitting behind the
+"10+ EMPLOYEES" card where it belongs. Fixed by wrapping the original
+two-column content (image included) in its own relative positioning
+container, so the image now anchors to that original content's own
+bottom edge specifically, not the section's outer edge. Verified via a
+before/after crop comparison at the same coordinates — spillover
+confirmed gone, image confirmed back in its correct position relative
+to the "10+" card.
+
+Verified at 1440px (scale-matched comparison against the reference —
+step states, badge, connector, and pill all closely match), 768px and
+390px (clean stacked fallback, all step states legible, confirmed the
+image-anchor fix doesn't affect these breakpoints since the image is
+already hidden below lg in both old and new code). Zero console errors
+at all three breakpoints, no horizontal overflow. Full-page scroll-
+through: zero console errors or failed asset requests. Production build
+(CI=true npx craco build) compiles clean.
 
 **Pending your sign-off on the live result.**
 
