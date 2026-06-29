@@ -307,6 +307,27 @@ space), 768px (tighter overall, less vertical stretch), 390px
 this column-width issue) — zero console errors at all three, no
 horizontal overflow.
 
+CORRECTION (this thread, direct user instruction: "make description in
+two line. reduce the gap between image and two white box"):
+1. Description (the sub-copy under the heading) was wrapping to 3
+   lines. It had a max-w-xl (576px) cap that, combined with the
+   narrower text column from the prior round's grid rebalance, was
+   forcing an extra wrap. Removed the cap entirely (no max-width
+   override now — uses the full column width) rather than trimming the
+   copy itself, since changing actual content wording wasn't asked
+   for. This gets it to 2 lines at 1440px and 768px. At 390px it still
+   wraps to 3 — the column itself is just too narrow at that width
+   regardless of any max-width setting; fixing that would require
+   shortening the actual sentence, which wasn't done since it changes
+   content, not just layout. Flagging this rather than claiming full
+   success across all breakpoints.
+2. "Gap between image and two white box" — interpreted as the
+   vertical gap between the header row (heading/illustration) and the
+   PF/ESI comparison cards below. Reduced RevealGroup's mt-12 to mt-6.
+Re-verified at 1440px, 768px, 390px — zero console errors at all
+three, no horizontal overflow. Visibly tighter section overall at
+desktop/tablet.
+
 ---
 
 OVERVIEW (Section 2) — desk-props background image, this thread

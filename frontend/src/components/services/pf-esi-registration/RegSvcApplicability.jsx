@@ -79,13 +79,13 @@ export const RegSvcApplicability = () => (
           <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-ak-ink md:text-4xl">
             {applicability.heading}
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-ak-ink/60">{applicability.sub}</p>
+          <p className="mt-5 text-base leading-relaxed text-ak-ink/60">{applicability.sub}</p>
         </Reveal>
 
         <ApplicabilityIllustration />
       </div>
 
-      <RevealGroup className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.18}>
+      <RevealGroup className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2" stagger={0.18}>
         {applicability.tabs.map((t) => {
           const a = accent[t.id];
           return (
