@@ -791,6 +791,22 @@ through clean. Build compiles clean.
 
 ---
 
+OVERVIEW (Section 2) — desk-props image nudged 0.5cm further, this thread
+
+Per direct instruction: moved the calendar/binders/plant image a
+further 0.5cm right (19px) from its prior position. A flat shift alone
+left only ~1px margin at the lg/xl narrowest widths — trimmed the width
+slightly further (lg: 340->325px, xl: 370->355px) to restore a clean
+14-16px safety margin rather than ship a value with effectively zero
+tolerance for rendering variance. Verified with direct bounding-box
+measurements at 1024/1100/1280/1440/1920px — zero overflow at every
+width. Full screenshot suite and full-page scroll-through clean, zero
+console errors. Build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
 Tell me where to start — section number, what kind of change, and any
 screenshots/frames/description you have. I'll make the change, rebuild,
 push, and you review before moving to the next section.
