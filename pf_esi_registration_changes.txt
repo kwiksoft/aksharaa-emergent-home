@@ -880,6 +880,26 @@ scroll-through clean. Build compiles clean.
 
 ---
 
+DOCUMENTS (Section 4) — card 3 height matched to card 1, this thread
+
+Per direct instruction: matched "Employee Details" (card 3, 256px,
+5 short items) to "Establishment Documents" (card 1, 322px, 6 items
+with some 2-line wraps) via an explicit md:min-h-[322px] on just those
+two cards. Card 2 and the existing staggered per-card vertical offsets
+(COL_OFFSET) were left untouched — both are pre-existing, deliberate
+parts of this layout, not something this instruction was about.
+min-h scoped to md: and above only — mobile (single-column stack)
+correctly unaffected.
+
+Verified via Playwright measurement: card 1 and 3 both render at
+exactly 322px at desktop, card 2 unaffected at its own 327.9px.
+Confirmed visually at 1440/768/390px. Zero console errors, no
+overflow. Full-page scroll-through clean. Build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
 Tell me where to start — section number, what kind of change, and any
 screenshots/frames/description you have. I'll make the change, rebuild,
 push, and you review before moving to the next section.
