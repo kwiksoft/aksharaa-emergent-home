@@ -24,17 +24,6 @@ export const RegSvcOverview = () => (
         729.5px wrapper vs 809.5px original (off by exactly one pt-20) on
         the first attempt; this version matches 809.5px exactly. */}
     <div className="relative py-14 md:py-20">
-      {/* decorative desk-props background image — positioned near the
-          "10+ EMPLOYEES" threshold card per direct feedback (was: pinned
-          to the section's far right edge), sits behind the existing
-          cards/content (z-0), does not alter their layout */}
-      <img
-        src="/assets/sections/reg-overview-deskprops.png"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[76px] z-0 hidden w-[440px] opacity-90 lg:left-[524px] lg:w-[325px] lg:block xl:left-[748px] xl:w-[355px]"
-      />
-
       <Container className="relative z-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
           {/* MAIN — wider column */}
@@ -92,6 +81,25 @@ export const RegSvcOverview = () => (
           <Reveal delay={0.25} className="mt-4 flex items-start gap-3 rounded-2xl bg-ak-orange/10 p-5">
             <Icon name="scan" className="mt-0.5 h-5 w-5 flex-shrink-0 text-ak-orange" strokeWidth={1.9} />
             <p className="text-[13px] leading-relaxed text-ak-ink/70">{overview.alert}</p>
+          </Reveal>
+
+          {/* decorative desk-props image — moved into normal document flow
+              in this column per direct client reference, stacked below the
+              card+callout above. Previously absolute-positioned near the
+              "10+ EMPLOYEES" threshold card in the main column, which
+              required repeated manual pixel-tuning (left/bottom offsets per
+              breakpoint) across several rounds and never matched the
+              reference's actual layout intent — the reference shows this
+              image as part of THIS column's natural stack, not a floating
+              decorative element elsewhere on the page. Sized larger than
+              its previous absolute-positioned width, matching the
+              reference's proportions relative to the card above it. */}
+          <Reveal delay={0.3} className="mt-6">
+            <img
+              src="/assets/sections/reg-overview-deskprops.png"
+              alt="Calendar, compliance binders, and desk accessories representing Aksharaa's organised registration process"
+              className="w-full max-w-[420px]"
+            />
           </Reveal>
         </div>
         </div>
