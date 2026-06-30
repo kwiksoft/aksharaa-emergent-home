@@ -900,6 +900,42 @@ overflow. Full-page scroll-through clean. Build compiles clean.
 
 ---
 
+OVERVIEW (Section 2) — calendar image restructured into right column, this thread
+
+Per direct instruction with reference image: confirmed the reference
+shows the calendar/binders/plant image stacked below the "Who Needs
+Both Registrations?" card and alert callout, as part of that right
+column's natural flow — not floating near the "10+" threshold card,
+where all prior-thread positioning rounds (the 2cm/0.5cm/1cm-up-2cm-left
+moves, the clipping fixes, the position-restore correction) had been
+tuning it. Confirmed this structural reinterpretation directly before
+making the change.
+
+Removed the old absolute-positioned img entirely (all the per-breakpoint
+bottom-[Npx]/left-[Npx] values and the wrapper div that existed to
+restore its coordinate system) and replaced with a plain flowed <img>
+as the last child of the right column. This is a structural improvement,
+not just a visual match — the old version was hidden below lg entirely
+(never appeared on tablet/mobile); this version naturally appears at
+every breakpoint, sized by its column rather than needing hand-tuned
+pixel values per breakpoint.
+
+Enlarged to max-w-[420px] (previous max was 355px), matching the
+reference's proportions. Checked source asset's native resolution
+(700x332) against this display size first — no upscaling/softness.
+Added descriptive alt text (was empty/aria-hidden as pure decoration
+before) since it's now genuine flowed content.
+
+Verified at 1440px (structural match against reference confirmed),
+768px/390px (now correctly visible and well-sized at these widths,
+where it previously didn't appear at all — net improvement). Zero
+console errors, no overflow at any breakpoint. Full-page scroll-through
+clean. Build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
 Tell me where to start — section number, what kind of change, and any
 screenshots/frames/description you have. I'll make the change, rebuild,
 push, and you review before moving to the next section.
