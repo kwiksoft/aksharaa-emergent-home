@@ -72,7 +72,7 @@ Re-verified with a fresh scale-matched side-by-side comparison: this is by far t
 | 1 | Hero | Round 6 — see full notes above, pending sign-off |
 | 2 | Overview | Desk-props background image (prior thread) + Registration Scope 5-step timeline appended this thread (see note below), pending sign-off |
 | 3 | Applicability | RESUMED — illustration replaced with v2 transparent PNG, see note below. Pending sign-off. |
-| 4 | Documents | Pending review |
+| 4 | Documents | Background applied this thread (orange/grey split image, cards switched to opaque white), pending sign-off |
 | 5 | Process | Pending review |
 | 6 | Penalties | Photo replaced this thread (was generic stock photo, now client-supplied risk image), pending sign-off |
 | 7 | FAQs | Rebuilt this thread — two-column layout, restyled accordion cards, full-bleed background. See note below. Pending sign-off. |
@@ -839,6 +839,42 @@ the card's opaque background.
 
 Verified at 1024/1280/1440/768/390px — zero console errors, no overflow.
 Full-page scroll-through clean. Build compiles clean.
+
+**Pending your sign-off on the live result.**
+
+---
+
+DOCUMENTS (Section 4) — background applied, this thread
+
+Per direct instruction with reference image: applied a full-bleed
+orange/grey split decorative texture as the section background
+(previously plain white, untouched since the page was first built).
+
+Checked aspect ratio before committing to default centered object-cover
+— section's actual ratio (1.75:1) vs source image (1.33:1) — confirmed
+the crop window naturally contains the orange/grey boundary near its
+center, no manual object-position needed.
+
+Legibility pass required since the new background isn't neutral:
+heading/sub-copy switched ak-ink->white; kicker label overridden to
+white text + white/60 underline via className (existing
+.ak-kicker--light variant is still orange-toned, didn't fit a vivid
+image background, so didn't reuse/modify the shared class); document-
+group cards switched from translucent (bg-ak-mist/30) to opaque white
+with a drop shadow — same fix already used in the FAQs section for the
+same reason; bottom note callout switched from a near-orange tint to
+opaque white, since the original would have nearly disappeared against
+the orange portion of the new background.
+
+Desktop/tablet: confirmed the orange/grey boundary lands cleanly between
+content blocks, no content straddles the seam. Mobile: at 390px the
+boundary lands mid-card (behind "Employer / Director Documents") since
+the section is proportionally much taller there — generated a
+screenshot and flagged this to the client directly rather than deciding
+unilaterally; confirmed acceptable, no change made.
+
+Verified zero console errors, no overflow at 1440/768/390px. Full-page
+scroll-through clean. Build compiles clean.
 
 **Pending your sign-off on the live result.**
 
