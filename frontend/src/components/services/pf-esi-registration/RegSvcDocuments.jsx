@@ -37,7 +37,20 @@ export const RegSvcDocuments = () => (
       <RevealGroup className="mt-12 grid grid-cols-1 items-start gap-5 md:grid-cols-3 md:gap-6" stagger={0.12}>
         {documents.groups.map((g, i) => (
           <RevealItem key={g.title} className={COL_OFFSET[i % 3]}>
-            <div className="rounded-2xl border border-ak-ink/[0.07] bg-white p-6 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.35)]">
+            {/* Cards 1 and 3 (Establishment Documents / Employee Details) are
+                matched to equal height per direct instruction — applied as
+                an explicit min-h on just those two cards rather than a
+                blanket items-stretch on the grid, since the staggered
+                vertical offsets (COL_OFFSET above) and card 2's naturally
+                taller content are an intentional part of this layout and
+                weren't meant to be touched. Height value (322px) taken
+                from Establishment Documents' own measured rendered height
+                at the desktop breakpoint. */}
+            <div
+              className={`rounded-2xl border border-ak-ink/[0.07] bg-white p-6 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.35)] ${
+                i === 0 || i === 2 ? "md:min-h-[322px]" : ""
+              }`}
+            >
               <div className="flex items-center gap-3 border-b border-ak-ink/[0.07] pb-4">
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ak-ink text-white">
                   <Icon name={g.icon} className="h-4 w-4" strokeWidth={1.9} />
