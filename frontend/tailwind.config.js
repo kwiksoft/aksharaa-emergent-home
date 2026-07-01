@@ -274,17 +274,17 @@ module.exports = {
           agreementsStep2: '#1C6BE4',
           agreementsStep3: '#10B57B',
           agreementsStep4: '#8256F3',
-          // Payroll Processing "Who Needs This" section (Section 3), client
-          // reference image + payroll-who-bg.jpg background asset. PIL most-
-          // common-pixel sample: overwhelmingly dominant value converged on
-          // #001F4B across ~25,000 sampled points (next-largest cluster was
-          // near-white highlight pixels, not a competing dark tone). Distinct
-          // from both ak.navy (#111C27) and ak.ink (#1C2A39) — genuinely more
-          // saturated/blue, not a charcoal — diff exceeds the ~5-unit reuse
-          // tolerance on R and B channels against both, so added as its own
-          // token rather than reused. Used as the solid fill for the panel
-          // below the photo band and the persona cards themselves.
-          payrollWhoNavy: '#001F4B',
+          // Payroll Processing "Who Needs This" section (Section 3), round 2.
+          // The Section 3 rebuild from earlier this thread sampled a navy
+          // (#001F4B) from the original reference photo for the card fill —
+          // client replaced that reference image and, this round, gave the
+          // card background as a direct 3-stop gradient spec rather than
+          // asking for another sample, so these are user-specified values,
+          // not PIL-sampled. #001F4B is no longer used anywhere on this
+          // page (removed rather than left as dead weight in the palette).
+          payrollWhoCardTop: '#123B82',
+          payrollWhoCardMid: '#0C2F6E',
+          payrollWhoCardBase: '#08285C', // also the client's stated "Primary Navy" — matches the gradient's own bottom stop
           // Payroll Processing "Scope" section (Section 5) redesign, client
           // reference image + payroll-scope-bg.jpg background asset. PIL
           // most-common-pixel sample, averaged across the top convergent
