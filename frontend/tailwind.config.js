@@ -285,6 +285,16 @@ module.exports = {
           payrollWhoCardTop: '#123B82',
           payrollWhoCardMid: '#0C2F6E',
           payrollWhoCardBase: '#08285C', // also the client's stated "Primary Navy" — matches the gradient's own bottom stop
+          // Payroll Processing "FAQs" section (Section 8) hero band, PIL
+          // most-common-pixel sample from the clean payroll-faq-top.jpg
+          // backdrop (top ~35% of the image, away from the desk objects).
+          // The backdrop itself is a soft photographer's gradient rather
+          // than one flat colour — sampled cluster ranged #B6D7F0 to
+          // #CDE5F8, so reproduced as a two-stop CSS gradient using the
+          // lightest and deepest values from that cluster rather than
+          // flattening to a single average.
+          payrollFaqBandLight: '#CDE5F8',
+          payrollFaqBandDeep: '#B6D7F0',
           // Payroll Processing "Scope" section (Section 5) redesign, client
           // reference image + payroll-scope-bg.jpg background asset. PIL
           // most-common-pixel sample, averaged across the top convergent

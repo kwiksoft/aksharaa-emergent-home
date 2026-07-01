@@ -284,6 +284,7 @@ export const faqs = {
   kicker: "FAQs",
   heading: "Frequently Asked Questions",
   sub: "Common questions from business owners and HR managers about outsourcing payroll to Aksharaa.",
+  photo: { src: "/assets/sections/payroll-faq-top.jpg", alt: "Magnifying glass, notebook and wooden FAQ blocks on a desk" },
   items: [
     { q: "What does payroll outsourcing cost — is it worth it for a small business?", a: "Aksharaa fees are based on employee headcount and scope. For most businesses with 20+ employees, the combined cost of errors, statutory penalties, and internal time far exceeds our fee. We typically deliver a quote within 24 hours." },
     { q: "How does Aksharaa handle payroll across multiple states?", a: "Aksharaa maintains state-wise compliance calendars and configures different Professional Tax slabs and Shops Act provisions for each state. Each location is tracked separately with a consolidated MIS report." },
