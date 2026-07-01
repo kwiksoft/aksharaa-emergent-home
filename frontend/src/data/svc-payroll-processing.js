@@ -106,6 +106,10 @@ export const who = {
   kicker: "Who Needs This",
   heading: ["Who Should Outsource", "Payroll?"],
   sub: "Payroll outsourcing works best when the cost of errors and compliance gaps exceeds the cost of the service — which for most businesses it already does.",
+  // photo-hero band background, per client reference (dark navy overlay
+  // baked in). See tailwind.config.js `ak.payrollWhoNavy` for the sampled
+  // solid-fill colour the cards/panel below the photo use to match.
+  bgImage: "/assets/sections/payroll-who-bg.jpg",
   personas: [
     {
       num: "01",
@@ -253,6 +257,8 @@ export const documents = {
   kicker: "To Get Started",
   heading: "Documents Required",
   sub: "Share these at onboarding. Our team guides you through setup and will be ready for your next payroll cycle.",
+  // right-column hero photo, per client reference
+  photo: { src: "/assets/sections/payroll-docs-bg.jpg", alt: "Aksharaa team member handing over onboarding documents during payroll setup" },
   intro: {
     heading: "We keep it simple and secure.",
     sub: "Your documents are protected with bank-grade security and used only for payroll processing.",

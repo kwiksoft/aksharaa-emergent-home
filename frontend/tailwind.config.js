@@ -274,6 +274,29 @@ module.exports = {
           agreementsStep2: '#1C6BE4',
           agreementsStep3: '#10B57B',
           agreementsStep4: '#8256F3',
+          // Payroll Processing "Who Needs This" section (Section 3), client
+          // reference image + payroll-who-bg.jpg background asset. PIL most-
+          // common-pixel sample: overwhelmingly dominant value converged on
+          // #001F4B across ~25,000 sampled points (next-largest cluster was
+          // near-white highlight pixels, not a competing dark tone). Distinct
+          // from both ak.navy (#111C27) and ak.ink (#1C2A39) — genuinely more
+          // saturated/blue, not a charcoal — diff exceeds the ~5-unit reuse
+          // tolerance on R and B channels against both, so added as its own
+          // token rather than reused. Used as the solid fill for the panel
+          // below the photo band and the persona cards themselves.
+          payrollWhoNavy: '#001F4B',
+          // Payroll Processing "Scope" section (Section 5) redesign, client
+          // reference image + payroll-scope-bg.jpg background asset. PIL
+          // most-common-pixel sample, averaged across the top convergent
+          // cluster (~9,000 sampled points within a few units of each
+          // other): #011D18, a dark forest green. No existing token is
+          // remotely close (palette had no green at all before this), so
+          // added fresh. Orange accents in this section reuse ak.orange —
+          // an isolated search for a distinct card-border orange did not
+          // converge on a clean, high-count value distinct from ak.orange,
+          // so treated as the existing brand orange rather than a near-
+          // duplicate new token.
+          payrollScopeGreen: '#011D18',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

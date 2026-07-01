@@ -4,48 +4,41 @@ import { Icon } from "../../../lib/icons";
 import { scope } from "../../../data/svc-payroll-processing";
 
 export const PayrollScope = () => (
-  <section id="svc-scope" data-testid="payroll-scope-section" className="relative overflow-hidden bg-ak-ink py-14 md:py-20">
-    {/* semi-opacity background photo */}
+  <section id="svc-scope" data-testid="payroll-scope-section" className="relative overflow-hidden bg-payrollScopeGreen py-14 md:py-20">
+    {/* full-bleed background photo — client reference asset already includes
+        the decorative line-art / dot-grid corners, used near-full opacity
+        (unlike the previous 0.22 wash) since the new reference shows the
+        green clearly, not washed out */}
     <div
-      className="absolute inset-0 opacity-[0.22]"
-      style={{
-        backgroundImage: `url(${scope.bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="absolute inset-0 opacity-90"
+      style={{ backgroundImage: `url(${scope.bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
     />
-    <div className="absolute inset-0 bg-gradient-to-b from-ak-ink/60 via-ak-ink/85 to-ak-ink" />
+    <div className="absolute inset-0 bg-gradient-to-b from-payrollScopeGreen/20 via-transparent to-payrollScopeGreen/40" />
 
     <Container className="relative z-10">
-      <Reveal className="mx-auto max-w-2xl text-center">
-        <div className="ak-kicker--light mx-auto mb-5 justify-center">{scope.kicker}</div>
+      {/* left-aligned per reference, not centered like the old treatment */}
+      <Reveal className="max-w-xl">
+        <div className="ak-kicker ak-kicker--light mb-5">{scope.kicker}</div>
         <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-white md:text-4xl">{scope.heading}</h2>
-        <p className="mt-5 text-base leading-relaxed text-white/55">{scope.sub}</p>
+        <p className="mt-5 text-base leading-relaxed text-white/60">{scope.sub}</p>
       </Reveal>
 
-      <RevealGroup className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
+      <RevealGroup className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
         {scope.cards.map((c) => (
           <RevealItem
             key={c.num}
-            className="group relative overflow-hidden rounded-2xl border border-white/[0.1] bg-white/[0.03] p-6 transition-all duration-300 hover:border-ak-orange hover:bg-ak-orange"
+            className="relative overflow-hidden rounded-2xl border border-white/[0.14] bg-white/[0.04] p-6 transition-colors duration-300 hover:border-ak-orange/50 hover:bg-white/[0.07]"
           >
-            <span className="pointer-events-none absolute right-4 top-3 select-none font-display text-3xl font-bold text-white/[0.08] transition-opacity duration-300 group-hover:opacity-0">
+            <span className="pointer-events-none absolute right-4 top-3 select-none font-display text-3xl font-bold text-white/[0.1]">
               {c.num}
             </span>
 
-            {/* icon — fades/shrinks out on hover, matches the reference's icon-to-fill swap */}
-            <span className="relative flex h-10 w-10 items-center justify-center rounded-lg bg-ak-orange/15 text-ak-orange transition-all duration-300 group-hover:h-0 group-hover:opacity-0">
-              <Icon name={c.icon} className="h-[18px] w-[18px]" strokeWidth={1.85} />
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ak-orange text-white">
+              <Icon name={c.icon} className="h-[19px] w-[19px]" strokeWidth={1.9} />
             </span>
 
-            <h3 className="relative mt-4 font-display text-sm font-bold text-white transition-all duration-300 group-hover:mt-0">{c.title}</h3>
-            <p className="relative mt-2 text-[12.5px] leading-relaxed text-white/55 transition-colors duration-300 group-hover:text-white/90">{c.desc}</p>
-
-            {/* reveals on hover, mirrors the reference's "Read More" appearance */}
-            <span className="relative mt-0 flex max-h-0 items-center gap-1.5 overflow-hidden text-[12px] font-bold text-white opacity-0 transition-all duration-300 group-hover:mt-4 group-hover:max-h-8 group-hover:opacity-100">
-              Step {c.num} of 6
-              <Icon name="arrowRight" className="h-3.5 w-3.5" strokeWidth={2.4} />
-            </span>
+            <h3 className="relative mt-4 font-display text-sm font-bold text-white">{c.title}</h3>
+            <p className="relative mt-2 text-[12.5px] leading-relaxed text-white/60">{c.desc}</p>
           </RevealItem>
         ))}
       </RevealGroup>
